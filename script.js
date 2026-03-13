@@ -22,9 +22,9 @@ Object.prototype.spacer = function(amount=1) {
 String.prototype.capitalise = function(allWords=false) {
     let stringWords
 	if (allWords) {
-		stringWords = string.split(" ")
+		stringWords = this.split(" ")
 	} else {
-		stringWords = [string]
+		stringWords = [this]
 	}
 	for (let i = 0; i < stringWords.length; i++) {
 		stringWords[i] = stringWords[i][0].toUpperCase() + stringWords[i].slice(1)
