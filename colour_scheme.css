@@ -1,0 +1,13 @@
+[colour_scheme="dark"] {
+    --background: #333333;
+    --foreground: #4d4d4d;
+    --text: #f2f2f2;
+    --shadow: #2a2a2a
+}
+
+[colour_scheme="light"] {
+    --background: #e1e1e1;
+    --foreground: #f6f6f6;
+    --text: #333333;
+    --shadow: #d0d0d0;
+}

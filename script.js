@@ -1,0 +1,48 @@
+Storage.prototype.set = function(key, value) {
+  this.setItem(key, JSON.stringify(value));
+};
+
+Storage.prototype.get = function(key) {
+  const item = this.getItem(key);
+  return item ? JSON.parse(item) : null;
+};
+
+Object.prototype.clear = function(keep=0) {
+    while (this.childNodes.length > keep) {
+		this.removeChild(this.lastChild)
+	}
+}
+
+Object.prototype.spacer = function(amount=1) {
+    for (let i = 0; i < amount; i++) {
+        this.appendChild(document.createElement("br"))
+    }
+}
+
+String.prototype.capitalise = function(allWords=false) {
+    let stringWords
+	if (allWords) {
+		stringWords = string.split(" ")
+	} else {
+		stringWords = [string]
+	}
+	for (let i = 0; i < stringWords.length; i++) {
+		stringWords[i] = stringWords[i][0].toUpperCase() + stringWords[i].slice(1)
+        if (i < stringWords.length - 1) {
+            stringWords[i] += " "
+        }
+	}
+	return arrayToString(stringWords)
+}
+
+export function id(Object_ID) {
+	return document.getElementById(Object_ID)
+}
+
+export function arrayToString(array) {
+	let string = ""
+	for (let i = 0; i < array.length; i++) {
+		string += array[i]
+	}
+	return string
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dungeons & Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="colour_scheme.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body id="body">
+    <div class="not-nav">
+        <h1>Settings</h1>
+        <h2>Colour Scheme</h2>
+        <h3>Display Mode</h3>
+        <div class="grid" style="--columns: 3">
+            <div colour_scheme="light" id="light" class="border-secondary"></div>
+            <div id="system" class="border-secondary"></div>
+            <div colour_scheme="dark" id="dark" class="border-secondary"></div>
+        </div>
+        <h3>Accents</h3>
+        <div class="grid" style="--columns: 2">
+            <h4>Primary</h4>
+            <h4>Secondary</h4>
+            <div class="scroll-box" id="primarySelect">
+
+            </div>
+            <div  class="scroll-box" id="secondarySelect">
+
+            </div>
+        </div>
+    </div>
+    <div id="navbar"></div>
+    <script type="module" src="navbar.js"></script>
+    <script type="module" src="colour_scheme.js"></script>
+    <script type="module" src="settings.js"></script>
+</body>
+</html>
