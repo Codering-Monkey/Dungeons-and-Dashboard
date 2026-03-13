@@ -32,17 +32,17 @@ String.prototype.capitalise = function(allWords=false) {
             stringWords[i] += " "
         }
 	}
-	return arrayToString(stringWords)
+	return stringWords.fuse()
 }
 
 export function id(Object_ID) {
 	return document.getElementById(Object_ID)
 }
 
-export function arrayToString(array) {
-	let string = ""
-	for (let i = 0; i < array.length; i++) {
-		string += array[i]
+Array.prototype.fuse = function() {
+    let string = ""
+	for (let i = 0; i < this.length; i++) {
+		string += this[i]
 	}
 	return string
 }
