@@ -1,4 +1,4 @@
-import { id, spacer } from "./script.js"
+import { id } from "./script.js"
 
 console.log("navbar.js")
 
@@ -41,7 +41,7 @@ menu.addEventListener("click", function () {
 createNavElement("settings", "Settings").addEventListener("click",
         function () {window.location.href = "settings.html"})
 
-spacer(navbar)
+navbar.spacer()
 
 Object.entries(pages).forEach(([icon, name]) => {
     createNavElement(icon, name[0]).addEventListener("click",
