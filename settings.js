@@ -13,14 +13,7 @@ let system = id("system")
 let current = id(localStorage.get("colourScheme"))
 current.style.boxShadow = ".25rem .25rem var(--foreground)"
 
-let rawPrimary = localStorage.get("primary")
-let rawSecondary = localStorage.get("secondary")
-let display = id("display")
-
-document.documentElement.style.setProperty("--white-primary", "color-mix(in srgb, " + rawPrimary + ", white)")
-document.documentElement.style.setProperty("--white-secondary", "color-mix(in srgb, " + rawSecondary + ", white)")
-document.documentElement.style.setProperty("--black-primary", "color-mix(in srgb, " + rawPrimary + ", black)")
-document.documentElement.style.setProperty("--black-secondary", "color-mix(in srgb, " + rawSecondary + ", black)")
+displayColourSet()
 
 const schemeOptions = ["light", "system", "dark"]
 for (let i = 0; i < schemeOptions.length; i++) {
@@ -110,17 +103,21 @@ id(secondary + "Secondary").style.backgroundColor = "var(--foreground)"
 
 function changeColour(container, selected, catagory) {
     localStorage.set(catagory, selected.id.slice(0, 7));
-    let primary = localStorage.get("primary")
-    let secondary = localStorage.get("secondary")
     let children = container.children
     for (let i = 0; i < children.length; i++) {
         children[i].style.backgroundColor = ""
     }
     selected.style.backgroundColor = "var(--foreground)"
+
+    displayColourSet()
+    loadColours()
+}
+
+function displayColourSet() {
+    let primary = localStorage.get("primary")
+    let secondary = localStorage.get("secondary")
     document.documentElement.style.setProperty("--white-primary", "color-mix(in srgb, " + primary + ", white)")
     document.documentElement.style.setProperty("--white-secondary", "color-mix(in srgb, " + secondary + ", white)")
     document.documentElement.style.setProperty("--black-primary", "color-mix(in srgb, " + primary + ", black)")
     document.documentElement.style.setProperty("--black-secondary", "color-mix(in srgb, " + secondary + ", black)")
-
-    loadColours()
 }
