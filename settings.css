@@ -1,0 +1,13 @@
+.scroll-box div:has(.colour-square):hover {
+    background-color: color-mix(in srgb, var(--square-colour), var(--shadow)) !important;
+}
+
+.colour-square {
+    background-color: var(--square-colour);
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
+.hover-shadow-primary:hover {
+    box-shadow: .125rem .125rem var(--primary);
+}

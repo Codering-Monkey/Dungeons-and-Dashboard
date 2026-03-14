@@ -97,10 +97,6 @@ h1 {
     grid-template-columns: repeat(var(--columns), 1fr)
 }
 
-.hover-shadow-primary:hover {
-    box-shadow: .125rem .125rem var(--primary);
-}
-
 .scroll-box {
     min-width: 100px;
     height: 20rem;
