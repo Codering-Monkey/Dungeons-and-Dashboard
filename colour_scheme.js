@@ -31,7 +31,7 @@ export function loadColours() {
 
     let secondary = localStorage.get("secondary")
     if (!secondary) {
-        secondary = '#00aaff'
+        secondary = '#00ffff'
         localStorage.set("secondary", secondary);
     }
     document.documentElement.style.setProperty("--secondary", "color-mix(in srgb, " + secondary + ", " + colourMix + ")")
