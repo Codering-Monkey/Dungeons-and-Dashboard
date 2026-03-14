@@ -15,6 +15,12 @@ current.style.boxShadow = ".25rem .25rem var(--foreground)"
 
 let rawPrimary = localStorage.get("primary")
 let rawSecondary = localStorage.get("secondary")
+let display = id("display")
+
+document.documentElement.style.setProperty("--white-primary", "color-mix(in srgb, " + rawPrimary + ", white)")
+document.documentElement.style.setProperty("--white-secondary", "color-mix(in srgb, " + rawSecondary + ", white)")
+document.documentElement.style.setProperty("--black-primary", "color-mix(in srgb, " + rawPrimary + ", black)")
+document.documentElement.style.setProperty("--black-secondary", "color-mix(in srgb, " + rawSecondary + ", black)")
 
 const schemeOptions = ["light", "system", "dark"]
 for (let i = 0; i < schemeOptions.length; i++) {
@@ -34,11 +40,11 @@ for (let i = 0; i < schemeOptions.length; i++) {
     let newPrimary
     let newSecondary
     if (container.getAttribute("colour_scheme") === "light") {
-        newPrimary = "color-mix(in srgb, " + rawPrimary + ", black)"
-        newSecondary = "color-mix(in srgb, " + rawSecondary + ", black)"
+        newPrimary = "var(--black-primary)"
+        newSecondary = "var(--black-secondary)"
     } else {
-        newPrimary = "color-mix(in srgb, " + rawPrimary + ", white)"
-        newSecondary = "color-mix(in srgb, " + rawSecondary + ", white)"
+        newPrimary = "var(--white-primary)"
+        newSecondary = "var(--white-secondary)"
     }
 
     let littlePrimary = document.createElement("h4")
@@ -104,10 +110,17 @@ id(secondary + "Secondary").style.backgroundColor = "var(--foreground)"
 
 function changeColour(container, selected, catagory) {
     localStorage.set(catagory, selected.id.slice(0, 7));
+    let primary = localStorage.get("primary")
+    let secondary = localStorage.get("secondary")
     let children = container.children
     for (let i = 0; i < children.length; i++) {
         children[i].style.backgroundColor = ""
     }
     selected.style.backgroundColor = "var(--foreground)"
+    document.documentElement.style.setProperty("--white-primary", "color-mix(in srgb, " + primary + ", white)")
+    document.documentElement.style.setProperty("--white-secondary", "color-mix(in srgb, " + secondary + ", white)")
+    document.documentElement.style.setProperty("--black-primary", "color-mix(in srgb, " + primary + ", black)")
+    document.documentElement.style.setProperty("--black-secondary", "color-mix(in srgb, " + secondary + ", black)")
+
     loadColours()
 }
