@@ -46,3 +46,11 @@ Array.prototype.fuse = function() {
 	}
 	return string
 }
+
+Object.prototype.invert = function() {
+    let newObject = {}
+    Object.entries(this).forEach(([key, value]) => {
+        newObject[value] = key
+    })
+    return newObject
+}
