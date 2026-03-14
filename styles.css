@@ -59,7 +59,11 @@ h1 {
 }
 
 .navbar div:hover {
-    background-color: color-mix(in srgb, var(--foreground), var(--secondary))
+    background-color: var(--shadow)
+}
+
+.navbar span:hover {
+    color: var(--secondary)
 }
 
 .navbar div * {
