@@ -76,24 +76,38 @@ let secondarySelect = id("secondarySelect")
 secondarySelect.clear()
 Object.entries(accentColours).forEach(([name, colour]) => {
     let container = document.createElement("div")
-    hoverBackground(container, "color-mix(in srgb, " + colour + ", var(--shadow))")
+    container.style = "--square-colour: "+ colour
 
     let square = document.createElement("div")
-    square.style.height = "100%";
-    square.style.aspectRatio = "1 / 1"
-    square.style.backgroundColor = colour;
+    square.classList.add("colour-square")
     container.appendChild(square)
 
     let text = document.createElement("p")
     text.textContent = name
     container.appendChild(text)
 
-    container.id = colour + "Primary"
-    primarySelect.appendChild(container)
     let clone = container.cloneNode(true)
+    container.id = colour + "Primary"
+    container.addEventListener("click", function () {changeColour(primarySelect, container, "primary")})
+    primarySelect.appendChild(container)
     clone.id = colour + "Secondary"
-    hoverBackground(clone, "color-mix(in srgb, " + colour + ", var(--shadow))")
+    clone.addEventListener("click", function () {changeColour(secondarySelect, clone, "secondary")})
+
     secondarySelect.appendChild(clone)
 })
 
-console.log("settings.js")
+let primary = localStorage.get("primary")
+let secondary = localStorage.get("secondary")
+
+id(primary + "Primary").style.backgroundColor = "var(--foreground)"
+id(secondary + "Secondary").style.backgroundColor = "var(--foreground)"
+
+function changeColour(container, selected, catagory) {
+    localStorage.set(catagory, selected.id.slice(0, 7));
+    let children = container.children
+    for (let i = 0; i < children.length; i++) {
+        children[i].style.backgroundColor = ""
+    }
+    selected.style.backgroundColor = "var(--foreground)"
+    loadColours()
+}
