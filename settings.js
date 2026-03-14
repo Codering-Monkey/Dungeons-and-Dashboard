@@ -62,10 +62,12 @@ for (let i = 0; i < schemeOptions.length; i++) {
     container.addEventListener("click", function () {
         for (let k = 0; k < schemeOptions.length; k++) {
             id(schemeOptions[k]).style.boxShadow = "none";
-            container.style.boxShadow = ".25rem .25rem var(--foreground)"
-            localStorage.set("colourScheme", schemeOptions[i])
-            loadColours()
+            hoverShadow(id(schemeOptions[k]), "var(--primary)", .25, .25, "rem")
         }
+        container.style.boxShadow = ".25rem .25rem var(--foreground)"
+        hoverShadow(container, "var(--primary)", .25, .25, "rem")
+        localStorage.set("colourScheme", schemeOptions[i])
+        loadColours()
     })
 }
 
