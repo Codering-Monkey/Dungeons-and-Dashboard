@@ -62,7 +62,7 @@ h1 {
     background-color: var(--shadow)
 }
 
-.navbar span:hover {
+.navbar div:hover span {
     color: var(--secondary)
 }
 
