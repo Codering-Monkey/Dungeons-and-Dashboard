@@ -6,7 +6,7 @@ let navbar = id("navbar");
 
 const pages = {
     "home": ["Home", "index.html"],
-    "person": ["Characters", "#"]
+    "person": ["Characters", "characters.html"]
 }
 
 navbar.classList.add("navbar")
