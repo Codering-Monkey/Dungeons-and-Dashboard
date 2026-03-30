@@ -1,0 +1,20 @@
+{
+    "Barbarian": {
+        "Ability": ["Str"],
+        "Health": [12, 7],
+        "Save": ["Str", "Con"],
+        "Skills": {
+            "Amount": 2,
+            "Choices": ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]
+        },
+        "Weapons": [true, true],
+        "Armour": [true, true, false, true],
+        "GP": 15,
+        "Equipment": {
+            "Weapons": {
+                "Greateaxe": 1,
+                "Handaxe": 4
+            }
+        }
+    }
+}
