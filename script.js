@@ -83,7 +83,7 @@ export function popup(data) {
     }, 1);
 
     function fillBar(IdNum) {
-        const oldWidth = stripSign(progress.style.width)
+        const oldWidth = parseFloat(progress.style.width)
         const multiplier = (200 - oldWidth) / 200
         progress.style.width = "200px"
         progress.style.transitionDuration = (5 * multiplier) + "s"
@@ -99,7 +99,7 @@ export function popup(data) {
         const current = existing.length
         for (let i = IdNum + 1; i < current; i++) {
             let pop = document.getElementById("popup" + i)
-            const old = stripSign(pop.style.right)
+            const old = parseFloat(pop.style.right)
             pop.style.right = (old - 216) + "px"
         }
         let pop = document.getElementById("popup" + IdNum)
@@ -120,54 +120,4 @@ export function popup(data) {
     pop.addEventListener("click", function () {
         endPopup(current)
     })
-}
-
-String.prototype.stripSign = function() {
-    if (foundIn(this.slice(-2), ["px", "em", "vh", "vw"])) {
-        return this.slice(0, -2)
-    } else if (foundIn(this.slice(-1), ["%"])) {
-        return this.slice(0, -1)
-    } else if (this === "") {
-        return 0
-    } else {
-        return parseFloat(this)
-    }
-}
-
-export function foundIn(key, data, deepSearch=false) {
-	key = key.toLowerCase()
-	if (Array.isArray(data)) {
-		for (let i = 0; i < data.length; i++) {
-			let testString
-			try {
-				testString = data[i].toLowerCase()
-			} catch {
-				testString = data[i]
-			}
-			if (key === testString) {
-				return true
-			} else if (deepSearch) {
-				if (Array.isArray(testString)) {
-					if (foundIn(key, testString, true)) {
-						return true
-					}
-				} else {
-					if (foundIn(key, testString, false)) {
-						return true
-					}
-				}
-			}
-		}
-	} else {
-		data = data.toLowerCase()
-		for (let i = 0; i < data.length; i++) {
-			if (data[i] === key[0]) {
-				const result = possibleFind(key, data, i)
-				if (result) {
-					return true
-				}
-			}
-		}
-	}
-	return false
 }
