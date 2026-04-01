@@ -28,6 +28,7 @@
 body {
     background-color: var(--background);
     margin: 0;
+    overflow: hidden;
 }
 
 .navbar {
@@ -84,7 +85,7 @@ body {
 }
 
 .popup {
-    background-color: var(--foreground);
+    background-color: var(--navbar);
     color: var(--text);
     position: absolute;
     right: -250px;
