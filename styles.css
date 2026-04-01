@@ -82,3 +82,37 @@ body {
     visibility: visible;
     left: 56px !important;
 }
+
+.popup {
+    background-color: var(--dark);
+    color: var(--dark-text);
+    position: absolute;
+    right: -250px;
+    bottom: 0;
+    padding-top: 8px;
+    margin: 8px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 2px 2px var(--shadow);
+    cursor: pointer;
+    transition: right 1s;
+}
+
+.popup span {
+    padding: 8px 8px 0;
+}
+
+.progress-bar {
+    height: 8px;
+    width: 200px;
+    margin-top: 8px;
+    background-color: var(--light);
+    user-select: none;
+}
+
+.progress {
+    background-color: var(--contrast);
+    height: 8px;
+    transition: width 5s ease-out;
+    width: 0;
+}
