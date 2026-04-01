@@ -55,6 +55,8 @@ Object.prototype.invert = function() {
     return newObject
 }
 
+// needs refinement
+
 export function popup(data) {
     const existing = document.getElementsByClassName("popup")
     const current = existing.length
@@ -118,4 +120,54 @@ export function popup(data) {
     pop.addEventListener("click", function () {
         endPopup(current)
     })
+}
+
+String.prototype.stripSign = function() {
+    if (foundIn(this.slice(-2), ["px", "em", "vh", "vw"])) {
+        return this.slice(0, -2)
+    } else if (foundIn(this.slice(-1), ["%"])) {
+        return this.slice(0, -1)
+    } else if (this === "") {
+        return 0
+    } else {
+        return parseFloat(this)
+    }
+}
+
+export function foundIn(key, data, deepSearch=false) {
+	key = key.toLowerCase()
+	if (Array.isArray(data)) {
+		for (let i = 0; i < data.length; i++) {
+			let testString
+			try {
+				testString = data[i].toLowerCase()
+			} catch {
+				testString = data[i]
+			}
+			if (key === testString) {
+				return true
+			} else if (deepSearch) {
+				if (Array.isArray(testString)) {
+					if (foundIn(key, testString, true)) {
+						return true
+					}
+				} else {
+					if (foundIn(key, testString, false)) {
+						return true
+					}
+				}
+			}
+		}
+	} else {
+		data = data.toLowerCase()
+		for (let i = 0; i < data.length; i++) {
+			if (data[i] === key[0]) {
+				const result = possibleFind(key, data, i)
+				if (result) {
+					return true
+				}
+			}
+		}
+	}
+	return false
 }

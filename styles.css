@@ -84,8 +84,8 @@ body {
 }
 
 .popup {
-    background-color: var(--dark);
-    color: var(--dark-text);
+    background-color: var(--foreground);
+    color: var(--text);
     position: absolute;
     right: -250px;
     bottom: 0;
@@ -93,7 +93,6 @@ body {
     margin: 8px;
     width: 200px;
     text-align: center;
-    box-shadow: 2px 2px var(--shadow);
     cursor: pointer;
     transition: right 1s;
 }
@@ -106,12 +105,12 @@ body {
     height: 8px;
     width: 200px;
     margin-top: 8px;
-    background-color: var(--light);
+    background-color: var(--pink);
     user-select: none;
 }
 
 .progress {
-    background-color: var(--contrast);
+    background-color: var(--blue);
     height: 8px;
     transition: width 5s ease-out;
     width: 0;
