@@ -84,12 +84,18 @@ body {
     left: 56px !important;
 }
 
+.popup-bar {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
 .popup {
     background-color: var(--navbar);
     color: var(--text);
-    position: absolute;
-    right: -250px;
-    bottom: 0;
     padding-top: 8px;
     margin: 8px;
     width: 200px;

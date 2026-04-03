@@ -55,9 +55,23 @@ Object.prototype.invert = function() {
     return newObject
 }
 
-// needs refinement
+let popupBar = document.createElement("div");
+popupBar.classList.add("popup-bar");
+document.body.appendChild(popupBar);
 
 export function popup(data) {
+    let popup = document.createElement("div")
+    popup.classList.add("popup")
+    popup.style.right = "0"
+    popup.textContent = data
+    popupBar.appendChild(popup)
+
+    let progressBar = document.createElement("div")
+    progressBar.classList.add("progress-bar")
+    popup.appendChild(progressBar)
+}
+
+/*export function popup(data) {
     const existing = document.getElementsByClassName("popup")
     const current = existing.length
     let pop = document.createElement("div")
@@ -120,4 +134,8 @@ export function popup(data) {
     pop.addEventListener("click", function () {
         endPopup(current)
     })
-}
+}*/
+
+popup("hi")
+popup("hi")
+popup("hey buddy, how are you going? good, good")
