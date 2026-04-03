@@ -97,11 +97,11 @@ body {
     background-color: var(--navbar);
     color: var(--text);
     padding-top: 8px;
-    margin: 8px;
+    margin: 8px -208px 8px 8px;
     width: 200px;
     text-align: center;
     cursor: pointer;
-    transition: right 1s;
+    transition: margin-right 1s;
 }
 
 .popup span {
