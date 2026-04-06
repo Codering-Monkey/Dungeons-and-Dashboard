@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0");
 
-@property --columns {
-    syntax: "<integer>";
-    initial-value: 1;
-    inherits: false;
-}
-
 :root {
     --background: hsl(0 0 12);
     --navbar: hsl(0 0 15);
