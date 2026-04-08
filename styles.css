@@ -55,10 +55,6 @@ body {
     margin-left:8px;
 }
 
-.navbar > div > span {
-    z-index: 2;
-}
-
 .navbar > div:hover span {
     font-size: 32px;
     color: var(--blue);
