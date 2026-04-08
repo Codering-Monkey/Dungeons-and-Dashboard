@@ -21,6 +21,19 @@
 .spellOption {
     display: grid;
     grid-template-columns: 1fr 3fr 2fr;
+    margin: 8px 8px 8px 0;
+    padding: 8px;
+    color: var(--minor-text);
+    cursor: pointer;
+    background-color: var(--foreground);
+}
+
+.spellOption:hover {
+    padding: 16px 8px;
+}
+
+.spellOption:hover span {
+    color: var(--blue)
 }
 
 .spellSearch {
