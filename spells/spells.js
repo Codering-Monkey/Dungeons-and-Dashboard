@@ -1,5 +1,5 @@
 import spellData from "./spells.json" with { type: "json" }
-import { id } from "../script.js"
+import {id, numSuffix} from "../script.js"
 
 console.log(spellData)
 
@@ -42,6 +42,13 @@ function renderSpell() {
     let title = document.createElement("h1")
     title.textContent = spellPacket["Name"]
     parent.append(title)
+
+    let school = document.createElement("h3")
+    if (spellPacket["Level"] === 0) {
+        school.textContent = spellPacket["School"] + " Cantrip"
+    } else {
+        school.textContent = numSuffix(String(spellPacket["Level"])) +
+    }
 }
 
 id("searchButton").addEventListener("click", function() {filter()});
