@@ -88,6 +88,10 @@ export function numSuffix(number) {
     }
 }
 
+String.prototype.parse = function() {
+    return this
+}
+
 let popupBar = document.createElement("div");
 popupBar.classList.add("popup-bar");
 document.body.appendChild(popupBar);
