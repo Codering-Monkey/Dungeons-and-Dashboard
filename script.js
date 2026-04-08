@@ -55,7 +55,7 @@ Object.prototype.invert = function() {
     return newObject
 }
 
-Location.prototype.getQuery = function(key=null) {
+export function getQuery(key=null) {
     if (key) {
         return new URLSearchParams(location.search).get(key)
     } else {
@@ -63,14 +63,10 @@ Location.prototype.getQuery = function(key=null) {
     }
 }
 
-Location.prototype.saveQuery = function(parameters) {
-    location.search = parameters.toString()
-}
-
-Location.prototype.setQuery = function(key, value) {
-    let currentParams = this.getQuery()
-    currentParams.set(key, value)
-    this.saveQuery(currentParams)
+export function setQuery(key, value) {
+    const url = new URL(this)
+    url.searchParams.set(key, value)
+    window.history.replaceState({}, '', url)
 }
 
 export function numSuffix(number) {
