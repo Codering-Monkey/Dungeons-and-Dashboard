@@ -74,6 +74,7 @@ Location.prototype.setQuery = function(key, value) {
 }
 
 export function numSuffix(number) {
+    number = String(number)
     let finalDigit = number.slice(-1)
     let otherDigits = number.slice(0, -1)
     if (finalDigit === "1") {
