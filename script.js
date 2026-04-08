@@ -64,7 +64,7 @@ export function getQuery(key=null) {
 }
 
 export function setQuery(key, value) {
-    const url = new URL(this)
+    const url = new URL(window.location)
     url.searchParams.set(key, value)
     window.history.replaceState({}, '', url)
 }
