@@ -32,7 +32,8 @@
     aspect-ratio: 1 / 1;
     background-color: var(--navbar);
     border-radius: 128px;
-    padding: 4px
+    padding: 4px;
+    cursor: pointer;
 }
 
 .spellSearch span:hover {
