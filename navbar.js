@@ -15,7 +15,7 @@ function createIcon(icon_name) {
 Object.entries(pages).forEach(([icon, [name, url]]) => {
     let box = document.createElement("div");
     box.addEventListener("click", function() {
-        document.location.href = url
+        document.location.pathname = "/" + document.location.pathname.split("/")[1] + "/" + url
     })
     navbar.appendChild(box);
     box.appendChild(createIcon(icon))
