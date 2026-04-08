@@ -45,6 +45,11 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Evocation",
+        "Classes": [
+            "Artificer",
+            "Sorcerer",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "60",
         "Components": [
@@ -780,6 +785,12 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Abjuration",
+        "Classes": [
+            "Bard",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "Self",
         "Components": [
@@ -1202,6 +1213,11 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Necromancy",
+        "Classes": [
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "Touch",
         "Components": [
@@ -2086,6 +2102,12 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Illusion",
+        "Classes": [
+            "Artificer",
+            "Bard",
+            "Sorcerer",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "120",
         "Components": [
@@ -2113,11 +2135,6 @@
             "Warlock",
             "Wizard"
         ]
-    },
-    "Dark Star": {
-        "Name": "Dark Star",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
     },
     "Darkness": {
         "Name": "Darkness",
@@ -2305,7 +2322,7 @@
             "Ranger",
             "Sorcerer",
             "Warlock",
-            "Wizard)"
+            "Wizard"
         ],
         "Casting Time": "Action or Ritual",
         "Range": "Self",
@@ -2684,6 +2701,9 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Transmutation",
+        "Classes": [
+            "Druid"
+        ],
         "Casting Time": "Action",
         "Range": "30",
         "Components": [
@@ -2783,6 +2803,9 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Evocation",
+        "Classes": [
+            "Warlock"
+        ],
         "Casting Time": "Action",
         "Range": "120",
         "Components": [
@@ -2847,7 +2870,7 @@
         ],
         "Duration": "8 hours",
         "Classes": [
-            "Wizard"
+            "None"
         ]
     },
     "Enemies Abound": {
@@ -3186,7 +3209,12 @@
         "Components": [
             "V"
         ],
-        "Duration": "Concentration, up to 1 hour"
+        "Duration": "Concentration, up to 1 hour",
+        "Classes": [
+            "Bard",
+            "Cleric",
+            "Wizard"
+        ]
     },
     "Fear": {
         "Name": "Fear",
@@ -3379,6 +3407,11 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Evocation",
+        "Classes": [
+            "Artificer",
+            "Sorcerer",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "120",
         "Components": [
@@ -3694,11 +3727,6 @@
         ],
         "Duration": "8 hours"
     },
-    "Fortune's Favor": {
-        "Name": "Fortune's Favor",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
-    },
     "Freedom of Movement": {
         "Name": "Freedom of Movement",
         "Description": "You touch a willing creature. For the duration, the target's movement is unaffected by Difficult Terrain, and spells and other magical effects can neither reduce the target's Speed nor cause the target to have the Paralyzed or Restrained conditions. The target also has a Swim Speed equal to its Speed. In addition, the target can spend 5 feet of movement to automatically escape from nonmagical restraints, such as manacles or a creature imposing the Grappled condition on it.",
@@ -3728,6 +3756,12 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Enchantment",
+        "Classes": [
+            "Bard",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "10",
         "Components": [
@@ -3838,11 +3872,7 @@
     },
     "Gate Seal": {
         "Name": "Gate Seal",
-        "Extra": {
-            "At Higher Level": " When you cast this spell using a spell slot of 6th level or higher, the spell lasts until dispelled.",
-            "Spell Lists": ""
-        },
-        "Description": "",
+        "Description": "You fortify the fabric of the planes within a 30-foot cube you can see within range. Within that area, portals close and can't be opened for the duration. Spells and other effects that allow planar travel or open portals such as gate or plane shift, fail if used to enter or leave the area. The cube is stationary. . When you cast this spell using a spell slot of 6th level or higher, the spell lasts until dispelled.",
         "Source": "Planescape - Adventures in the Multiverse",
         "Level": 4,
         "School": "Abjuration",
@@ -3851,7 +3881,12 @@
         "Components": [
             "V, S, M (a broken portal key, which the spell consumes)"
         ],
-        "Duration": "24 Hours"
+        "Duration": "24 Hours",
+        "Classes": [
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ]
     },
     "Gate": {
         "Name": "Gate",
@@ -3935,11 +3970,6 @@
         ],
         "Duration": "Concentration, up to 10 minutes",
         "Increase": " Use the spell slot's level for the spell's level in the stat block."
-    },
-    "Gift of Alacrity": {
-        "Name": "Gift of Alacrity",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
     },
     "Gift of Gab": {
         "Name": "Gift of Gab",
@@ -4060,16 +4090,6 @@
         ],
         "Duration": "Concentration, up to 1 minute",
         "Increase": " The number of creatures the vine can grapple increases by one for each spell slot level above 4."
-    },
-    "Gravity Fissure": {
-        "Name": "Gravity Fissure",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
-    },
-    "Gravity Sinkhole": {
-        "Name": "Gravity Sinkhole",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
     },
     "Grease": {
         "Name": "Grease",
@@ -4219,6 +4239,11 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Divination",
+        "Classes": [
+            "Artificer",
+            "Cleric",
+            "Druid"
+        ],
         "Casting Time": "Action",
         "Range": "Touch",
         "Components": [
@@ -4248,7 +4273,23 @@
     "Gust of Wind": {
         "Name": "Gust of Wind",
         "Description": "A Line of strong wind 60 feet long and 10 feet wide blasts from you in a direction you choose for the duration. Each creature in the Line must succeed on a Strength saving throw or be pushed 15 feet away from you in a direction following the Line. A creature that ends its turn in the Line must make the same save. Any creature in the Line must spend 2 feet of movement for every 1 foot it moves when moving closer to you. The gust disperses gas or vapor, and it extinguishes candles and similar unprotected flames in the area. It causes protected flames, such as those of lanterns, to dance wildly and has a 50 percent chance to extinguish them. As a Bonus Action on your later turns, you can change the direction in which the Line blasts from you.",
-        "Source": "Player's Handbook"
+        "Source": "Player's Handbook",
+        "Level": 2,
+        "School": "Evocation",
+        "Classes": [
+            "Druid",
+            "Ranger",
+            "Sorcerer",
+            "Wizard"
+        ],
+        "Casting Time": "Action",
+        "Range": "Self",
+        "Components": [
+            "V",
+            "S",
+            "M (a legume seed)"
+        ],
+        "Duration": "Concentration, up to 1 minute"
     },
     "Gust": {
         "Name": "Gust",
@@ -4779,11 +4820,6 @@
             "Wizard"
         ]
     },
-    "Immovable Object": {
-        "Name": "Immovable Object",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
-    },
     "Imprisonment": {
         "Name": "Imprisonment",
         "Extra": {
@@ -4924,7 +4960,18 @@
             "V"
         ],
         "Duration": "Concentration, up to 1 hour",
-        "Increase": "When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd. The creatures must be within 30 feet of each other when you target them."
+        "Increase": "When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd. The creatures must be within 30 feet of each other when you target them.",
+        "Classes": [
+            "Artificer",
+            "Bard",
+            "(Optional)",
+            "Sorcerer",
+            "(Optional)",
+            "Warlock",
+            "(Optional)",
+            "Wizard",
+            "(Optional)"
+        ]
     },
     "Investiture of Flame": {
         "Name": "Investiture of Flame",
@@ -5256,7 +5303,11 @@
             "V",
             "S"
         ],
-        "Duration": "Instantaneous"
+        "Duration": "Instantaneous",
+        "Classes": [
+            "Cleric",
+            "Wizard"
+        ]
     },
     "Light": {
         "Name": "Light",
@@ -5264,6 +5315,13 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Evocation",
+        "Classes": [
+            "Artificer",
+            "Bard",
+            "Cleric",
+            "Sorcerer",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "Touch",
         "Components": [
@@ -5483,6 +5541,13 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Conjuration",
+        "Classes": [
+            "Artificer",
+            "Bard",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "30",
         "Components": [
@@ -5610,11 +5675,6 @@
         ],
         "Duration": "1 hour",
         "Increase": " The bonus increases to +2 with a level 3\u00e2\u20ac\u201c5 spell slot. The bonus increases to +3 with a level 6+ spell slot."
-    },
-    "Magnify Gravity": {
-        "Name": "Magnify Gravity",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
     },
     "Major Image": {
         "Name": "Major Image",
@@ -5813,6 +5873,13 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Transmutation",
+        "Classes": [
+            "Bard",
+            "Cleric",
+            "Druid",
+            "Sorcerer",
+            "Wizard"
+        ],
         "Casting Time": "Minute",
         "Range": "Touch",
         "Components": [
@@ -5846,6 +5913,13 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Transmutation",
+        "Classes": [
+            "Artificer",
+            "Bard",
+            "Druid",
+            "Sorcerer",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "120",
         "Components": [
@@ -5914,6 +5988,11 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Enchantment",
+        "Classes": [
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "60",
         "Components": [
@@ -5951,6 +6030,12 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Illusion",
+        "Classes": [
+            "Bard",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "30",
         "Components": [
@@ -6177,7 +6262,11 @@
         "Components": [
             "V"
         ],
-        "Duration": "1 hour"
+        "Duration": "1 hour",
+        "Classes": [
+            "Bard",
+            "Cleric"
+        ]
     },
     "Move Earth": {
         "Name": "Move Earth",
@@ -6518,6 +6607,13 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Necromancy",
+        "Classes": [
+            "Artificer",
+            "Druid",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "30",
         "Components": [
@@ -6656,6 +6752,13 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Transmutation",
+        "Classes": [
+            "Artificer",
+            "Bard",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "10",
         "Components": [
@@ -6741,6 +6844,9 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Conjuration",
+        "Classes": [
+            "Druid"
+        ],
         "Casting Time": "Bonus Action",
         "Range": "Self",
         "Components": [
@@ -6872,11 +6978,6 @@
             "Wizard"
         ]
     },
-    "Pulse Wave": {
-        "Name": "Pulse Wave",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
-    },
     "Purify Food and Drink": {
         "Name": "Purify Food and Drink",
         "Description": "You remove poison and rot from nonmagical food and drink in a 5-foot-radius Sphere centered on a point within range.",
@@ -6980,11 +7081,6 @@
             "Wizard"
         ]
     },
-    "Ravenous Void": {
-        "Name": "Ravenous Void",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
-    },
     "Ray of Enfeeblement": {
         "Name": "Ray of Enfeeblement",
         "Description": "A beam of enervating energy shoots from you toward a creature within range. The target must make a Constitution saving throw. On a successful save, the target has Disadvantage on the next attack roll it makes until the start of your next turn. On a failed save, the target has Disadvantage on Strength-based D20 Tests for the duration. During that time, it also subtracts 1d8 from all its damage rolls. The target repeats the save at the end of each of its turns, ending the spell on a success.",
@@ -7009,6 +7105,11 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Evocation",
+        "Classes": [
+            "Artificer",
+            "Sorcerer",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "60",
         "Components": [
@@ -7036,11 +7137,6 @@
         ],
         "Duration": "Instantaneous",
         "Increase": " The damage increases by 1d8 for each spell slot level above 1."
-    },
-    "Reality Break": {
-        "Name": "Reality Break",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
     },
     "Regenerate": {
         "Name": "Regenerate",
@@ -7106,6 +7202,11 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Abjuration",
+        "Classes": [
+            "Artificer",
+            "Cleric",
+            "Druid"
+        ],
         "Casting Time": "Action",
         "Range": "Touch",
         "Components": [
@@ -7219,6 +7320,9 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Evocation",
+        "Classes": [
+            "Cleric"
+        ],
         "Casting Time": "Action",
         "Range": "60",
         "Components": [
@@ -7541,6 +7645,9 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Transmutation",
+        "Classes": [
+            "Druid"
+        ],
         "Casting Time": "Bonus Action",
         "Range": "Self",
         "Components": [
@@ -7557,6 +7664,11 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Evocation",
+        "Classes": [
+            "Artificer",
+            "Sorcerer",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "Touch",
         "Components": [
@@ -7832,6 +7944,11 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Necromancy",
+        "Classes": [
+            "Artificer",
+            "Cleric",
+            "Druid"
+        ],
         "Casting Time": "Action",
         "Range": "15",
         "Components": [
@@ -8762,11 +8879,6 @@
             "Cleric"
         ]
     },
-    "Temporal Shunt": {
-        "Name": "Temporal Shunt",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
-    },
     "Tenser's Floating Disk": {
         "Name": "Tenser's Floating Disk",
         "Description": "This spell creates a circular, horizontal plane of force, 3 feet in diameter and 1 inch thick, that floats 3 feet above the ground in an unoccupied space of your choice that you can see within range. The disk remains for the duration and can hold up to 500 pounds. If more weight is placed on it, the spell ends, and everything on the disk falls to the ground. The disk is immobile while you are within 20 feet of it. If you move more than 20 feet away from it, the disk follows you so that it remains within 20 feet of you. It can move across uneven terrain, up or down stairs, slopes and the like, but it can't cross an elevation change of 10 feet or more. For example, the disk can't move across a 10-foot-deep pit, nor could it leave such a pit if it was created at the bottom. If you move more than 100 feet from the disk (typically because it can't move around an obstacle to follow you), the spell ends.",
@@ -8803,11 +8915,6 @@
             "Wizard"
         ]
     },
-    "Tether Essence": {
-        "Name": "Tether Essence",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
-    },
     "Thaumaturgy": {
         "Name": "Thaumaturgy",
         "Extra": {
@@ -8822,6 +8929,9 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Transmutation",
+        "Classes": [
+            "Cleric"
+        ],
         "Casting Time": "Action",
         "Range": "30",
         "Components": [
@@ -8835,6 +8945,10 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Transmutation",
+        "Classes": [
+            "Artificer",
+            "Druid"
+        ],
         "Casting Time": "Action",
         "Range": "30",
         "Components": [
@@ -8847,9 +8961,6 @@
     },
     "Thunder Step": {
         "Name": "Thunder Step",
-        "Extra": {
-            "Spell lists": ""
-        },
         "Description": "You teleport yourself to an unoccupied space you can see within range. Immediately after you disappear, a thunderous boom sounds, and each creature within 10 feet of the space you left must make a Constitution saving throw, taking 3d10 thunder damage on a failed save, or half as much damage on a successful one. The thunder can be heard from up to 300 feet away. You can bring along objects as long as their weight doesn't exceed what you can carry. You can also teleport one willing creature of your size or smaller who is carrying gear up to its carrying capacity. The creature must be within 5 feet of you when you cast this spell, and there must be an unoccupied space within 5 feet of your destination space for the creature to appear in; otherwise, the creature is left behind.",
         "Source": "Xanathar's Guide to Everything",
         "Level": 3,
@@ -8860,7 +8971,12 @@
             "V"
         ],
         "Duration": "Instantaneous",
-        "Increase": "When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d10 for each slot level above 3rd."
+        "Increase": "When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d10 for each slot level above 3rd.",
+        "Classes": [
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ]
     },
     "Thunderclap": {
         "Name": "Thunderclap",
@@ -8868,6 +8984,14 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Evocation",
+        "Classes": [
+            "Artificer",
+            "Bard",
+            "Druid",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "Self",
         "Components": [
@@ -8934,11 +9058,6 @@
             "Wizard"
         ]
     },
-    "Time Ravage": {
-        "Name": "Time Ravage",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
-    },
     "Time Stop": {
         "Name": "Time Stop",
         "Description": "You briefly stop the flow of time for everyone but yourself. No time passes for other creatures, while you take 1d4 + 1 turns in a row, during which you can use actions and move as normal. This spell ends if one of the actions you use during this period, or any effects that you create during it, affects a creature other than you or an object being worn or carried by someone other than you. In addition, the spell ends if you move to a place more than 1,000 feet from the location where you cast it.",
@@ -8981,6 +9100,11 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Necromancy",
+        "Classes": [
+            "Cleric",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "60",
         "Components": [
@@ -9138,6 +9262,13 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Divination",
+        "Classes": [
+            "Artificer",
+            "Bard",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "Casting Time": "Action",
         "Range": "Self",
         "Components": [
@@ -9210,6 +9341,9 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Enchantment",
+        "Classes": [
+            "Bard"
+        ],
         "Casting Time": "Action",
         "Range": "60",
         "Components": [
@@ -9455,9 +9589,6 @@
     },
     "Warp Sense": {
         "Name": "Warp Sense",
-        "Extra": {
-            "Spell Lists": ""
-        },
         "Description": "For the duration, you sense the presence of portals, even inactive ones, within 30 feet of yourself.\nIf you detect a portal in this way, you can use your action to study it. Make a DC 15 ability check using your spellcasting ability. On a successful check, you learn the destination plane of the portal and what portal key it requires, then the spell ends. On a failed check, you learn nothing and can't study that portal again using this spell until you cast it again.\nThe spell can penetrate most barriers but is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.",
         "Source": "Planescape - Adventures in the Multiverse",
         "Level": 2,
@@ -9469,7 +9600,12 @@
             "S",
             "M (a razorvine leaf)"
         ],
-        "Duration": "Concentration, up to 1 minute"
+        "Duration": "Concentration, up to 1 minute",
+        "Classes": [
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ]
     },
     "Water Breathing": {
         "Name": "Water Breathing",
@@ -9693,6 +9829,9 @@
         "Source": "Player's Handbook",
         "Level": 0,
         "School": "Evocation",
+        "Classes": [
+            "Cleric"
+        ],
         "Casting Time": "Action",
         "Range": "Self",
         "Components": [
@@ -9758,11 +9897,6 @@
         ],
         "Duration": "1 minute",
         "Increase": " The damage increases by 1d6 for each spell slot level above 1."
-    },
-    "Wristpocket": {
-        "Name": "Wristpocket",
-        "Description": "",
-        "Source": "Explorer's Guide to Wildemount"
     },
     "Zephyr Strike": {
         "Name": "Zephyr Strike",
