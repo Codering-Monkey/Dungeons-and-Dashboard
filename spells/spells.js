@@ -119,6 +119,7 @@ function filterSpells() {
 function renderSpell() {
     let spellPacket = spellData[getQuery("spell")]
     let parent = id("spellData")
+    parent.clear()
 
     let title = document.createElement("h1")
     title.textContent = spellPacket["Name"]

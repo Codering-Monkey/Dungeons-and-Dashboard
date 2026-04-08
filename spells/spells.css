@@ -3,7 +3,9 @@
     width: calc(50% - 20px);
     z-index: -1;
     height: 100%;
-    padding: 8px
+    padding: 8px;
+    overflow-y: scroll;
+    scrollbar-color: var(--minor-text) var(--foreground);
 }
 
 .spellSelect {
