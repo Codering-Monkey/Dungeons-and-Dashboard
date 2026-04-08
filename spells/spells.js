@@ -18,8 +18,12 @@ function filterSpells() {
     let maxLevel
 
     try {
-        query = id("searchSpell").value.toLowerCase();
-        setQuery("search", query)
+        if (id("searchSpell").value) {
+            query = id("searchSpell").value.toLowerCase();
+            setQuery("search", query)
+        } else {
+            filterQuery = false
+        }
     } catch {
         filterQuery = false
     }
@@ -45,7 +49,7 @@ function filterSpells() {
         }
         maxLevel = getQuery("maxLevel")
         if (!maxLevel) {
-            maxLevel = 0
+            maxLevel = 9
         }
     } catch {
         filterLevel = false
