@@ -1,5 +1,5 @@
 import spellData from "./spells.json" with { type: "json" }
-import {id, numSuffix} from "../script.js"
+import {id, numSuffix, setQuery, getQuery} from "../script.js"
 
 
 function filter() {
