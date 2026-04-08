@@ -55,6 +55,24 @@ Object.prototype.invert = function() {
     return newObject
 }
 
+Location.prototype.getQuery = function(key=null) {
+    if (key) {
+        return new URLSearchParams(location.search).get(key)
+    } else {
+        return new URLSearchParams(location.search)
+    }
+}
+
+Location.prototype.saveQuery = function(parameters) {
+    location.search = parameters.toString()
+}
+
+Location.prototype.setQuery = function(key, value) {
+    let currentParams = this.getQuery()
+    currentParams.set(key, value)
+    this.saveQuery(currentParams)
+}
+
 let popupBar = document.createElement("div");
 popupBar.classList.add("popup-bar");
 document.body.appendChild(popupBar);
