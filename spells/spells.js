@@ -70,7 +70,7 @@ function filterSpells() {
             }
         }
         if (filterLevel) {
-            if (!(minLevel <= spellInfo["Level"] <= maxLevel)) {
+            if (!((minLevel <= spellInfo["Level"]) && (spellInfo["Level"] <= maxLevel))) {
                 delete filteredData[spellName];
                 return
             }
@@ -83,7 +83,7 @@ function filterSpells() {
         }
         if (filterClass) {
             let validClass = false
-            for (let i = 0; i < spellInfo["Classes"]; i++) {
+            for (let i = 0; i < spellInfo["Classes"].length; i++) {
                 if (classes.includes(spellInfo["Classes"][i].toLowerCase())) {
                     validClass = true
                 }
