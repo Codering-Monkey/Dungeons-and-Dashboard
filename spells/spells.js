@@ -1,7 +1,6 @@
 import spellData from "./spells.json" with { type: "json" }
 import {id, numSuffix} from "../script.js"
 
-console.log(spellData)
 
 function filter() {
     const query = id("searchSpell").value.toLowerCase();
