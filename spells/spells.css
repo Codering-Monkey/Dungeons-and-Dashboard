@@ -1,0 +1,16 @@
+.spell-data {
+    background-color: var(--foreground);
+    width: calc(50% - 20px);
+    z-index: -1;
+    height: 100%;
+    border-radius: 16px;
+    padding: 8px
+}
+
+.spell-select {
+    background-color: red;
+    width: calc(50% - 20px);
+    height: 100%;
+    padding: 8px;
+    float: right;
+}
