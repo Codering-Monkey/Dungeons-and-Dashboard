@@ -56,7 +56,7 @@ function filterSpells() {
         filterLevel = false
     }
     let filteredData = structuredClone(spellData)
-    Object.entries(filteredData).forEach(([spellName, spellData]) => {
+    Object.entries(filteredData).forEach(([spellName, spellInfo]) => {
         if (filterQuery) {
             if (!spellName.toLowerCase().includes(query)) {
                 delete filteredData[spellName];
@@ -64,27 +64,27 @@ function filterSpells() {
             }
         }
         if (filterSource) {
-            if (!sources.includes(spellData["Source"].toLowerCase())) {
+            if (!sources.includes(spellInfo["Source"].toLowerCase())) {
                 delete filteredData[spellName];
                 return
             }
         }
         if (filterLevel) {
-            if (!(minLevel <= spellData["Level"] <= maxLevel)) {
+            if (!(minLevel <= spellInfo["Level"] <= maxLevel)) {
                 delete filteredData[spellName];
                 return
             }
         }
         if (filterSchool) {
-            if (!schools.includes(spellData["School"].toLowerCase())) {
+            if (!schools.includes(spellInfo["School"].toLowerCase())) {
                 delete filteredData[spellName];
                 return
             }
         }
         if (filterClass) {
             let validClass = false
-            for (let i = 0; i < spellData["Classes"]; i++) {
-                if (classes.includes(spellData["Classes"][i].toLowerCase())) {
+            for (let i = 0; i < spellInfo["Classes"]; i++) {
+                if (classes.includes(spellInfo["Classes"][i].toLowerCase())) {
                     validClass = true
                 }
             }
