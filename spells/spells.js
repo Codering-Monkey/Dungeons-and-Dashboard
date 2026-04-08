@@ -2,6 +2,7 @@ import spellData from "./spells.json" with { type: "json" }
 import {id, numSuffix, setQuery, getQuery} from "../script.js"
 
 // ?search={str}&source={str},{str}&minLevel={int}&maxLevel={int}&school={str},{str}&class={str},{str}
+// ?class=wizard&minLevel=0&maxLevel=1
 
 function filterSpells() {
     let filterQuery = true
@@ -43,11 +44,11 @@ function filterSpells() {
         filterClass = false
     }
     try {
-        minLevel = getQuery("minLevel")
+        minLevel = parseInt(getQuery("minLevel"))
         if (!minLevel) {
             minLevel = 0
         }
-        maxLevel = getQuery("maxLevel")
+        maxLevel = parseInt(getQuery("maxLevel"))
         if (!maxLevel) {
             maxLevel = 9
         }
