@@ -39,12 +39,12 @@ export function id(Object_ID) {
 	return document.getElementById(Object_ID)
 }
 
-Array.prototype.fuse = function() {
+Array.prototype.fuse = function(gap="") {
     let string = ""
 	for (let i = 0; i < this.length; i++) {
-		string += this[i]
+		string += this[i] + gap
 	}
-	return string
+	return string.slice(0, gap.length*-1)
 }
 
 Object.prototype.invert = function() {
