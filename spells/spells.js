@@ -85,15 +85,15 @@ function renderSpell() {
 
     let source = document.createElement("h3")
     let group
-    if (spellPacket["Source"] in ["Player's Handbook"]) {
+    if (["Player's Handbook"].includes(spellPacket["Source"])) {
         group = " (Core Rules)"
-    } else if (spellPacket["Source"] in ["Xanathar's Guide to Everything", "Tasha's Cauldron of Everything", "Xanathar's Guide to Everything/Elemental Evil Player's Companion", "Tasha's Cauldron of Everything/Sword Coast Adventurer's Guide"]) {
+    } else if (["Xanathar's Guide to Everything", "Tasha's Cauldron of Everything", "Xanathar's Guide to Everything/Elemental Evil Player's Companion", "Tasha's Cauldron of Everything/Sword Coast Adventurer's Guide"].includes(spellPacket["Source"])) {
         group = " (Expanded Rules)"
-    } else if (spellPacket["Source"] in ["Fizban's Treasury of Dragons", 'The Book of Many Things']) {
+    } else if (["Fizban's Treasury of Dragons", 'The Book of Many Things'].includes(spellPacket["Source"])) {
         group = " (Extended Rules)"
-    } else if (spellPacket["Source"] in ['Strixhaven: A Curriculum of Chaos', 'Icewind Dale - Rime of the Frostmaiden', 'Lost Laboratory of Kwalish', "Explorer's Guide to Wildemount", "Guildmaster's Guide to Ravnica", 'Acquisitions Inc.']) {
+    } else if (['Strixhaven: A Curriculum of Chaos', 'Icewind Dale - Rime of the Frostmaiden', 'Lost Laboratory of Kwalish', "Explorer's Guide to Wildemount", "Guildmaster's Guide to Ravnica", 'Acquisitions Inc.'].includes(spellPacket["Source"])) {
         group = " (Campaign Rules)"
-    } else if (spellPacket["Source"] in ['Planescape - Adventures in the Multiverse', "Spelljammer: Adventures in Space - Astral Adventurer's Guide"]) {
+    } else if (['Planescape - Adventures in the Multiverse', "Spelljammer: Adventures in Space - Astral Adventurer's Guide"].includes(spellPacket["Source"])) {
         group = " (Space Rules)"
     } else {
         group = " (Other Rules)"
