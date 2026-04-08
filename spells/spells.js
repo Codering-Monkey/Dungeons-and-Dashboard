@@ -2,13 +2,46 @@ import spellData from "./spells.json" with { type: "json" }
 import {id, numSuffix, setQuery, getQuery} from "../script.js"
 
 
-function filter() {
+function filterSpells() {
     const query = id("searchSpell").value.toLowerCase();
+    setQuery("search", query)
+    const sources = getQuery("source").toLowerCase().split(",")
+    const schools = getQuery("school").toLowerCase().split(",")
+    const classes = getQuery("class").toLowerCase().split(",")
+    let minLevel = getQuery("minLevel")
+    if (!minLevel) {
+        minLevel = 0
+    }
+    let maxLevel = getQuery("maxLevel")
+    if (!maxLevel) {
+        maxLevel = 0
+    }
     let filteredData = structuredClone(spellData)
     Object.entries(filteredData).forEach(([spellName, spellData]) => {
         if (!spellName.toLowerCase().includes(query)) {
             delete filteredData[spellName];
             return
+        }
+        if (!sources.includes(spellData["Source"].toLowerCase())) {
+            delete filteredData[spellName];
+            return
+        }
+        if (!(minLevel <= spellData["Level"] <= maxLevel)) {
+            delete filteredData[spellName];
+            return
+        }
+        if (!schools.includes(spellData["School"].toLowerCase())) {
+            delete filteredData[spellName];
+            return
+        }
+        let validClass = false
+        for (let i = 0; i < spellData["Classes"]; i++) {
+            if (classes.includes(spellData["Classes"][i].toLowerCase())) {
+                validClass = true
+            }
+        }
+        if (!validClass) {
+            delete filteredData[spellName];
         }
     })
 
@@ -113,15 +146,17 @@ function renderSpell() {
     }
 }
 
-id("searchButton").addEventListener("click", function() {filter()});
-id("searchSpell").addEventListener("keydown", function(event) {if (event.key === "Enter") {filter()}})
-id("searchSpell").addEventListener("blur", function() {filter()});
+function filter() {
+
+}
+
 id("searchButton").addEventListener("click", function() {filterSpells()});
 id("searchSpell").addEventListener("keydown", function(event) {if (event.key === "Enter") {filterSpells()}})
 id("searchSpell").addEventListener("blur", function() {filterSpells()});
 filter()
 
-if (location.getQuery("spell")) {
+id("searchSpell").value = getQuery("search")
+
 if (getQuery("spell")) {
     renderSpell()
 }
