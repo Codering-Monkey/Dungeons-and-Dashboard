@@ -47,3 +47,9 @@
     border: none;
     pointer-events: auto;
 }
+
+.spellSearch input:focus {
+    border: 1px solid var(--minor-text);
+    outline: none;
+    caret-color: var(--minor-text);
+}
