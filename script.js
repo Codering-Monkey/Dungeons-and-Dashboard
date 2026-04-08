@@ -73,6 +73,20 @@ Location.prototype.setQuery = function(key, value) {
     this.saveQuery(currentParams)
 }
 
+export function numSuffix(number) {
+    let finalDigit = number.slice(-1)
+    let otherDigits = number.slice(0, -1)
+    if (finalDigit === "1") {
+        return otherDigits + "1st"
+    } else if (finalDigit === "2") {
+        return otherDigits + "2nd"
+    } else if (finalDigit === "3") {
+        return otherDigits + "3rd"
+    } else {
+        return otherDigits + "4th"
+    }
+}
+
 let popupBar = document.createElement("div");
 popupBar.classList.add("popup-bar");
 document.body.appendChild(popupBar);
