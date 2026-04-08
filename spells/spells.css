@@ -3,14 +3,35 @@
     width: calc(50% - 20px);
     z-index: -1;
     height: 100%;
-    border-radius: 16px;
     padding: 8px
 }
 
 .spell-select {
-    background-color: red;
     width: calc(50% - 20px);
     height: 100%;
-    padding: 8px;
+    padding: 0 8px;
     float: right;
+}
+
+.spell-option {
+}
+
+.spell-search {
+    display: flex;
+    gap: 4px;
+}
+
+.spell-search span {
+    aspect-ratio: 1 / 1;
+    background-color: var(--navbar);
+    border-radius: 128px;
+    padding: 4px
+}
+
+.spell-search input {
+    width: -webkit-fill-available;
+    padding-left: 8px;
+    background-color: var(--navbar);
+    border: none;
+    pointer-events: auto;
 }
