@@ -18,7 +18,7 @@ function filter() {
         let container = document.createElement("div")
         container.classList.add("spellOption")
         parent.append(container)
-        container.addEventListener("click", function() {location.setQuery("spell", spellName)})
+        container.addEventListener("click", function() {setQuery("spell", spellName)})
 
         let level = document.createElement("span")
         level.textContent = spellData["Level"]
@@ -35,7 +35,7 @@ function filter() {
 }
 
 function renderSpell() {
-    let spellPacket = spellData[location.getQuery("spell")]
+    let spellPacket = spellData[getQuery("spell")]
     let parent = id("spellData")
 
     let title = document.createElement("h1")
@@ -116,8 +116,12 @@ function renderSpell() {
 id("searchButton").addEventListener("click", function() {filter()});
 id("searchSpell").addEventListener("keydown", function(event) {if (event.key === "Enter") {filter()}})
 id("searchSpell").addEventListener("blur", function() {filter()});
+id("searchButton").addEventListener("click", function() {filterSpells()});
+id("searchSpell").addEventListener("keydown", function(event) {if (event.key === "Enter") {filterSpells()}})
+id("searchSpell").addEventListener("blur", function() {filterSpells()});
 filter()
 
 if (location.getQuery("spell")) {
+if (getQuery("spell")) {
     renderSpell()
 }
