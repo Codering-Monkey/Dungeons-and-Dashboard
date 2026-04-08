@@ -1,47 +1,91 @@
 import spellData from "./spells.json" with { type: "json" }
 import {id, numSuffix, setQuery, getQuery} from "../script.js"
 
+// ?search={str}&source={str},{str}&minLevel={int}&maxLevel={int}&school={str},{str}&class={str},{str}
 
 function filterSpells() {
-    const query = id("searchSpell").value.toLowerCase();
-    setQuery("search", query)
-    const sources = getQuery("source").toLowerCase().split(",")
-    const schools = getQuery("school").toLowerCase().split(",")
-    const classes = getQuery("class").toLowerCase().split(",")
-    let minLevel = getQuery("minLevel")
-    if (!minLevel) {
-        minLevel = 0
+    let filterQuery = true
+    let filterSource = true
+    let filterSchool = true
+    let filterClass = true
+    let filterLevel = true
+
+    let query
+    let sources
+    let schools
+    let classes
+    let minLevel
+    let maxLevel
+
+    try {
+        query = id("searchSpell").value.toLowerCase();
+        setQuery("search", query)
+    } catch {
+        filterQuery = false
     }
-    let maxLevel = getQuery("maxLevel")
-    if (!maxLevel) {
-        maxLevel = 0
+    try {
+        sources = getQuery("source").toLowerCase().split(",")
+    } catch {
+        filterSource = false
+    }
+    try {
+        schools = getQuery("school").toLowerCase().split(",")
+    } catch {
+        filterSchool = false
+    }
+    try {
+        classes = getQuery("class").toLowerCase().split(",")
+    } catch {
+        filterClass = false
+    }
+    try {
+        minLevel = getQuery("minLevel")
+        if (!minLevel) {
+            minLevel = 0
+        }
+        maxLevel = getQuery("maxLevel")
+        if (!maxLevel) {
+            maxLevel = 0
+        }
+    } catch {
+        filterLevel = false
     }
     let filteredData = structuredClone(spellData)
     Object.entries(filteredData).forEach(([spellName, spellData]) => {
-        if (!spellName.toLowerCase().includes(query)) {
-            delete filteredData[spellName];
-            return
-        }
-        if (!sources.includes(spellData["Source"].toLowerCase())) {
-            delete filteredData[spellName];
-            return
-        }
-        if (!(minLevel <= spellData["Level"] <= maxLevel)) {
-            delete filteredData[spellName];
-            return
-        }
-        if (!schools.includes(spellData["School"].toLowerCase())) {
-            delete filteredData[spellName];
-            return
-        }
-        let validClass = false
-        for (let i = 0; i < spellData["Classes"]; i++) {
-            if (classes.includes(spellData["Classes"][i].toLowerCase())) {
-                validClass = true
+        if (filterQuery) {
+            if (!spellName.toLowerCase().includes(query)) {
+                delete filteredData[spellName];
+                return
             }
         }
-        if (!validClass) {
-            delete filteredData[spellName];
+        if (filterSource) {
+            if (!sources.includes(spellData["Source"].toLowerCase())) {
+                delete filteredData[spellName];
+                return
+            }
+        }
+        if (filterLevel) {
+            if (!(minLevel <= spellData["Level"] <= maxLevel)) {
+                delete filteredData[spellName];
+                return
+            }
+        }
+        if (filterSchool) {
+            if (!schools.includes(spellData["School"].toLowerCase())) {
+                delete filteredData[spellName];
+                return
+            }
+        }
+        if (filterClass) {
+            let validClass = false
+            for (let i = 0; i < spellData["Classes"]; i++) {
+                if (classes.includes(spellData["Classes"][i].toLowerCase())) {
+                    validClass = true
+                }
+            }
+            if (!validClass) {
+                delete filteredData[spellName];
+            }
         }
     })
 
