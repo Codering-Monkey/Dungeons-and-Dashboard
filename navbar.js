@@ -3,7 +3,7 @@ import { id } from "./script.js"
 let navbar = id("navbar");
 navbar.classList.add("navbar");
 
-const pages = {"home": ["Home", "index.html"], "groups":["Characters", "all_characters.html"], "spell":["Spells", "Spells/spells.html"]};
+const pages = {"home": ["Home", "index.html"], "groups":["Characters", "all_characters.html"], "wand_shine":["Spells", "Spells/spells.html"]};
 
 function createIcon(icon_name) {
     let icon = document.createElement("span")
