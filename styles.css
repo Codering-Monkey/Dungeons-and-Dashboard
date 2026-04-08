@@ -16,7 +16,7 @@
     font-family: "Noto Sans", sans-serif;
     caret-color: transparent;
     transition: 0.25s;
-    scrollbar-color: var(--pink) var(--background)
+    scrollbar-color: var(--text) var(--background)
 }
 
 
