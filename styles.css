@@ -30,6 +30,7 @@ body {
     display: flex;
     align-items: center;
     height: 100vh;
+    float: left;
     border-left: 8px solid var(--background);
     width: 40px;
     justify-content: center;
