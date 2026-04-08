@@ -83,6 +83,16 @@ body {
     top: 5px
 }
 
+.not-nav {
+    float: right;
+    height: calc(100vh - 144px);
+    padding: 16px 0;
+    margin: 56px 72px 56px 0;
+    width: calc(100vw - 136px);
+    z-index: -2;
+    position: relative;
+}
+
 .popup-bar {
     position: absolute;
     width: 100vw;
