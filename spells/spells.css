@@ -1,4 +1,4 @@
-.spell-data {
+.spellData {
     background-color: var(--foreground);
     width: calc(50% - 20px);
     z-index: -1;
@@ -6,29 +6,40 @@
     padding: 8px
 }
 
-.spell-select {
+.spellSelect {
     width: calc(50% - 20px);
     height: 100%;
     padding: 0 8px;
     float: right;
 }
 
-.spell-option {
+.spellScroll {
+    overflow-y: scroll;
+    height: calc(100% - 32px)
 }
 
-.spell-search {
+.spellOption {
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr;
+}
+
+.spellSearch {
     display: flex;
     gap: 4px;
 }
 
-.spell-search span {
+.spellSearch span {
     aspect-ratio: 1 / 1;
     background-color: var(--navbar);
     border-radius: 128px;
     padding: 4px
 }
 
-.spell-search input {
+.spellSearch span:hover {
+    color: var(--blue)
+}
+
+.spellSearch input {
     width: -webkit-fill-available;
     padding-left: 8px;
     background-color: var(--navbar);
