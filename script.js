@@ -84,7 +84,7 @@ export function numSuffix(number) {
     } else if (finalDigit === "3") {
         return otherDigits + "3rd"
     } else {
-        return otherDigits + "4th"
+        return otherDigits + finalDigit + "th"
     }
 }
 
