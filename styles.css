@@ -66,17 +66,21 @@ body {
 
 .navbar > div > div {
     position: absolute;
-    top: 12px;
-    font-size: 20px;
+    top: 0;
+    font-size: 16px;
     height: 24px;
     transition: .5s;
     z-index: -1;
     align-items: center;
+    background-color: var(--navbar);
+    border-radius: 8px;
+    padding: 8px
 }
 
 .navbar > div:hover > div {
     visibility: visible;
     left: 56px !important;
+    top: 5px
 }
 
 .popup-bar {
