@@ -99,7 +99,7 @@ function filterSpells() {
         let container = document.createElement("div")
         container.classList.add("spellOption")
         parent.append(container)
-        container.addEventListener("click", function() {setQuery("spell", spellName)})
+        container.addEventListener("click", function() {setQuery("spell", spellName); renderSpell()})
 
         let level = document.createElement("span")
         level.textContent = spellData["Level"]
@@ -208,3 +208,4 @@ id("searchSpell").value = getQuery("search")
 if (getQuery("spell")) {
     renderSpell()
 }
+filterSpells()
