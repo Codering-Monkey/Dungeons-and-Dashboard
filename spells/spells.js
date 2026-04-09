@@ -45,11 +45,11 @@ function filterSpells() {
     }
     try {
         minLevel = parseInt(getQuery("minLevel"))
-        if (!minLevel) {
+        if (!minLevel && minLevel !== 0) {
             minLevel = 0
         }
         maxLevel = parseInt(getQuery("maxLevel"))
-        if (!maxLevel) {
+        if (!maxLevel && maxLevel !== 0) {
             maxLevel = 9
         }
     } catch {
