@@ -4,84 +4,40 @@ import {id, numSuffix, setQuery, getQuery} from "../script.js"
 // ?search={str}&source={str},{str}&minLevel={int}&maxLevel={int}&school={str},{str}&class={str},{str}
 // ?class=wizard&minLevel=0&maxLevel=1
 
-function filterSpells() {
-    let filterQuery = true
-    let filterSource = true
-    let filterSchool = true
-    let filterClass = true
-    let filterLevel = true
-
-    let query
-    let sources
-    let schools
-    let classes
-    let minLevel
-    let maxLevel
-
-    try {
-        if (id("searchSpell").value) {
-            query = id("searchSpell").value.toLowerCase();
-            setQuery("search", query)
-        } else {
-            filterQuery = false
-        }
-    } catch {
-        filterQuery = false
-    }
-    try {
-        sources = getQuery("source").toLowerCase().split(",")
-    } catch {
-        filterSource = false
-    }
-    try {
-        schools = getQuery("school").toLowerCase().split(",")
-    } catch {
-        filterSchool = false
-    }
-    try {
-        classes = getQuery("class").toLowerCase().split(",")
-    } catch {
-        filterClass = false
-    }
-    try {
-        minLevel = parseInt(getQuery("minLevel"))
-        if (!minLevel && minLevel !== 0) {
-            minLevel = 0
-        }
-        maxLevel = parseInt(getQuery("maxLevel"))
-        if (!maxLevel && maxLevel !== 0) {
-            maxLevel = 9
-        }
-    } catch {
-        filterLevel = false
-    }
+/**
+ * @param {string} query
+ * @param {string[]} sources
+ * @param {string[]} schools
+ * @param {string[]} classes
+ * @param {number} minLevel
+ * @param {number} maxLevel
+ */
+function filterSpells(query, sources, schools, classes, minLevel=0, maxLevel=9) {
     let filteredData = structuredClone(spellData)
     Object.entries(filteredData).forEach(([spellName, spellInfo]) => {
-        if (filterQuery) {
+        if (query) {
             if (!spellName.toLowerCase().includes(query)) {
                 delete filteredData[spellName];
                 return
             }
         }
-        if (filterSource) {
+        if (sources) {
             if (!sources.includes(spellInfo["Source"].toLowerCase())) {
                 delete filteredData[spellName];
                 return
             }
         }
-        if (filterLevel) {
-            if (!((minLevel <= spellInfo["Level"]) && (spellInfo["Level"] <= maxLevel))) {
-                delete filteredData[spellName];
-                return
-            }
+        if (!((minLevel <= spellInfo["Level"]) && (spellInfo["Level"] <= maxLevel))) {
+            delete filteredData[spellName];
+            return
         }
-        if (filterSchool) {
+        if (schools) {
             if (!schools.includes(spellInfo["School"].toLowerCase())) {
                 delete filteredData[spellName];
                 return
             }
         }
-        if (filterClass) {
+        if (classes) {
             let validClass = false
             for (let i = 0; i < spellInfo["Classes"].length; i++) {
                 if (classes.includes(spellInfo["Classes"][i].toLowerCase())) {
@@ -93,14 +49,25 @@ function filterSpells() {
             }
         }
     })
+    return filteredData
+}
 
+function renderSpells() {
+    let filteredData = filterSpells(
+        getQuery("search") ? getQuery("search").toLowerCase() : null,
+        getQuery("source") ? getQuery("source").toLowerCase().split(",") : null,
+        getQuery("school") ? getQuery("school").toLowerCase().split(",") : null,
+        getQuery("class") ? getQuery("class").toLowerCase().split(",") : null,
+        getQuery("minLevel") ? parseInt(getQuery("minLevel")) : 0,
+        getQuery("maxLevel") ? parseInt(getQuery("maxLevel")) : 9
+        )
     let parent = id("spellParent")
     parent.clear()
     Object.entries(filteredData).forEach(([spellName, spellData]) => {
         let container = document.createElement("div")
         container.classList.add("spellOption")
         parent.append(container)
-        container.addEventListener("click", function() {setQuery("spell", spellName); renderSpell()})
+        container.addEventListener("click", function() {setQuery("spell", spellName); showSpell()})
 
         let level = document.createElement("span")
         level.textContent = spellData["Level"]
@@ -116,7 +83,7 @@ function filterSpells() {
     })
 }
 
-function renderSpell() {
+function showSpell() {
     let spellPacket = spellData[getQuery("spell")]
     let parent = id("spellData")
     parent.clear()
@@ -200,14 +167,14 @@ function filter() {
 
 }
 
-id("searchButton").addEventListener("click", function() {filterSpells()});
-id("searchSpell").addEventListener("keydown", function(event) {if (event.key === "Enter") {filterSpells()}})
-id("searchSpell").addEventListener("blur", function() {filterSpells()});
+id("searchButton").addEventListener("click", function() {setQuery("search", id("searchSpell").value); renderSpells()});
+id("searchSpell").addEventListener("keydown", function(event) {if (event.key === "Enter") {setQuery("search", id("searchSpell").value); renderSpells()}})
+id("searchSpell").addEventListener("blur", function() {setQuery("search", id("searchSpell").value); renderSpells()});
 filter()
 
 id("searchSpell").value = getQuery("search")
 
 if (getQuery("spell")) {
-    renderSpell()
+    showSpell()
 }
-filterSpells()
+renderSpells()
