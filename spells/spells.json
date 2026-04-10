@@ -1218,7 +1218,7 @@
         "Level": 1,
         "School": "Abjuration",
         "Extras": [
-            "ritual"
+            "Ritual"
         ],
         "Casting Time": "1 hour",
         "Range": "Touch",
@@ -2306,7 +2306,7 @@
         "Level": 8,
         "School": "Evocation",
         "Extras": [
-            "dunamancy:graviturgy"
+            "Dunamancy:graviturgy"
         ],
         "Casting Time": "1 action",
         "Range": "150 feet",
@@ -4107,7 +4107,7 @@
         "Level": 2,
         "School": "Divination",
         "Extras": [
-            "dunamancy"
+            "Dunamancy"
         ],
         "Casting Time": "1 minute",
         "Range": "60 feet",
@@ -4119,7 +4119,7 @@
         "Duration": "1 hour",
         "Increase": "When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd",
         "Classes": [
-            "Wizard (Dunamancy)"
+            "Wizard"
         ]
     },
     "Fount of Moonlight": {
@@ -4443,7 +4443,7 @@
         "Level": 1,
         "School": "Divination",
         "Extras": [
-            "dunamancy:chronurgy"
+            "Dunamancy:chronurgy"
         ],
         "Casting Time": "1 minute",
         "Range": "Touch",
@@ -4453,7 +4453,7 @@
         ],
         "Duration": "8 hours",
         "Classes": [
-            "Wizard (Dunamancy)"
+            "Wizard"
         ]
     },
     "Gift of Gab": {
@@ -4572,7 +4572,7 @@
         "Level": 6,
         "School": "Evocation",
         "Extras": [
-            "dunamancy:graviturgy"
+            "Dunamancy:graviturgy"
         ],
         "Casting Time": "1 action",
         "Range": "Self (100-foot line)",
@@ -4593,7 +4593,7 @@
         "Level": 4,
         "School": "Evocation",
         "Extras": [
-            "dunamancy:graviturgy"
+            "Dunamancy:graviturgy"
         ],
         "Casting Time": "1 action",
         "Range": "120 feet",
@@ -5389,7 +5389,7 @@
         "Level": 2,
         "School": "Transmutation",
         "Extras": [
-            "dunamancy:graviturgy"
+            "Dunamancy:graviturgy"
         ],
         "Casting Time": "1 action",
         "Range": "Touch",
@@ -5401,7 +5401,7 @@
         "Duration": "1 hour",
         "Increase": "If you cast this spell using a spell slot of 4th or 5th level, the DC to move the object increases by 5, it can carry up to 8,000 pounds of weight, and the duration increases to 24 hours If you cast this spell using a spell slot of 6th level or higher, the DC to move the object increases by 10, it can carry up to 20,000 pounds of weight, and the effect is permanent until dispelled",
         "Classes": [
-            "Wizard (Graviturgy)"
+            "Wizard"
         ]
     },
     "Imprisonment": {
@@ -6268,7 +6268,7 @@
         "Level": 1,
         "School": "Transmutation",
         "Extras": [
-            "dunamancy:graviturgy"
+            "Dunamancy:graviturgy"
         ],
         "Casting Time": "1 action",
         "Range": "60 feet",
@@ -6279,7 +6279,7 @@
         "Duration": "1 round",
         "Increase": "When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st",
         "Classes": [
-            "Wizard (Dunamancy)"
+            "Wizard"
         ]
     },
     "Major Image": {
@@ -7608,7 +7608,7 @@
         "Level": 3,
         "School": "Evocation",
         "Extras": [
-            "dunamancy"
+            "Dunamancy"
         ],
         "Casting Time": "1 action",
         "Range": "Self (30-foot cone)",
@@ -7722,7 +7722,7 @@
         "Level": 9,
         "School": "Evocation",
         "Extras": [
-            "dunamancy:graviturgy"
+            "Dunamancy:graviturgy"
         ],
         "Casting Time": "1 action",
         "Range": "1,000 feet",
@@ -7796,7 +7796,7 @@
         "Level": 8,
         "School": "Conjuration",
         "Extras": [
-            "dunamancy:chronurgy"
+            "Dunamancy:chronurgy"
         ],
         "Casting Time": "1 action",
         "Range": "60 feet",
@@ -8072,7 +8072,7 @@
         "Duration": "Instantaneous",
         "Increase": "This spell's damage increases by 1d4 when you reach 5th level (2d4), 11th level (3d4), and 17th level (4d4)",
         "Classes": [
-            "Wizard (Dunamancy)"
+            "Wizard"
         ]
     },
     "Scatter": {
@@ -8549,7 +8549,7 @@
         "Level": 2,
         "School": "Transmutation",
         "Extras": [
-            "ritual"
+            "Ritual"
         ],
         "Casting Time": "1 action",
         "Range": "Sight",
@@ -10379,7 +10379,7 @@
         "Level": 5,
         "School": "Transmutation",
         "Extras": [
-            "dunamancy:chronurgy"
+            "Dunamancy:chronurgy"
         ],
         "Casting Time": "1 reaction, taken when a creature you see makes an attack roll or starts to cast a spell",
         "Range": "120 feet",
@@ -10433,7 +10433,7 @@
         "Level": 7,
         "School": "Necromancy",
         "Extras": [
-            "dunamancy"
+            "Dunamancy"
         ],
         "Casting Time": "1 action",
         "Range": "60 feet",
@@ -10581,7 +10581,7 @@
         "Level": 9,
         "School": "Necromancy",
         "Extras": [
-            "dunamancy:chronurgy"
+            "Dunamancy:chronurgy"
         ],
         "Casting Time": "1 action",
         "Range": "90 feet",
@@ -11408,8 +11408,8 @@
         "Level": 2,
         "School": "Conjuration",
         "Extras": [
-            "ritual",
-            "dunamancy"
+            "Ritual",
+            "Dunamancy"
         ],
         "Casting Time": "1 action",
         "Range": "Self",
@@ -11418,7 +11418,7 @@
         ],
         "Duration": "Concentration, up to 1 hour",
         "Classes": [
-            "Wizard (Dunamancy)"
+            "Wizard"
         ]
     },
     "Yolande's Regal Presence": {
