@@ -7,6 +7,7 @@
     --foreground: hsl(0 0 15);
     --text: hsla(0, 0%, 100%, .86);
     --minor-text: hsla(0, 0%, 100%, .6);
+    --sub-text: hsla(0, 0%, 100%, .4);
     --pink: hsla(340, 70%, 82%, 0.8);
     --blue: hsla(200, 65%, 80%, 0.8)
 }
