@@ -104,7 +104,7 @@ function showSpell() {
     parent.clear()
 
     let title = document.createElement("h1")
-    title.textContent = spellPacket["Name"]
+    title.textContent = getQuery("spell")
     parent.append(title)
 
     let school = document.createElement("h2")
