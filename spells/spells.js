@@ -4,6 +4,23 @@ import {id, numSuffix, setQuery, getQuery} from "../script.js"
 // ?search={str}&source={str},{str}&minLevel={int}&maxLevel={int}&school={str},{str}&class={str},{str}
 // ?class=wizard&minLevel=0&maxLevel=1
 
+let spellStats = {
+    "source": {},
+    "school": {},
+    "level": {},
+    "classes": {}
+}
+Object.entries(spellData).forEach(([spellName, spellInfo]) => {
+    console.log(spellName)
+    spellStats["source"][spellInfo["Source"]] = (spellStats["source"][spellInfo["Source"]] || 0) + 1
+    spellStats["school"][spellInfo["School"].split()[0]] = (spellStats["school"][spellInfo["School"].split()[0]] || 0) + 1
+    spellStats["level"][spellInfo["Level"]] = (spellStats["level"][spellInfo["Level"]] || 0) + 1
+    for (let i = 0; i < spellInfo["Classes"].length; i++) {
+        spellStats["classes"][spellInfo["Classes"][i]] = (spellStats["classes"][spellInfo["Classes"][i]] || 0) + 1
+    }
+})
+console.log(spellStats)
+
 /**
  * @param {string} query
  * @param {string[]} sources
