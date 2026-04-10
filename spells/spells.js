@@ -74,7 +74,7 @@ function renderSpells() {
         container.appendChild(level)
 
         let name = document.createElement("span")
-        name.textContent = spellData["Name"]
+        name.textContent = spellName
         container.appendChild(name)
 
         let school = document.createElement("span")
