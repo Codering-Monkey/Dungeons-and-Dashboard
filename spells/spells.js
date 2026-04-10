@@ -11,7 +11,6 @@ let spellStats = {
     "classes": {}
 }
 Object.entries(spellData).forEach(([spellName, spellInfo]) => {
-    console.log(spellName)
     spellStats["source"][spellInfo["Source"]] = (spellStats["source"][spellInfo["Source"]] || 0) + 1
     spellStats["school"][spellInfo["School"].split()[0]] = (spellStats["school"][spellInfo["School"].split()[0]] || 0) + 1
     spellStats["level"][spellInfo["Level"]] = (spellStats["level"][spellInfo["Level"]] || 0) + 1
@@ -19,7 +18,6 @@ Object.entries(spellData).forEach(([spellName, spellInfo]) => {
         spellStats["classes"][spellInfo["Classes"][i]] = (spellStats["classes"][spellInfo["Classes"][i]] || 0) + 1
     }
 })
-console.log(spellStats)
 
 /**
  * @param {string} query
