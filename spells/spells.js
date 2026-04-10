@@ -181,13 +181,22 @@ function showSpell() {
 }
 
 function filter() {
-
+    let parent = id("spellData")
+    parent.clear()
 }
 
 id("searchButton").addEventListener("click", function() {setQuery("search", id("searchSpell").value); renderSpells()});
 id("searchSpell").addEventListener("keydown", function(event) {if (event.key === "Enter") {setQuery("search", id("searchSpell").value); renderSpells()}})
 id("searchSpell").addEventListener("blur", function() {setQuery("search", id("searchSpell").value); renderSpells()});
-filter()
+id("filter").addEventListener("click", function() {
+    if (this.textContent === "filter_alt") {
+        filter()
+        this.textContent = "close"
+    } else {
+        showSpell()
+        this.textContent = "filter_alt"
+    }
+})
 
 id("searchSpell").value = getQuery("search")
 
