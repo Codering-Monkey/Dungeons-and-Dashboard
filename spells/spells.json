@@ -3523,7 +3523,7 @@
         ]
     },
     "Fast Friends": {
-        "Description": "When you cast this spell, choose one humanoid within range that can see and hear you, and that can understand you. The creature must succeed on a Wisdom saving throw or become charmed by you for the duration. While the creature is charmed in this way, it undertakes to perform any services or activities you ask of it in a friendly manner, to the best of its ability.You can set the creature new tasks when a previous task is completed, or if you decide to end its current task. If the service or activity might cause harm to the creature, or if it conflicts with the creature's normal activities and desires, the creature can make another Wisdom saving throw to try to end the effect. This save is made with advantage if you or your companions are fighting the creature. If the activity would result in certain death for the creature, the spell ends.When the spell ends, the creature knows it was charmed by you.Spell Lists: Bard, Cleric, Wizard",
+        "Description": "When you cast this spell, choose one humanoid within range that can see and hear you, and that can understand you. The creature must succeed on a Wisdom saving throw or become charmed by you for the duration. While the creature is charmed in this way, it undertakes to perform any services or activities you ask of it in a friendly manner, to the best of its ability.You can set the creature new tasks when a previous task is completed, or if you decide to end its current task. If the service or activity might cause harm to the creature, or if it conflicts with the creature's normal activities and desires, the creature can make another Wisdom saving throw to try to end the effect. This save is made with advantage if you or your companions are fighting the creature. If the activity would result in certain death for the creature, the spell ends.When the spell ends, the creature knows it was charmed by you.",
         "Source": "Acquisitions Inc.",
         "Level": 3,
         "School": "Enchantment",
@@ -3533,7 +3533,12 @@
             "V"
         ],
         "Duration": "Concentration, up to 1 hour",
-        "Increase": "When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd"
+        "Increase": "When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd",
+        "Classes": [
+            "Bard",
+            "Cleric",
+            "Wizard"
+        ]
     },
     "Fear": {
         "Description": "Each creature in a 30-foot Cone must succeed on a Wisdom saving throw or drop whatever it is holding and have the Frightened condition for the duration.A Frightened creature takes the Dash action and moves away from you by the safest route on each of its turns unless there is nowhere to move. If the creature ends its turn in a space where it doesn\u2019t have line of sight to you, the creature makes a Wisdom saving throw. On a successful save, the spell ends on that creature.",
@@ -5512,7 +5517,7 @@
         "Increase": ""
     },
     "Intellect Fortress": {
-        "Description": "For the duration, you or one willing creature you can see within range has resistance to psychic damage, as well as advantage on Intelligence, Wisdom, and Charisma saving throws.Spell Lists: Artificer, Bard (Optional), Sorcerer (Optional), Warlock (Optional), Wizard (Optional)",
+        "Description": "For the duration, you or one willing creature you can see within range has resistance to psychic damage, as well as advantage on Intelligence, Wisdom, and Charisma saving throws.",
         "Source": "Tasha's Cauldron of Everything",
         "Level": 3,
         "School": "Abjuration",
@@ -5522,7 +5527,14 @@
             "V"
         ],
         "Duration": "Concentration, up to 1 hour",
-        "Increase": "When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd The creatures must be within 30 feet of each other when you target them"
+        "Increase": "When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd The creatures must be within 30 feet of each other when you target them",
+        "Classes": [
+            "Artificer",
+            "Bard",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ]
     },
     "Investiture of Flame": {
         "Description": "Flames race across your body, shedding bright light in a 30-foot radius and dim light for an additional 30 feet for the spell\u2019s duration. The flames don\u2019t harm you. Until the spell ends, you gain the following benefits:\nYou are immune to fire damage and have resistance to cold damage.\n\nAny creature that moves within 5 feet of you for the first time on a turn or ends its turn there takes 1d10 fire damage.\n\nYou can use your action to create a line of fire 15 feet long and 5 feet wide extending from you in a direction you choose. Each creature in the line must make a Dexterity saving throw. A creature takes 4d8 fire damage on a failed save, or half as much damage on a successful one.\n",
@@ -5866,7 +5878,7 @@
         "Duration": "Concentration, up to 10 minutes"
     },
     "Life Transference": {
-        "Description": "You sacrifice some of your health to mend another creature\u2019s injuries. You take 4d8 necrotic damage, which can\u2019t be reduced in any way, and one creature of your choice that you can see within range regains a number of hit points equal to twice the necrotic damage you take.Spell Lists: Cleric, Wizard",
+        "Description": "You sacrifice some of your health to mend another creature\u2019s injuries. You take 4d8 necrotic damage, which can\u2019t be reduced in any way, and one creature of your choice that you can see within range regains a number of hit points equal to twice the necrotic damage you take.",
         "Source": "Xanathar's Guide to Everything",
         "Level": 3,
         "School": "Necromancy",
@@ -5877,7 +5889,11 @@
             "S"
         ],
         "Duration": "Instantaneous",
-        "Increase": "When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d8 for each slot level above 3rd"
+        "Increase": "When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d8 for each slot level above 3rd",
+        "Classes": [
+            "Cleric",
+            "Wizard"
+        ]
     },
     "Light": {
         "Description": "You touch one Large or smaller object that isn\u2019t being worn or carried by someone else. Until the spell ends, the object sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The light can be colored as you like.Covering the object with something opaque blocks the light. The spell ends if you cast it again.",
@@ -6803,7 +6819,7 @@
         "Duration": "Concentration, up to 1 minute"
     },
     "Motivational Speech": {
-        "Description": "Choose up to five creatures within range that can hear you. For the duration, each affected creature gains 5 temporary hit points and has advantage on Wisdom saving throws. If an affected creature is hit by an attack, it has advantage on the next attack roll it makes. Once an affected creature loses the temporary hit points granted by this spell, the spell ends for that creature.Spell Lists: Bard, Cleric",
+        "Description": "Choose up to five creatures within range that can hear you. For the duration, each affected creature gains 5 temporary hit points and has advantage on Wisdom saving throws. If an affected creature is hit by an attack, it has advantage on the next attack roll it makes. Once an affected creature loses the temporary hit points granted by this spell, the spell ends for that creature.",
         "Source": "Acquisitions Inc.",
         "Level": 3,
         "School": "Enchantment",
@@ -6813,7 +6829,11 @@
             "V"
         ],
         "Duration": "1 hour",
-        "Increase": "When you cast this spell using a spell slot of 4th level or higher, the temporary hit points increase by 5 for each slot level above 3rd"
+        "Increase": "When you cast this spell using a spell slot of 4th level or higher, the temporary hit points increase by 5 for each slot level above 3rd",
+        "Classes": [
+            "Bard",
+            "Cleric"
+        ]
     },
     "Move Earth": {
         "Description": "Choose an area of terrain no larger than 40 feet on a side within range. You can reshape dirt, sand, or clay in the area in any manner you choose for the duration. You can raise or lower the area\u2019s elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can\u2019t exceed half the area\u2019s largest dimension. For example, if you affect a 40-foot square, you can create a pillar up to 20 feet high, raise or lower the square\u2019s elevation by up to 20 feet, dig a trench up to 20 feet deep, and so on. It takes 10 minutes for these changes to complete. Because the terrain\u2019s transformation occurs slowly, creatures in the area can\u2019t usually be trapped or injured by the ground\u2019s movement.At the end of every 10 minutes you spend concentrating on the spell, you can choose a new area of terrain to affect within range.This spell can\u2019t manipulate natural stone or stone construction. Rocks and structures shift to accommodate the new terrain. If the way you shape the terrain would make a structure unstable, it might collapse.Similarly, this spell doesn\u2019t directly affect plant growth. The moved earth carries any plants along with it.",
@@ -10420,7 +10440,7 @@
         "Increase": "The damage increases by 1d6 when you reach levels 5 (2d6), 11 (3d6), and 17 (4d6)."
     },
     "Thunder Step": {
-        "Description": "You teleport yourself to an unoccupied space you can see within range. Immediately after you disappear, a thunderous boom sounds, and each creature within 10 feet of the space you left must make a Constitution saving throw, taking 3d10 thunder damage on a failed save, or half as much damage on a successful one. The thunder can be heard from up to 300 feet away.You can bring along objects as long as their weight doesn\u2019t exceed what you can carry. You can also teleport one willing creature of your size or smaller who is carrying gear up to its carrying capacity. The creature must be within 5 feet of you when you cast this spell, and there must be an unoccupied space within 5 feet of your destination space for the creature to appear in; otherwise, the creature is left behind.Spell lists. Sorcerer, Warlock, Wizard",
+        "Description": "You teleport yourself to an unoccupied space you can see within range. Immediately after you disappear, a thunderous boom sounds, and each creature within 10 feet of the space you left must make a Constitution saving throw, taking 3d10 thunder damage on a failed save, or half as much damage on a successful one. The thunder can be heard from up to 300 feet away.You can bring along objects as long as their weight doesn\u2019t exceed what you can carry. You can also teleport one willing creature of your size or smaller who is carrying gear up to its carrying capacity. The creature must be within 5 feet of you when you cast this spell, and there must be an unoccupied space within 5 feet of your destination space for the creature to appear in; otherwise, the creature is left behind.",
         "Source": "Xanathar's Guide to Everything",
         "Level": 3,
         "School": "Conjuration",
@@ -10430,7 +10450,12 @@
             "V"
         ],
         "Duration": "Instantaneous",
-        "Increase": "When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d10 for each slot level above 3rd"
+        "Increase": "When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d10 for each slot level above 3rd",
+        "Classes": [
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ]
     },
     "Thunderclap": {
         "Description": "Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell\u2019s thunderous sound can be heard up to 100 feet away.",
