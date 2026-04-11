@@ -47,6 +47,12 @@ Array.prototype.fuse = function(gap="") {
 	return string.slice(0, gap.length*-1)
 }
 
+Array.prototype.pull = function(value) {
+    let index = this.indexOf(value);
+    this.slice(index, 1)
+    return index
+}
+
 Object.prototype.invert = function() {
     let newObject = {}
     Object.entries(this).forEach(([key, value]) => {
