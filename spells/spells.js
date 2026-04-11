@@ -185,18 +185,86 @@ function showSpell() {
 function filter() {
     let parent = id("spellData")
     parent.clear()
+    let title = document.createElement("h1")
+    title.textContent = "Filter Spells"
+    parent.appendChild(title)
+    let filteredAmount = document.createElement("h6")
+    parent.appendChild(filteredAmount)
+    function reFilter() {
+        filteredAmount.textContent = "Filtered Spells: *"
+    }
+
+    let sourcesTitle = document.createElement("h2")
+    sourcesTitle.textContent = "Sources"
+    parent.appendChild(sourcesTitle)
+    let sourcesAmount = document.createElement("h6")
+    sourcesAmount.textContent = "Valid Spells: *"
+    parent.appendChild(sourcesAmount)
+    const sourcesArray = [
+        "Xanathar's Guide to Everything",
+        "Player's Handbook",
+        "Spelljammer: Adventures in Space - Astral Adventurer's Guide",
+        "Forgotten Realms - Heroes of Faerun",
+        "The Book of Many Things",
+        "Fizban's Treasury of Dragons",
+        "Tasha's Cauldron of Everything",
+        "Strixhaven: A Curriculum of Chaos",
+        "Icewind Dale - Rime of the Frostmaiden",
+        "Explorer's Guide to Wildemount",
+        "Acquisitions Inc.",
+        "Xanathar's Guide to Everything/Elemental Evil Player's Companion",
+        "Guildmaster's Guide to Ravnica",
+        "Lost Laboratory of Kwalish",
+        "Planescape - Adventures in the Multiverse",
+        "Tasha's Cauldron of Everything/Sword Coast Adventurer's Guide",
+        "Eberron - Forge of the Artificer"
+    ]
+    let sourceRaw = document.createElement("div")
+    let sourcesFiltered = getQuery("source") ? getQuery("source").toLowerCase().split(",") : []
+    for (let i = 0; i < sourcesArray.length; i++) {
+        let sourceBox = document.createElement("input")
+        sourceBox.type = "checkbox"
+        sourceBox.id = sourcesArray[i]
+        sourceBox.value = sourcesArray[i]
+        if (sourcesFiltered.includes(sourcesArray[i].toLowerCase())) {
+            sourceBox.checked = true
+        }
+        sourceBox.addEventListener("change", function () {
+            if (this.checked) {
+                let value = this.value.trim()
+                sourcesFiltered.push(value)
+                setQuery("source", sourcesFiltered.fuse(","))
+            } else {
+                let value = this.value.trim()
+                sourcesFiltered.pull(value)
+                setQuery("source", sourcesFiltered.fuse(","))
+            }
+            renderSpells()
+        })
+        sourceRaw.appendChild(sourceBox)
+        let sourceLabel = document.createElement("label")
+        sourceLabel.textContent = sourcesArray[i]
+        sourceLabel.htmlFor = sourcesArray[i]
+        sourceRaw.appendChild(sourceLabel)
+        sourceRaw.spacer()
+    }
+    parent.appendChild(sourceRaw)
+
+
+
+    reFilter()
 }
 
-id("searchButton").addEventListener("click", function() {setQuery("search", id("searchSpell").value); renderSpells()});
+id("searchButton").addEventListener("click",  function() {setQuery("search", id("searchSpell").value); renderSpells()});
 id("searchSpell").addEventListener("keydown", function(event) {if (event.key === "Enter") {setQuery("search", id("searchSpell").value); renderSpells()}})
 id("searchSpell").addEventListener("blur", function() {setQuery("search", id("searchSpell").value); renderSpells()});
 id("filter").addEventListener("click", function() {
-    if (this.textContent === "filter_alt") {
-        filter()
-        this.textContent = "close"
-    } else {
+    if (this.textContent === "close") {
         showSpell()
         this.textContent = "filter_alt"
+    } else {
+        filter()
+        this.textContent = "close"
     }
 })
 
