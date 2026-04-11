@@ -2,7 +2,6 @@ import spellData from "./spells.json" with { type: "json" }
 import {id, numSuffix, setQuery, getQuery} from "../script.js"
 
 // ?search={str}&source={str},{str}&minLevel={int}&maxLevel={int}&school={str},{str}&class={str},{str}
-// ?class=wizard&minLevel=0&maxLevel=1
 
 let spellStats = {
     "source": {},
@@ -112,6 +111,11 @@ function showSpell() {
         school.textContent = spellPacket["School"] + " Cantrip"
     } else {
         school.textContent = numSuffix(spellPacket["Level"]) + " Level " + spellPacket["School"]
+    }
+    if ("Extras" in spellPacket) {
+        for (let i = 0; i < spellPacket["Extras"].length; i++) {
+            school.textContent += " (" + spellPacket["Extras"][i] + ")"
+        }
     }
     parent.append(school)
 
