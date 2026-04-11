@@ -1,24 +1,47 @@
+/**
+ * Sets a JSON object in storage
+ * @param {string} key
+ * @param {any} value
+ */
 Storage.prototype.set = function(key, value) {
   this.setItem(key, JSON.stringify(value));
 };
 
+/**
+ * Fetches a JSON object from storage, returning null if not present
+ * @param {string} key
+ * @returns {any|null}
+ */
 Storage.prototype.get = function(key) {
   const item = this.getItem(key);
   return item ? JSON.parse(item) : null;
 };
 
+/**
+ * Clears the Object, keeping the first {keep} elements
+ * @param {number} keep
+ */
 Object.prototype.clear = function(keep=0) {
     while (this.childNodes.length > keep) {
 		this.removeChild(this.lastChild)
 	}
 }
 
+/**
+ * Adds Line breaks to Object {amount} amount of times
+ * @param {number} amount
+ */
 Object.prototype.spacer = function(amount=1) {
     for (let i = 0; i < amount; i++) {
         this.appendChild(document.createElement("br"))
     }
 }
 
+/**
+ * Capitalises the first word in the string, or all words (separated by " ") if {allWords}. returns the String
+ * @param {boolean} allWords
+ * @returns {string}
+ */
 String.prototype.capitalise = function(allWords=false) {
     let stringWords
 	if (allWords) {
@@ -35,10 +58,20 @@ String.prototype.capitalise = function(allWords=false) {
 	return stringWords.fuse()
 }
 
+/**
+ * Returns a HTML element from its ID
+ * @param {string} Object_ID
+ * @returns {HTMLElement}
+ */
 export function id(Object_ID) {
 	return document.getElementById(Object_ID)
 }
 
+/**
+ * Fuses an Array into a string, with {gap} between them
+ * @param {string} gap
+ * @returns {string}
+ */
 Array.prototype.fuse = function(gap="") {
     let string = ""
 	for (let i = 0; i < this.length; i++) {
@@ -47,12 +80,21 @@ Array.prototype.fuse = function(gap="") {
 	return string.slice(0, gap.length*-1)
 }
 
+/**
+ * The opposite of Array.push(). removes an element based on its value. returns the values index
+ * @param {any} value
+ * @returns {number}
+ */
 Array.prototype.pull = function(value) {
     let index = this.indexOf(value);
-    this.slice(index, 1)
+    this.splice(index, 1)
     return index
 }
 
+/**
+ * Returns the Object with its values as keys and keys as values
+ * @returns {{}}
+ */
 Object.prototype.invert = function() {
     let newObject = {}
     Object.entries(this).forEach(([key, value]) => {
@@ -61,6 +103,11 @@ Object.prototype.invert = function() {
     return newObject
 }
 
+/**
+ * Gets the parameters of location.search. returns all parameters unless {key} is provided
+ * @param key
+ * @returns {URLSearchParams|string}
+ */
 export function getQuery(key=null) {
     if (key) {
         return new URLSearchParams(location.search).get(key)
@@ -69,12 +116,22 @@ export function getQuery(key=null) {
     }
 }
 
+/**
+ * Sets the URL's search parameters without reloading the page
+ * @param {any} key
+ * @param {any} value
+ */
 export function setQuery(key, value) {
     const url = new URL(window.location)
     url.searchParams.set(key, value)
     window.history.replaceState({}, '', url)
 }
 
+/**
+ * Returns the number with its suffix (1st for 1, 23rd for 23)
+ * @param {number} number
+ * @returns {string}
+ */
 export function numSuffix(number) {
     number = String(number)
     let finalDigit = number.slice(-1)
@@ -90,6 +147,10 @@ export function numSuffix(number) {
     }
 }
 
+/**
+ * DOES NOTHING YET LOL (will eventually add dice rolling buttons and such)
+ * @returns {String}
+ */
 String.prototype.parse = function() {
     return this
 }
@@ -98,6 +159,10 @@ let popupBar = document.createElement("div");
 popupBar.classList.add("popup-bar");
 document.body.appendChild(popupBar);
 
+/**
+ * Creates a popup in the bottom right corner, with the content of {data}
+ * @param {string} data
+ */
 export function popup(data) {
     let popup = document.createElement("div")
     popup.classList.add("popup")
