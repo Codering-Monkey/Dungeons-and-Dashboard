@@ -315,6 +315,62 @@ function filter() {
     }
     parent.appendChild(schoolsRaw)
 
+    let classesTitle = document.createElement("h2")
+    classesTitle.textContent = "Classes"
+    parent.appendChild(classesTitle)
+    let classesAmount = document.createElement("h6")
+    classesAmount.textContent = "Valid Spells: *"
+    parent.appendChild(classesAmount)
+    const classesArray = [
+        "Artificer",
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Ranger",
+        "Paladin",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+    ]
+    let classesRaw = document.createElement("div")
+    let classesFiltered = getQuery("class") ? getQuery("class").toLowerCase().split(",") : []
+    filteredSpells = 0
+    for (let i = 0; i < classesFiltered.length; i++) {
+        filteredSpells += spellStats["classes"][classesFiltered[i]]
+    }
+    classesAmount.textContent = "Valid Spells: "+ filteredSpells
+    for (let i = 0; i < classesArray.length; i++) {
+        let classBox = document.createElement("input")
+        classBox.type = "checkbox"
+        classBox.id = classesArray[i]
+        classBox.value = classesArray[i]
+        if (classesFiltered.includes(classesArray[i].toLowerCase())) {
+            classBox.checked = true
+        }
+        classBox.addEventListener("change", function () {
+            let value = this.value.trim()
+            if (this.checked) {
+                classesFiltered.push(value)
+            } else {
+                classesFiltered.pull(value)
+            }
+            setQuery("class", classesFiltered.fuse(","))
+            reFilter()
+            let filteredSpells = 0
+            for (let i = 0; i < classesFiltered.length; i++) {
+                filteredSpells += spellStats["classes"][classesFiltered[i]]
+            }
+            classesAmount.textContent = "Valid Spells: "+ filteredSpells
+        })
+        classesRaw.appendChild(classBox)
+        let classLabel = document.createElement("label")
+        classLabel.textContent = classesArray[i]
+        classLabel.htmlFor = classesArray[i]
+        classesRaw.appendChild(classLabel)
+        classesRaw.spacer()
+    }
+    parent.appendChild(classesRaw)
+
     reFilter()
 }
 
