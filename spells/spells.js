@@ -253,7 +253,55 @@ function filter() {
     }
     parent.appendChild(sourceRaw)
 
-
+    let schoolsTitle = document.createElement("h2")
+    schoolsTitle.textContent = "Schools"
+    parent.appendChild(schoolsTitle)
+    let schoolsAmount = document.createElement("h6")
+    schoolsAmount.textContent = "Valid Spells: *"
+    parent.appendChild(schoolsAmount)
+    const schoolsArray = [
+        'Abjuration',
+        'Conjuration',
+        'Divination',
+        'Enchantment',
+        'Evocation',
+        'Illusion',
+        'Necromancy',
+        'Transmutation'
+    ]
+    let schoolsRaw = document.createElement("div")
+    let schoolsFiltered = getQuery("school") ? getQuery("school").toLowerCase().split(",") : []
+    for (let i = 0; i < schoolsArray.length; i++) {
+        let schoolBox = document.createElement("input")
+        schoolBox.type = "checkbox"
+        schoolBox.id = schoolsArray[i]
+        schoolBox.value = schoolsArray[i]
+        if (schoolsFiltered.includes(schoolsArray[i].toLowerCase())) {
+            schoolBox.checked = true
+        }
+        schoolBox.addEventListener("change", function () {
+            let value = this.value.trim()
+            if (this.checked) {
+                schoolsFiltered.push(value)
+            } else {
+                schoolsFiltered.pull(value)
+            }
+            setQuery("source", schoolsFiltered.fuse(","))
+            renderSpells()
+            let filteredSpells = 0
+            for (let i = 0; i < schoolsFiltered.length; i++) {
+                filteredSpells += spellStats["school"][schoolsFiltered[i]]
+            }
+            sourcesAmount.textContent = "Valid Spells: "+ filteredSpells
+        })
+        sourceRaw.appendChild(schoolBox)
+        let schoolLabel = document.createElement("label")
+        schoolLabel.textContent = schoolsArray[i]
+        schoolLabel.htmlFor = schoolsArray[i]
+        schoolsRaw.appendChild(schoolLabel)
+        schoolsRaw.spacer()
+    }
+    parent.appendChild(schoolsRaw)
 
     reFilter()
 }
