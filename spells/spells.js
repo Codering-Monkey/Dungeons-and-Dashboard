@@ -230,16 +230,19 @@ function filter() {
             sourceBox.checked = true
         }
         sourceBox.addEventListener("change", function () {
+            let value = this.value.trim()
             if (this.checked) {
-                let value = this.value.trim()
                 sourcesFiltered.push(value)
-                setQuery("source", sourcesFiltered.fuse(","))
             } else {
-                let value = this.value.trim()
                 sourcesFiltered.pull(value)
-                setQuery("source", sourcesFiltered.fuse(","))
             }
+            setQuery("source", sourcesFiltered.fuse(","))
             renderSpells()
+            let filteredSpells = 0
+            for (let i = 0; i < sourcesFiltered.length; i++) {
+                filteredSpells += spellStats["source"][sourcesFiltered[i]]
+            }
+            sourcesAmount.textContent = "Valid Spells: "+ filteredSpells
         })
         sourceRaw.appendChild(sourceBox)
         let sourceLabel = document.createElement("label")
