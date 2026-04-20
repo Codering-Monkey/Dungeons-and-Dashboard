@@ -184,6 +184,7 @@ function showSpell() {
 
 function filter() {
     let parent = id("spellData")
+    let filteredSpells = 0
     parent.clear()
     let title = document.createElement("h1")
     title.textContent = "Filter Spells"
@@ -221,6 +222,11 @@ function filter() {
     ]
     let sourceRaw = document.createElement("div")
     let sourcesFiltered = getQuery("source") ? getQuery("source").toLowerCase().split(",") : []
+    filteredSpells = 0
+    for (let i = 0; i < sourcesFiltered.length; i++) {
+        filteredSpells += spellStats["source"][sourcesFiltered[i]]
+    }
+    sourcesAmount.textContent = "Valid Spells: "+ filteredSpells
     for (let i = 0; i < sourcesArray.length; i++) {
         let sourceBox = document.createElement("input")
         sourceBox.type = "checkbox"
@@ -271,6 +277,11 @@ function filter() {
     ]
     let schoolsRaw = document.createElement("div")
     let schoolsFiltered = getQuery("school") ? getQuery("school").toLowerCase().split(",") : []
+    filteredSpells = 0
+    for (let i = 0; i < schoolsFiltered.length; i++) {
+        filteredSpells += spellStats["school"][schoolsFiltered[i]]
+    }
+    schoolsAmount.textContent = "Valid Spells: "+ filteredSpells
     for (let i = 0; i < schoolsArray.length; i++) {
         let schoolBox = document.createElement("input")
         schoolBox.type = "checkbox"
@@ -292,9 +303,9 @@ function filter() {
             for (let i = 0; i < schoolsFiltered.length; i++) {
                 filteredSpells += spellStats["school"][schoolsFiltered[i]]
             }
-            sourcesAmount.textContent = "Valid Spells: "+ filteredSpells
+            schoolsAmount.textContent = "Valid Spells: "+ filteredSpells
         })
-        sourceRaw.appendChild(schoolBox)
+        schoolsRaw.appendChild(schoolBox)
         let schoolLabel = document.createElement("label")
         schoolLabel.textContent = schoolsArray[i]
         schoolLabel.htmlFor = schoolsArray[i]
