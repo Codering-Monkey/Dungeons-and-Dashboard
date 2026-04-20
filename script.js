@@ -77,7 +77,11 @@ Array.prototype.fuse = function(gap="") {
 	for (let i = 0; i < this.length; i++) {
 		string += this[i] + gap
 	}
-	return string.slice(0, gap.length*-1)
+    if (gap.length === 0) {
+        return string
+    } else {
+        return string.slice(0, gap.length * -1)
+    }
 }
 
 /**
