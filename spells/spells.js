@@ -297,7 +297,7 @@ function filter() {
             } else {
                 schoolsFiltered.pull(value)
             }
-            setQuery("source", schoolsFiltered.fuse(","))
+            setQuery("school", schoolsFiltered.fuse(","))
             renderSpells()
             let filteredSpells = 0
             for (let i = 0; i < schoolsFiltered.length; i++) {
