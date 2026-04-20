@@ -95,6 +95,7 @@ function renderSpells() {
         school.textContent = spellData["School"]
         container.appendChild(school)
     })
+    return Object.keys(filteredData).length
 }
 
 function showSpell() {
@@ -192,7 +193,7 @@ function filter() {
     let filteredAmount = document.createElement("h6")
     parent.appendChild(filteredAmount)
     function reFilter() {
-        filteredAmount.textContent = "Filtered Spells: *"
+        filteredAmount.textContent = "Filtered Spells: " + renderSpells()
     }
 
     let sourcesTitle = document.createElement("h2")
@@ -243,7 +244,7 @@ function filter() {
                 sourcesFiltered.pull(value)
             }
             setQuery("source", sourcesFiltered.fuse(","))
-            renderSpells()
+            reFilter()
             let filteredSpells = 0
             for (let i = 0; i < sourcesFiltered.length; i++) {
                 filteredSpells += spellStats["source"][sourcesFiltered[i]]
@@ -298,7 +299,7 @@ function filter() {
                 schoolsFiltered.pull(value)
             }
             setQuery("school", schoolsFiltered.fuse(","))
-            renderSpells()
+            reFilter()
             let filteredSpells = 0
             for (let i = 0; i < schoolsFiltered.length; i++) {
                 filteredSpells += spellStats["school"][schoolsFiltered[i]]
