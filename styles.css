@@ -14,7 +14,7 @@
 
 * {
     color: var(--text);
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Noto Sans", "Segoe UI", sans-serif;
     caret-color: transparent;
     transition: 0.25s;
     scrollbar-color: var(--text) var(--background)
