@@ -13,9 +13,8 @@ Object.entries(spellData).forEach(([spellName, spellInfo]) => {
     spellStats["source"][spellInfo["Source"]] = (spellStats["source"][spellInfo["Source"]] || 0) + 1
     spellStats["school"][spellInfo["School"].split()[0]] = (spellStats["school"][spellInfo["School"].split()[0]] || 0) + 1
     spellStats["level"][spellInfo["Level"]] = (spellStats["level"][spellInfo["Level"]] || 0) + 1
-    for (let i = 0; i < spellInfo["Classes"].length; i++) {
-        spellStats["classes"][spellInfo["Classes"][i]] = (spellStats["classes"][spellInfo["Classes"][i]] || 0) + 1
-    }
+    let classString = spellInfo["Classes"].sort().fuse(",")
+    spellStats["classes"][classString] = (spellStats["classes"][classString] || 0) + 1
 })
 
 /**
@@ -335,10 +334,19 @@ function filter() {
     let classesRaw = document.createElement("div")
     let classesFiltered = getQuery("class") ? getQuery("class").toLowerCase().split(",") : []
     filteredSpells = 0
-    for (let i = 0; i < classesFiltered.length; i++) {
-        filteredSpells += spellStats["classes"][classesFiltered[i]]
+    let validKeys = []
+    Object.keys(spellStats["classes"]).forEach(key => {
+        for (let i = 0; i < classesFiltered.length; i++) {
+            if (key.includes(classesFiltered[i])) {
+                validKeys.push(key)
+            }
+        }
+    })
+    validKeys = Array.from(new Set(validKeys))
+    for (let i = 0; i < validKeys.length; i++) {
+        filteredSpells += spellStats["classes"][validKeys[i]]
     }
-    classesAmount.textContent = "Valid Spells: "+ filteredSpells
+    classesAmount.textContent = "Valid Spells: " + filteredSpells
     for (let i = 0; i < classesArray.length; i++) {
         let classBox = document.createElement("input")
         classBox.type = "checkbox"
@@ -356,11 +364,20 @@ function filter() {
             }
             setQuery("class", classesFiltered.fuse(","))
             reFilter()
-            let filteredSpells = 0
-            for (let i = 0; i < classesFiltered.length; i++) {
-                filteredSpells += spellStats["classes"][classesFiltered[i]]
+            filteredSpells = 0
+            let validKeys = []
+            Object.keys(spellStats["classes"]).forEach(key => {
+                for (let i = 0; i < classesFiltered.length; i++) {
+                    if (key.includes(classesFiltered[i])) {
+                        validKeys.push(key)
+                    }
+                }
+            })
+            validKeys = Array.from(new Set(validKeys))
+            for (let i = 0; i < validKeys.length; i++) {
+                filteredSpells += spellStats["classes"][validKeys[i]]
             }
-            classesAmount.textContent = "Valid Spells: "+ filteredSpells
+            classesAmount.textContent = "Valid Spells: " + filteredSpells
         })
         classesRaw.appendChild(classBox)
         let classLabel = document.createElement("label")
