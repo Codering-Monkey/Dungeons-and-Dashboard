@@ -152,6 +152,27 @@ export function numSuffix(number) {
 }
 
 /**
+ * Creates and appends a select object with all options, with values being the values of the object at the same position
+ * @param {string[]} options
+ * @param {string[]|false} values optional, must be the same length as options
+ * @returns {Object} the select element
+ */
+Object.prototype.createSelect = function(options, values=false) {
+    let select = document.createElement("select");
+    if (!values) {
+        values = options
+    }
+    for (let i = 0; i < options.length; i++) {
+        let option = document.createElement("option");
+        option.textContent = options[i]
+        option.value = values[i]
+        select.appendChild(option)
+    }
+    this.appendChild(select);
+    return select
+}
+
+/**
  * DOES NOTHING YET LOL (will eventually add dice rolling buttons and such)
  * @returns {String}
  */

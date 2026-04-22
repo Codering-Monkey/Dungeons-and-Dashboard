@@ -1,7 +1,7 @@
 import spellData from "./spells.json" with { type: "json" }
 import {id, numSuffix, setQuery, getQuery} from "../script.js"
 
-// ?search={str}&source={str},{str}&minLevel={int}&maxLevel={int}&school={str},{str}&class={str},{str}
+// ?search={str}&source={str},{str}&minLevel={int}&maxLevel={int}&school={str},{str}&class={str},{str}&desc={bool}&sort={level, name, school}
 
 let spellStats = {
     "source": {},
@@ -74,6 +74,19 @@ function renderSpells() {
         getQuery("minLevel") ? parseInt(getQuery("minLevel")) : 0,
         getQuery("maxLevel") ? parseInt(getQuery("maxLevel")) : 9
         )
+    let sortKey = getQuery("sort") ? getQuery("sort") : "Level"
+    let entries = Object.entries(filteredData)
+    if (sortKey === "Name") {
+        entries.sort((a, b) => a[0].localeCompare(b[0]))
+    } else if (sortKey === "Level") {
+        entries.sort((a, b) => a[1]["Level"] - b[1]["Level"])
+    } else {
+        entries.sort((a, b) => a[1]["School"].localeCompare(b[1]["School"]))
+    }
+    if (Boolean(getQuery("desc"))) {
+        entries.reverse()
+    }
+    filteredData = Object.fromEntries(entries)
     let parent = id("spellParent")
     parent.clear()
     Object.entries(filteredData).forEach(([spellName, spellData]) => {
@@ -387,6 +400,80 @@ function filter() {
         classesRaw.spacer()
     }
     parent.appendChild(classesRaw)
+
+    let levelsTitle = document.createElement("h2")
+    levelsTitle.textContent = "Levels"
+    parent.appendChild(levelsTitle)
+    let levelsAmount = document.createElement("h6")
+    levelsAmount.textContent = "Valid Spells: *"
+    parent.appendChild(levelsAmount)
+    let minTitle = document.createElement("h4")
+    minTitle.textContent = "Minimum Level"
+    parent.appendChild(minTitle)
+    let minSlider = document.createElement("input")
+    minSlider.type = "range"
+    minSlider.id = "minSlider"
+    minSlider.min = "0"
+    minSlider.max = "9"
+    minSlider.value = getQuery("minLevel") ? getQuery("minLevel") : 0
+    minSlider.addEventListener("change", function () {levelFilter()})
+    let minLabel = document.createElement("label")
+    minLabel.htmlFor = "minSlider"
+    parent.appendChild(minLabel)
+    parent.appendChild(minSlider)
+    let maxTitle = document.createElement("h4")
+    maxTitle.textContent = "Maximum Level"
+    parent.appendChild(maxTitle)
+    let maxSlider = document.createElement("input")
+    maxSlider.type = "range"
+    maxSlider.id = "maxSlider"
+    maxSlider.min = "0"
+    maxSlider.max = "9"
+    maxSlider.value = getQuery("maxLevel") ? getQuery("maxLevel") : 9
+    maxSlider.addEventListener("change", function () {levelFilter()})
+    let maxLabel = document.createElement("label")
+    maxLabel.htmlFor = "maxSlider"
+    parent.appendChild(maxLabel)
+    function levelFilter() {
+        filteredSpells = 0
+        let min = parseInt(minSlider.value)
+        let max = parseInt(maxSlider.value)
+        minLabel.textContent = String(min)
+        maxLabel.textContent = String(max)
+        if (min > max) {
+            minSlider.value = String(max)
+            min = max
+        }
+        if (max < min) {
+            maxSlider.value = String(min)
+            max = min
+        }
+        for (let i = min; i < max + 1; i++) {
+            filteredSpells += spellStats["level"][i]
+        }
+        minLabel.textContent = minSlider.value
+        maxLabel.textContent = maxSlider.value
+        setQuery("minLevel", min)
+        setQuery("maxLevel", max)
+        levelsAmount.textContent = "Valid Spells: " + filteredSpells
+        reFilter()
+    }
+    parent.appendChild(maxSlider)
+    levelFilter()
+
+    let sortTitle = document.createElement("h3")
+    sortTitle.textContent = "Sort by "
+    parent.appendChild(sortTitle)
+    let direction = parent.createSelect(["Ascending", "Descending"], ["", "true"])
+    direction.addEventListener("change", function () {
+        setQuery("desc", this.value)
+        reFilter()
+    })
+    let key = parent.createSelect(["Level", "Name", "School"])
+    key.addEventListener("change", function () {
+        setQuery("sort", this.value)
+        reFilter()
+    })
 
     reFilter()
 }
