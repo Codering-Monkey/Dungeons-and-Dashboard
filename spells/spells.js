@@ -93,7 +93,7 @@ function renderSpells() {
         let container = document.createElement("div")
         container.classList.add("spellOption")
         parent.append(container)
-        container.addEventListener("click", function() {setQuery("spell", spellName); showSpell()})
+        container.addEventListener("click", function() {if (id("filter").textContent === "filter_alt") {setQuery("spell", spellName); showSpell()}})
 
         let level = document.createElement("span")
         level.textContent = spellData["Level"]
