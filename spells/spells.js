@@ -452,7 +452,7 @@ function filter() {
     reFilter()
 }
 
-id("searchButton").addEventListener("click",  function() {setQuery("search", id("searchSpell").value); renderSpells()});
+id("clearSearch").addEventListener("click",  function() {id("searchSpell").value = ""; setQuery("search", ""); renderSpells()});
 id("searchSpell").addEventListener("keydown", function(event) {if (event.key === "Enter") {setQuery("search", id("searchSpell").value); renderSpells()}})
 id("searchSpell").addEventListener("blur", function() {setQuery("search", id("searchSpell").value); renderSpells()});
 id("filter").addEventListener("click", function() {
