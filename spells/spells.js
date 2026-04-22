@@ -461,7 +461,9 @@ function filter() {
     parent.appendChild(maxSlider)
     levelFilter()
 
+    parent.spacer(2)
     let sortTitle = document.createElement("h3")
+    sortTitle.id = "sort"
     sortTitle.textContent = "Sort by "
     parent.appendChild(sortTitle)
     let direction = parent.createSelect(["Ascending", "Descending"], ["", "true"])
@@ -474,6 +476,7 @@ function filter() {
         setQuery("sort", this.value)
         reFilter()
     })
+    parent.spacer()
 
     reFilter()
 }

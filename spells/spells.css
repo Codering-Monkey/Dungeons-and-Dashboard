@@ -68,3 +68,22 @@
     outline: none;
     caret-color: var(--minor-text);
 }
+
+#sort {
+    width: fit-content;
+    float: left;
+    margin: 0;
+}
+
+select {
+    float: left;
+    display: block;
+    margin: 0 4px 8px 4px;
+    height: 25px;
+    color: var(--background);
+}
+
+option {
+    color: var(--background);
+    font-size: 1.17em;
+}

@@ -5,7 +5,8 @@
     --background: hsl(0 0 12);
     --navbar: hsl(0 0 16);
     --foreground: hsl(0 0 15);
-    --text: hsla(0, 0%, 100%, .86);
+    --major-text: hsla(0, 0%, 100%, .86);
+    --text: hsla(0, 0%, 100%, .7);
     --minor-text: hsla(0, 0%, 100%, .6);
     --sub-text: hsla(0, 0%, 100%, .4);
     --pink: hsla(340, 70%, 82%, 0.8);
@@ -13,13 +14,62 @@
 }
 
 * {
-    color: var(--text);
+    color: var(--minor-text);
     font-family: "Noto Sans", "Segoe UI", sans-serif;
     caret-color: transparent;
     transition: 0.25s;
     scrollbar-color: var(--text) var(--background)
 }
 
+p {
+    color: var(--minor-text);
+}
+
+h6 {
+    color: var(--sub-text);
+    margin: 1em 0
+}
+
+h5 {
+    color: var(--minor-text)
+}
+
+h4 {
+    color: var(--minor-text)
+}
+
+h3 {
+    margin: 1em 0 0 0;
+    color: var(--text)
+}
+
+h2 {
+    margin: .5em 0;
+    color: var(--text)
+}
+
+h1 {
+    margin-bottom: 0;
+    font-weight: bolder;
+    color: var(--major-text);
+}
+
+strong {
+    color: var(--pink)
+}
+
+input[type=range] {
+    accent-color: var(--pink);
+    background-color: var(--background);
+}
+
+input[type=range]:hover {
+    accent-color: var(--blue);
+}
+
+input[type=checkbox] {
+    accent-color: var(--pink);
+}
 
 body {
     background-color: var(--background);
@@ -102,7 +152,7 @@ body {
 
 .popup {
     background-color: var(--navbar);
-    color: var(--text);
+    color: var(--minor-text);
     padding-top: 8px;
     margin: 8px -208px 8px 8px;
     width: 200px;
