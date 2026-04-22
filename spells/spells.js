@@ -9,12 +9,18 @@ let spellStats = {
     "level": {},
     "classes": {}
 }
+let classesArray = []
 Object.entries(spellData).forEach(([spellName, spellInfo]) => {
     spellStats["source"][spellInfo["Source"]] = (spellStats["source"][spellInfo["Source"]] || 0) + 1
     spellStats["school"][spellInfo["School"].split()[0]] = (spellStats["school"][spellInfo["School"].split()[0]] || 0) + 1
     spellStats["level"][spellInfo["Level"]] = (spellStats["level"][spellInfo["Level"]] || 0) + 1
     let classString = spellInfo["Classes"].sort().fuse(",")
     spellStats["classes"][classString] = (spellStats["classes"][classString] || 0) + 1
+    for (let i = 0; i < spellInfo["Classes"].length; i++) {
+        if (!classesArray.includes(spellInfo["Classes"][i])) {
+            classesArray.push(spellInfo["Classes"][i])
+        }
+    }
 })
 
 /**
@@ -214,25 +220,7 @@ function filter() {
     let sourcesAmount = document.createElement("h6")
     sourcesAmount.textContent = "Valid Spells: *"
     parent.appendChild(sourcesAmount)
-    const sourcesArray = [
-        "Xanathar's Guide to Everything",
-        "Player's Handbook",
-        "Spelljammer: Adventures in Space - Astral Adventurer's Guide",
-        "Forgotten Realms - Heroes of Faerun",
-        "The Book of Many Things",
-        "Fizban's Treasury of Dragons",
-        "Tasha's Cauldron of Everything",
-        "Strixhaven: A Curriculum of Chaos",
-        "Icewind Dale - Rime of the Frostmaiden",
-        "Explorer's Guide to Wildemount",
-        "Acquisitions Inc.",
-        "Xanathar's Guide to Everything/Elemental Evil Player's Companion",
-        "Guildmaster's Guide to Ravnica",
-        "Lost Laboratory of Kwalish",
-        "Planescape - Adventures in the Multiverse",
-        "Tasha's Cauldron of Everything/Sword Coast Adventurer's Guide",
-        "Eberron - Forge of the Artificer"
-    ]
+    const sourcesArray = Object.keys(spellStats["source"])
     let sourceRaw = document.createElement("div")
     let sourcesFiltered = getQuery("source") ? getQuery("source").toLowerCase().split(",") : []
     filteredSpells = 0
@@ -278,16 +266,7 @@ function filter() {
     let schoolsAmount = document.createElement("h6")
     schoolsAmount.textContent = "Valid Spells: *"
     parent.appendChild(schoolsAmount)
-    const schoolsArray = [
-        'Abjuration',
-        'Conjuration',
-        'Divination',
-        'Enchantment',
-        'Evocation',
-        'Illusion',
-        'Necromancy',
-        'Transmutation'
-    ]
+    const schoolsArray = Object.keys(spellStats["school"])
     let schoolsRaw = document.createElement("div")
     let schoolsFiltered = getQuery("school") ? getQuery("school").toLowerCase().split(",") : []
     filteredSpells = 0
@@ -333,17 +312,6 @@ function filter() {
     let classesAmount = document.createElement("h6")
     classesAmount.textContent = "Valid Spells: *"
     parent.appendChild(classesAmount)
-    const classesArray = [
-        "Artificer",
-        "Bard",
-        "Cleric",
-        "Druid",
-        "Ranger",
-        "Paladin",
-        "Sorcerer",
-        "Warlock",
-        "Wizard"
-    ]
     let classesRaw = document.createElement("div")
     let classesFiltered = getQuery("class") ? getQuery("class").toLowerCase().split(",") : []
     filteredSpells = 0
@@ -401,6 +369,9 @@ function filter() {
     }
     parent.appendChild(classesRaw)
 
+    const sortedLevels = Object.keys(spellStats["level"]).sort()
+    const greatest = String(sortedLevels.slice(-1))
+    const least = String(sortedLevels[0])
     let levelsTitle = document.createElement("h2")
     levelsTitle.textContent = "Levels"
     parent.appendChild(levelsTitle)
@@ -413,8 +384,8 @@ function filter() {
     let minSlider = document.createElement("input")
     minSlider.type = "range"
     minSlider.id = "minSlider"
-    minSlider.min = "0"
-    minSlider.max = "9"
+    minSlider.min = least
+    minSlider.max = greatest
     minSlider.value = getQuery("minLevel") ? getQuery("minLevel") : 0
     minSlider.addEventListener("change", function () {levelFilter()})
     let minLabel = document.createElement("label")
@@ -427,8 +398,8 @@ function filter() {
     let maxSlider = document.createElement("input")
     maxSlider.type = "range"
     maxSlider.id = "maxSlider"
-    maxSlider.min = "0"
-    maxSlider.max = "9"
+    maxSlider.min = least
+    maxSlider.max = greatest
     maxSlider.value = getQuery("maxLevel") ? getQuery("maxLevel") : 9
     maxSlider.addEventListener("change", function () {levelFilter()})
     let maxLabel = document.createElement("label")
