@@ -80,10 +80,4 @@ select {
     display: block;
     margin: 0 4px 8px 4px;
     height: 25px;
-    color: var(--background);
-}
-
-option {
-    color: var(--background);
-    font-size: 1.17em;
 }

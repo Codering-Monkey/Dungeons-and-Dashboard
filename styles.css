@@ -71,6 +71,11 @@ input[type=checkbox] {
     accent-color: var(--pink);
 }
 
+select {
+    background-color: var(--background);
+    border: none
+}
+
 body {
     background-color: var(--background);
     margin: 0;
