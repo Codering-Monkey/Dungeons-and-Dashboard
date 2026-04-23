@@ -22,5 +22,5 @@ Object.entries(pages).forEach(([icon, [name, url]]) => {
     let littleBox = document.createElement("div");
     box.appendChild(littleBox)
     littleBox.textContent = name
-    littleBox.style.left = "-" + littleBox.clientWidth + "px"
+    littleBox.style.left = "-" + (littleBox.clientWidth) * 2 + "px"
 })

@@ -92,6 +92,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     align-content: center;
+    overflow-x: visible;
 }
 
 .navbar > div {
@@ -104,6 +105,9 @@ body {
     font-size: 24px;
     cursor: pointer;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar > div:hover {
@@ -122,12 +126,12 @@ body {
     top: 0;
     font-size: 16px;
     height: 24px;
-    transition: .5s;
+    transition: left .6s cubic-bezier(0, 0.6, 0.75, 1), color .5s;
     z-index: -1;
     align-items: center;
     background-color: var(--navbar);
     border-radius: 8px;
-    padding: 8px
+    padding: 8px;
 }
 
 .navbar > div:hover > div {
