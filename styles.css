@@ -78,6 +78,17 @@ select {
     border: none
 }
 
+a {
+    color: var(--pink);
+    text-decoration: underline;
+    transition: .25s;
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--blue)
+}
+
 body {
     background-color: var(--background);
     margin: 0;
@@ -193,4 +204,22 @@ body {
     height: 8px;
     transition: width 5s ease-out;
     width: 0;
+}
+
+/* Import */
+
+.import-add {
+    background-color: var(--foreground);
+    padding: 8px;
+    width: calc(50% - 16px);
+    float: left;
+    height: 100%;
+}
+
+.import-data {
+    width: calc(50% - 8px);
+    height: 100%;
+    overflow-y: scroll;
+    margin-left: 8px;
+    float: right
 }
