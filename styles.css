@@ -7,11 +7,13 @@
     --background: hsl(0 0 12);
     --navbar: hsl(0 0 16);
     --foreground: hsl(0 0 15);
-    --fronterground: hsl(0 0 17);
+    --midground: hsl(0 0 13);
+    --fronterground: hsl(0 0 19);
     --major-text: hsla(0, 0%, 100%, .86);
     --text: hsla(0, 0%, 100%, .7);
     --minor-text: hsla(0, 0%, 100%, .6);
     --sub-text: hsla(0, 0%, 100%, .4);
+    --sub-sub-text: hsla(0, 0%, 100%, .2);
     --pink: hsla(340, 70%, 82%, 0.8);
     --blue: hsla(200, 65%, 80%, 0.8)
 }
