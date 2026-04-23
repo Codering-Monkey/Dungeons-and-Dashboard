@@ -92,6 +92,30 @@ a:hover {
     color: var(--blue)
 }
 
+button {
+    background-color: var(--background);
+    text-decoration: none;
+    padding: 4px 20px;
+    border: 1px solid var(--sub-sub-text);
+    transition: .25s;
+    cursor: pointer;
+}
+
+button:hover {
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+button:active {
+    color: var(--pink);
+    border-color: var(--pink);
+}
+
+textarea {
+    background-color: var(--background);
+    border: none
+}
+
 body {
     background-color: var(--background);
     margin: 0;
@@ -207,22 +231,4 @@ body {
     height: 8px;
     transition: width 5s ease-out;
     width: 0;
-}
-
-/* Import */
-
-.import-add {
-    background-color: var(--foreground);
-    padding: 8px;
-    width: calc(50% - 16px);
-    float: left;
-    height: 100%;
-}
-
-.import-data {
-    width: calc(50% - 8px);
-    height: 100%;
-    overflow-y: scroll;
-    margin-left: 8px;
-    float: right
 }
