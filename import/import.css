@@ -1,0 +1,63 @@
+.import-add {
+    background-color: var(--foreground);
+    padding: 8px;
+    width: calc(50% - 16px);
+    float: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.import-add-box {
+    margin-top: 16px;
+}
+
+.import-add-box-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.import-add-box-bar span {
+    padding: 8px;
+    background-color: var(--midground);
+    border-width: 0 0 1px 0;
+    border-color: var(--sub-text);
+    border-style: solid;
+    transition: color .5s;
+    cursor: pointer;
+}
+
+.import-add-box-bar span:hover {
+    color: var(--blue);
+}
+
+.import-add-box-bar span[active="true"] {
+    background-color: var(--fronterground);
+    border-width: 1px 1px 0 1px;
+}
+
+.import-add-box-data {
+    background-color: var(--navbar);
+    border-color: var(--sub-text);
+    border-style: solid;
+    border-width: 0 1px 1px 1px;
+    padding: 16px;
+}
+
+.import-data {
+    width: calc(50% - 8px);
+    height: 100%;
+    overflow-y: scroll;
+    margin-left: 8px;
+    float: right
+}
+
+#dataInput textarea {
+    min-width: 75%;
+    max-width: 75%;
+    min-height: 30vh;
+    margin-bottom: 8px;
+    max-height: 30vh;
+}
