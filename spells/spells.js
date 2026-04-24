@@ -430,11 +430,13 @@ function filter() {
         setQuery("desc", this.value)
         reFilter()
     })
+    direction.value = getQuery("desc") ? getQuery("desc") : ""
     let key = parent.createSelect(["Level", "Name", "School"])
     key.addEventListener("change", function () {
         setQuery("sort", this.value)
         reFilter()
     })
+    key.value = getQuery("sort") ? getQuery("sort") : "Level"
     parent.spacer()
 
     reFilter()
