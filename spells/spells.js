@@ -139,21 +139,7 @@ function showSpell() {
     parent.append(school)
 
     let source = document.createElement("h3")
-    let group
-    if (["Player's Handbook"].includes(spellPacket["Source"])) {
-        group = " (Core Rules)"
-    } else if (["Xanathar's Guide to Everything", "Tasha's Cauldron of Everything", "Xanathar's Guide to Everything/Elemental Evil Player's Companion", "Tasha's Cauldron of Everything/Sword Coast Adventurer's Guide"].includes(spellPacket["Source"])) {
-        group = " (Expanded Rules)"
-    } else if (["Fizban's Treasury of Dragons", 'The Book of Many Things'].includes(spellPacket["Source"])) {
-        group = " (Extended Rules)"
-    } else if (['Strixhaven: A Curriculum of Chaos', 'Icewind Dale - Rime of the Frostmaiden', 'Lost Laboratory of Kwalish', "Explorer's Guide to Wildemount", "Guildmaster's Guide to Ravnica", 'Acquisitions Inc.'].includes(spellPacket["Source"])) {
-        group = " (Campaign Rules)"
-    } else if (['Planescape - Adventures in the Multiverse', "Spelljammer: Adventures in Space - Astral Adventurer's Guide"].includes(spellPacket["Source"])) {
-        group = " (Space Rules)"
-    } else {
-        group = " (Other Rules)"
-    }
-    source.innerHTML = "<strong>Source: </strong>" + spellPacket["Source"] + group
+    source.innerHTML = "<strong>Source: </strong>" + spellPacket["Source"]
     parent.append(source)
 
     let classes = document.createElement("h3")
