@@ -3,6 +3,8 @@ import {id, numSuffix, setQuery, getQuery} from "../script.js"
 
 // ?search={str}&source={str},{str}&minLevel={int}&maxLevel={int}&school={str},{str}&class={str},{str}&desc={bool}&sort={level, name, school}
 
+spellData.homebrew("Spells")
+
 let spellStats = {
     "source": {},
     "school": {},

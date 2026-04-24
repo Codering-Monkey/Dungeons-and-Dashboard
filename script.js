@@ -249,3 +249,15 @@ export function popup(data) {
         remove()
     })
 }
+
+// Importing Code
+
+Object.prototype.homebrew = function(dataKey) {
+    let importData = localStorage.get("Import")
+    if (importData) {
+        let specificData = importData[dataKey]
+        Object.entries(specificData).forEach(([key, value]) => {
+            this[key] = value
+        })
+    }
+}

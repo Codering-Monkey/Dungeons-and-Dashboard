@@ -15,3 +15,25 @@ for (let i = 0; i < bar.children.length; i++) {
     })
 }
 
+id("button").addEventListener("click", function () {
+    let currentImport = localStorage.get("Import")
+    if (!currentImport) {
+        currentImport = {"Spells":{}}
+    }
+    let newData
+    let child = input.children[0]
+    if (child.tagName === "TEXTAREA") {
+        newData = JSON.parse(child.value)
+    }
+    try {
+        Object.entries(newData).forEach(([key, value]) => {
+            Object.entries(newData[key]).forEach(([innerKey, innerValue]) => {
+                currentImport[key][innerKey] = innerValue
+            })
+        })
+        localStorage.set("Import", currentImport)
+    } catch (e) {
+        alert(`Skill Issue: ${e.message}`)
+    }
+    console.log(currentImport)
+})
