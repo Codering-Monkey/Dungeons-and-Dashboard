@@ -123,6 +123,8 @@ function showSpell() {
     let parent = id("spellData")
     parent.clear()
 
+    if (!spellPacket) {return}
+
     let title = document.createElement("h1")
     title.textContent = getQuery("spell")
     parent.append(title)
