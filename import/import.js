@@ -30,7 +30,7 @@ id("button").addEventListener("click", async function () {
         newData = JSON.parse(child.value)
     } else if (child.tagName === "INPUT") {
         newData = await fetch(child.value, {
-            method: "POST",
+            method: "GET",
             }
         ).then((response) => response.json())
     }
