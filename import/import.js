@@ -1,4 +1,4 @@
-import { id } from "/script.js"
+import { id } from "../script.js"
 
 let bar = id("bar")
 let input = id("dataInput")
