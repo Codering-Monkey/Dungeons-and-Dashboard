@@ -1,0 +1,38 @@
+{
+	"Barbarian": {
+		"Ability": ["Str"],
+		"Dice": 12,
+		"Improvements": [],
+		"Saves": ["Str", "Con"],
+		"Skills": [{
+			"Amount": 2,
+			"Choices": ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]
+		}],
+		"Armour": [
+			[true, true, false, true],
+			[false, false, false, false]
+		],
+		"Weapons": [
+			[true, true],
+			[false, false, [""]]
+		],
+		"Equipment": [
+			[
+				["Greataxe", 1],
+				["Handaxe", 4],
+				["Explorer's Pack", 1],
+				["GP", 15]
+			],
+			[
+				["GP", 75]
+			]
+		],
+		"Attacks": [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+		"Features": {
+			"Rage": {
+				"minLevel": 1,
+				"Description": ""
+			}
+		}
+	}
+}
