@@ -15,6 +15,11 @@ for (let i = 0; i < bar.children.length; i++) {
             let textInput = document.createElement("input")
             textInput.type = "text"
             input.appendChild(textInput)
+        } else if (this.textContent === "file_copy") {
+            let fileInput = document.createElement("input")
+            fileInput.type = "file"
+            fileInput.setAttribute("accept", ".json")
+            input.appendChild(fileInput)
         }
     })
 }
@@ -28,11 +33,13 @@ id("button").addEventListener("click", async function () {
     let child = input.children[0]
     if (child.tagName === "TEXTAREA") {
         newData = JSON.parse(child.value)
-    } else if (child.tagName === "INPUT") {
+    } else if (child.type === "text") {
         newData = await fetch(child.value, {
             method: "GET",
             }
         ).then((response) => response.json())
+    } else if (child.type === "file") {
+        newData = JSON.parse(await child.files[0].read())
     }
     try {
         Object.entries(newData).forEach(([key, value]) => {
@@ -44,6 +51,5 @@ id("button").addEventListener("click", async function () {
     } catch (e) {
         alert(`Skill Issue: ${e.message}`)
     }
-    console.log(currentImport)
     }
 )

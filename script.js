@@ -173,6 +173,20 @@ Object.prototype.createSelect = function(options, values=false) {
 }
 
 /**
+ * Reads a File
+ * @returns {Promise<unknown>}
+ */
+File.prototype.read = function() {
+    return new Promise((resolve, reject) => {
+        let reader = new FileReader();
+        reader.onload = () => {
+            resolve(reader.result);
+        }
+        reader.readAsText(this)
+    })
+}
+
+/**
  * DOES NOTHING YET LOL (will eventually add dice rolling buttons and such)
  * @returns {String}
  */
