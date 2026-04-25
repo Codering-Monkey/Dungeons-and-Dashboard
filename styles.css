@@ -76,6 +76,12 @@ input[type=checkbox] {
     accent-color: var(--pink);
 }
 
+input[type=text] {
+    background-color: var(--background);
+    border: none;
+    margin: 4px
+}
+
 select {
     background-color: var(--background);
     border: none
