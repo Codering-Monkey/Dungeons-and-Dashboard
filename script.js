@@ -1,3 +1,32 @@
+// HTML "Fixes"
+
+let inputs = document.getElementsByTagName("INPUT")
+for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].type === "file" ) {
+        inputs[i].label()
+    }
+}
+
+
+// Prototypes
+HTMLElement.prototype.label = function() {
+    if (this.tagName === "INPUT") {
+        if (this.type === "file") {
+            let label = document.createElement("label")
+            label.textContent = "Choose File"
+            if (!this.id) {
+                this.id = "input" + document.getElementsByTagName("INPUT").length
+            }
+            this.parentElement.insertBefore(label, this)
+            label.htmlFor = this.id
+        } else {
+            throw new TypeError("This is only available where 'type'==='file'")
+        }
+    } else {
+        throw new TypeError("This is only available for INPUT elements")
+    }
+}
+
 /**
  * Sets a JSON object in storage
  * @param {string} key
