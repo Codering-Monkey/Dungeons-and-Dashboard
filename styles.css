@@ -92,7 +92,7 @@ input[type=file] {
     padding: 4px;
     margin: 4px;
     background-color: var(--background);
-    border: 1px solid var(--minor-text);
+    border: 1px solid var(--sub-text);
 }
 
 .file:hover {

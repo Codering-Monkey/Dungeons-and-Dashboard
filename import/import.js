@@ -52,5 +52,40 @@ id("button").addEventListener("click", async function () {
     } catch (e) {
         alert(`Skill Issue: ${e.message}`)
     }
-    }
-)
+    renderData()
+})
+
+let data = id("data")
+function renderData() {
+    data.clear()
+    let imports = localStorage.get("Import")
+    Object.keys(imports).forEach((key) => {
+        if (imports[key]) {
+            let tile = document.createElement("div")
+            data.appendChild(tile)
+            let title = document.createElement("h3")
+            title.textContent = key
+            tile.appendChild(title)
+            Object.keys(Object.fromEntries(Object.entries(imports[key]).sort((a, b) => a[0].localeCompare(b[0])))).forEach(innerKey => {
+                let item = document.createElement("div")
+                tile.appendChild(item)
+                item.addEventListener("click", function () {
+                    delete imports[key][innerKey]
+                    localStorage.set("Import", imports)
+                    renderData()
+                })
+
+                let bin  = document.createElement("span")
+                bin.classList.add("material-symbols-outlined")
+                bin.textContent = "delete"
+                item.appendChild(bin)
+
+                let text = document.createElement("p")
+                text.textContent = innerKey
+                item.appendChild(text)
+            })
+        }
+    })
+}
+
+renderData()
