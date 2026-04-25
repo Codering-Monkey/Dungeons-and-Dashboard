@@ -47,11 +47,22 @@
 }
 
 .import-data {
-    width: calc(50% - 8px);
-    height: 100%;
+    width: calc(50% - 16px);
+    height: calc(100% + 16px);
     overflow-y: scroll;
     margin-left: 8px;
-    float: right
+    float: right;
+    padding-left: 8px;
+    padding-top: 8px
+}
+
+.import-data > div {
+    width: calc(100% / 2 - 24px);
+    float: left;
+    padding: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    background-color: var(--foreground);
 }
 
 #dataInput textarea {
