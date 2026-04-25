@@ -14,11 +14,19 @@ HTMLElement.prototype.label = function() {
         if (this.type === "file") {
             let label = document.createElement("label")
             label.textContent = "Choose File"
+            label.classList.add("file")
             if (!this.id) {
                 this.id = "input" + document.getElementsByTagName("INPUT").length
             }
             this.parentElement.insertBefore(label, this)
             label.htmlFor = this.id
+            this.addEventListener("change", function() {
+                if (this.value) {
+                    label.textContent = "Chosen File: " + this.files[0].name
+                } else {
+                    label.textContent = "Choose File"
+                }
+            })
         } else {
             throw new TypeError("This is only available where 'type'==='file'")
         }

@@ -82,6 +82,29 @@ input[type=text] {
     margin: 4px
 }
 
+input[type=file] {
+    display: none;
+}
+
+.file {
+    cursor: pointer;
+    display: block;
+    padding: 4px;
+    margin: 4px;
+    background-color: var(--background);
+    border: 1px solid var(--minor-text);
+}
+
+.file:hover {
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+.file:active {
+    color: var(--pink);
+    border-color: var(--pink);
+}
+
 select {
     background-color: var(--background);
     border: none
