@@ -231,6 +231,8 @@ String.prototype.parse = function() {
     return this
 }
 
+// Popup
+
 let popupBar = document.createElement("div");
 popupBar.classList.add("popup-bar");
 document.body.appendChild(popupBar);
@@ -299,6 +301,19 @@ export function popup(data) {
     popup.addEventListener("click", function() {
         remove()
     })
+}
+
+// Overlay
+
+export function overlay() {
+    let overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    overlay.addEventListener("click", function() {this.parentElement.removeChild(this)})
+    document.body.appendChild(overlay);
+
+    let box = document.createElement("div");
+    overlay.appendChild(box);
+    return box
 }
 
 // Importing Code

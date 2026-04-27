@@ -1,4 +1,4 @@
-import { id } from "../script.js"
+import { id, overlay } from "../script.js"
 
 let bar = id("bar")
 let input = id("dataInput")
@@ -87,5 +87,7 @@ function renderData() {
         }
     })
 }
+
+id("guide").addEventListener("click", function () {overlay()})
 
 renderData()
