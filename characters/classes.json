@@ -4,7 +4,7 @@
 		"Dice": 12,
 		"Improvements": [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
 		"Saves": ["Str", "Con"],
-		"Skills": [{
+		"Prof": [{
 			"Amount": 2,
 			"Type": "Prof",
 			"Choices": ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]
@@ -63,7 +63,7 @@
 			"Primal Knowledge": {
 				"Min Level": 3,
 				"Description": "You gain proficiency in another skill of your choice from the skill list available to Barbarians at level 1. In addition, while your Rage is active, you can channel primal power when you attempt certain tasks; whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability: Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your agility, bearing, and senses.",
-				"Skills": [{
+				"Prof": [{
 					"Amount": 1,
 					"Type": "Prof",
 					"Choices": ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]

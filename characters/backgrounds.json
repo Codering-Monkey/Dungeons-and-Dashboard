@@ -1,0 +1,30 @@
+{
+	"Soldier": {
+		"Abilities": ["Str", "Dex", "Con"],
+		"Feat": "Savage Attacker",
+		"Prof": [{
+			"Amount": 1,
+			"Catagory": "Gaming Set",
+			"Type": "Prof"
+		},{
+			"Amount": 2,
+			"Choices": ["Athletics", "Intimidation"],
+			"Type": "Prof"
+		}],
+		"Equipment": [
+			[
+				["Spear", 1],
+				["Shortbow", 1],
+				["Arrow", 20],
+				["Gaming Set", 1],
+				["Healers Kit", 1],
+				["Quiver", 1],
+				["Traveller's Clothes", 1],
+				["GP", 14]
+			],
+			[
+				["GP", 50]
+			]
+		]
+	}
+}

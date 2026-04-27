@@ -12,9 +12,10 @@
 			},
 			"Skillful": {
 				"Description": "You gain proficiency in one skill of your choice.",
-				"Skills": [{
+				"Prof": [{
 					"Amount": 1,
-					"Type": "Prof"
+					"Type": "Prof",
+					"Catagory": "Skill"
 				}]
 			},
 			"Versatile": {
