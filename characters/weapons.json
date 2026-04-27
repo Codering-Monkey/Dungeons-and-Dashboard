@@ -1,0 +1,42 @@
+{
+	"Spear": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Piercing",
+		"Dice": [1, 6],
+		"Properties": ["Thrown (20/60)", "Versatile (1d8)"],
+		"Mastery": "Sap",
+		"Weight": 3,
+		"Cost": 1
+	},
+	"Shortbow": {
+		"Tier": "Simple",
+		"Type": "Ranged",
+		"Damage": "Piercing",
+		"Dice": [1, 6],
+		"Properties": ["Ammunition", "Range (80/320; Arrow)", "Two-Handed"],
+		"Mastery": "Vex",
+		"Weight": 2,
+		"Cost": 25
+	},
+	"Greataxe": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Slashing",
+		"Dice": [1, 12],
+		"Properties": ["Heavy", "Two-Handed"],
+		"Mastery": "Cleave",
+		"Weight": 7,
+		"Cost": 30
+	},
+	"Handaxe": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Slashing",
+		"Dice": [1, 6],
+		"Properties": ["Light", "Thrown (30/120)"],
+		"Mastery": "Vex",
+		"Weight": 2,
+		"Cost": 5
+	}
+}
