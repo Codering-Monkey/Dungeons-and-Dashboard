@@ -1,0 +1,29 @@
+{
+	"Human": {
+		"Speed": 30,
+		"Size": ["Medium", "Small"],
+		"Type": "Humanoid",
+		"Features": {
+			"Resourceful": {
+				"Description": "You gain Heroic Inspiration whenever you finish a Long Rest",
+				"Usages": 1,
+				"Recovery": "lr",
+				"Usage Name": "Heroic Inspiration"
+			},
+			"Skillful": {
+				"Description": "You gain proficiency in one skill of your choice.",
+				"Skills": [{
+					"Amount": 1,
+					"Type": "Prof"
+				}]
+			},
+			"Versatile": {
+				"Description": "You gain an Origin feat of your choice.",
+				"Feats": [{
+					"Amount": 1,
+					"Type": "Origin"
+				}]
+			}
+		}
+	}
+}
