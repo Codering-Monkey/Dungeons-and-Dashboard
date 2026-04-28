@@ -45,6 +45,16 @@ Storage.prototype.set = function(key, value) {
 };
 
 /**
+ * Creates a td object to append a child in
+ * @param {object} object
+ */
+Object.prototype.shellAppend = function (object) {
+    let shell = document.createElement("td")
+    this.appendChild(shell)
+    shell.appendChild(object)
+}
+
+/**
  * Fetches a JSON object from storage, returning null if not present
  * @param {string} key
  * @returns {any|null}
