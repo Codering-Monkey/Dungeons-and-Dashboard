@@ -3,8 +3,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .not-nav {
-    margin: 0 72px 0 0;
-    height: 100vh;
+    --gap: calc((100vh - ((5vw + 6px) + ((100vw - 128px) / 12 * 5))) / 2);
+    margin: var(--gap) 72px var(--gap) 0;
+    height: calc(100vh - (var(--gap) * 2));
+    padding: 0
 }
 
 /* All Characters */
@@ -137,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
 .prof {
     display: grid;
     grid-column: span 2;
-    grid-row: span 5;
+    grid-row: span 4;
 }
 
 .prof input[type=number] {
