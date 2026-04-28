@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 8px;
 }
 
-.stat {
+.player-grid > div, .player-grid > table {
     padding: 8px;
     background-color: var(--foreground);
     border-radius: 8px;
