@@ -28,9 +28,11 @@ Object.entries(proficiencies).forEach(([key, value]) => {
     profParent.appendChild(container)
     let profCheckbox = document.createElement("input")
     profCheckbox.type = "checkbox"
+    profCheckbox.disabled = true
     container.shellAppend(profCheckbox)
     let expCheckbox = document.createElement("input")
     expCheckbox.type = "checkbox"
+    expCheckbox.disabled = true
     container.shellAppend(expCheckbox)
     let bonusNumber = document.createElement("input")
     bonusNumber.type = "number"
