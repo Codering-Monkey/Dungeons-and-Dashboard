@@ -42,3 +42,21 @@ Object.entries(proficiencies).forEach(([key, value]) => {
     name.textContent = key + "(" + value + ")"
     container.shellAppend(name)
 })
+
+const stats = ["Str", "Dex", "Con", "Int", "Wis", "Cha"]
+let saveParent = id("save")
+saveParent.clear(1)
+for (let i = 0; i < stats.length; i++) {
+    let container = document.createElement("tr")
+    saveParent.appendChild(container)
+    let saveCheckbox = document.createElement("input")
+    saveCheckbox.type = "checkbox"
+    saveCheckbox.disabled = true
+    container.shellAppend(saveCheckbox)
+    let name = document.createElement("p")
+    name.textContent = stats[i]
+    container.shellAppend(name)
+    let saveBonus  = document.createElement("p")
+    saveBonus.textContent = "+96"
+    container.shellAppend(saveBonus)
+}
