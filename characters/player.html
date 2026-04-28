@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dungeons & Dashboard</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="characters.css">
+</head>
+<body id="body">
+    <div id="navbar"></div>
+    <div class="not-nav">
+        <div class="header">
+            <img id="pfp" src="../Images/players/Clover.png" alt="Player Profile Picture">
+            <div>
+                <h1>Clover Scarberry</h1>
+                <h5>3rd level Draconic Sorcerer Teifling</h5>
+            </div>
+        </div>
+        <div class="player-grid">
+<!--            Stats-->
+            <div>
+                <h4>Strength</h4>
+                <h1 id="strMod">+1</h1>
+                <h3 id="strStat">12</h3>
+            </div>
+            <div>
+                <h4>Dexterity</h4>
+                <h1 id="dexMod">+1</h1>
+                <h3 id="dexStat">12</h3>
+            </div>
+            <div>
+                <h4>Constitution</h4>
+                <h1 id="conMod">+1</h1>
+                <h3 id="conStat">12</h3>
+            </div>
+            <div>
+                <h4>Intelligence</h4>
+                <h1 id="intMod">+1</h1>
+                <h3 id="intStat">12</h3>
+            </div>
+            <div>
+                <h4>Wisdom</h4>
+                <h1 id="wisMod">+1</h1>
+                <h3 id="wisStat">12</h3>
+            </div>
+            <div>
+                <h4>Charisma</h4>
+                <h1 id="chaMod">+1</h1>
+                <h3 id="chaStat">12</h3>
+            </div>
+            <div>
+                <h4>Proficiency</h4>
+                <h1 id="pb">+2</h1>
+                <h4>Bonus</h4>
+            </div>
+            <div>
+                <h4>Speed</h4>
+                <h1 id="speed">30</h1>
+                <h4>feet</h4>
+            </div>
+            <div class="health">
+                <div>
+                    <button>Heal</button>
+                    <input type="number">
+                    <button>Harm</button>
+                </div>
+                <h2>10 + 2</h2>
+                <h2 style="grid-row: span 2; font-size: 62px; font-weight: lighter">/</h2>
+                <h2>10</h2>
+                <h4>Current Health</h4>
+                <h4>Max Health</h4>
+            </div>
+<!--            Proficiencies-->
+            <table class="prof" id="prof">
+                <tr>
+                    <th>Prof</th>
+                    <th>Exp</th>
+                    <th>Bonus</th>
+                    <th>Stat</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script type="module" src="../navbar.js"></script>
+    <script type="module" src="player.js"></script>
+</body>
+</html>
