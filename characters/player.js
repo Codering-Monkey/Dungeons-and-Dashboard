@@ -38,7 +38,7 @@ Object.entries(proficiencies).forEach(([key, value]) => {
     bonusNumber.textContent = "0"
     container.shellAppend(bonusNumber)
     let name = document.createElement("p")
-    name.textContent = key + "(" + value + ")"
+    name.textContent = key + " (" + value + ")"
     container.shellAppend(name)
 })
 
