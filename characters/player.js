@@ -22,7 +22,7 @@ const proficiencies = {
 }
 
 let profParent = id("prof")
-profParent.clear(1)
+profParent.clear(2)
 Object.entries(proficiencies).forEach(([key, value]) => {
     let container = document.createElement("tr")
     profParent.appendChild(container)
@@ -34,9 +34,8 @@ Object.entries(proficiencies).forEach(([key, value]) => {
     expCheckbox.type = "checkbox"
     expCheckbox.disabled = true
     container.shellAppend(expCheckbox)
-    let bonusNumber = document.createElement("input")
-    bonusNumber.type = "number"
-    bonusNumber.disabled = true
+    let bonusNumber = document.createElement("p")
+    bonusNumber.textContent = "0"
     container.shellAppend(bonusNumber)
     let name = document.createElement("p")
     name.textContent = key + "(" + value + ")"
