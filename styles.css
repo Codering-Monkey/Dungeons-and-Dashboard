@@ -76,7 +76,7 @@ input[type=checkbox] {
     accent-color: var(--pink);
 }
 
-input[type=text] {
+input[type=text], input[type=number] {
     background-color: var(--background);
     border: none;
     margin: 4px
