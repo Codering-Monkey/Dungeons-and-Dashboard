@@ -2,6 +2,10 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0
 }
 
+.not-nav {
+    overflow-y: scroll;
+}
+
 /* All Characters */
 
 .characters-grid {
@@ -82,10 +86,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .player-grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, calc((100% - 88px) / 12));
     gap: 8px;
-    grid-auto-rows: 1fr;
-    margin-top: 8px
+    grid-auto-rows: calc((100% - 224px) / 12);
+    margin-top: 8px;
+    overflow-y: scroll;
 }
 
 .stat {
