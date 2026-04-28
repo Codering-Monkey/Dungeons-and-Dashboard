@@ -3,7 +3,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .not-nav {
-    overflow-y: scroll;
+    margin: 0 72px 0 0;
+    height: 100vh;
 }
 
 /* All Characters */
