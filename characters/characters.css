@@ -160,3 +160,11 @@ table > tr > td > p, table > tbody > tr > td > p {
 .training * {
     text-align: left;
 }
+
+.defenses {
+    grid-column: span 2
+}
+
+.defenses * {
+    text-align: left;
+}
