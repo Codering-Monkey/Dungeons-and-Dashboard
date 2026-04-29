@@ -1,4 +1,6 @@
 import { id } from "../script.js"
+import playerData from "./sampleChar.json" with {type:"json"}
+playerData = playerData[0]
 
 const proficiencies = {
     "Acrobatics": "Dex",
