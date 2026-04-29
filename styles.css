@@ -291,3 +291,40 @@ body {
     max-height: 80vh;
     max-width: 80vw;
 }
+
+/* Tooltip */
+.tooltip {
+	cursor: pointer;
+	position: relative;
+	width: fit-content;
+	overflow: visible;
+    font-size: 1em;
+}
+
+.tooltip:not(.tooltip-text) {
+	text-decoration: underline var(--sub-text)
+}
+
+.tooltip:hover:not(.tooltip-text) {
+	text-decoration: underline var(--blue)
+}
+
+.tooltip-text {
+	z-index: 2;
+	display: none;
+	background-color: var(--navbar);
+	padding: 8px;
+	position: absolute;
+	left: 120%;
+	top: 0;
+	bottom: 0;
+	height: fit-content;
+	margin: 0;
+	max-width: 400px;
+	min-width: 150px;
+	width: fit-content
+}
+
+.tooltip:hover > .tooltip-text {
+	display: inline
+}
