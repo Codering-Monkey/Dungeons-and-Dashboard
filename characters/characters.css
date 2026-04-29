@@ -120,12 +120,13 @@ input[type=checkbox] {
     grid-row: span 2;
 }
 
-.health button:nth-child(1) {
+.health button:nth-child(1), .health button:nth-child(3) {
     color: var(--blue)
 }
 
-.health button:nth-child(3) {
-    color: var(--pink)
+.health button:nth-child(4) {
+    color: var(--pink);
+    margin-top: 4px
 }
 
 .health input[type="number"] {

@@ -33,7 +33,7 @@ function render() {
     if (playerData["Temp Health"] > 0) {
         id("health").textContent = playerData["Current Health"] + " + " + playerData["Temp Health"]
     } else {
-        id("health").textContent = playerData["Current Health"]
+        id("health").textContent = String(playerData["Current Health"])
     }
 
     const proficiencies = {
@@ -151,4 +151,31 @@ function render() {
     }
 
     // Health
+    id("heal").addEventListener("click", function () {
+        playerData["Current Health"] += parseInt(id("healthChange").textContent)
+        if (playerData["Current Health"] > playerData["Max Health"]) {
+            playerData["Current Health"] = playerData["Max Health"]
+        }
+        render()
+    })
+    id("harm").addEventListener("click", function () {
+        let amount = parseInt(id("healthChange").textContent)
+        if (playerData["Temp Health"] > amount) {
+            playerData["Temp Health"] -= amount
+        } else {
+            amount -= playerData["Temp Health"]
+            playerData["Temp Health"] = 0
+        }
+        playerData["Current Health"] -= amount
+        if (playerData["Current Health"] < 0) {
+            playerData["Current Health"] = 0
+        }
+        render()
+    })
+    id("temp").addEventListener("click", function () {
+        playerData["Temp Health"] = parseInt(id("healthChange").textContent)
+        render()
+    })
 }
+
+render()
