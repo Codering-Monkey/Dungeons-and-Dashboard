@@ -176,3 +176,8 @@ table > tr > td > p, table > tbody > tr > td > p {
 .conditions * {
     text-align: left;
 }
+
+.actions {
+    grid-column: span 8;
+    grid-row: span 3;
+}
