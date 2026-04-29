@@ -180,6 +180,22 @@ table > tr > td > p, table > tbody > tr > td > p {
     align-content: start !important;
 }
 
+.defenses h4 {
+    font-size: 1.3em;
+}
+
+.defenses div {
+    overflow-y: scroll;
+    height: calc(100% - 28px);
+    scrollbar-color: var(--text) var(--foreground);
+}
+
+.defenses p {
+    margin: 0;
+    font-size: .9em;
+    color: var(--sub-text)
+}
+
 .defenses * {
     text-align: left;
 }

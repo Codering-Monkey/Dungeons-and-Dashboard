@@ -158,6 +158,38 @@ function render(initial=false) {
         container.shellAppend(saveBonus)
     }
 
+    let defenses = id("defenses")
+    if (playerData["Resist"].length > 0) {
+        let title = document.createElement("h5")
+        title.textContent = "Resistances"
+        defenses.appendChild(title)
+        for (let i = 0; i < playerData["Resist"].length; i++) {
+            let item = document.createElement("p")
+            item.textContent = playerData["Resist"][i]
+            defenses.appendChild(item)
+        }
+    }
+    if (playerData["Immune"].length > 0) {
+        let title = document.createElement("h5")
+        title.textContent = "Immunities"
+        defenses.appendChild(title)
+        for (let i = 0; i < playerData["Immune"].length; i++) {
+            let item = document.createElement("p")
+            item.textContent = playerData["Immune"][i]
+            defenses.appendChild(item)
+        }
+    }
+    if (playerData["Weak"].length > 0) {
+        let title = document.createElement("h5")
+        title.textContent = "Weaknesses"
+        defenses.appendChild(title)
+        for (let i = 0; i < playerData["Weak"].length; i++) {
+            let item = document.createElement("p")
+            item.textContent = playerData["Weak"][i]
+            defenses.appendChild(item)
+        }
+    }
+
     // Health
     if (initial) {
         id("heal").addEventListener("click", function () {
