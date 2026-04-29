@@ -166,8 +166,17 @@ table > tr > td > p, table > tbody > tr > td > p {
     text-align: left;
 }
 
+.training th {
+    height: 20px;
+}
+
+.training tr:not(:has(th)) {
+    height: calc(((((100vw - 128px) / 12) * 2) - 48px - (4 * 23px)) / 4);
+}
+
 .defenses {
-    grid-column: span 3
+    grid-column: span 3;
+    align-content: start !important;
 }
 
 .defenses * {
@@ -175,7 +184,8 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .conditions {
-    grid-column: span 3
+    grid-column: span 3;
+    align-content: start !important;
 }
 
 .conditions * {
