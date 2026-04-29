@@ -180,4 +180,29 @@ table > tr > td > p, table > tbody > tr > td > p {
 .actions {
     grid-column: span 8;
     grid-row: span 3;
+    text-align: left;
+    display: flex;
+}
+
+.tabs {
+    float:left
+}
+
+.tabs > h5 {
+    float: left;
+    margin: 8px;
+    cursor: pointer;
+}
+
+.tabs > *:hover {
+    color: var(--blue)
+}
+
+.tabs > *:active {
+    color: var(--pink)
+}
+
+.tabs > .active {
+    color: var(--pink);
+    border-bottom: 1px solid var(--pink);
 }
