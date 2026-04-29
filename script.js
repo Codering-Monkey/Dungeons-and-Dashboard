@@ -69,7 +69,7 @@ Storage.prototype.get = function(key) {
  * @param {number} keep
  */
 Object.prototype.clear = function(keep=0) {
-    while (this.childNodes.length > keep) {
+    while (this.children.length > keep) {
 		this.removeChild(this.lastChild)
 	}
 }
