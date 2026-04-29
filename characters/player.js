@@ -69,15 +69,25 @@ const stats = ["Str", "Dex", "Con", "Int", "Wis", "Cha"]
 let saveParent = id("save")
 saveParent.clear(1)
 for (let i = 0; i < stats.length; i++) {
+    let value = playerData["Stats"][stats[i]];
+    id(stats[i].toLowerCase() + "Stat").textContent = value
+    let mod = Math.floor((value - 10) / 2)
+    id(stats[i].toLowerCase() + "Mod").textContent = String(mod.symbol())
+
     let container = document.createElement("tr")
     saveParent.appendChild(container)
     let saveCheckbox = document.createElement("input")
     saveCheckbox.type = "checkbox"
     container.shellAppend(saveCheckbox)
     let name = document.createElement("p")
+    let save = mod
+    if (playerData["Saves"].includes(stats[i])) {
+        save += 2
+        saveCheckbox.checked = true
+    }
     name.textContent = stats[i]
     container.shellAppend(name)
     let saveBonus  = document.createElement("p")
-    saveBonus.textContent = "+96"
+    saveBonus.textContent = String(save.symbol())
     container.shellAppend(saveBonus)
 }
