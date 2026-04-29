@@ -15,6 +15,14 @@ id("init").textContent = playerData["Init"].symbol()
 
 id("ac").textContent = playerData["Armour"]
 
+id("maxHealth").textContent = playerData["Max Health"]
+
+if (playerData["Temp Health"] > 0) {
+    id("health").textContent =  playerData["Current Health"] + " + " + playerData["Temp Health"]
+} else {
+    id("health").textContent =  playerData["Current Health"]
+}
+
 const proficiencies = {
     "Acrobatics": "Dex",
     "Animal Handling": "Wis",
