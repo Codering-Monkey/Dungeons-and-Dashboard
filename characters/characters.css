@@ -145,10 +145,18 @@ h1, h2, h3, h4, h5, h6 {
     width: 3em
 }
 
-table > tr > td > p {
+table > tr > td > p, table > tbody > tr > td > p {
     margin: 0
 }
 
 #save {
     grid-row: span 2
+}
+
+.training {
+    grid-row: span 2
+}
+
+.training * {
+    text-align: left;
 }
