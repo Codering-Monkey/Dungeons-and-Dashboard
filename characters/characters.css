@@ -162,9 +162,17 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .defenses {
-    grid-column: span 2
+    grid-column: span 3
 }
 
 .defenses * {
+    text-align: left;
+}
+
+.conditions {
+    grid-column: span 3
+}
+
+.conditions * {
     text-align: left;
 }
