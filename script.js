@@ -242,6 +242,14 @@ String.prototype.parse = function() {
 }
 
 /**
+ * Rolls a Dice, defaults to d20
+ * @returns {number}
+ */
+export function roll(sides=20) {
+    return Math.floor(Math.random() * (sides + 1)) + 1
+}
+
+/**
  * Returns the number with "+" if positive
  * @returns {string}
  */

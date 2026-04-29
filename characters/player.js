@@ -1,4 +1,4 @@
-import {id, numSuffix} from "../script.js"
+import {id, numSuffix, popup, roll} from "../script.js"
 import allData from "./sampleChar.json" with {type:"json"}
 let playerData = allData[0]
 
@@ -51,12 +51,14 @@ Object.entries(proficiencies).forEach(([key, value]) => {
     profParent.appendChild(container)
     let bonusNumber = document.createElement("p")
     let mod = Math.floor((playerData["Stats"][value] - 10) / 2)
+    let bonus = mod
     bonusNumber.textContent = mod.symbol()
     let profCheckbox = document.createElement("input")
     profCheckbox.type = "checkbox"
     if (playerData["Prof"].includes(key)) {
         profCheckbox.checked = true
         bonusNumber.textContent = (mod + prof).symbol()
+        bonus += prof
     }
     container.shellAppend(profCheckbox)
     let expCheckbox = document.createElement("input")
@@ -64,12 +66,24 @@ Object.entries(proficiencies).forEach(([key, value]) => {
     if (playerData["Exp"].includes(key)) {
         expCheckbox.checked = true
         bonusNumber.textContent = (mod + (prof * 2)).symbol()
+        bonus += prof
     }
     container.shellAppend(expCheckbox)
 
     container.shellAppend(bonusNumber)
     let name = document.createElement("p")
     name.textContent = key + " (" + value + ")"
+    name.classList.add("clickable")
+    name.addEventListener("click", function() {
+        let dice = roll()
+        if (bonus > 0) {
+            popup(`You rolled a ${dice + bonus} on your ${key} roll (${dice} + ${bonus})`)
+        } else if (bonus < 0) {
+            popup(`You rolled a ${dice + bonus} on your ${key} roll (${dice} - ${bonus * -1})`)
+        } else {
+            popup(`You rolled a ${dice + bonus} on your ${key} roll`)
+        }
+    })
     container.shellAppend(name)
 })
 
@@ -80,7 +94,19 @@ for (let i = 0; i < stats.length; i++) {
     let value = playerData["Stats"][stats[i]];
     id(stats[i].toLowerCase() + "Stat").textContent = value
     let mod = Math.floor((value - 10) / 2)
-    id(stats[i].toLowerCase() + "Mod").textContent = String(mod.symbol())
+    let modObject = id(stats[i].toLowerCase() + "Mod")
+    modObject.textContent = String(mod.symbol())
+    modObject.classList.add("clickable")
+    modObject.addEventListener("click", function() {
+        let dice = roll()
+        if (save > 0) {
+            popup(`You rolled a ${dice + mod} on your ${stats[i]} roll (${dice} + ${mod})`)
+        } else if (save < 0) {
+            popup(`You rolled a ${dice + mod} on your ${stats[i]} roll (${dice} - ${mod * -1})`)
+        } else {
+            popup(`You rolled a ${dice + mod} on your ${stats[i]} roll`)
+        }
+    })
 
     let container = document.createElement("tr")
     saveParent.appendChild(container)
@@ -94,6 +120,17 @@ for (let i = 0; i < stats.length; i++) {
         saveCheckbox.checked = true
     }
     name.textContent = stats[i]
+    name.classList.add("clickable")
+    name.addEventListener("click", function() {
+        let dice = roll()
+        if (save > 0) {
+            popup(`You rolled a ${dice + save} on your ${stats[i]} save (${dice} + ${save})`)
+        } else if (save < 0) {
+            popup(`You rolled a ${dice + save} on your ${stats[i]} save (${dice} - ${save * -1})`)
+        } else {
+            popup(`You rolled a ${dice + save} on your ${stats[i]} save`)
+        }
+    })
     container.shellAppend(name)
     let saveBonus  = document.createElement("p")
     saveBonus.textContent = String(save.symbol())

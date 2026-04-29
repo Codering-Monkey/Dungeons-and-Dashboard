@@ -121,6 +121,18 @@ a:hover {
     color: var(--blue)
 }
 
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    color: var(--blue);
+}
+
+.clickable:active {
+    color: var(--pink);
+}
+
 button {
     background-color: var(--background);
     text-decoration: none;
