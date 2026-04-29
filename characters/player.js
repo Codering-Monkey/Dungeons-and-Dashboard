@@ -152,14 +152,14 @@ function render() {
 
     // Health
     id("heal").addEventListener("click", function () {
-        playerData["Current Health"] += parseInt(id("healthChange").textContent)
+        playerData["Current Health"] += parseInt(id("healthChange").value)
         if (playerData["Current Health"] > playerData["Max Health"]) {
             playerData["Current Health"] = playerData["Max Health"]
         }
         render()
     })
     id("harm").addEventListener("click", function () {
-        let amount = parseInt(id("healthChange").textContent)
+        let amount = parseInt(id("healthChange").value)
         if (playerData["Temp Health"] > amount) {
             playerData["Temp Health"] -= amount
         } else {
@@ -173,7 +173,7 @@ function render() {
         render()
     })
     id("temp").addEventListener("click", function () {
-        playerData["Temp Health"] = parseInt(id("healthChange").textContent)
+        playerData["Temp Health"] = parseInt(id("healthChange").value)
         render()
     })
 }
