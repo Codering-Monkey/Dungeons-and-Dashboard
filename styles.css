@@ -290,9 +290,14 @@ body {
     background-color: var(--background);
     max-height: 80vh;
     max-width: 80vw;
+    overflow-y: scroll;
+    width: fit-content;
+    height: fit-content;
+    padding: 8px
 }
 
 /* Tooltip */
+
 .tooltip {
 	cursor: pointer;
 	position: relative;
