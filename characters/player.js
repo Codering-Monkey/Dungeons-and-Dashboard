@@ -28,11 +28,9 @@ Object.entries(proficiencies).forEach(([key, value]) => {
     profParent.appendChild(container)
     let profCheckbox = document.createElement("input")
     profCheckbox.type = "checkbox"
-    profCheckbox.disabled = true
     container.shellAppend(profCheckbox)
     let expCheckbox = document.createElement("input")
     expCheckbox.type = "checkbox"
-    expCheckbox.disabled = true
     container.shellAppend(expCheckbox)
     let bonusNumber = document.createElement("p")
     bonusNumber.textContent = "0"
@@ -50,7 +48,6 @@ for (let i = 0; i < stats.length; i++) {
     saveParent.appendChild(container)
     let saveCheckbox = document.createElement("input")
     saveCheckbox.type = "checkbox"
-    saveCheckbox.disabled = true
     container.shellAppend(saveCheckbox)
     let name = document.createElement("p")
     name.textContent = stats[i]
