@@ -41,14 +41,24 @@ profParent.clear(2)
 Object.entries(proficiencies).forEach(([key, value]) => {
     let container = document.createElement("tr")
     profParent.appendChild(container)
+    let bonusNumber = document.createElement("p")
+    let mod = Math.floor((playerData["Stats"][value] - 10) / 2)
+    bonusNumber.textContent = mod.symbol()
     let profCheckbox = document.createElement("input")
     profCheckbox.type = "checkbox"
+    if (playerData["Prof"].includes(key)) {
+        profCheckbox.checked = true
+        bonusNumber.textContent = (mod + prof).symbol()
+    }
     container.shellAppend(profCheckbox)
     let expCheckbox = document.createElement("input")
     expCheckbox.type = "checkbox"
+    if (playerData["Exp"].includes(key)) {
+        expCheckbox.checked = true
+        bonusNumber.textContent = (mod + (prof * 2)).symbol()
+    }
     container.shellAppend(expCheckbox)
-    let bonusNumber = document.createElement("p")
-    bonusNumber.textContent = "0"
+
     container.shellAppend(bonusNumber)
     let name = document.createElement("p")
     name.textContent = key + " (" + value + ")"
