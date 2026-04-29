@@ -2,7 +2,7 @@ import {id, numSuffix, popup, roll} from "../script.js"
 import allData from "./sampleChar.json" with {type:"json"}
 let playerData = allData[0]
 
-function render() {
+function render(initial=false) {
     // Generate Static Data
     id("pfp").src = playerData["Pfp"]
     id("name").textContent = playerData["Name"]
@@ -14,17 +14,19 @@ function render() {
 
     let initObject = id("init")
     initObject.textContent = playerData["Init"].symbol()
-    initObject.classList.add("clickable")
-    initObject.addEventListener("click", function () {
-        let dice = roll()
-        if (playerData["Init"] > 0) {
-            popup(`You rolled a ${dice + playerData["Init"]} on your initiative roll (${dice} + ${playerData["Init"]})`)
-        } else if (playerData["Init"] < 0) {
-            popup(`You rolled a ${dice + playerData["Init"]} on your initiative roll (${dice} - ${playerData["Init"] * -1})`)
-        } else {
-            popup(`You rolled a ${dice + playerData["Init"]} on your initiative roll`)
-        }
-    })
+    if (initial) {
+        initObject.classList.add("clickable")
+        initObject.addEventListener("click", function () {
+            let dice = roll()
+            if (playerData["Init"] > 0) {
+                popup(`You rolled a ${dice + playerData["Init"]} on your initiative roll (${dice} + ${playerData["Init"]})`)
+            } else if (playerData["Init"] < 0) {
+                popup(`You rolled a ${dice + playerData["Init"]} on your initiative roll (${dice} - ${playerData["Init"] * -1})`)
+            } else {
+                popup(`You rolled a ${dice + playerData["Init"]} on your initiative roll`)
+            }
+        })
+    }
 
     id("ac").textContent = playerData["Armour"]
 
@@ -86,17 +88,19 @@ function render() {
         container.shellAppend(bonusNumber)
         let name = document.createElement("p")
         name.textContent = key + " (" + value + ")"
-        name.classList.add("clickable")
-        name.addEventListener("click", function () {
-            let dice = roll()
-            if (bonus > 0) {
-                popup(`You rolled a ${dice + bonus} on your ${key} roll (${dice} + ${bonus})`)
-            } else if (bonus < 0) {
-                popup(`You rolled a ${dice + bonus} on your ${key} roll (${dice} - ${bonus * -1})`)
-            } else {
-                popup(`You rolled a ${dice + bonus} on your ${key} roll`)
-            }
-        })
+        if (initial) {
+            name.classList.add("clickable")
+            name.addEventListener("click", function () {
+                let dice = roll()
+                if (bonus > 0) {
+                    popup(`You rolled a ${dice + bonus} on your ${key} roll (${dice} + ${bonus})`)
+                } else if (bonus < 0) {
+                    popup(`You rolled a ${dice + bonus} on your ${key} roll (${dice} - ${bonus * -1})`)
+                } else {
+                    popup(`You rolled a ${dice + bonus} on your ${key} roll`)
+                }
+            })
+        }
         container.shellAppend(name)
     })
 
@@ -109,17 +113,19 @@ function render() {
         let mod = Math.floor((value - 10) / 2)
         let modObject = id(stats[i].toLowerCase() + "Mod")
         modObject.textContent = String(mod.symbol())
-        modObject.classList.add("clickable")
-        modObject.addEventListener("click", function () {
-            let dice = roll()
-            if (save > 0) {
-                popup(`You rolled a ${dice + mod} on your ${stats[i]} roll (${dice} + ${mod})`)
-            } else if (save < 0) {
-                popup(`You rolled a ${dice + mod} on your ${stats[i]} roll (${dice} - ${mod * -1})`)
-            } else {
-                popup(`You rolled a ${dice + mod} on your ${stats[i]} roll`)
-            }
-        })
+        if (initial) {
+            modObject.classList.add("clickable")
+            modObject.addEventListener("click", function () {
+                let dice = roll()
+                if (save > 0) {
+                    popup(`You rolled a ${dice + mod} on your ${stats[i]} roll (${dice} + ${mod})`)
+                } else if (save < 0) {
+                    popup(`You rolled a ${dice + mod} on your ${stats[i]} roll (${dice} - ${mod * -1})`)
+                } else {
+                    popup(`You rolled a ${dice + mod} on your ${stats[i]} roll`)
+                }
+            })
+        }
 
         let container = document.createElement("tr")
         saveParent.appendChild(container)
@@ -133,17 +139,19 @@ function render() {
             saveCheckbox.checked = true
         }
         name.textContent = stats[i]
-        name.classList.add("clickable")
-        name.addEventListener("click", function () {
-            let dice = roll()
-            if (save > 0) {
-                popup(`You rolled a ${dice + save} on your ${stats[i]} save (${dice} + ${save})`)
-            } else if (save < 0) {
-                popup(`You rolled a ${dice + save} on your ${stats[i]} save (${dice} - ${save * -1})`)
-            } else {
-                popup(`You rolled a ${dice + save} on your ${stats[i]} save`)
-            }
-        })
+        if (initial) {
+            name.classList.add("clickable")
+            name.addEventListener("click", function () {
+                let dice = roll()
+                if (save > 0) {
+                    popup(`You rolled a ${dice + save} on your ${stats[i]} save (${dice} + ${save})`)
+                } else if (save < 0) {
+                    popup(`You rolled a ${dice + save} on your ${stats[i]} save (${dice} - ${save * -1})`)
+                } else {
+                    popup(`You rolled a ${dice + save} on your ${stats[i]} save`)
+                }
+            })
+        }
         container.shellAppend(name)
         let saveBonus = document.createElement("p")
         saveBonus.textContent = String(save.symbol())
@@ -151,31 +159,33 @@ function render() {
     }
 
     // Health
-    id("heal").addEventListener("click", function () {
-        playerData["Current Health"] += parseInt(id("healthChange").value)
-        if (playerData["Current Health"] > playerData["Max Health"]) {
-            playerData["Current Health"] = playerData["Max Health"]
-        }
-        render()
-    })
-    id("harm").addEventListener("click", function () {
-        let amount = parseInt(id("healthChange").value)
-        if (playerData["Temp Health"] > amount) {
-            playerData["Temp Health"] -= amount
-        } else {
-            amount -= playerData["Temp Health"]
-            playerData["Temp Health"] = 0
-        }
-        playerData["Current Health"] -= amount
-        if (playerData["Current Health"] < 0) {
-            playerData["Current Health"] = 0
-        }
-        render()
-    })
-    id("temp").addEventListener("click", function () {
-        playerData["Temp Health"] = parseInt(id("healthChange").value)
-        render()
-    })
+    if (initial) {
+        id("heal").addEventListener("click", function () {
+            playerData["Current Health"] += parseInt(id("healthChange").value)
+            if (playerData["Current Health"] > playerData["Max Health"]) {
+                playerData["Current Health"] = playerData["Max Health"]
+            }
+            render()
+        })
+        id("harm").addEventListener("click", function () {
+            let amount = parseInt(id("healthChange").value)
+            if (playerData["Temp Health"] > amount) {
+                playerData["Temp Health"] -= amount
+            } else {
+                amount -= playerData["Temp Health"]
+                playerData["Temp Health"] = 0
+            }
+            playerData["Current Health"] -= amount
+            if (playerData["Current Health"] < 0) {
+                playerData["Current Health"] = 0
+            }
+            render()
+        })
+        id("temp").addEventListener("click", function () {
+            playerData["Temp Health"] = parseInt(id("healthChange").value)
+            render()
+        })
+    }
 }
 
-render()
+render(true)
