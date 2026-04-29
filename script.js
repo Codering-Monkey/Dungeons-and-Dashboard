@@ -241,6 +241,18 @@ String.prototype.parse = function() {
     return this
 }
 
+/**
+ * Returns the number with "+" if positive
+ * @returns {string}
+ */
+Number.prototype.symbol = function() {
+    if (this > 0) {
+        return "+" + String(this)
+    } else {
+        return String(this)
+    }
+}
+
 // Popup
 
 let popupBar = document.createElement("div");
