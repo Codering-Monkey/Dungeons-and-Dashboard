@@ -1,6 +1,19 @@
-import { id } from "../script.js"
-import playerData from "./sampleChar.json" with {type:"json"}
-playerData = playerData[0]
+import {id, numSuffix} from "../script.js"
+import allData from "./sampleChar.json" with {type:"json"}
+let playerData = allData[0]
+
+// Generate Static Data
+id("pfp").src = playerData["Pfp"]
+id("name").textContent = playerData["Name"]
+id("title").textContent = `${numSuffix(playerData["Level"])} level ${playerData["Species"]} ${playerData["Prefix"]} ${playerData["Class"]}`
+id("speed").textContent = playerData["Speed"]
+
+let prof = Math.ceil(playerData["Level"] / 4) + 1
+id("pb").textContent = prof.symbol()
+
+id("init").textContent = playerData["Init"].symbol()
+
+id("ac").textContent = playerData["Armour"]
 
 const proficiencies = {
     "Acrobatics": "Dex",
