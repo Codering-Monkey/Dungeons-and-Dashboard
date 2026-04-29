@@ -137,8 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .prof {
-    display: grid;
-    grid-column: span 2;
+    grid-column: span 3;
     grid-row: span 4;
 }
 
@@ -148,4 +147,8 @@ h1, h2, h3, h4, h5, h6 {
 
 table > tr > td > p {
     margin: 0
+}
+
+#save {
+    grid-row: span 2
 }
