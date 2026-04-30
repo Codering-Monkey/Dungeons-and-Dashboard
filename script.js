@@ -335,11 +335,16 @@ export function popup(data) {
 
 // Overlay
 
-export function overlay() {
+/**
+ * Creates an Overlay
+ * @param {function} closeEvent
+ * @returns {HTMLDivElement}
+ */
+export function overlay(closeEvent=function() {}) {
     let overlay = document.createElement("div");
     overlay.classList.add("overlay");
     overlay.id = "overlay"
-    overlay.addEventListener("click", function(event) {if (event.target.id === "overlay") {this.parentElement.removeChild(this)}})
+    overlay.addEventListener("click", function(event) {if (event.target.id === "overlay") {this.parentElement.removeChild(this); closeEvent()}})
     document.body.appendChild(overlay);
 
     let box = document.createElement("div");
