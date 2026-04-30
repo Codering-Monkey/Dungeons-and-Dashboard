@@ -185,6 +185,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .defenses div {
+    margin-top: 4px;
     overflow-y: scroll;
     height: calc(100% - 28px);
     scrollbar-color: var(--text) var(--foreground);
@@ -203,6 +204,27 @@ table > tr > td > p, table > tbody > tr > td > p {
 .conditions {
     grid-column: span 3;
     align-content: start !important;
+}
+
+.conditions p {
+    margin: 0;
+    font-size: .9em;
+    color: var(--sub-text)
+}
+
+.conditions div {
+    margin-top: 4px;
+    overflow-y: scroll;
+    height: calc(100% - 28px);
+    scrollbar-color: var(--text) var(--foreground);
+}
+
+.conditions button {
+    float: right
+}
+
+.conditions h4 {
+    font-size: 1.3em;
 }
 
 .conditions * {
@@ -237,4 +259,40 @@ table > tr > td > p, table > tbody > tr > td > p {
 .tabs > .active {
     color: var(--pink);
     border-bottom: 1px solid var(--pink);
+}
+
+.overlay > div {
+    overflow: hidden;
+    width: 956px
+}
+
+.current {
+    float: right;
+    width: calc(50% - 4px);
+    margin-left: 8px
+}
+
+.current > * {
+    float: left;
+}
+
+.current div {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.current div p {
+    margin: 2px;
+    width: 125px
+}
+
+.add {
+    float: left;
+    width: calc(50% - 4px);
+}
+
+.add > button {
+    width: 150px;
+    margin: 4px
 }

@@ -1,4 +1,4 @@
-import {id, numSuffix, popup, roll} from "../script.js"
+import {id, numSuffix, overlay, popup, roll} from "../script.js"
 import allData from "./sampleChar.json" with {type:"json"}
 let playerData = allData[0]
 
@@ -159,6 +159,7 @@ function render(initial=false) {
     }
 
     let defenses = id("defenses")
+    defenses.clear()
     if (playerData["Resist"].length > 0) {
         let title = document.createElement("h5")
         title.textContent = "Resistances"
@@ -193,14 +194,14 @@ function render(initial=false) {
     // Health
     if (initial) {
         id("heal").addEventListener("click", function () {
-            playerData["Current Health"] += parseInt(id("healthChange").value)
+            playerData["Current Health"] += parseInt(id("healthChange")["value"])
             if (playerData["Current Health"] > playerData["Max Health"]) {
                 playerData["Current Health"] = playerData["Max Health"]
             }
             render()
         })
         id("harm").addEventListener("click", function () {
-            let amount = parseInt(id("healthChange").value)
+            let amount = parseInt(id("healthChange")["value"])
             if (playerData["Temp Health"] > amount) {
                 playerData["Temp Health"] -= amount
             } else {
@@ -214,8 +215,98 @@ function render(initial=false) {
             render()
         })
         id("temp").addEventListener("click", function () {
-            playerData["Temp Health"] = parseInt(id("healthChange").value)
+            playerData["Temp Health"] = parseInt(id("healthChange")["value"])
             render()
+        })
+    }
+
+    // Conditions
+    let dndConditions = [
+        "Blinded",
+        "Charmed",
+        "Deafened",
+        "Frightened",
+        "Grappled",
+        "Incapacitated",
+        "Invisible",
+        "Paralyzed",
+        "Petrified",
+        "Poisoned",
+        "Prone",
+        "Restrained",
+        "Stunned",
+        "Unconscious",
+        "Exhaustion"
+    ]
+
+    let condBox = id("conditions")
+    condBox.clear()
+    let conditions = playerData["Conditions"]
+    let numberedConditions = {}
+    for (let i = 0; i < conditions.length; i++) {
+        numberedConditions[conditions[i]] = (numberedConditions[conditions[i]] || 0) + 1
+    }
+    Object.entries(numberedConditions).forEach(([key, value]) => {
+        let item = document.createElement("p")
+        if (value === 1) {
+            item.textContent = key
+        } else {
+            item.textContent = value + "x " + key
+        }
+        condBox.append(item)
+    })
+    if (initial) {
+        let condButton = id("condButton")
+        condButton.addEventListener("click", function () {
+            let box = overlay(function () {render()})
+            let current = document.createElement("div")
+            current.classList.add("current")
+            box.appendChild(current)
+            function renderCurrent() {
+                current.clear()
+                let conditions = playerData["Conditions"]
+                let numberedConditions = {}
+                for (let i = 0; i < conditions.length; i++) {
+                    numberedConditions[conditions[i]] = (numberedConditions[conditions[i]] || 0) + 1
+                }
+                Object.entries(numberedConditions).forEach(([key, value]) => {
+                    let item = document.createElement("div")
+                    item.classList.add("clickable")
+                    current.appendChild(item)
+                    item.addEventListener("click", function () {
+                        playerData["Conditions"].splice(playerData["Conditions"].indexOf(key), 1)
+                        renderCurrent()
+                    })
+
+                    let bin  = document.createElement("span")
+                    bin.classList.add("material-symbols-outlined")
+                    bin.textContent = "delete"
+                    item.appendChild(bin)
+
+                    let text = document.createElement("p")
+                    if (value === 1) {
+                        text.textContent = key
+                    } else {
+                        text.textContent = value + "x " + key
+                    }
+                    item.append(text)
+                })
+            }
+            renderCurrent()
+            let add = document.createElement("div")
+            add.classList.add("add")
+            for (let i = 0; i < dndConditions.length; i++) {
+                let button = document.createElement("button")
+                button.textContent = dndConditions[i]
+                button.style.width= "150px"
+                button.style.margin = "4px"
+                button.addEventListener("click", function () {
+                    playerData["Conditions"].push(dndConditions[i])
+                    renderCurrent()
+                })
+                add.appendChild(button)
+            }
+            box.appendChild(add)
         })
     }
 }
