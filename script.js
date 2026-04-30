@@ -338,7 +338,8 @@ export function popup(data) {
 export function overlay() {
     let overlay = document.createElement("div");
     overlay.classList.add("overlay");
-    overlay.addEventListener("click", function() {this.parentElement.removeChild(this)})
+    overlay.id = "overlay"
+    overlay.addEventListener("click", function(event) {if (event.target.id === "overlay") {this.parentElement.removeChild(this)}})
     document.body.appendChild(overlay);
 
     let box = document.createElement("div");
