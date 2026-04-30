@@ -129,7 +129,15 @@ a:hover {
     color: var(--blue);
 }
 
+.clickable:hover > * {
+    color: var(--blue);
+}
+
 .clickable:active {
+    color: var(--pink);
+}
+
+.clickable:active > * {
     color: var(--pink);
 }
 
