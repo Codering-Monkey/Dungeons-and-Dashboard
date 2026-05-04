@@ -88,19 +88,17 @@ function render(initial=false) {
         container.shellAppend(bonusNumber)
         let name = document.createElement("p")
         name.textContent = key + " (" + value + ")"
-        if (initial) {
-            name.classList.add("clickable")
-            name.addEventListener("click", function () {
-                let dice = roll()
-                if (bonus > 0) {
-                    popup(`You rolled a ${dice + bonus} on your ${key} roll (${dice} + ${bonus})`)
-                } else if (bonus < 0) {
-                    popup(`You rolled a ${dice + bonus} on your ${key} roll (${dice} - ${bonus * -1})`)
-                } else {
-                    popup(`You rolled a ${dice + bonus} on your ${key} roll`)
-                }
-            })
-        }
+        name.classList.add("clickable")
+        name.addEventListener("click", function () {
+            let dice = roll()
+            if (bonus > 0) {
+                popup(`You rolled a ${dice + bonus} on your ${key} roll (${dice} + ${bonus})`)
+            } else if (bonus < 0) {
+                popup(`You rolled a ${dice + bonus} on your ${key} roll (${dice} - ${bonus * -1})`)
+            } else {
+                popup(`You rolled a ${dice + bonus} on your ${key} roll`)
+            }
+        })
         container.shellAppend(name)
     })
 
@@ -139,19 +137,17 @@ function render(initial=false) {
             saveCheckbox.checked = true
         }
         name.textContent = stats[i]
-        if (initial) {
-            name.classList.add("clickable")
-            name.addEventListener("click", function () {
-                let dice = roll()
-                if (save > 0) {
-                    popup(`You rolled a ${dice + save} on your ${stats[i]} save (${dice} + ${save})`)
-                } else if (save < 0) {
-                    popup(`You rolled a ${dice + save} on your ${stats[i]} save (${dice} - ${save * -1})`)
-                } else {
-                    popup(`You rolled a ${dice + save} on your ${stats[i]} save`)
-                }
-            })
-        }
+        name.classList.add("clickable")
+        name.addEventListener("click", function () {
+            let dice = roll()
+            if (save > 0) {
+                popup(`You rolled a ${dice + save} on your ${stats[i]} save (${dice} + ${save})`)
+            } else if (save < 0) {
+                popup(`You rolled a ${dice + save} on your ${stats[i]} save (${dice} - ${save * -1})`)
+            } else {
+                popup(`You rolled a ${dice + save} on your ${stats[i]} save`)
+            }
+        })
         container.shellAppend(name)
         let saveBonus = document.createElement("p")
         saveBonus.textContent = String(save.symbol())
