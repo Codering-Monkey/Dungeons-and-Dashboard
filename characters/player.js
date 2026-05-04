@@ -305,6 +305,12 @@ function render(initial=false) {
             box.appendChild(add)
         })
     }
+
+//  Training
+    let trainingCatagories = {"armourTraining": "ArmourTraining", "weaponTraining": "WeaponTraining", "toolTraining": "ToolTraining", "langTraining": "Languages"}
+    Object.entries(trainingCatagories).forEach(([key, value]) => {
+        id(key).textContent = playerData[value].commaFuse()
+    })
 }
 
 render(true)

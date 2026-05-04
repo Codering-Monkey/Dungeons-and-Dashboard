@@ -132,6 +132,21 @@ Array.prototype.fuse = function(gap="") {
 }
 
 /**
+ * Fuses an array, with commas between each item and 'and' prior to the last
+ * @returns {string}
+ */
+Array.prototype.commaFuse = function() {
+    let final = structuredClone(this)
+    if (this.length > 1) {
+        final.splice(this.length - 1, 0, " and ")
+        for (let i = this.length - 1; i > 0; i--) {
+            final.splice(i, 0, ", ")
+        }
+    }
+    return final.fuse()
+}
+
+/**
  * The opposite of Array.push(). removes an element based on its value. returns the values index
  * @param {any} value
  * @returns {number}

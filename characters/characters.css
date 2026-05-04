@@ -165,14 +165,15 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .training * {
     text-align: left;
+    margin: 2px
 }
 
-.training th {
-    height: 20px;
-}
+.training > div {
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    scrollbar-color: var(--text) var(--foreground);
 
-.training tr:not(:has(th)) {
-    height: calc(((((100vw - 128px) / 12) * 2) - 48px - (4 * 23px)) / 4);
 }
 
 .defenses {
