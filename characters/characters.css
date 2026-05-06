@@ -297,3 +297,37 @@ table > tr > td > p, table > tbody > tr > td > p {
     width: 150px;
     margin: 4px
 }
+
+.action-content {
+        height: 100%;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.action-filter > * {
+    margin: 2px;
+    float: left
+}
+
+.action-body {
+    width: 100%;
+    overflow-y: scroll;
+    scrollbar-color: var(--text) var(--foreground);
+    float: left;
+    height: calc(100% - 32px);
+}
+
+.action-body > * {
+    float: left;
+}
+
+.action-body table {
+    width: 100%;
+}
+
+.action-body th {
+    font-size: .85em;
+}
