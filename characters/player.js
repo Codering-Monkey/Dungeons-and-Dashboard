@@ -1,6 +1,12 @@
-import {id, numSuffix, overlay, popup, roll} from "../script.js"
+import {getQuery, id, numSuffix, overlay, popup, roll, setQuery} from "../script.js"
 import allData from "./sampleChar.json" with {type:"json"}
+import weapons from "./weapons.json" with {type:"json"}
 let playerData = allData[0]
+
+function developData() {
+
+    return playerData
+}
 
 function render(initial=false) {
     // Generate Static Data
@@ -311,6 +317,89 @@ function render(initial=false) {
     Object.entries(trainingCatagories).forEach(([key, value]) => {
         id(key).textContent = playerData[value].commaFuse()
     })
+
+//  Actions
+    let tabs = ["actions", "spells", "inv", "feat", "set"]
+    if (initial) {
+        for (let i = 0; i < tabs.length; i++) {
+            id(tabs[i] + "Tab").addEventListener("click", function () {
+                id(getQuery("tab") + "Tab").classList.remove("active")
+                setQuery("tab", tabs[i])
+                id(tabs[i] + "Tab").classList.add("active")
+                renderAction()
+            })
+        }
+    }
+    let currentTab
+    if (getQuery(tabs)) {
+        currentTab = getQuery("tab")
+    } else {
+       currentTab = "actions"
+    }
+    id(currentTab + "Tab").classList.add("active")
+    setQuery("tab", currentTab)
+
+    function renderAction() {
+        let actionParent = id("actionParent")
+        actionParent.clear()
+        let selectedAction = getQuery("tab")
+        if (selectedAction === "actions") {
+            let actionCatagories = ["Action", "Bonus Action", "Reaction", "Other"]
+            let catagoryFilter = document.createElement("div")
+            catagoryFilter.classList.add("action-filter")
+            actionParent.appendChild(catagoryFilter)
+            for (let i = 0; i < actionCatagories.length; i++) {
+                let actionFilterSelect = document.createElement("button")
+                actionFilterSelect.textContent = actionCatagories[i]
+                actionFilterSelect.addEventListener("click", function() {
+                    window.location.hash = "#" + actionCatagories[i].toLowerCase()
+                })
+                catagoryFilter.appendChild(actionFilterSelect)
+            }
+            let actionBody = document.createElement("div")
+            actionBody.classList.add("action-body")
+            actionParent.appendChild(actionBody)
+
+            let actionsTitle = document.createElement("h2")
+            actionsTitle.id = "action"
+            actionsTitle.textContent = "Actions"
+            actionBody.appendChild(actionsTitle)
+            actionBody.spacer(2)
+            let attacksTitle = document.createElement("h3")
+            attacksTitle.innerHTML = "Attacks <span style='font-size: .75em; color: var(--sub-text)'>(" + playerData["Attacks"] + " Attack" + (playerData["Attacks"] > 1 ? "s" : "") + " per Action)</span>"
+            actionBody.appendChild(attacksTitle)
+            actionBody.spacer(2)
+            let actionsTable = document.createElement("table")
+            actionBody.appendChild(actionsTable)
+            let playerWeapons = []
+            for (let i = 0; i < playerData["Equipment"].length; i++) {
+                if (playerData["Equipment"][i][0] in weapons) {
+                    playerWeapons.push(playerData["Equipment"][i])
+                }
+            }
+            playerWeapons.push(["Unarmed Strike", 1])
+            let weaponsTitle = document.createElement("tr")
+            let columns = ["Attack", "Range", "Hit", "Damage", "Notes"]
+            for (let i = 0; i < columns.length; i++) {
+                let header = document.createElement("th")
+                header.textContent = columns[i]
+                weaponsTitle.appendChild(header)
+            }
+            actionsTable.appendChild(weaponsTitle)
+            for (let i = 0; i < playerWeapons.length; i++) {
+                let weaponLine = document.createElement("tr")
+                let weaponData = weapons[playerWeapons[i][0]]
+                let name = document.createElement("td")
+                name.textContent = playerWeapons[i][1] > 1 ? `${playerWeapons[i][0]} (${playerWeapons[i][1]})` : playerWeapons[i][0]
+                weaponLine.appendChild(name)
+                actionsTable.appendChild(weaponLine)
+            }
+
+        }
+    }
+
+    renderAction()
+
 }
 
 render(true)
