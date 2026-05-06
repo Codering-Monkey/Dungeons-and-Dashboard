@@ -1,6 +1,9 @@
+
+
 .footer {
     position: absolute;
     bottom: 0;
+    background-color: var(--background) !important;
     width: 100%
 }
 
@@ -18,10 +21,20 @@
 }
 
 .classParent {
-    display: flex
+    gap: 8px
 }
 
 .classParent > div {
     background-color: var(--foreground);
-    width: 100%
+    width: 100%;
+    height: calc((100% / 12) - 8px);
+    cursor: pointer;
+}
+
+.classParent > div:hover > * {
+    color: var(--blue)
+}
+
+.classParent .active > * {
+    color: var(--pink)
 }
