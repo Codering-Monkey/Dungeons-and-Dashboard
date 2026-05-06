@@ -259,7 +259,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .tabs > .active {
     color: var(--pink);
-    border-bottom: 1px solid var(--pink);
+    border-bottom: 2px solid var(--pink);
 }
 
 .overlay > div {
