@@ -20,21 +20,21 @@
     float: right;
 }
 
-.classParent {
+.listParent {
     gap: 8px
 }
 
-.classParent > div {
+.listParent > div {
     background-color: var(--foreground);
     width: 100%;
     height: calc((100% / 12) - 8px);
     cursor: pointer;
 }
 
-.classParent > div:hover > * {
+.listParent > div:hover > * {
     color: var(--blue)
 }
 
-.classParent .active > * {
+.listParent .active > * {
     color: var(--pink)
 }
