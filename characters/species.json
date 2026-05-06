@@ -26,5 +26,13 @@
 				}]
 			}
 		}
-	}
+	},
+	"Dragonborn": {},
+	"Dwarf": {},
+	"Elf": {},
+	"Gnome": {},
+	"Goliath": {},
+	"Halfling": {},
+	"Orc": {},
+	"Teifling": {}
 }
