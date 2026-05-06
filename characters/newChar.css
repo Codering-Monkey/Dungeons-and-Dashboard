@@ -1,0 +1,27 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%
+}
+
+.footer * {
+    width: 10vw;
+    height: 5vh;
+}
+
+.footer *:nth-child(1) {
+    float: left
+}
+
+.footer *:nth-child(2) {
+    float: right;
+}
+
+.classParent {
+    display: flex
+}
+
+.classParent > div {
+    background-color: var(--foreground);
+    width: 100%
+}

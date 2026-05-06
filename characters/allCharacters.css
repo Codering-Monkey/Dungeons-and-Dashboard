@@ -1,0 +1,58 @@
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    grid-auto-rows: 1fr;
+}
+
+@media (max-width: 1300px) {
+    .characters-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .characters-grid-other {
+        font-size: 1.25em;
+    }
+}
+
+@media (max-width: 900px) {
+    .characters-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .characters-grid-other {
+        font-size: 1em;
+    }
+}
+
+.characters-grid-char {
+    grid-row: span 2;
+    background-color: var(--foreground);
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+}
+
+.characters-grid-other {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 1fr;
+    aspect-ratio: 1 / 1;
+    grid-auto-rows: 1fr;
+}
+
+.characters-grid-other > div {
+    background-color: var(--foreground);
+    font-size: 1.5em;
+    padding: 8px;
+    text-align: center;
+    height: calc(100% - 20px);
+    align-content: center;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.characters-grid-other > div:hover {
+    color: var(--blue)
+}
+
+.characters-grid-other > div:active {
+    color: var(--pink)
+}
