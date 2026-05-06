@@ -35,6 +35,7 @@
 				"Description": "You can imbue yourself with a primal power called Rage, a force that grants you extraordinary might and resilience. You can enter it as a Bonus Action if you aren’t wearing Heavy armor. You can enter your Rage the number of times shown for your Barbarian level in the Rages column of the Barbarian Features table. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.\nWhile active, your Rage follows the rules below. Damage Resistance. You have Resistance to Bludgeoning, Piercing, and Slashing damage. Rage Damage. When you make an attack using Strength—with either a weapon or an Unarmed Strike—and deal damage to the target, you gain a bonus to the damage that increases as you gain levels as a Barbarian, as shown in the Rage Damage column of the Barbarian Features table ({[2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4][level]}). Strength Advantage. You have Advantage on Strength checks and Strength saving throws. No Concentration or Spells. You can’t maintain Concentration, and you can’t cast spells. Duration. The Rage lasts until the end of your next turn, and it ends early if you don Heavy armor or have the Incapacitated condition. If your Rage is still active on your next turn, you can extend the Rage for another round by doing one of the following:\n- Make an attack roll against an enemy.\n-Force an enemy to make a saving throw.\n-Take a Bonus Action to extend your Rage.\nEach time the Rage is extended, it lasts until the end of your next turn. You can maintain a Rage for up to 10 minutes.",
 				"Usages": [2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6],
 				"Recovery": "lr",
+				"Bonus Action": "Rage",
 				"Small Recovery": "sr",
 				"Resist": "Bludgeoning, Piercing, Slashing (In Rage)"
 			},
@@ -58,7 +59,8 @@
 			},
 			"Reckless Attack": {
 				"Min Level": 2,
-				"Description": "You can throw aside all concern for defense to attack with increased ferocity. When you make your first attack roll on your turn, you can decide to attack recklessly. Doing so gives you Advantage on attack rolls using Strength until the start of your next turn, but attack rolls against you have Advantage during that time."
+				"Description": "You can throw aside all concern for defense to attack with increased ferocity. When you make your first attack roll on your turn, you can decide to attack recklessly. Doing so gives you Advantage on attack rolls using Strength until the start of your next turn, but attack rolls against you have Advantage during that time.",
+				"Other": "Reckless Attack"
 			},
 			"Primal Knowledge": {
 				"Min Level": 3,
@@ -83,7 +85,8 @@
 			},
 			"Brutal Strikes": {
 				"Min Level": 9,
-				"Description": "If you use Reckless Attack, you can forgo any Advantage on one Strength-based attack roll of your choice on your turn. The chosen attack roll mustn’t have Disadvantage. If the chosen attack roll hits, the target takes an extra 1d10 damage of the same type dealt by the weapon or Unarmed Strike, and you can cause one Brutal Strike effect of your choice. You have the following effect options. Forceful Blow. The target is pushed 15 feet straight away from you. You can then move up to half your Speed straight toward the target without provoking Opportunity Attacks. System R 30 eference Document 5.2.1 Hamstring Blow. The target’s Speed is reduced by 15 feet until the start of your next turn. A target can be affected by only one Hamstring Blow at a time— the most recent one."
+				"Description": "If you use Reckless Attack, you can forgo any Advantage on one Strength-based attack roll of your choice on your turn. The chosen attack roll mustn’t have Disadvantage. If the chosen attack roll hits, the target takes an extra 1d10 damage of the same type dealt by the weapon or Unarmed Strike, and you can cause one Brutal Strike effect of your choice. You have the following effect options. Forceful Blow. The target is pushed 15 feet straight away from you. You can then move up to half your Speed straight toward the target without provoking Opportunity Attacks. Hamstring Blow. The target’s Speed is reduced by 15 feet until the start of your next turn. A target can be affected by only one Hamstring Blow at a time— the most recent one.",
+				"Other": "Brutal Strike"
 			},
 			"Relentless Rage": {
 				"Min Level": 11,
@@ -106,8 +109,17 @@
 				"Description": "If your total for a Strength check or Strength saving throw is less than your Strength score, you can use that score in place of the total."
 			},
 			"Primal Champion": {
-				"Min Level": 10,
-				"Description": "You embody primal power. Your Strength and Constitution scores increase by 4, to a maximum of 25."
+				"Min Level": 20,
+				"Description": "You embody primal power. Your Strength and Constitution scores increase by 4, to a maximum of 25.",
+				"Bonus": [{
+					"Stat": "Str",
+					"Amount": 4,
+					"Cap": 25
+				}, {
+					"Stat": "Con",
+					"Amount": 4,
+					"Cap": 25
+				}]
 			}
 		}
 	}
