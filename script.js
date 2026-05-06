@@ -44,6 +44,26 @@ Storage.prototype.set = function(key, value) {
   this.setItem(key, JSON.stringify(value));
 };
 
+Storage.prototype.push = function(key, value) {
+    let data = this.get(key);
+    if (Array.isArray(data)) {
+        data.push(value)
+        this.set(key, data)
+    } else {
+        throw TypeError(`Object Stored at '${key}' is not an Array`)
+    }
+}
+
+Storage.prototype.pull = function(key, value) {
+    let data = this.get(key);
+    if (Array.isArray(data)) {
+        data.pull(value)
+        this.set(key, data)
+    } else {
+        throw TypeError(`Object Stored at '${key}' is not an Array`)
+    }
+}
+
 /**
  * Creates a td object to append a child in
  * @param {object} object
