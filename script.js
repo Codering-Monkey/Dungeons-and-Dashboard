@@ -105,6 +105,16 @@ Object.prototype.break = function(amount=1) {
 }
 
 /**
+ * Adds blank divs to Object {amount} time
+ * @param {number} amount
+ */
+Object.prototype.blank = function(amount=1) {
+    for (let i = 0; i < amount; i++) {
+        this.appendChild(document.createElement("div"))
+    }
+}
+
+/**
  * Capitalises the first word in the string, or all words (separated by " ") if {allWords}. returns the String
  * @param {boolean} allWords
  * @returns {string}
