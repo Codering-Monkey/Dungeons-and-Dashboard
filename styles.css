@@ -91,6 +91,10 @@ input[type=checkbox]:checked {
     background-color: var(--pink);
 }
 
+input[type=checkbox]:disabled:not(.undisable) {
+    opacity: 30%;
+}
+
 input[type=text], input[type=number] {
     background-color: var(--background);
     border: none;
