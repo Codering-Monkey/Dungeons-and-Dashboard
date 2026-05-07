@@ -73,7 +73,22 @@ input[type=range]:hover {
 }
 
 input[type=checkbox] {
-    accent-color: var(--pink);
+    background-color: var(--navbar);
+    border: 1px var(--sub-sub-text) solid;
+    margin: auto 3px auto 4px;
+    appearance: none;
+    width: 1.15em;
+    height: 1.15em;
+    cursor: pointer;
+}
+
+
+input[type=checkbox]:hover {
+    background-color: var(--fronterground);
+}
+
+input[type=checkbox]:checked {
+    background-color: var(--pink);
 }
 
 input[type=text], input[type=number] {
