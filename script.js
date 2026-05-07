@@ -306,18 +306,6 @@ Number.prototype.symbol = function() {
     }
 }
 
-/**
- * Returns the absolute of the number
- * @returns {Number|number}
- */
-Number.prototype.absolute = function() {
-    if (this < 0) {
-        return this * -1
-    } else {
-        return this
-    }
-}
-
 // Popup
 
 let popupBar = document.createElement("div");
