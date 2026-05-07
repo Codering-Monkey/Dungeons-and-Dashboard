@@ -98,7 +98,7 @@ Object.prototype.clear = function(keep=0) {
  * Adds Line breaks to Object {amount} amount of times
  * @param {number} amount
  */
-Object.prototype.spacer = function(amount=1) {
+Object.prototype.break = function(amount=1) {
     for (let i = 0; i < amount; i++) {
         this.appendChild(document.createElement("br"))
     }

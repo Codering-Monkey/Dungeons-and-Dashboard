@@ -364,11 +364,11 @@ function render(initial=false) {
             actionsTitle.id = "action"
             actionsTitle.textContent = "Actions"
             actionBody.appendChild(actionsTitle)
-            actionBody.spacer(2)
+            actionBody.break(2)
             let attacksTitle = document.createElement("h3")
             attacksTitle.innerHTML = "Attacks <span style='font-size: .75em; color: var(--sub-text)'>(" + playerData["Attacks"] + " Attack" + (playerData["Attacks"] > 1 ? "s" : "") + " per Action)</span>"
             actionBody.appendChild(attacksTitle)
-            actionBody.spacer(2)
+            actionBody.break(2)
             let actionsTable = document.createElement("table")
             actionBody.appendChild(actionsTable)
             let playerWeapons = []

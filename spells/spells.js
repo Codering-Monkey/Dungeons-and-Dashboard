@@ -246,7 +246,7 @@ function filter() {
         sourceLabel.textContent = sourcesArray[i]
         sourceLabel.htmlFor = sourcesArray[i]
         sourceRaw.appendChild(sourceLabel)
-        sourceRaw.spacer()
+        sourceRaw.break()
     }
     parent.appendChild(sourceRaw)
 
@@ -292,7 +292,7 @@ function filter() {
         schoolLabel.textContent = schoolsArray[i]
         schoolLabel.htmlFor = schoolsArray[i]
         schoolsRaw.appendChild(schoolLabel)
-        schoolsRaw.spacer()
+        schoolsRaw.break()
     }
     parent.appendChild(schoolsRaw)
 
@@ -355,7 +355,7 @@ function filter() {
         classLabel.textContent = classesArray[i]
         classLabel.htmlFor = classesArray[i]
         classesRaw.appendChild(classLabel)
-        classesRaw.spacer()
+        classesRaw.break()
     }
     parent.appendChild(classesRaw)
 
@@ -422,7 +422,7 @@ function filter() {
     parent.appendChild(maxSlider)
     levelFilter()
 
-    parent.spacer(2)
+    parent.break(2)
     let sortTitle = document.createElement("h3")
     sortTitle.id = "sort"
     sortTitle.textContent = "Sort by "
@@ -439,7 +439,7 @@ function filter() {
         reFilter()
     })
     key.value = getQuery("sort") ? getQuery("sort") : "Level"
-    parent.spacer()
+    parent.break()
 
     reFilter()
 }
