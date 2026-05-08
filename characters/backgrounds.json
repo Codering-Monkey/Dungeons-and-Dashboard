@@ -27,7 +27,13 @@
 			]
 		]
 	},
-	"Acolyte": {},
-	"Sage": {},
-	"Criminal": {}
+	"Acolyte": {
+		"Abilities": ["Int", "Wis", "Cha"]
+	},
+	"Sage": {
+		"Abilities": ["Con", "Int", "Wis"]
+	},
+	"Criminal": {
+		"Abilities": ["Dex", "Con", "Int"]
+	}
 }
