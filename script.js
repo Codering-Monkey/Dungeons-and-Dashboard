@@ -57,6 +57,7 @@ HTMLInputElement.prototype.buttons = function() {
                 inputThis.value = String(parseInt(inputThis.value) - 1)
                 inputThis.textContent = inputThis.value
                 container.setAttribute("value", inputThis.value)
+                inputThis.click()
             }
         })
         container.appendChild(this)
@@ -68,6 +69,7 @@ HTMLInputElement.prototype.buttons = function() {
                 inputThis.value = String(parseInt(inputThis.value) + 1)
                 inputThis.textContent = inputThis.value
                 container.setAttribute("value", inputThis.value)
+                inputThis.click()
             }
         })
     } else {
