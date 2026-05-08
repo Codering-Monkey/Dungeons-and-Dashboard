@@ -4,34 +4,74 @@ let inputs = document.getElementsByTagName("INPUT")
 for (let i = 0; i < inputs.length; i++) {
     if (inputs[i].type === "file" ) {
         inputs[i].label()
+    } else if (inputs[i].type === "number") {
+        inputs[i].buttons()
     }
 }
 
+class LogicError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "LogicError";
+  }
+}
 
 // Prototypes
-HTMLElement.prototype.label = function() {
-    if (this.tagName === "INPUT") {
-        if (this.type === "file") {
-            let label = document.createElement("label")
-            label.textContent = "Choose File"
-            label.classList.add("file")
-            if (!this.id) {
-                this.id = "input" + document.getElementsByTagName("INPUT").length
-            }
-            this.parentElement.insertBefore(label, this)
-            label.htmlFor = this.id
-            this.addEventListener("change", function() {
-                if (this.value) {
-                    label.textContent = "Chosen File: " + this.files[0].name
-                } else {
-                    label.textContent = "Choose File"
-                }
-            })
-        } else {
-            throw new TypeError("This is only available where 'type'==='file'")
+HTMLInputElement.prototype.label = function() {
+    if (this.type === "file") {
+        let label = document.createElement("label")
+        label.textContent = "Choose File"
+        label.classList.add("file")
+        if (!this.id) {
+            this.id = "input" + document.getElementsByTagName("INPUT").length
         }
+        this.parentElement.insertBefore(label, this)
+        label.htmlFor = this.id
+        this.addEventListener("change", function() {
+            if (this.value) {
+                label.textContent = "Chosen File: " + this.files[0].name
+            } else {
+                label.textContent = "Choose File"
+            }
+        })
     } else {
-        throw new TypeError("This is only available for INPUT elements")
+        throw new TypeError("This is only available where 'type'==='file'")
+    }
+}
+
+HTMLInputElement.prototype.buttons = function() {
+    if (this.type === "number") {
+        let inputThis = this
+        let parent = this.parentElement
+        let container = document.createElement("div")
+        if (parent) {
+            parent.insertBefore(container, this)
+        } else {
+            throw new LogicError("Please Append this Object prior to calling .buttons()")
+        }
+        let subtract = document.createElement("button")
+        container.appendChild(subtract)
+        subtract.textContent = "-"
+        subtract.addEventListener("click", function() {
+            if (parseInt(inputThis.value) - 1 >= parseInt(inputThis.min)) {
+                inputThis.value = String(parseInt(inputThis.value) - 1)
+                inputThis.textContent = inputThis.value
+                container.setAttribute("value", inputThis.value)
+            }
+        })
+        container.appendChild(this)
+        let add = document.createElement("button")
+        add.textContent = "+"
+        container.appendChild(add)
+        add.addEventListener("click", function() {
+            if (parseInt(inputThis.value) + 1 <= parseInt(inputThis.max)) {
+                inputThis.value = String(parseInt(inputThis.value) + 1)
+                inputThis.textContent = inputThis.value
+                container.setAttribute("value", inputThis.value)
+            }
+        })
+    } else {
+        throw new TypeError("This is only available where 'type'==='number'")
     }
 }
 

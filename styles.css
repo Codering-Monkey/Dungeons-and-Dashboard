@@ -82,7 +82,6 @@ input[type=checkbox] {
     cursor: pointer;
 }
 
-
 input[type=checkbox]:hover {
     background-color: var(--fronterground);
 }
@@ -99,6 +98,11 @@ input[type=text], input[type=number] {
     background-color: var(--background);
     border: none;
     margin: 4px
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   appearance: none;
 }
 
 input[type=file] {
