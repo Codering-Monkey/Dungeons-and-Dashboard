@@ -21,13 +21,13 @@
 }
 
 .listParent {
-    gap: 8px
+    height: calc(100% - 5vh);
 }
 
 .listParent > div {
     background-color: var(--foreground);
     width: 100%;
-    height: calc((100% / 12) - 8px);
+    height: calc(((100% - 5vh) / 12) - 8px);
     cursor: pointer;
 }
 
@@ -37,4 +37,27 @@
 
 .listParent .active > * {
     color: var(--pink)
+}
+
+.statParent {
+    display: grid;
+    height: calc(100% - 5vh);
+    grid-template-columns: repeat(7, 1fr);
+/*    stat, num, points, bonus 1, bonus 2, total, mod*/
+}
+
+.statParent > .header {
+    font-weight: bold;
+}
+
+.statParent * {
+    text-align: center;
+    align-content: center;
+    font-size: 2vh;
+}
+
+.statParent input[type="checkbox"] {
+    margin: auto;
+    width: 5vh;
+    height: 5vh;
 }
