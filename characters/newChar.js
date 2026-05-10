@@ -331,11 +331,27 @@ function selectEquip() {
     optionABack.collate(backgrounds[sessionStorage.get("Background")]["Equipment"][0])
     let optionBBack = document.createElement("ul")
     optionBBack.collate(backgrounds[sessionStorage.get("Background")]["Equipment"][1])
+    let backEquip = sessionStorage.get("BackEquip")
+    if (backEquip) {
+        if (backEquip === "0") {
+            optionABack.classList.add("active")
+        } else if (backEquip === "1") {
+            optionBBack.classList.add("active")
+        }
+    }
 
     let optionAClass = document.createElement("ul")
     optionAClass.collate(classes[sessionStorage.get("Class")]["Equipment"][0])
     let optionBClass = document.createElement("ul")
     optionBClass.collate(classes[sessionStorage.get("Class")]["Equipment"][1])
+    let classEquip = sessionStorage.get("ClassEquip")
+    if (classEquip) {
+        if (classEquip === "0") {
+            optionAClass.classList.add("active")
+        } else if (classEquip === "1") {
+            optionBClass.classList.add("active")
+        }
+    }
 
     parent.appendChild(optionABack)
     parent.appendChild(optionAClass)
