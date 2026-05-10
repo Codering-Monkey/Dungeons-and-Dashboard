@@ -113,6 +113,7 @@ next.addEventListener("click", function () {
     } else if (stage === "Name") {
         if (sessionStorage.get("Name")) {
             newCharacter["Name"] = sessionStorage.get("Name")
+            newCharacter["Gender"] = sessionStorage.get("Gender")
             localStorage.push("Characters", newCharacter)
             window.location.href = "player.html?Char=" + (localStorage.get("Characters").length - 1)
         } else {
@@ -409,10 +410,14 @@ function selectName() {
     })
 
     parent.break(1)
+    sessionStorage.set("Gender", "M")
 
     let maleParent = document.createElement("div")
     let male = document.createElement("input")
     male.type = "checkbox"
+    if (sessionStorage.get("Gender") === "M") {
+        male.checked = true
+    }
     maleParent.appendChild(male)
     let maleText = document.createElement("p")
     maleText.textContent = "M"
@@ -423,6 +428,9 @@ function selectName() {
     femaleParent.style.marginLeft = "-4px"
     let female = document.createElement("input")
     female.type = "checkbox"
+    if (sessionStorage.get("Gender") === "F") {
+        female.checked = true
+    }
     femaleParent.appendChild(female)
     let femaleText = document.createElement("p")
     femaleText.textContent = "F"
