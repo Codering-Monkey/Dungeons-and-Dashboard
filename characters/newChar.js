@@ -14,6 +14,7 @@ let allStats = {
 
 HTMLInputElement.prototype.bonusEvent = function () {
     this.addEventListener("click", function() {
+        let bonus = sessionStorage.get("Bonus")
         let other
         let increase
         other = id(String(Math.abs(this.value - 3)) + this.id.slice(1))
@@ -21,12 +22,15 @@ HTMLInputElement.prototype.bonusEvent = function () {
         let bonusItem = id("totalBonus")
         if (other.checked) {
             other.checked = false
+            bonus[Math.abs(this.value - 3)].pull(this.id.slice(1))
             bonusItem.textContent = String(parseInt(bonusItem.textContent) - Math.abs(this.value - 3))
         }
         if (this.checked) {
             bonusItem.textContent = String(parseInt(bonusItem.textContent) + increase)
+            bonus[this.value].push(this.id.slice(1))
         } else {
             bonusItem.textContent = String(parseInt(bonusItem.textContent) - increase)
+            bonus[this.value].pull(this.id.slice(1))
         }
         let flippedStats = allStats.invert()
         let availableAbilities = backgrounds[sessionStorage.get("Background")]["Abilities"]
@@ -36,6 +40,7 @@ HTMLInputElement.prototype.bonusEvent = function () {
                 id(j + flippedStats[availableAbilities[i]]).disabled = availableBonus < j && (!id(j + flippedStats[availableAbilities[i]]).checked);
             }
         }
+        sessionStorage.set("Bonus", bonus)
         updateTotal(this.id.slice(1))
     })
 }
@@ -124,6 +129,19 @@ function selectStats() {
     parent.clear()
     parent.className = "statParent"
     sessionStorage.set("createStage", "Stats")
+    if (!sessionStorage.get("Bonus")) {
+        sessionStorage.set("Bonus", {1:[], 2:[]})
+    }
+    if (!sessionStorage.get("baseStats")) {
+        sessionStorage.set("baseStats", {
+            "Strength": 8,
+            "Dexterity": 8,
+            "Constitution": 8,
+            "Intelligence": 8,
+            "Wisdom": 8,
+            "Charisma": 8,
+        })
+    }
 
     let headers = [
         "Name",
@@ -186,6 +204,7 @@ function selectStats() {
             }
             cost.textContent = String(statsToPoints[raw.value])
             id("totalPoints").textContent = String(totalCost)
+            sessionStorage.indexSet("baseStats", this.id.slice(3), parseInt(this.value))
             updateTotal(key)
         })
 
