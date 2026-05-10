@@ -147,9 +147,6 @@ function selectList(data, storageKey) {
     parent.clear()
     parent.className = "listParent"
     sessionStorage.set("createStage", storageKey)
-    if (!sessionStorage.get(storageKey)) {
-        sessionStorage.set(storageKey, "parent")
-    }
     Object.keys(data).forEach((key) => {
         let listItem = document.createElement("div")
         listItem.id = key
