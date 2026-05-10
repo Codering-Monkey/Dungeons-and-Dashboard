@@ -86,6 +86,16 @@ Storage.prototype.set = function(key, value) {
   this.setItem(key, JSON.stringify(value));
 };
 
+/**
+ * Fetches a JSON object from storage, returning null if not present
+ * @param {string} key
+ * @returns {any|null}
+ */
+Storage.prototype.get = function(key) {
+  const item = this.getItem(key);
+  return item ? JSON.parse(item) : null;
+};
+
 Storage.prototype.push = function(key, value) {
     let data = this.get(key);
     if (Array.isArray(data)) {
@@ -106,6 +116,16 @@ Storage.prototype.pull = function(key, value) {
     }
 }
 
+Storage.prototype.indexGet = function(key, index) {
+    return this.getItem(key)[index]
+}
+
+Storage.prototype.indexSet = function(key, index, value) {
+    let data = this.get(key);
+    data[key] = value
+    this.set(key, data)
+}
+
 /**
  * Creates a td object to append a child in
  * @param {object} object
@@ -115,16 +135,6 @@ Object.prototype.shellAppend = function (object) {
     this.appendChild(shell)
     shell.appendChild(object)
 }
-
-/**
- * Fetches a JSON object from storage, returning null if not present
- * @param {string} key
- * @returns {any|null}
- */
-Storage.prototype.get = function(key) {
-  const item = this.getItem(key);
-  return item ? JSON.parse(item) : null;
-};
 
 /**
  * Clears the Object, keeping the first {keep} elements
