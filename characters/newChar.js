@@ -112,6 +112,7 @@ next.addEventListener("click", function () {
         }
     } else if (stage === "Name") {
         if (id("playerName").textContent) {
+            newCharacter["Name"] = id("playerName").textContent
             localStorage.push("Characters", newCharacter)
             window.location.href = "player.html?Char=" + (localStorage.get("Characters").length - 1)
         } else {
