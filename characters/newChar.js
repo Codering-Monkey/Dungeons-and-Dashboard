@@ -70,33 +70,49 @@ function updateTotal(catagory) {
 let newCharacter = {}
 let parent = id("parent")
 let next = id("next")
+let back = id("back")
 next.addEventListener("click", function () {
     let stage = sessionStorage.get("createStage")
     if (stage === "Class") {
         newCharacter["Class"] = sessionStorage.get("Class")
+        back.textContent = "Back"
         selectList(species, "Species")
     } else if (stage === "Species") {
         newCharacter["Species"] = sessionStorage.get("Species")
         selectList(backgrounds, "Background")
     } else if (stage === "Background") {
+        newCharacter["Background"] = sessionStorage.get("Background")
         selectStats()
     } else if (stage === "Stats") {
+        newCharacter["Stats"] = sessionStorage.get("baseStats")
+        newCharacter["Bonus"] = sessionStorage.get("Bonus")
         selectEquip()
+    } else if (stage === "Equip") {
+        next.textContent = "Finish"
+    } else if (stage === "Name") {
+        localStorage.push("Characters", newCharacter)
     }
 })
-let back = id("back")
 back.addEventListener("click", function () {
     let stage = sessionStorage.get("createStage")
-    if (stage === "Species") {
+    if (stage === "Class") {
+        newCharacter["Class"] = sessionStorage.get("Class")
+        window.location.href = "all_characters.html"
+    } else if (stage === "Species") {
         newCharacter["Species"] = sessionStorage.get("Species")
+        back.textContent = "Leave"
         selectList(classes, "Class")
     } else if (stage === "Background") {
         newCharacter["Background"] = sessionStorage.get("Background")
         selectList(species, "Species")
     } else if (stage === "Stats") {
+        newCharacter["Stats"] = sessionStorage.get("baseStats")
+        newCharacter["Bonus"] = sessionStorage.get("Bonus")
         selectList(backgrounds, "Background")
     } else if (stage === "Equip") {
         selectStats()
+    } else if (stage === "Name") {
+        next.textContent = "Next"
     }
 })
 
@@ -309,4 +325,3 @@ function selectEquip() {
 }
 
 selectList(classes, "Class")
-// localStorage.push("Characters", newCharacter)
