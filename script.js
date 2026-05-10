@@ -122,7 +122,7 @@ Storage.prototype.indexGet = function(key, index) {
 
 Storage.prototype.indexSet = function(key, index, value) {
     let data = this.get(key);
-    data[key] = value
+    data[index] = value
     this.set(key, data)
 }
 
