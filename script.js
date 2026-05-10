@@ -119,7 +119,7 @@ Storage.prototype.pull = function(key, value) {
 }
 
 Storage.prototype.indexGet = function(key, index) {
-    return this.getItem(key)[index]
+    return this.get(key)[index]
 }
 
 Storage.prototype.indexSet = function(key, index, value) {
