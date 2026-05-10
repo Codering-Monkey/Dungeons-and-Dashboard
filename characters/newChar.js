@@ -119,6 +119,7 @@ next.addEventListener("click", function () {
                 newCharacter["Equipment"][key] = (newCharacter["Equipment"][key] || 0) + value
             })
             localStorage.push("Characters", newCharacter)
+            sessionStorage.wipe("Class", "Species", "Background", "baseStats", "Equip", "Name", "Gender", "Bonus", "ClassEquip", "BackEquip")
             window.location.href = "player.html?Char=" + (localStorage.get("Characters").length - 1)
         } else {
             popup("Please choose a Name")
