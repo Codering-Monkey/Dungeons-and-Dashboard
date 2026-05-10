@@ -1,4 +1,4 @@
-import {id, popup} from "../script.js"
+import {id, popup, setQuery} from "../script.js"
 import classes from "./classes.json" with { type: "json" }
 import species from "./species.json" with { type: "json" }
 import backgrounds from "./backgrounds.json" with { type: "json" }
@@ -91,7 +91,9 @@ next.addEventListener("click", function () {
         next.textContent = "Finish"
         selectName()
     } else if (stage === "Name") {
+        setQuery("Char", localStorage.get("Characters").length)
         localStorage.push("Characters", newCharacter)
+        window.location.href = "player.html"
     }
 })
 back.addEventListener("click", function () {
