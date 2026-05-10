@@ -187,7 +187,7 @@ function selectStats() {
         raw.type = "number"
         raw.id = "raw" + key
         raw.max = "15"
-        raw.value = "8"
+        raw.value = String(sessionStorage.get("baseStats")[key])
         raw.min = "8"
         parent.appendChild(raw)
         raw.buttons()
@@ -232,12 +232,18 @@ function selectStats() {
             one.type = "checkbox"
             one.id = "1" + key
             one.value = "1"
+            if (sessionStorage.get("Bonus")[1].includes(key)) {
+                one.checked = true
+            }
             one.bonusEvent()
             parent.appendChild(one)
             let two  = document.createElement("input")
             two.type = "checkbox"
             two.id = "2" + key
             two.value = "2"
+            if (sessionStorage.get("Bonus")[2].includes(key)) {
+                two.checked = true
+            }
             two.bonusEvent()
             parent.appendChild(two)
         } else {
