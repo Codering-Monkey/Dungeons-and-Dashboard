@@ -67,7 +67,7 @@ function updateTotal(catagory) {
     id("mod" + catagory).textContent = mod.symbol()
 }
 
-let newCharacter = {"New": true}
+let newCharacter = {}
 let parent = id("parent")
 let next = id("next")
 let back = id("back")
