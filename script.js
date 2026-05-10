@@ -367,7 +367,7 @@ Number.prototype.symbol = function() {
 }
 
 Number.prototype.modifier = function() {
-    return Math.floor(this - 10 / 2)
+    return Math.floor((this - 10) / 2)
 }
 
 String.prototype.modifier = function() {
