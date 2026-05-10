@@ -111,8 +111,8 @@ next.addEventListener("click", function () {
             popup("Please select both Background & Class Equipment")
         }
     } else if (stage === "Name") {
-        if (id("playerName").textContent) {
-            newCharacter["Name"] = id("playerName").textContent
+        if (sessionStorage.get("Name")) {
+            newCharacter["Name"] = sessionStorage.get("Name")
             localStorage.push("Characters", newCharacter)
             window.location.href = "player.html?Char=" + (localStorage.get("Characters").length - 1)
         } else {
@@ -387,7 +387,12 @@ function selectName() {
 
     let name = document.createElement("input")
     name.type = "text"
-    name.id = "playerName"
+    name.addEventListener("change", function() {
+        sessionStorage.set("Name", name.value)
+    })
+    if (sessionStorage.get("Name")) {
+        name.value = sessionStorage.get("Name")
+    }
     parent.appendChild(name)
     parent.break(1)
     let randomise = document.createElement("button")
