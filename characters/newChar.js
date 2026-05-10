@@ -74,25 +74,49 @@ let back = id("back")
 next.addEventListener("click", function () {
     let stage = sessionStorage.get("createStage")
     if (stage === "Class") {
-        newCharacter["Class"] = sessionStorage.get("Class")
-        back.textContent = "Back"
-        selectList(species, "Species")
+        if (sessionStorage.get("Class")) {
+            newCharacter["Class"] = sessionStorage.get("Class")
+            back.textContent = "Back"
+            selectList(species, "Species")
+        } else {
+            popup("Please Select a Class")
+        }
     } else if (stage === "Species") {
-        newCharacter["Species"] = sessionStorage.get("Species")
-        selectList(backgrounds, "Background")
+        if (sessionStorage.get("Species")) {
+            newCharacter["Species"] = sessionStorage.get("Species")
+            selectList(backgrounds, "Background")
+        } else {
+            popup("Please Select a Species")
+        }
     } else if (stage === "Background") {
-        newCharacter["Background"] = sessionStorage.get("Background")
-        selectStats()
+        if (sessionStorage.get("Background")) {
+            newCharacter["Background"] = sessionStorage.get("Background")
+            selectStats()
+        } else {
+            popup("Please Select a Background")
+        }
     } else if (stage === "Stats") {
-        newCharacter["Stats"] = sessionStorage.get("baseStats")
-        newCharacter["Bonus"] = sessionStorage.get("Bonus")
-        selectEquip()
+        if (id("totalPoints").textContent === "27" && id("totalBonus").textContent === "3") {
+            newCharacter["Stats"] = sessionStorage.get("baseStats")
+            newCharacter["Bonus"] = sessionStorage.get("Bonus")
+            selectEquip()
+        } else {
+            popup("Please ensure you have 27 points & 3 bonus points allocated")
+        }
     } else if (stage === "Equip") {
-        next.textContent = "Finish"
-        selectName()
+        if (sessionStorage.get("BackEquip") && sessionStorage.get("ClassEquip")) {
+            next.textContent = "Finish"
+            selectName()
+        } else {
+            popup("Please select both Background & Class Equipment")
+        }
     } else if (stage === "Name") {
-        localStorage.push("Characters", newCharacter)
-        window.location.href = "player.html?Char=" + (localStorage.get("Characters").length - 1)
+        if (sessionStorage.get("Name")) {
+            localStorage.push("Characters", newCharacter)
+            window.location.href = "player.html?Char=" + (localStorage.get("Characters").length - 1)
+        } else {
+            popup("Please choose a Name")
+        }
     }
 })
 back.addEventListener("click", function () {
@@ -314,22 +338,22 @@ function selectEquip() {
     optionABack.addEventListener("click", function() {
         optionBBack.classList.remove("active")
         optionABack.classList.add("active")
-        sessionStorage.set("BackEquip", "A")
+        sessionStorage.set("BackEquip", "0")
     })
     optionBBack.addEventListener("click", function() {
         optionABack.classList.remove("active")
         optionBBack.classList.add("active")
-        sessionStorage.set("BackEquip", "B")
+        sessionStorage.set("BackEquip", "1")
     })
     optionAClass.addEventListener("click", function() {
         optionBClass.classList.remove("active")
         optionAClass.classList.add("active")
-        sessionStorage.set("ClassEquip", "A")
+        sessionStorage.set("ClassEquip", "0")
     })
     optionBClass.addEventListener("click", function() {
         optionAClass.classList.remove("active")
         optionBClass.classList.add("active")
-        sessionStorage.set("ClassEquip", "B")
+        sessionStorage.set("ClassEquip", "1")
     })
 }
 
