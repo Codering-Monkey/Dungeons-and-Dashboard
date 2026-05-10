@@ -111,7 +111,7 @@ next.addEventListener("click", function () {
             popup("Please select both Background & Class Equipment")
         }
     } else if (stage === "Name") {
-        if (sessionStorage.get("Name")) {
+        if (id("playerName").textContent) {
             localStorage.push("Characters", newCharacter)
             window.location.href = "player.html?Char=" + (localStorage.get("Characters").length - 1)
         } else {
@@ -363,6 +363,7 @@ function selectName() {
 
     let name = document.createElement("input")
     name.type = "text"
+    name.id = "playerName"
     parent.appendChild(name)
     parent.break(1)
     let randomise = document.createElement("button")
