@@ -151,7 +151,9 @@ function selectList(data, storageKey) {
         let listItem = document.createElement("div")
         listItem.id = key
         listItem.addEventListener("click", function () {
-            id(sessionStorage.get(storageKey)).classList.remove("active")
+            if (sessionStorage.get(storageKey)) {
+                id(sessionStorage.get(storageKey)).classList.remove("active")
+            }
             this.classList.add("active")
             sessionStorage.set(storageKey, key)
         })
