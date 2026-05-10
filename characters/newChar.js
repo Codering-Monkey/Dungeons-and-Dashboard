@@ -202,6 +202,17 @@ function selectStats() {
         parent.appendChild(headerItem)
     }
 
+    const statsToPoints = {
+        "8": 0,
+        "9": 1,
+        "10": 2,
+        "11": 3,
+        "12": 4,
+        "13": 5,
+        "14": 7,
+        "15": 9,
+    }
+
     Object.entries(allStats).forEach(([key, value]) => {
         let name = document.createElement("div")
         name.textContent = key
@@ -221,16 +232,6 @@ function selectStats() {
         cost.id = "cost" + key
         parent.appendChild(cost)
 
-        const statsToPoints = {
-            "8": 0,
-            "9": 1,
-            "10": 2,
-            "11": 3,
-            "12": 4,
-            "13": 5,
-            "14": 7,
-            "15": 9,
-        }
         raw.addEventListener("change", function() {
             cost.textContent = String(statsToPoints[raw.value])
             let totalCost = 0
@@ -295,12 +296,18 @@ function selectStats() {
     let totalPoints = document.createElement("div")
     totalPoints.classList.add("header")
     totalPoints.id = "totalPoints"
-    totalPoints.textContent = "0"
     parent.appendChild(totalPoints)
+    let totalCost = 0
+    Object.keys(allStats).forEach((statKey) => {
+        let pointValue = statsToPoints[id("raw" + statKey).value]
+        id("cost" + statKey).textContent = String(pointValue)
+        totalCost += parseInt(pointValue)
+    })
+    totalPoints.textContent = String(totalCost)
     let totalBonus = document.createElement("div")
     totalBonus.classList.add("header")
     totalBonus.id = "totalBonus"
-    totalBonus.textContent = "0"
+    totalBonus.textContent = String(sessionStorage.get("Bonus")[1].length + sessionStorage.get("Bonus")[2].length);
     totalBonus.style.gridColumn = "span 2"
     parent.appendChild(totalBonus)
     parent.blank(2)
