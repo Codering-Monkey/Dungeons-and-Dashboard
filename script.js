@@ -126,6 +126,12 @@ Storage.prototype.indexSet = function(key, index, value) {
     this.set(key, data)
 }
 
+Storage.prototype.wipe = function(...items) {
+    for (let i = 0; i < items.length; i++) {
+        this.removeItem(items[i])
+    }
+}
+
 /**
  * Creates a td object to append a child in
  * @param {object} object
