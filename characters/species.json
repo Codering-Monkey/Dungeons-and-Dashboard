@@ -1,6 +1,7 @@
 {
 	"Human": {
 		"Speed": 30,
+		"NameSet": "h",
 		"Size": ["Medium", "Small"],
 		"Type": "Humanoid",
 		"Features": {
@@ -27,12 +28,28 @@
 			}
 		}
 	},
-	"Dragonborn": {},
-	"Dwarf": {},
-	"Elf": {},
-	"Gnome": {},
-	"Goliath": {},
-	"Halfling": {},
-	"Orc": {},
-	"Teifling": {}
+	"Dragonborn": {
+		"NameSet": "h"
+	},
+	"Dwarf": {
+		"NameSet": "d"
+	},
+	"Elf": {
+		"NameSet": "e"
+	},
+	"Gnome": {
+		"NameSet": "d"
+	},
+	"Goliath": {
+		"NameSet": "d"
+	},
+	"Halfling": {
+		"NameSet": "h"
+	},
+	"Orc": {
+		"NameSet": "o"
+	},
+	"Teifling": {
+		"NameSet": "h"
+	}
 }
