@@ -91,9 +91,8 @@ next.addEventListener("click", function () {
         next.textContent = "Finish"
         selectName()
     } else if (stage === "Name") {
-        setQuery("Char", localStorage.get("Characters").length)
         localStorage.push("Characters", newCharacter)
-        window.location.href = "player.html"
+        window.location.href = "player.html?Char=" + (localStorage.get("Characters").length - 1)
     }
 })
 back.addEventListener("click", function () {
