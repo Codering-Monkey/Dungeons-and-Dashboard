@@ -90,3 +90,42 @@
     font-size: 2em;
     text-align: center;
 }
+
+.nameParent {
+    height: calc(100% - 5vh);
+}
+
+.nameParent > input[type="text"] {
+    background-color: var(--foreground);
+    width: 50%;
+    font-size: 1.5em;
+    padding: 8px
+}
+
+.nameParent > button {
+    margin-left: 4px
+}
+
+.nameParent > div:has(input[type="checkbox"]) {
+    margin: 4px 4px 4px 0;
+    position: relative;
+    width: fit-content;
+    float: left;
+}
+
+.nameParent > div:has(input[type="checkbox"]) > p {
+    margin: 0;
+    width: 5vh;
+    text-align: center;
+    align-content: center;
+    height: 5vh;
+    position: absolute;
+    left: 4px;
+    top: 0;
+    cursor: pointer;
+}
+
+.nameParent > div:has(input[type="checkbox"]) > input {
+    width: 5vh;
+    height: 5vh;
+}

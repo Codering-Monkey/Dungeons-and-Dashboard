@@ -67,7 +67,7 @@ function updateTotal(catagory) {
     id("mod" + catagory).textContent = mod.symbol()
 }
 
-let newCharacter = {}
+let newCharacter = {"New": true}
 let parent = id("parent")
 let next = id("next")
 let back = id("back")
@@ -89,6 +89,7 @@ next.addEventListener("click", function () {
         selectEquip()
     } else if (stage === "Equip") {
         next.textContent = "Finish"
+        selectName()
     } else if (stage === "Name") {
         localStorage.push("Characters", newCharacter)
     }
@@ -113,6 +114,7 @@ back.addEventListener("click", function () {
         selectStats()
     } else if (stage === "Name") {
         next.textContent = "Next"
+        selectEquip()
     }
 })
 
@@ -322,6 +324,70 @@ function selectEquip() {
         optionBClass.classList.add("active")
         sessionStorage.set("ClassEquip", "B")
     })
+}
+
+function selectName() {
+    parent.clear()
+    parent.className = "nameParent"
+    sessionStorage.set("createStage", "Name")
+
+    let name = document.createElement("input")
+    name.type = "text"
+    parent.appendChild(name)
+    parent.break(1)
+    let randomise = document.createElement("button")
+    randomise.textContent = "Randomise Name"
+    parent.appendChild(randomise)
+    randomise.addEventListener("click", async function() {
+        let gender = sessionStorage.get("Gender") ? sessionStorage.get("Species").toLowerCase() : "m"
+        let nameSet = species[sessionStorage.get("Species")]["NameSet"] ? species[sessionStorage.get("Species")]["NameSet"] : "h"
+        name.value = await fetch(`https://fantasyname.lukewh.com/?family=t&ancestry=${nameSet}&gender=${gender}`, {
+            method: "GET",
+            }
+        ).then((response) => response.text())
+    })
+
+    parent.break(1)
+
+    let maleParent = document.createElement("div")
+    let male = document.createElement("input")
+    male.type = "checkbox"
+    maleParent.appendChild(male)
+    let maleText = document.createElement("p")
+    maleText.textContent = "M"
+    maleParent.appendChild(maleText)
+    parent.appendChild(maleParent)
+
+    let femaleParent = document.createElement("div")
+    femaleParent.style.marginLeft = "-4px"
+    let female = document.createElement("input")
+    female.type = "checkbox"
+    femaleParent.appendChild(female)
+    let femaleText = document.createElement("p")
+    femaleText.textContent = "F"
+    femaleParent.appendChild(femaleText)
+    parent.appendChild(femaleParent)
+
+    maleText.addEventListener("click", function() {
+        male.click()
+        female.checked = false
+        sessionStorage.set("Gender", "M")
+    })
+    femaleText.addEventListener("click", function() {
+        female.click()
+        male.checked = false
+        sessionStorage.set("Gender", "F")
+    })
+
+    parent.break(2)
+    let charData = document.createElement("div")
+    const dataSources = ["Class", "Species", "Background"]
+    for (let i = 0; i < dataSources.length; i++) {
+        let dataItem = document.createElement("p")
+        dataItem.textContent = `${dataSources[i]}: ${sessionStorage.get(dataSources[i])}`
+        charData.appendChild(dataItem)
+    }
+    parent.appendChild(charData)
 }
 
 selectList(classes, "Class")
