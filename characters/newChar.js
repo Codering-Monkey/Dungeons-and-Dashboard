@@ -40,6 +40,14 @@ HTMLInputElement.prototype.bonusEvent = function () {
     })
 }
 
+HTMLElement.prototype.collate = function (array) {
+    for (let i = 0; i < array.length; i++) {
+        let item = document.createElement("li")
+        item.textContent = array[i][1] + "x " + array[i][0]
+        this.appendChild(item)
+    }
+}
+
 function updateTotal(catagory) {
     let number = parseInt(id("raw" + catagory).value)
     if (id("1" + catagory)) {
@@ -67,6 +75,8 @@ next.addEventListener("click", function () {
         selectList(backgrounds, "Background")
     } else if (stage === "Background") {
         selectStats()
+    } else if (stage === "Stats") {
+        selectEquip()
     }
 })
 let back = id("back")
@@ -80,6 +90,8 @@ back.addEventListener("click", function () {
         selectList(species, "Species")
     } else if (stage === "Stats") {
         selectList(backgrounds, "Background")
+    } else if (stage === "Equip") {
+        selectStats()
     }
 })
 
@@ -224,6 +236,57 @@ function selectStats() {
     totalBonus.style.gridColumn = "span 2"
     parent.appendChild(totalBonus)
     parent.blank(2)
+}
+
+function selectEquip() {
+    parent.clear()
+    parent.className = "equipParent"
+    sessionStorage.set("createStage", "Equip")
+
+    let optionATitle = document.createElement("div")
+    optionATitle.classList.add("header")
+    optionATitle.textContent = "Background Equipment"
+    parent.appendChild(optionATitle)
+    let optionBTitle = document.createElement("div")
+    optionBTitle.classList.add("header")
+    optionBTitle.textContent = "Class Equipment"
+    parent.appendChild(optionBTitle)
+
+    let optionABack = document.createElement("ul")
+    optionABack.collate(backgrounds[sessionStorage.get("Background")]["Equipment"][0])
+    let optionBBack = document.createElement("ul")
+    optionBBack.collate(backgrounds[sessionStorage.get("Background")]["Equipment"][1])
+
+    let optionAClass = document.createElement("ul")
+    optionAClass.collate(classes[sessionStorage.get("Class")]["Equipment"][0])
+    let optionBClass = document.createElement("ul")
+    optionBClass.collate(classes[sessionStorage.get("Class")]["Equipment"][1])
+
+    parent.appendChild(optionABack)
+    parent.appendChild(optionAClass)
+    parent.appendChild(optionBBack)
+    parent.appendChild(optionBClass)
+
+    optionABack.addEventListener("click", function() {
+        optionBBack.classList.remove("active")
+        optionABack.classList.add("active")
+        sessionStorage.set("BackEquip", "A")
+    })
+    optionBBack.addEventListener("click", function() {
+        optionABack.classList.remove("active")
+        optionBBack.classList.add("active")
+        sessionStorage.set("BackEquip", "B")
+    })
+    optionAClass.addEventListener("click", function() {
+        optionBClass.classList.remove("active")
+        optionAClass.classList.add("active")
+        sessionStorage.set("ClassEquip", "A")
+    })
+    optionBClass.addEventListener("click", function() {
+        optionAClass.classList.remove("active")
+        optionBClass.classList.add("active")
+        sessionStorage.set("ClassEquip", "B")
+    })
 }
 
 selectList(classes, "Class")

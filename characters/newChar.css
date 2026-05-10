@@ -61,3 +61,32 @@
     width: 5vh;
     height: 5vh;
 }
+
+.equipParent {
+    display: grid;
+    height: calc(100% - 5vh);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 60px 1fr 1fr;
+    gap: 8px
+}
+
+.equipParent > ul {
+    background-color: var(--foreground);
+    padding: 8px 8px 8px 32px;
+    margin: 0;
+    border: 1px solid var(--foreground);
+}
+
+.equipParent > .active {
+    border-color: var(--pink);
+}
+
+.equipParent > ul:hover {
+    border-color: var(--blue);
+}
+
+.equipParent > .header {
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+}
