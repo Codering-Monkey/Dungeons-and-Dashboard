@@ -46,11 +46,11 @@ HTMLInputElement.prototype.bonusEvent = function () {
 }
 
 HTMLElement.prototype.collate = function (array) {
-    for (let i = 0; i < array.length; i++) {
+    Object.entries(array).forEach(([key, value]) => {
         let item = document.createElement("li")
-        item.textContent = array[i][1] + "x " + array[i][0]
+        item.textContent = key + " x " + value
         this.appendChild(item)
-    }
+    })
 }
 
 function updateTotal(catagory) {
@@ -114,6 +114,10 @@ next.addEventListener("click", function () {
         if (sessionStorage.get("Name")) {
             newCharacter["Name"] = sessionStorage.get("Name")
             newCharacter["Gender"] = sessionStorage.get("Gender")
+            newCharacter["Equipment"] = classes[sessionStorage.get("Class")]["Equipment"][sessionStorage.get("ClassEquip")]
+            Object.entries(backgrounds[sessionStorage.get("Background")]["Equipment"][sessionStorage.get("BackEquip")]).forEach(([key, value]) => {
+                newCharacter["Equipment"][key] = (newCharacter["Equipment"][key] || 0) + value
+            })
             localStorage.push("Characters", newCharacter)
             window.location.href = "player.html?Char=" + (localStorage.get("Characters").length - 1)
         } else {
