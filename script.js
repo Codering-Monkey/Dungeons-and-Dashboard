@@ -1,13 +1,3 @@
-// HTML "Fixes"
-
-let inputs = document.getElementsByTagName("INPUT")
-for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i].type === "file" ) {
-        inputs[i].label()
-    } else if (inputs[i].type === "number") {
-        inputs[i].buttons()
-    }
-}
 
 class LogicError extends Error {
   constructor(message) {
@@ -16,7 +6,7 @@ class LogicError extends Error {
   }
 }
 
-// Prototypes
+// HTML "Fixes"
 HTMLInputElement.prototype.label = function() {
     if (this.type === "file") {
         let label = document.createElement("label")
@@ -77,6 +67,18 @@ HTMLInputElement.prototype.buttons = function() {
     }
 }
 
+let inputs = document.getElementsByTagName("INPUT")
+for (let i = 0; i < inputs.length; i++) {
+    if (!inputs[i].classList.contains("ignore")) {
+        if (inputs[i].type === "file" ) {
+            inputs[i].label()
+        } else if (inputs[i].type === "number") {
+            inputs[i].buttons()
+        }
+    }
+}
+
+// Prototypes
 /**
  * Sets a JSON object in storage
  * @param {string} key
