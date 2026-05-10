@@ -18,15 +18,15 @@
 			[false, true]
 		],
 		"Equipment": [
-			[
-				["Greataxe", 1],
-				["Handaxe", 4],
-				["Explorer's Pack", 1],
-				["GP", 15]
-			],
-			[
-				["GP", 75]
-			]
+			{
+				"Greataxe": 1,
+				"Handaxe": 4,
+				"Explorer's Pack": 1,
+				"GP": 15
+			},
+			{
+				"GP": 75
+			}
 		],
 		"Attacks": [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 		"Features": {
