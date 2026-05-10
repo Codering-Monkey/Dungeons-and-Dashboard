@@ -366,6 +366,14 @@ Number.prototype.symbol = function() {
     }
 }
 
+Number.prototype.modifier = function() {
+    return Math.floor(this - 10 / 2)
+}
+
+String.prototype.modifier = function() {
+    return parseInt(this).modifier()
+}
+
 // Popup
 
 let popupBar = document.createElement("div");
