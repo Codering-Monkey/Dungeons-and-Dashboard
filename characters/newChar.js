@@ -405,6 +405,7 @@ function selectName() {
             method: "GET",
             }
         ).then((response) => response.text())
+        sessionStorage.set("Name", name.value)
     })
 
     parent.break(1)
