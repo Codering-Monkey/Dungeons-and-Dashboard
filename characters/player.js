@@ -6,6 +6,95 @@ import classes from "./classes.json" with {type:"json"}
 import species from "./species.json" with {type:"json"}
 import backgrounds from "./backgrounds.json" with {type:"json"}
 import feats from "./feats.json" with {type:"json"}
+// Proficiencies
+
+let profCatagories = {
+    "Skill": [
+        "Acrobatics",
+        "Animal Handling",
+        "Arcana",
+        "Athletics",
+        "Deception",
+        "History",
+        "Insight",
+        "Intimidation",
+        "Investigation",
+        "Medicine",
+        "Nature",
+        "Perception",
+        "Performance",
+        "Persuasion",
+        "Religion",
+        "Sleight of Hand",
+        "Stealth",
+        "Survival"
+    ],
+    "Gaming Set": [
+        "Dice Set",
+        "Playing Card Set"
+    ],
+    "Language": [
+        "Common",
+        "Elvish",
+        "Dwarvish",
+        "Halfling",
+        "Gnomish",
+        "Giant",
+        "Goblin",
+        "Orc"
+    ]
+}
+
+function proficiencyChoose(profItem) {
+    let overlayParent = overlay(function() {}, false)
+    overlayParent.classList.add('profOverlay')
+    let possibleChoices
+    if ("Catagory" in profItem) {
+        possibleChoices = profCatagories[profItem["Catagory"]]
+    } else if ("Choices" in profItem) {
+        possibleChoices = profItem["Choices"]
+    } else {
+        throw TypeError("Incorrectly formatted profItem")
+    }
+    let profTitle = document.createElement("h2")
+    profTitle.textContent = `Choose ${profItem["Amount"]}`
+    overlayParent.appendChild(profTitle)
+    let profContainer = document.createElement("div")
+    overlayParent.appendChild(profContainer)
+    for (let i = 0; i < possibleChoices.length; i++) {
+        let profItem = document.createElement("input")
+        profItem.type = "Checkbox"
+        profItem.id = "choice" + i
+        profItem.value = possibleChoices[i]
+        profItem.classList.add("usable")
+        profContainer.appendChild(profItem)
+        let profLabel = document.createElement("label")
+        profLabel.textContent = possibleChoices[i]
+        profLabel.htmlFor = "choice" + i
+        profContainer.appendChild(profLabel)
+        profContainer.break()
+    }
+    let profButton = document.createElement("button")
+    profButton.textContent = "Close"
+    overlayParent.appendChild(profButton)
+    return new Promise((resolve) => {
+       profButton.addEventListener("click", function() {
+        let selected = []
+        let checkboxes = profContainer.getElementsByTagName("INPUT")
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                selected.push(checkboxes[i].value)
+            }
+        }
+        if (selected.length === profItem["Amount"]) {
+            overlayParent.parentElement.remove()
+            resolve(selected)
+        } else {
+            popup(`Please select ${profItem["Amount"]} options`)
+        }
+    })
+    })
+}
 
 // Feats
 
