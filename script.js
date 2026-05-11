@@ -248,6 +248,16 @@ Array.prototype.pull = function(value) {
 }
 
 /**
+ * Pushes each item in {value} to the Array
+ * @param {Array} value
+ */
+Array.prototype.pushAll = function(value) {
+    for (let i = 0; i < value.length; i++) {
+        this.push(value[i])
+    }
+}
+
+/**
  * Returns the Object with its values as keys and keys as values
  * @returns {{}}
  */
