@@ -2,17 +2,114 @@ import {getQuery, id, numSuffix, overlay, popup, roll, setQuery} from "../script
 import allData from "./sampleChar.json" with {type:"json"}
 import weapons from "./weapons.json" with {type:"json"}
 let playerData = allData[0]
+import classes from "./classes.json" with {type:"json"}
+import species from "./species.json" with {type:"json"}
+import backgrounds from "./backgrounds.json" with {type:"json"}
+import feats from "./feats.json" with {type:"json"}
 
-function developData() {
+// Feats
 
-    return playerData
+function featChoose(featItem) {
+    let overlayParent = overlay(function() {}, false)
+    overlayParent.classList.add('featOverlay')
+    let possibleChoices = []
+    if ("Type" in featItem) {
+        Object.entries(feats).forEach(([key, value]) => {
+            if (featItem.contains(value["Type"])) {
+                possibleChoices.push(key)
+            }
+        })
+    } else if ("Choices" in featItem) {
+        possibleChoices = featItem["Choices"]
+    } else {
+        throw TypeError("Incorrectly formatted featItem")
+    }
+    let possibleFeats = {}
+    for (let i = 0; i < possibleChoices.length; i++) {
+        possibleFeats[possibleChoices[i]] = feats[possibleChoices[i]]["Description"]
+    }
+    let featScroll = document.createElement("div")
+    overlayParent.appendChild(featScroll)
+    Object.entries(possibleFeats).forEach(([key, value]) => {
+
+    })
 }
 
-function render(initial=false) {
+
+// Load the Page
+
+async function developData() {
+    let player = localStorage.indexGet("Characters", getQuery("Char"))
+    player["Stats"] = {}
+    Object.entries(player["BaseStats"]).forEach(([key, value]) => {
+        player["Stats"][allStats[key]] = value
+    })
+    Object.entries(player["Bonus"]).forEach(([key, value]) => {
+        for (let i = 0; i < value.length; i++) {
+            player["Stats"][allStats[value[i]]] += parseInt(key)
+        }
+    })
+    if (player["Choices"]["Language"].length === 0) {
+        player["Choices"]["Language"] = await proficiencyChoose({"Amount": 3, "Catagory": "Language"})
+    }
+    player["Languages"].pushAll(player["Choices"]["Language"])
+    if (!("Class" in player["Choices"])) {
+        player["Choices"]["Class"] = await proficiencyChoose(classes[player["Class"]]["Prof"][0])
+    }
+    player["Prof"].pushAll(player["Choices"]["Class"])
+
+    async function addFeatures(dataSource) {
+        for (const [key, value] of Object.entries(dataSource)) {
+            if ("Level" in value) {
+                if (value["Level"] > player["Level"]) {
+                    continue;
+                }
+            }
+            if (key in player["Choices"]) {
+                if ("Prof" in player["Choices"][key]) {
+                    player["Prof"].pushAll(player["Choices"][key]["Prof"])
+                }
+            } else {
+                player["Choices"][key] = {}
+                if ("Prof" in value) {
+                    let profChoices = []
+                    for (let i = 0; i < value["Prof"].length; i++) {
+                        profChoices.pushAll(await proficiencyChoose(value["Prof"][i]))
+                    }
+                    player["Choices"][key]["Prof"] = profChoices
+                    player["Prof"].pushAll(profChoices)
+                }
+            }
+        }
+        let basePlayer = localStorage.get("Characters")
+        basePlayer[getQuery("Char")]["Choices"] = player["Choices"]
+        localStorage.set("Characters", basePlayer)
+    }
+    await addFeatures(classes[player["Class"]]["Features"])
+    await addFeatures(species[player["Species"]]["Features"])
+    console.log(player)
+
+    player["Init"] = player["Stats"]["Dex"].modifier()
+    player["Max Health"] = classes[player["Class"]]["Dice"] + ((classes[player["Class"]]["Dice"] / 2 + 1) * (player["Level"] - 1)) + (player["Level"] * player["Stats"]["Con"].modifier())
+    if (player["Current Health"] > player["Max Health"]) {
+        player["Current Health"] = player["Max Health"]
+    }
+    player["Saves"] = classes[player["Class"]]["Saves"]
+    player["Attacks"] = classes[player["Class"]]["Attacks"][player["Level"]]
+    player["Speed"] = species[player["Species"]]["Speed"]
+
+    return player
+}
+
+function render(playerData, initial=false) {
     // Generate Static Data
-    id("pfp").src = playerData["Pfp"]
+    id("pfp").src = (playerData["Pfp"] || "../Images/players/blank.png")
     id("name").textContent = playerData["Name"]
-    id("title").textContent = `${numSuffix(playerData["Level"])} level ${playerData["Species"]} ${playerData["Prefix"]} ${playerData["Class"]}`
+    if (playerData["Level"] < 3) {
+        id("title").textContent = `${numSuffix(playerData["Level"])} level ${playerData["Species"]} ${playerData["Class"]}`
+    } else {
+       id("title").textContent = `${numSuffix(playerData["Level"])} level ${playerData["Species"]} ${playerData["Prefix"]} ${playerData["Class"]}`
+    }
     id("speed").textContent = playerData["Speed"]
 
     let prof = Math.ceil(playerData["Level"] / 4) + 1
@@ -71,7 +168,7 @@ function render(initial=false) {
         let container = document.createElement("tr")
         profParent.appendChild(container)
         let bonusNumber = document.createElement("p")
-        let mod = Math.floor((playerData["Stats"][value] - 10) / 2)
+        let mod = playerData["Stats"][value].modifier()
         let bonus = mod
         bonusNumber.textContent = mod.symbol()
         let profCheckbox = document.createElement("input")
@@ -200,7 +297,7 @@ function render(initial=false) {
             if (playerData["Current Health"] > playerData["Max Health"]) {
                 playerData["Current Health"] = playerData["Max Health"]
             }
-            render()
+            render(playerData)
         })
         id("harm").addEventListener("click", function () {
             let amount = parseInt(id("healthChange")["value"])
@@ -214,11 +311,11 @@ function render(initial=false) {
             if (playerData["Current Health"] < 0) {
                 playerData["Current Health"] = 0
             }
-            render()
+            render(playerData)
         })
         id("temp").addEventListener("click", function () {
             playerData["Temp Health"] = parseInt(id("healthChange")["value"])
-            render()
+            render(playerData)
         })
     }
 
@@ -260,7 +357,7 @@ function render(initial=false) {
     if (initial) {
         let condButton = id("condButton")
         condButton.addEventListener("click", function () {
-            let box = overlay(function () {render()})
+            let box = overlay(function () {render(playerData)})
             let current = document.createElement("div")
             current.classList.add("current")
             box.appendChild(current)
@@ -402,4 +499,4 @@ function render(initial=false) {
 
 }
 
-render(true)
+render(await developData(), true)
