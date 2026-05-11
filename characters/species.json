@@ -23,7 +23,7 @@
 				"Description": "You gain an Origin feat of your choice.",
 				"Feats": [{
 					"Amount": 1,
-					"Type": "Origin"
+					"Type": ["Origin"]
 				}]
 			}
 		}
