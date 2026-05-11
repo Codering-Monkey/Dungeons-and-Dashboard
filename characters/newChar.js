@@ -67,7 +67,23 @@ function updateTotal(catagory) {
     id("mod" + catagory).textContent = mod.symbol()
 }
 
-let newCharacter = {"Choices":{}}
+let newCharacter = {
+    "Current Health": 1000,
+    "Max Health":0,
+    "Temp Health": 0,
+    "Level": 1,
+    "Choices":{},
+    "Prof": [],
+    "Exp": [],
+    "Resist": [],
+    "Immune": [],
+    "Weak": [],
+    "Conditions": [],
+    "ArmourTraining": [],
+    "WeaponTraining": [],
+    "ToolTraining": [],
+    "Languages": [],
+}
 let parent = id("parent")
 let next = id("next")
 let back = id("back")
