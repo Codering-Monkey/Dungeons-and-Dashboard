@@ -1,7 +1,10 @@
 {
 	"Soldier": {
 		"Abilities": ["Str", "Dex", "Con"],
-		"Feat": "Savage Attacker",
+		"Feat": [{
+			"Amount": 1,
+			"Choices": "Savage Attacker"
+		}],
 		"Prof": [{
 			"Amount": 1,
 			"Catagory": "Gaming Set",
