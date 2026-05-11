@@ -451,13 +451,16 @@ export function popup(data) {
 /**
  * Creates an Overlay
  * @param {function} closeEvent
+ * @param {boolean} closeable
  * @returns {HTMLDivElement}
  */
-export function overlay(closeEvent=function() {}) {
+export function overlay(closeEvent=function() {}, closeable=true) {
     let overlay = document.createElement("div");
     overlay.classList.add("overlay");
     overlay.id = "overlay"
-    overlay.addEventListener("click", function(event) {if (event.target.id === "overlay") {this.parentElement.removeChild(this); closeEvent()}})
+    if (closeable) {
+        overlay.addEventListener("click", function(event) {if (event.target.id === "overlay") {this.parentElement.removeChild(this); closeEvent()}})
+    }
     document.body.appendChild(overlay);
 
     let box = document.createElement("div");
