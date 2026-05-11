@@ -113,7 +113,7 @@ next.addEventListener("click", function () {
         }
     } else if (stage === "Stats") {
         if (id("totalPoints").textContent === "27" && id("totalBonus").textContent === "3") {
-            newCharacter["Stats"] = sessionStorage.get("baseStats")
+            newCharacter["BaseStats"] = sessionStorage.get("baseStats")
             newCharacter["Bonus"] = sessionStorage.get("Bonus")
             selectEquip()
         } else {
@@ -155,7 +155,7 @@ back.addEventListener("click", function () {
         newCharacter["Background"] = sessionStorage.get("Background")
         selectList(species, "Species")
     } else if (stage === "Stats") {
-        newCharacter["Stats"] = sessionStorage.get("baseStats")
+        newCharacter["BaseStats"] = sessionStorage.get("baseStats")
         newCharacter["Bonus"] = sessionStorage.get("Bonus")
         selectList(backgrounds, "Background")
     } else if (stage === "Equip") {
