@@ -1,7 +1,6 @@
 import {getQuery, id, numSuffix, overlay, popup, roll, setQuery} from "../script.js"
 import allData from "./sampleChar.json" with {type:"json"}
 import weapons from "./weapons.json" with {type:"json"}
-let playerData = allData[0]
 import classes from "./classes.json" with {type:"json"}
 import species from "./species.json" with {type:"json"}
 import backgrounds from "./backgrounds.json" with {type:"json"}
