@@ -195,7 +195,7 @@ async function developData() {
     }
     player["Prof"].pushAll(player["Choices"]["Background"])
     if (!("Class" in player["Choices"])) {
-        player["Choices"]["Class"] = await proficiencyChoose(classes[player["Class"]]["Prof"][0])
+        player["Choices"]["Class"] = await proficiencyChoose(classes[player["Class"]]["Prof"][0], player["Prof"])
     }
     player["Prof"].pushAll(player["Choices"]["Class"])
 
@@ -217,7 +217,7 @@ async function developData() {
                 if ("Prof" in value) {
                     let profChoices = []
                     for (let i = 0; i < value["Prof"].length; i++) {
-                        profChoices.pushAll(await proficiencyChoose(value["Prof"][i]))
+                        profChoices.pushAll(await proficiencyChoose(value["Prof"][i], player["Prof"]))
                     }
                     player["Choices"][key]["Prof"] = profChoices
                     player["Prof"].pushAll(profChoices)
