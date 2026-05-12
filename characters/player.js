@@ -109,7 +109,7 @@ function proficiencyChoose(profItem, existingProf) {
 
 // Feats
 
-function featChoose(featItem) {
+function featChoose(featItem, existingFeat) {
     let overlayParent = overlay(function() {}, false)
     overlayParent.classList.add('featOverlay')
     let possibleChoices = []
@@ -132,6 +132,9 @@ function featChoose(featItem) {
     overlayParent.appendChild(featScroll)
     Object.entries(possibleFeats).forEach(([key, value]) => {
         let featItem = document.createElement("div")
+        if (existingFeat.includes(key)) {
+            featItem.style.opacity = "50%"
+        }
         featScroll.appendChild(featItem)
         let featTitle = document.createElement("h3")
         featTitle.textContent = key
@@ -228,7 +231,7 @@ async function developData() {
                 if ("Feat" in value) {
                     let featChoices = []
                     for (let i = 0; i < value["Feat"].length; i++) {
-                        featChoices.push(await featChoose(value["Feat"][i]))
+                        featChoices.push(await featChoose(value["Feat"][i], player["Feats"]))
                     }
                     player["Choices"][key]["Feat"] = featChoices
                     player["Feats"].pushAll(featChoices)
