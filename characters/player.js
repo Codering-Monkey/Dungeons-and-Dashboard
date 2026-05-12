@@ -132,7 +132,24 @@ function featChoose(featItem) {
     let featScroll = document.createElement("div")
     overlayParent.appendChild(featScroll)
     Object.entries(possibleFeats).forEach(([key, value]) => {
-
+        let featItem = document.createElement("div")
+        featScroll.appendChild(featItem)
+        let featTitle = document.createElement("h3")
+        featTitle.textContent = key
+        featItem.appendChild(featTitle)
+        let featText = document.createElement("p")
+        featText.textContent = value
+        featItem.appendChild(featText)
+        featItem.addEventListener("click", function() {
+            if (this.classList.contains("selectedFeat")) {
+                this.classList.remove("selectedFeat")
+            } else {
+                if (document.getElementsByClassName("selectedFeat")[0]) {
+                    document.getElementsByClassName("selectedFeat")[0].classList.remove("selectedFeat")
+                }
+                this.classList.add("selectedFeat")
+            }
+        })
     })
 }
 

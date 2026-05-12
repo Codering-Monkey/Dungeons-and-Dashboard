@@ -270,3 +270,16 @@ table > tr > td > p, table > tbody > tr > td > p {
 .action-body th {
     font-size: .85em;
 }
+
+/* Overlays */
+.featOverlay > div > div {
+    border: 1px solid var(--minor-text)
+}
+
+.featOverlay > div > div:hover {
+    border-color: var(--blue);
+}
+
+.featOverlay > div > .selectedFeat {
+    border-color: var(--pink);
+}
