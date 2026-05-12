@@ -41,6 +41,9 @@ let profCatagories = {
         "Dice Set",
         "Playing Card Set"
     ],
+    "Artisan's Tools": [
+
+    ],
     "Language": [
         "Common",
         "Elvish",
@@ -251,6 +254,18 @@ async function developData() {
         featData[player["Feats"][i]] = feats[player["Feats"][i]]
     }
     await addFeatures(featData)
+
+    player["ToolTraining"] = []
+    for (let i = 0; i < profCatagories["Artisan's Tools"].length; i++) {
+        if (player["Prof"].includes(profCatagories["Artisan's Tools"][i])) {
+            player["ToolTraining"].push(profCatagories["Artisan's Tools"][i])
+        }
+    }
+    for (let i = 0; i < profCatagories["Gaming Set"].length; i++) {
+        if (player["Prof"].includes(profCatagories["Gaming Set"][i])) {
+            player["ToolTraining"].push(profCatagories["Gaming Set"][i])
+        }
+    }
 
     player["Init"] = player["Stats"]["Dex"].modifier()
     player["Max Health"] = classes[player["Class"]]["Dice"] + ((classes[player["Class"]]["Dice"] / 2 + 1) * (player["Level"] - 1)) + (player["Level"] * player["Stats"]["Con"].modifier())
