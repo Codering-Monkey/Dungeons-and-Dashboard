@@ -199,6 +199,8 @@ async function developData() {
     }
     player["Prof"].pushAll(player["Choices"]["Class"])
 
+    player["Feats"].push(backgrounds[player["Background"]]["Feat"])
+
     async function addFeatures(dataSource) {
         for (const [key, value] of Object.entries(dataSource)) {
             if ("Level" in value) {
