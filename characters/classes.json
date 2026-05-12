@@ -9,14 +9,8 @@
 			"Type": "Prof",
 			"Choices": ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]
 		}],
-		"Armour": [
-			[true, true, false, true],
-			[false, false, false, true]
-		],
-		"Weapons": [
-			[true, true],
-			[false, true]
-		],
+		"Armour": [true, true, false, true],
+		"Weapons": [true, true],
 		"Equipment": [
 			{
 				"Greataxe": 1,
