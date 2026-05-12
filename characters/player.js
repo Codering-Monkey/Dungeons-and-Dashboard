@@ -116,7 +116,7 @@ function featChoose(featItem) {
     let possibleChoices = []
     if ("Type" in featItem) {
         Object.entries(feats).forEach(([key, value]) => {
-            if (featItem.contains(value["Type"])) {
+            if (featItem["Type"].includes(value["Type"])) {
                 possibleChoices.push(key)
             }
         })
