@@ -180,8 +180,11 @@ async function developData() {
             player["Stats"][allStats[value[i]]] += parseInt(key)
         }
     })
+    if (!player["Choices"]["Language"]) {
+        player["Choices"]["Language"] = await proficiencyChoose({"Amount": 3, "Catagory": "Language"}, player["Prof"])
+    }
     if (player["Choices"]["Language"].length === 0) {
-        player["Choices"]["Language"] = await proficiencyChoose({"Amount": 3, "Catagory": "Language"})
+        player["Choices"]["Language"] = await proficiencyChoose({"Amount": 3, "Catagory": "Language"}, player["Prof"])
     }
     player["Languages"].pushAll(player["Choices"]["Language"])
     if (!("Class" in player["Choices"])) {
