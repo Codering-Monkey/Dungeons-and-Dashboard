@@ -79,6 +79,7 @@ let newCharacter = {
     "Immune": [],
     "Weak": [],
     "Conditions": [],
+    "Feats": [],
     "ArmourTraining": [],
     "WeaponTraining": [],
     "ToolTraining": [],
