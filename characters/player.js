@@ -81,6 +81,7 @@ function proficiencyChoose(profItem, existingProf) {
         profLabel.htmlFor = "choice" + i
         if (existingProf.includes(possibleChoices[i])) {
             profLabel.style.opacity = "50%"
+            profItem.disabled = true
         }
         profContainer.appendChild(profLabel)
         profContainer.break()
@@ -132,9 +133,6 @@ function featChoose(featItem, existingFeat) {
     overlayParent.appendChild(featScroll)
     Object.entries(possibleFeats).forEach(([key, value]) => {
         let featItem = document.createElement("div")
-        if (existingFeat.includes(key)) {
-            featItem.style.opacity = "50%"
-        }
         featScroll.appendChild(featItem)
         let featTitle = document.createElement("h3")
         featTitle.textContent = key
@@ -142,16 +140,20 @@ function featChoose(featItem, existingFeat) {
         let featText = document.createElement("p")
         featText.textContent = value
         featItem.appendChild(featText)
-        featItem.addEventListener("click", function() {
-            if (this.classList.contains("selectedFeat")) {
-                this.classList.remove("selectedFeat")
-            } else {
-                if (document.getElementsByClassName("selectedFeat")[0]) {
-                    document.getElementsByClassName("selectedFeat")[0].classList.remove("selectedFeat")
+        if (existingFeat.includes(key)) {
+            featItem.style.opacity = "50%"
+        } else {
+            featItem.addEventListener("click", function() {
+                if (this.classList.contains("selectedFeat")) {
+                    this.classList.remove("selectedFeat")
+                } else {
+                    if (document.getElementsByClassName("selectedFeat")[0]) {
+                        document.getElementsByClassName("selectedFeat")[0].classList.remove("selectedFeat")
+                    }
+                    this.classList.add("selectedFeat")
                 }
-                this.classList.add("selectedFeat")
-            }
-        })
+            })
+        }
     })
     let finishButton = document.createElement("button")
     finishButton.textContent = "Confirm"
