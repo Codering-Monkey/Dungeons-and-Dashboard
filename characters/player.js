@@ -187,6 +187,13 @@ async function developData() {
         player["Choices"]["Language"] = await proficiencyChoose({"Amount": 3, "Catagory": "Language"}, player["Prof"])
     }
     player["Languages"].pushAll(player["Choices"]["Language"])
+    if (!("Background" in player["Choices"])) {
+        player["Choices"]["Background"] = []
+        for (let i = 0; i < backgrounds[player["Background"]]["Prof"].length; i++) {
+            player["Choices"]["Background"].pushAll(await proficiencyChoose(backgrounds[player["Background"]]["Prof"][i], player["Prof"]))
+        }
+    }
+    player["Prof"].pushAll(player["Choices"]["Background"])
     if (!("Class" in player["Choices"])) {
         player["Choices"]["Class"] = await proficiencyChoose(classes[player["Class"]]["Prof"][0])
     }
