@@ -218,7 +218,11 @@ async function developData() {
     }
     await addFeatures(classes[player["Class"]]["Features"])
     await addFeatures(species[player["Species"]]["Features"])
-    console.log(player)
+    let featData = {}
+    for (let i = 0; i < player["Feats"].length; i++) {
+        featData[player["Feats"][i]] = feats[player["Feats"][i]]
+    }
+    await addFeatures(featData)
 
     player["Init"] = player["Stats"]["Dex"].modifier()
     player["Max Health"] = classes[player["Class"]]["Dice"] + ((classes[player["Class"]]["Dice"] / 2 + 1) * (player["Level"] - 1)) + (player["Level"] * player["Stats"]["Con"].modifier())
