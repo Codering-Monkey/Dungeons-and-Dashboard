@@ -90,21 +90,21 @@ function proficiencyChoose(profItem, existingProf) {
     profButton.textContent = "Close"
     overlayParent.appendChild(profButton)
     return new Promise((resolve) => {
-       profButton.addEventListener("click", function() {
-        let selected = []
-        let checkboxes = profContainer.getElementsByTagName("INPUT")
-        for (let i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].checked) {
-                selected.push(checkboxes[i].value)
+        profButton.addEventListener("click", function() {
+            let selected = []
+            let checkboxes = profContainer.getElementsByTagName("INPUT")
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    selected.push(checkboxes[i].value)
+                }
             }
-        }
-        if (selected.length === profItem["Amount"]) {
-            overlayParent.parentElement.remove()
-            resolve(selected)
-        } else {
-            popup(`Please select ${profItem["Amount"]} options`)
-        }
-    })
+            if (selected.length === profItem["Amount"]) {
+                overlayParent.parentElement.remove()
+                resolve(selected)
+            } else {
+                popup(`Please select ${profItem["Amount"]} options`)
+            }
+        })
     })
 }
 
