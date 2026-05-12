@@ -3,7 +3,7 @@
 		"Abilities": ["Str", "Dex", "Con"],
 		"Feat": [{
 			"Amount": 1,
-			"Choices": "Savage Attacker"
+			"Choices": ["Savage Attacker"]
 		}],
 		"Prof": [{
 			"Amount": 1,
