@@ -208,6 +208,8 @@ async function developData() {
 
     player["Feats"].push(backgrounds[player["Background"]]["Feat"])
 
+    player["ArmourPermitted"] = classes[player["Class"]]["Armour"]
+
     async function addFeatures(dataSource) {
         for (const [key, value] of Object.entries(dataSource)) {
             if ("Level" in value) {
@@ -265,6 +267,20 @@ async function developData() {
         if (player["Prof"].includes(profCatagories["Gaming Set"][i])) {
             player["ToolTraining"].push(profCatagories["Gaming Set"][i])
         }
+    }
+
+    player["ArmourTraining"] = []
+    if (player["ArmourPermitted"][0]) {
+        player["ArmourTraining"].push("Light")
+    }
+    if (player["ArmourPermitted"][1]) {
+        player["ArmourTraining"].push("Medium")
+    }
+    if (player["ArmourPermitted"][2]) {
+        player["ArmourTraining"].push("Heavy")
+    }
+    if (player["ArmourPermitted"][3]) {
+        player["ArmourTraining"].push("Shields")
     }
 
     player["Init"] = player["Stats"]["Dex"].modifier()
