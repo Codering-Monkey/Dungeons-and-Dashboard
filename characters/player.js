@@ -86,7 +86,7 @@ function proficiencyChoose(profItem, existingProf) {
         profContainer.break()
     }
     let profButton = document.createElement("button")
-    profButton.textContent = "Close"
+    profButton.textContent = "Confirm"
     overlayParent.appendChild(profButton)
     return new Promise((resolve) => {
         profButton.addEventListener("click", function() {
@@ -154,7 +154,7 @@ function featChoose(featItem, existingFeat) {
         })
     })
     let finishButton = document.createElement("button")
-    finishButton.textContent = "Select"
+    finishButton.textContent = "Confirm"
     overlayParent.appendChild(finishButton)
     return new Promise((resolve) => {
         finishButton.addEventListener("click", function() {
