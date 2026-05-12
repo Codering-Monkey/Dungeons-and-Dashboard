@@ -264,7 +264,13 @@ Array.prototype.pushAll = function(value) {
 Object.prototype.invert = function() {
     let newObject = {}
     Object.entries(this).forEach(([key, value]) => {
-        newObject[value] = key
+        if (Array.isArray(value)) {
+            for (let i = 0; i < value.length; i++) {
+                newObject[value[i]] = key
+            }
+        } else {
+            newObject[value] = key
+        }
     })
     return newObject
 }
