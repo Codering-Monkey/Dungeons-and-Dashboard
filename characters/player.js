@@ -54,7 +54,7 @@ let profCatagories = {
     ]
 }
 
-function proficiencyChoose(profItem) {
+function proficiencyChoose(profItem, existingProf) {
     let overlayParent = overlay(function() {}, false)
     overlayParent.classList.add('profOverlay')
     let possibleChoices
@@ -80,6 +80,9 @@ function proficiencyChoose(profItem) {
         let profLabel = document.createElement("label")
         profLabel.textContent = possibleChoices[i]
         profLabel.htmlFor = "choice" + i
+        if (existingProf.includes(possibleChoices[i])) {
+            profLabel.style.opacity = "50%"
+        }
         profContainer.appendChild(profLabel)
         profContainer.break()
     }
