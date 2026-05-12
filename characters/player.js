@@ -212,6 +212,10 @@ async function developData() {
                 if ("Prof" in player["Choices"][key]) {
                     player["Prof"].pushAll(player["Choices"][key]["Prof"])
                 }
+                if ("Feat" in player["Choices"][key]) {
+                    player["Feats"].push(player["Choices"][key]["Feat"])
+                }
+
             } else {
                 player["Choices"][key] = {}
                 if ("Prof" in value) {
@@ -221,6 +225,14 @@ async function developData() {
                     }
                     player["Choices"][key]["Prof"] = profChoices
                     player["Prof"].pushAll(profChoices)
+                }
+                if ("Feat" in value) {
+                    let featChoices = []
+                    for (let i = 0; i < value["Feat"].length; i++) {
+                        featChoices.push(await featChoose(value["Feat"][i]))
+                    }
+                    player["Choices"][key]["Feat"] = featChoices
+                    player["Feats"].pushAll(featChoices)
                 }
             }
         }
