@@ -151,6 +151,19 @@ function featChoose(featItem) {
             }
         })
     })
+    let finishButton = document.createElement("button")
+    finishButton.textContent = "Select"
+    overlayParent.appendChild(finishButton)
+    return new Promise((resolve) => {
+        finishButton.addEventListener("click", function() {
+            if (document.getElementsByClassName("selectedFeat") && document.getElementsByClassName("selectedFeat")[0]) {
+                resolve(document.getElementsByClassName("selectedFeat")[0].children[0].textContent)
+                overlayParent.parentElement.remove()
+            } else {
+                popup(`Please select a Feat`)
+            }
+        })
+    })
 }
 
 
