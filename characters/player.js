@@ -294,6 +294,17 @@ async function developData() {
         player["WeaponTraining"].push("Martial")
     }
 
+    player["Armour"] = ["Unarmoured"]
+    player["Weapons"] = {"Unarmed Strike": 1}
+    Object.entries(player["Equipment"]).forEach(([key, value]) => {
+        if (key in weapons) {
+            player["Weapons"][key] = value
+        }
+        if (key in armour) {
+            player["Armour"].append(key)
+        }
+    })
+
     player["Init"] = player["Stats"]["Dex"].modifier()
     player["Max Health"] = classes[player["Class"]]["Dice"] + ((classes[player["Class"]]["Dice"] / 2 + 1) * (player["Level"] - 1)) + (player["Level"] * player["Stats"]["Con"].modifier())
     if (player["Current Health"] > player["Max Health"]) {
@@ -693,15 +704,45 @@ function render(playerData, initial=false) {
                 weaponsTitle.appendChild(header)
             }
             actionsTable.appendChild(weaponsTitle)
-            for (let i = 0; i < playerWeapons.length; i++) {
-                let weaponLine = document.createElement("tr")
-                let weaponData = weapons[playerWeapons[i][0]]
-                let name = document.createElement("td")
-                name.textContent = playerWeapons[i][1] > 1 ? `${playerWeapons[i][0]} (${playerWeapons[i][1]})` : playerWeapons[i][0]
-                weaponLine.appendChild(name)
-                actionsTable.appendChild(weaponLine)
-            }
+            Object.entries(playerData["Weapons"]).forEach(([key, value]) => {
+                let weaponData = weapons[key]
+                let proficient = (playerData["WeaponTraining"].includes(weaponData["Type"]) || playerData["WeaponTraining"].includes(key))
+                let statBonus = weaponData["Type"] === "Ranged" ? playerData["Stats"]["Dex"].modifier() : playerData["Stats"]["Str"].modifier()
 
+                let weaponLine = document.createElement("tr")
+                actionsTable.appendChild(weaponLine)
+
+                let name = document.createElement("td")
+                name.textContent = value > 1 ? `${key} (${value})` : key
+                weaponLine.appendChild(name)
+
+                let range = document.createElement("td")
+                range.textContent = weaponData["Type"] === "Ranged" ? weaponData["Range"][0] + "ft / " + weaponData["Range"][1] + "ft" : "Melee"
+                weaponLine.appendChild(range)
+
+                let hit = document.createElement("td")
+                hit.textContent = (statBonus  + (proficient ? (weaponData["Type"] === "Ranged" ? playerData["Stats"]["Dex"] : playerData["Stats"]["Str"]): 0)).symbol()
+                weaponLine.appendChild(hit)
+
+                let damage = document.createElement("td")
+                damage.textContent = weaponData["Dice"][0] + "d" + weaponData["Dice"][1] + statBonus.bonus()
+                damage.classList.add("clickable")
+                damage.addEventListener("click", function() {
+                    let dice = []
+                    let diceString = ""
+                    for (let i = 0; i < weaponData["Dice"][0]; i++) {
+                        dice.push(roll(weaponData["Dice"][1]))
+                        diceString += dice[i] + " + "
+                    }
+                    diceString.slice(0, - 3)
+                    popup(`You rolled a ${dice.sum() + statBonus} on your ${key} roll (${diceString}${statBonus})`)
+                })
+                weaponLine.appendChild(damage)
+
+                let notes = document.createElement("td")
+                notes.textContent = weaponData["Properties"].commaFuse()
+                weaponLine.appendChild(notes)
+            })
         }
     }
 
