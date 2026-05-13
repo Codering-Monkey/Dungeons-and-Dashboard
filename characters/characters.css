@@ -267,6 +267,10 @@ table > tr > td > p, table > tbody > tr > td > p {
     width: 100%;
 }
 
+.action-body td {
+    width: 20%;
+}
+
 .action-body th {
     font-size: .85em;
 }
