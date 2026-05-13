@@ -222,7 +222,7 @@ async function developData() {
                     player["Prof"].pushAll(player["Choices"][key]["Prof"])
                 }
                 if ("Feat" in player["Choices"][key]) {
-                    player["Feats"].push(player["Choices"][key]["Feat"])
+                    player["Feats"].pushAll(player["Choices"][key]["Feat"])
                 }
 
             } else {
