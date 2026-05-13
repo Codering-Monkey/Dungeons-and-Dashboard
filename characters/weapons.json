@@ -38,5 +38,15 @@
 		"Mastery": "Vex",
 		"Weight": 2,
 		"Cost": 5
+	},
+	"Unarmed Strike": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Bludgeoning",
+		"Dice": [1, 1],
+		"Properties": [],
+		"Mastery": "N/A",
+		"Weight": 0,
+		"Cost": 0
 	}
 }
