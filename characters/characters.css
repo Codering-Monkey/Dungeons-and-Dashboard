@@ -238,7 +238,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .action-content {
-        height: 100%;
+    height: calc(100% - 36px)
 }
 
 .actions {
