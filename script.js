@@ -384,6 +384,18 @@ Number.prototype.symbol = function() {
     }
 }
 
+Number.prototype.bonus = function() {
+    if (this === 0) {
+        return ""
+    } else if (this > 0) {
+        return " + " + String(this)
+    } else if (this < 0) {
+        return " - " + String(this * -1)
+    } else {
+        return String(this)
+    }
+}
+
 Number.prototype.modifier = function() {
     return Math.floor((this - 10) / 2)
 }
