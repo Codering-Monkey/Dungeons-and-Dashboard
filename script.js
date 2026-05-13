@@ -260,6 +260,18 @@ Array.prototype.pushAll = function(value) {
 }
 
 /**
+ * This was created cause PyCharm complains about Math.sumPrecise
+ * @returns {number}
+ */
+Array.prototype.sum = function() {
+    let total = 0
+    for (let i = 0; i < this.length; i++) {
+        total += this[i]
+    }
+    return total
+}
+
+/**
  * Returns the Object with its values as keys and keys as values
  * @returns {{}}
  */
