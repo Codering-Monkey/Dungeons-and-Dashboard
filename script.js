@@ -227,7 +227,9 @@ Array.prototype.fuse = function(gap="") {
  */
 Array.prototype.commaFuse = function() {
     let final = structuredClone(this)
-    if (this.length > 1) {
+    if (this.length === 2) {
+        final = [this[0], " and ", this[1]]
+    } else if (this.length > 1) {
         final.splice(this.length - 1, 0, " and ")
         for (let i = this.length - 1; i > 0; i--) {
             final.splice(i, 0, ", ")
