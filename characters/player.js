@@ -497,29 +497,35 @@ function render(playerData, initial=false) {
     // Health
     if (initial) {
         id("heal").addEventListener("click", function () {
-            playerData["Current Health"] += parseInt(id("healthChange")["value"])
-            if (playerData["Current Health"] > playerData["Max Health"]) {
-                playerData["Current Health"] = playerData["Max Health"]
+            if (parseInt(id("healthChange")["value"])) {
+                playerData["Current Health"] += parseInt(id("healthChange")["value"])
+                if (playerData["Current Health"] > playerData["Max Health"]) {
+                    playerData["Current Health"] = playerData["Max Health"]
+                }
+                render(playerData)
             }
-            render(playerData)
         })
         id("harm").addEventListener("click", function () {
             let amount = parseInt(id("healthChange")["value"])
-            if (playerData["Temp Health"] > amount) {
-                playerData["Temp Health"] -= amount
-            } else {
-                amount -= playerData["Temp Health"]
-                playerData["Temp Health"] = 0
+            if (amount) {
+                if (playerData["Temp Health"] > amount) {
+                    playerData["Temp Health"] -= amount
+                } else {
+                    amount -= playerData["Temp Health"]
+                    playerData["Temp Health"] = 0
+                }
+                playerData["Current Health"] -= amount
+                if (playerData["Current Health"] < 0) {
+                    playerData["Current Health"] = 0
+                }
+                render(playerData)
             }
-            playerData["Current Health"] -= amount
-            if (playerData["Current Health"] < 0) {
-                playerData["Current Health"] = 0
-            }
-            render(playerData)
         })
         id("temp").addEventListener("click", function () {
-            playerData["Temp Health"] = parseInt(id("healthChange")["value"])
-            render(playerData)
+            if (parseInt(id("healthChange")["value"])) {
+                playerData["Temp Health"] = parseInt(id("healthChange")["value"])
+                render(playerData)
+            }
         })
     }
 
