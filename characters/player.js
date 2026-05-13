@@ -4,6 +4,7 @@ import classes from "./classes.json" with {type:"json"}
 import species from "./species.json" with {type:"json"}
 import backgrounds from "./backgrounds.json" with {type:"json"}
 import feats from "./feats.json" with {type:"json"}
+import armour from "./armour.json" with {type:"json"}
 
 let allStats = {
     "Strength": "Str",
@@ -210,6 +211,16 @@ async function developData() {
     player["Feats"].push(backgrounds[player["Background"]]["Feat"])
 
     player["ArmourPermitted"] = classes[player["Class"]]["Armour"]
+    player["Armour"] = {"Unarmoured": {"Type": "Other", "Amount": "10", "Cap": -1}}
+    player["Weapons"] = {"Unarmed Strike": 1}
+    Object.entries(player["Equipment"]).forEach(([key, value]) => {
+        if (key in weapons) {
+            player["Weapons"][key] = value
+        }
+        if (key in armour) {
+            player["Armour"][key] = armour[key]
+        }
+    })
 
     player["WeaponsPermitted"] = classes[player["Class"]]["Weapons"]
 
@@ -219,6 +230,9 @@ async function developData() {
                 if (value["Level"] > player["Level"]) {
                     continue;
                 }
+            }
+            if ("Armour" in value) {
+                player["Armour"][value["Armour"]["Name"]] = {"Type": value["Armour"]["Type"], "Amount": value["Armour"]["Amount"], "Cap": value["Armour"]["Cap"]}
             }
             if (key in player["Choices"]) {
                 if ("Prof" in player["Choices"][key]) {
@@ -294,17 +308,6 @@ async function developData() {
         player["WeaponTraining"].push("Martial")
     }
 
-    player["Armour"] = ["Unarmoured"]
-    player["Weapons"] = {"Unarmed Strike": 1}
-    Object.entries(player["Equipment"]).forEach(([key, value]) => {
-        if (key in weapons) {
-            player["Weapons"][key] = value
-        }
-        if (key in armour) {
-            player["Armour"].append(key)
-        }
-    })
-
     player["Init"] = player["Stats"]["Dex"].modifier()
     player["Max Health"] = classes[player["Class"]]["Dice"] + ((classes[player["Class"]]["Dice"] / 2 + 1) * (player["Level"] - 1)) + (player["Level"] * player["Stats"]["Con"].modifier())
     if (player["Current Health"] > player["Max Health"]) {
@@ -346,7 +349,7 @@ function render(playerData, initial=false) {
         })
     }
 
-    id("ac").textContent = playerData["Armour"]
+    id("ac").textContent = playerData["Armour Class"]
 
     id("maxHealth").textContent = playerData["Max Health"]
 
@@ -689,13 +692,6 @@ function render(playerData, initial=false) {
             actionBody.break(2)
             let actionsTable = document.createElement("table")
             actionBody.appendChild(actionsTable)
-            let playerWeapons = []
-            for (let i = 0; i < playerData["Equipment"].length; i++) {
-                if (playerData["Equipment"][i][0] in weapons) {
-                    playerWeapons.push(playerData["Equipment"][i])
-                }
-            }
-            playerWeapons.push(["Unarmed Strike", 1])
             let weaponsTitle = document.createElement("tr")
             let columns = ["Attack", "Range", "Hit", "Damage", "Notes"]
             for (let i = 0; i < columns.length; i++) {
