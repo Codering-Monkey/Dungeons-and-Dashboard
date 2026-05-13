@@ -39,6 +39,7 @@
 				"Armour": {
 					"Name": "Unarmoured Defense (Con)",
 					"Amount": "10+{con}",
+					"Cap": -1,
 					"Type": "Other"
 				}
 			},
