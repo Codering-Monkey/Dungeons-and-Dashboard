@@ -12,9 +12,10 @@
 	"Shortbow": {
 		"Tier": "Simple",
 		"Type": "Ranged",
+		"Range": [80, 320],
 		"Damage": "Piercing",
 		"Dice": [1, 6],
-		"Properties": ["Ammunition", "Range (80/320; Arrow)", "Two-Handed"],
+		"Properties": ["Ammunition (Arrow)", "Two-Handed"],
 		"Mastery": "Vex",
 		"Weight": 2,
 		"Cost": 25
