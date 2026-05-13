@@ -187,6 +187,7 @@ async function developData() {
             player["Stats"][allStats[value[i]]] += parseInt(key)
         }
     })
+    player["Prof Bonus"] = Math.ceil(player["Level"] / 4) + 1
     if (!player["Choices"]["Language"]) {
         player["Choices"]["Language"] = await proficiencyChoose({"Amount": 3, "Catagory": "Language"}, player["Prof"])
     }
@@ -316,8 +317,7 @@ function render(playerData, initial=false) {
     }
     id("speed").textContent = playerData["Speed"]
 
-    let prof = Math.ceil(playerData["Level"] / 4) + 1
-    id("pb").textContent = prof.symbol()
+    id("pb").textContent = playerData["Prof Bonus"].symbol()
 
     let initObject = id("init")
     initObject.textContent = playerData["Init"].symbol()
@@ -379,8 +379,8 @@ function render(playerData, initial=false) {
         profCheckbox.type = "checkbox"
         if (playerData["Prof"].includes(key)) {
             profCheckbox.checked = true
-            bonusNumber.textContent = (mod + prof).symbol()
-            bonus += prof
+            bonusNumber.textContent = (mod + playerData["Prof Bonus"]).symbol()
+            bonus += playerData["Prof Bonus"]
         }
         container.shellAppend(profCheckbox)
         let expCheckbox = document.createElement("input")
@@ -388,7 +388,7 @@ function render(playerData, initial=false) {
         if (playerData["Exp"].includes(key)) {
             expCheckbox.checked = true
             bonusNumber.textContent = (mod + (prof * 2)).symbol()
-            bonus += prof
+            bonus += playerData["Prof Bonus"]
         }
         container.shellAppend(expCheckbox)
 
