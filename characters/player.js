@@ -42,6 +42,7 @@ Object.prototype.statEval = function(string) {
     }
     let amount = 0
     for (let i = 0; i < split.length; i++) {
+        split[i] = split[i].capitalise()
         if (Number.isFinite(Number(split[i]))) {
             amount += parseInt(split[i])
         } else if (split[i] in this["Stats"]) {
