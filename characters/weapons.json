@@ -49,5 +49,25 @@
 		"Mastery": "N/A",
 		"Weight": 0,
 		"Cost": 0
+	},
+	"Shove": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"DC": "8+Prof+Str",
+		"AltDamage": "Push 5ft",
+		"Properties": ["Str/Dex Save"],
+		"Mastery": "N/A",
+		"Weight": 0,
+		"Cost": 0
+	},
+	"Grapple": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"DC": "8+Prof+Str",
+		"AltDamage": "Grapple Target",
+		"Properties": ["Str/Dex Save"],
+		"Mastery": "N/A",
+		"Weight": 0,
+		"Cost": 0
 	}
 }

@@ -54,6 +54,8 @@ Object.prototype.statEval = function(string) {
                 }
                 amount += this["Prof Bonus"]
             }
+        } else if (split[i] === "Prof") {
+            amount += this["Prof Bonus"]
         } else if (split[i].search("^d[0-9]+")) {
             amount += roll(parseInt(split[i].slice(1)))
         }
@@ -742,7 +744,10 @@ async function render(playerData, initial=false) {
                 weaponsTitle.appendChild(header)
             }
             actionsTable.appendChild(weaponsTitle)
-            Object.entries(playerData["Weapons"]).forEach(([key, value]) => {
+            let weaponOptions = playerData["Weapons"]
+            weaponOptions["Shove"] = 1
+            weaponOptions["Grapple"] = 1
+            Object.entries(weaponOptions).forEach(([key, value]) => {
                 let weaponData = weapons[key]
                 let proficient = (playerData["WeaponTraining"].includes(weaponData["Type"]) || playerData["WeaponTraining"].includes(key))
                 let statBonus = weaponData["Type"] === "Ranged" ? playerData["Stats"]["Dex"].modifier() : playerData["Stats"]["Str"].modifier()
