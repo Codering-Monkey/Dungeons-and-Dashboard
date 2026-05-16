@@ -317,10 +317,38 @@ async function developData() {
     player["Attacks"] = classes[player["Class"]]["Attacks"][player["Level"]]
     player["Speed"] = species[player["Species"]]["Speed"]
 
+    player["Armour Class"] = 0
+    let armourData = player["Armour"][player["EquipArmour"]]
+    if (!armourData) {
+        let oldData = localStorage.get("Characters")
+        oldData[getQuery("Char")]["EquipArmour"] = "Unarmoured"
+        localStorage.set("Characters", oldData)
+        armourData = armour["Unarmoured"]
+    }
+    let armourCalc = armourData["Amount"]
+    armourCalc.split("+")
+    if (!Array.isArray(armourCalc)) {
+        armourCalc = [armourCalc]
+    }
+    for (let i = 0; i < armourCalc.length; i++) {
+        if (Number.isFinite(Number(armourCalc[i]))) {
+            player["Armour Class"] += parseInt(armourCalc[i])
+        } else if (armourCalc[i] in player["Stats"]) {
+            player["Armour Class"] += player["Stats"][armourCalc[i]].modifier()
+        }
+    }
+    let dexBonus = player["Stats"]["Dex"].modifier()
+    if (armourData["Cap"] !== -1) {
+        if (dexBonus > armourData["Cap"]) {
+            dexBonus = armourData["Cap"]
+        }
+    }
+    player["Armour Class"] += dexBonus
+
     return player
 }
 
-function render(playerData, initial=false) {
+async function render(playerData, initial=false) {
     // Generate Static Data
     id("pfp").src = (playerData["Pfp"] || "../Images/players/blank.png")
     id("name").textContent = playerData["Name"]
@@ -739,11 +767,26 @@ function render(playerData, initial=false) {
                 notes.textContent = weaponData["Properties"].commaFuse()
                 weaponLine.appendChild(notes)
             })
+        } else if (selectedAction === "spells") {
+
+        } else if (selectedAction === "inv") {
+            let armourLabel = document.createElement("label")
+            actionParent.appendChild(armourLabel)
+            let armourChoice = actionParent.createSelect(Object.keys(playerData["Armour"]))
+            armourLabel.textContent = "Select Armour: "
+            armourChoice.id = "armourChoice"
+            armourLabel.htmlFor = "armourChoice"
+            armourChoice.addEventListener("change", async function() {
+                let oldData = localStorage.get("Characters")
+                oldData[getQuery("Char")]["EquipArmour"] = this.value
+                localStorage.set("Characters", oldData)
+                await render(await developData())
+            })
         }
     }
 
-    renderAction()
+    await renderAction()
 
 }
 
-render(await developData(), true)
+await render(await developData(), true)
