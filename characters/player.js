@@ -759,22 +759,30 @@ async function render(playerData, initial=false) {
                 weaponLine.appendChild(range)
 
                 let hit = document.createElement("td")
-                hit.textContent = (statBonus  + (proficient ? (weaponData["Type"] === "Ranged" ? playerData["Stats"]["Dex"] : playerData["Stats"]["Str"]): 0)).symbol()
+                if ("DC" in weaponData) {
+                    hit.textContent = "DC " + String(playerData.statEval(weaponData["DC"]))
+                } else {
+                    hit.textContent = (statBonus  + (proficient ? (weaponData["Type"] === "Ranged" ? playerData["Stats"]["Dex"] : playerData["Stats"]["Str"]): 0)).symbol()
+                }
                 weaponLine.appendChild(hit)
 
                 let damage = document.createElement("td")
-                damage.textContent = weaponData["Dice"][0] + "d" + weaponData["Dice"][1] + statBonus.bonus()
-                damage.classList.add("clickable")
-                damage.addEventListener("click", function() {
-                    let dice = []
-                    let diceString = ""
-                    for (let i = 0; i < weaponData["Dice"][0]; i++) {
-                        dice.push(roll(weaponData["Dice"][1]))
-                        diceString += dice[i] + " + "
-                    }
-                    diceString.slice(0, - 3)
-                    popup(`You rolled a ${dice.sum() + statBonus} on your ${key} roll (${diceString}${statBonus})`)
-                })
+                if ("AltDamage" in weaponData) {
+                    damage.textContent = weaponData["AltDamage"]
+                } else {
+                    damage.textContent = weaponData["Dice"][0] + "d" + weaponData["Dice"][1] + statBonus.bonus()
+                    damage.classList.add("clickable")
+                    damage.addEventListener("click", function() {
+                        let dice = []
+                        let diceString = ""
+                        for (let i = 0; i < weaponData["Dice"][0]; i++) {
+                            dice.push(roll(weaponData["Dice"][1]))
+                            diceString += dice[i] + " + "
+                        }
+                        diceString.slice(0, - 3)
+                        popup(`You rolled a ${dice.sum() + statBonus} on your ${key} roll (${diceString}${statBonus})`)
+                    })
+                }
                 weaponLine.appendChild(damage)
 
                 let notes = document.createElement("td")
