@@ -14,6 +14,52 @@ let allStats = {
     "Wisdom": "Wis",
     "Charisma": "Cha",
 }
+const proficiencies = {
+        "Acrobatics": "Dex",
+        "Animal Handling": "Wis",
+        "Arcana": "Int",
+        "Athletics": "Str",
+        "Deception": "Cha",
+        "History": "Int",
+        "Insight": "Wis",
+        "Intimidation": "Cha",
+        "Investigation": "Int",
+        "Medicine": "Wis",
+        "Nature": "Int",
+        "Perception": "Wis",
+        "Performance": "Cha",
+        "Persuasion": "Cha",
+        "Religion": "Int",
+        "Sleight of Hand": "Dex",
+        "Stealth": "Dex",
+        "Survival": "Wis"
+    }
+
+Object.prototype.statEval = function(string) {
+    let split = string.split("+")
+    if (!Array.isArray(split)) {
+        split = [split]
+    }
+    let amount = 0
+    for (let i = 0; i < split.length; i++) {
+        if (Number.isFinite(Number(split[i]))) {
+            amount += parseInt(split[i])
+        } else if (split[i] in this["Stats"]) {
+            amount += this["Stats"][split[i]].modifier()
+        } else if (split[i] in proficiencies) {
+            amount += this["Stats"][proficiencies[split[i]]].modifier()
+            if (this["Prof"].includes(split[i]) ) {
+                if (this["Exp"].includes(split[i])) {
+                    amount += this["Prof Bonus"]
+                }
+                amount += this["Prof Bonus"]
+            }
+        } else if (split[i].search("^d[0-9]+")) {
+            amount += roll(parseInt(split[i].slice(1)))
+        }
+    }
+    return amount
+}
 
 // Proficiencies
 
@@ -325,18 +371,7 @@ async function developData() {
         localStorage.set("Characters", oldData)
         armourData = armour["Unarmoured"]
     }
-    let armourCalc = armourData["Amount"]
-    armourCalc.split("+")
-    if (!Array.isArray(armourCalc)) {
-        armourCalc = [armourCalc]
-    }
-    for (let i = 0; i < armourCalc.length; i++) {
-        if (Number.isFinite(Number(armourCalc[i]))) {
-            player["Armour Class"] += parseInt(armourCalc[i])
-        } else if (armourCalc[i] in player["Stats"]) {
-            player["Armour Class"] += player["Stats"][armourCalc[i]].modifier()
-        }
-    }
+    player["Armour Class"] = player.statEval(armourData["Amount"])
     let dexBonus = player["Stats"]["Dex"].modifier()
     if (armourData["Cap"] !== -1) {
         if (dexBonus > armourData["Cap"]) {
@@ -385,27 +420,6 @@ async function render(playerData, initial=false) {
         id("health").textContent = playerData["Current Health"] + " + " + playerData["Temp Health"]
     } else {
         id("health").textContent = String(playerData["Current Health"])
-    }
-
-    const proficiencies = {
-        "Acrobatics": "Dex",
-        "Animal Handling": "Wis",
-        "Arcana": "Int",
-        "Athletics": "Str",
-        "Deception": "Cha",
-        "History": "Int",
-        "Insight": "Wis",
-        "Intimidation": "Cha",
-        "Investigation": "Int",
-        "Medicine": "Wis",
-        "Nature": "Int",
-        "Perception": "Wis",
-        "Performance": "Cha",
-        "Persuasion": "Cha",
-        "Religion": "Int",
-        "Sleight of Hand": "Dex",
-        "Stealth": "Dex",
-        "Survival": "Wis"
     }
 
     let profParent = id("prof")
