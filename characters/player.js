@@ -702,7 +702,7 @@ async function render(playerData, initial=false) {
     id(currentTab + "Tab").classList.add("active")
     setQuery("tab", currentTab)
 
-    function renderAction() {
+    async function renderAction() {
         let actionParent = id("actionParent")
         actionParent.clear()
         let selectedAction = getQuery("tab")
