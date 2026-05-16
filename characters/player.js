@@ -694,6 +694,10 @@ async function render(playerData, initial=false) {
                 renderAction()
             })
         }
+    } else {
+        for (let i = 0; i < tabs.length; i++) {
+            id(tabs[i] + "Tab").classList.remove("active")
+        }
     }
     let currentTab
     if (getQuery(tabs)) {
