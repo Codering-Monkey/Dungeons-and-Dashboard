@@ -273,7 +273,7 @@ async function developData() {
 
     player["WeaponsPermitted"] = classes[player["Class"]]["Weapons"]
     player["Actions"] = []
-    player["Resources"] = {}
+    if (!player["Resources"]) {player["Resources"] = {}}
 
     async function addFeatures(dataSource) {
         for (const [key, value] of Object.entries(dataSource)) {
@@ -290,9 +290,10 @@ async function developData() {
                     let currentAction = value["Action"][i]
                     player["Actions"].push(currentAction)
                     if ("Usages" in currentAction) {
+                        console.log(player)
                         if (!(currentAction["Name"] in player["Resources"])) {
                             player["Resources"][currentAction["Name"]] = {"Current": currentAction["Usages"][player["Level"]], "Max": currentAction["Usages"][player["Level"]], "LR": (currentAction["LR"] || 0), "SR": (currentAction["SR"] || 0)}
-                        } else if (player["Resources"][currentAction["Name"]]["Max"] < currentAction["Usages"][player["Level"]]) {
+                        } else if (player["Resources"][currentAction["Name"]]["Max"] < currentAction["Usages"][player["Level"] - 1]) {
                             let difference = currentAction["Usages"][player["Level"]] - player["Resources"][currentAction["Name"]]["Max"]
                             player["Resources"][currentAction["Name"]]["Max"] += difference
                             player["Resources"][currentAction["Name"]]["Current"] += difference
