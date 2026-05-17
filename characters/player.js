@@ -64,6 +64,41 @@ Object.prototype.statEval = function(string) {
     return amount
 }
 
+// Rest
+
+id("sr").addEventListener("click", async function() {
+    let basePlayer = localStorage.get("Characters")
+    let resources = basePlayer[getQuery("Char")]["Resources"]
+    Object.entries(resources).forEach(([key, value]) => {
+        if ("SR" in value) {
+            if (value["SR"] === -1) {
+                resources[key]["Current"] = resources[key]["Max"]
+            } else {
+                resources[key]["Current"] += value["SR"]
+            }
+        }
+    })
+    basePlayer[getQuery("Char")]["Resources"] = resources
+    localStorage.set("Characters", basePlayer)
+    await render(await developData())
+})
+id("lr").addEventListener("click", async function() {
+    let basePlayer = localStorage.get("Characters")
+    let resources = basePlayer[getQuery("Char")]["Resources"]
+    Object.entries(resources).forEach(([key, value]) => {
+        if ("LR" in value) {
+            if (value["LR"] === -1) {
+                resources[key]["Current"] = resources[key]["Max"]
+            } else {
+                resources[key]["Current"] += value["LR"]
+            }
+        }
+    })
+    basePlayer[getQuery("Char")]["Resources"] = resources
+    localStorage.set("Characters", basePlayer)
+    await render(await developData())
+})
+
 // Proficiencies
 
 let profCatagories = {

@@ -26,9 +26,19 @@ input[type=checkbox]:not(.usable) {
     display: flex;
 }
 
-.header > div {
+.header > .playerData {
     align-content: center;
     padding-left: 8px
+}
+
+.header > .playerRest {
+    position: absolute;
+    right: 0
+}
+
+.header > .playerRest > button {
+    width: 102px;
+    height: 102px;
 }
 
 .player-grid {
