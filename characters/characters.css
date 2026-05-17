@@ -275,24 +275,48 @@ table > tr > td > p, table > tbody > tr > td > p {
     font-size: .85em;
 }
 
-.otherAction {
+.actionParent {
     width: 100%;
-    margin-top: 16px
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
 }
 
-.otherAction h3 {
+.actionParent > h2, .actionParent > h3, .actionParent > table {
+    grid-column: span 7;
+}
+
+.actionParent h3, .actionParent h2 {
     float: left;
     width: 100%;
     display: inline;
     text-align: left;
 }
 
-.otherAction > .generic {
-    width: calc((100% / 7) - 8px);
+.actionParent > .generic {
+    width: calc(100% - 8px);
     float: left;
     display: block;
-    color: var(--sub-text);
     margin: 4px;
+    height: 54px;
+    align-content: center;
+}
+
+.actionParent > .special {
+    width: calc(100% - 8px);
+    display: block;
+    float: left;
+    margin: 4px;
+    height: 54px;
+    align-content: center;
+}
+
+.actionParent > .special > * {
+    margin: 4px;
+}
+
+.actionParent > .special > .checkboxBox {
+    margin: 0;
 }
 
 /* Overlays */

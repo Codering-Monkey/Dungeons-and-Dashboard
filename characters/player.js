@@ -821,7 +821,7 @@ async function render(playerData, initial=false) {
             let otherActionTitle = document.createElement("h3")
             otherActionTitle.textContent = "Other Actions"
             otherActionParent.appendChild(otherActionTitle)
-            otherActionParent.classList.add("otherAction")
+            otherActionParent.classList.add("actionParent")
             let otherActions = [
                 "Dash",
                 "Disengage",
@@ -838,6 +838,52 @@ async function render(playerData, initial=false) {
                  otherActionParent.appendChild(item)
              }
              actionBody.appendChild(otherActionParent)
+            for (let i = 0; i < otherActions.length; i++) {
+                let item = document.createElement("p")
+                item.textContent = otherActions[i]
+                item.classList.add("generic")
+                otherActionParent.appendChild(item)
+            }
+            actionBody.appendChild(otherActionParent)
+
+            let bonusActionParent = document.createElement("div")
+            bonusActionParent.classList.add("actionParent")
+            actionBody.appendChild(bonusActionParent)
+
+            let bonusActionsTitle = document.createElement("h2")
+            bonusActionsTitle.id = "bonus action"
+            bonusActionsTitle.textContent = "Bonus Actions"
+            bonusActionParent.appendChild(bonusActionsTitle)
+
+            let item = document.createElement("p")
+            item.textContent = "Offhand Attack"
+            item.classList.add("generic")
+            bonusActionParent.appendChild(item)
+
+            let reactionParent = document.createElement("div")
+            let reactionTitle = document.createElement("h2")
+            reactionTitle.textContent = "Reactions"
+            reactionParent.appendChild(reactionTitle)
+            reactionParent.classList.add("actionParent")
+            let reactions = [
+                "Opportunity Attack",
+                "Readied Action"
+            ]
+            for (let i = 0; i < reactions.length; i++) {
+                let item = document.createElement("p")
+                item.textContent = reactions[i]
+                item.classList.add("generic")
+                reactionParent.appendChild(item)
+            }
+            actionBody.appendChild(reactionParent)
+
+            let otherParent = document.createElement("div")
+            let otherTitle = document.createElement("h2")
+            otherTitle.textContent = "Other"
+            otherParent.appendChild(otherTitle)
+            otherParent.classList.add("actionParent")
+            actionBody.appendChild(otherParent)
+
         } else if (selectedAction === "spells") {
 
         } else if (selectedAction === "inv") {
