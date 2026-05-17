@@ -272,6 +272,8 @@ async function developData() {
     })
 
     player["WeaponsPermitted"] = classes[player["Class"]]["Weapons"]
+    player["Actions"] = []
+    player["Resources"] = {}
 
     async function addFeatures(dataSource) {
         for (const [key, value] of Object.entries(dataSource)) {
@@ -282,6 +284,21 @@ async function developData() {
             }
             if ("Armour" in value) {
                 player["Armour"][value["Armour"]["Name"]] = {"Type": value["Armour"]["Type"], "Amount": value["Armour"]["Amount"], "Cap": value["Armour"]["Cap"]}
+            }
+            if ("Action" in value) {
+                player["Actions"].pushAll(value["Action"])
+                if ("Usages" in value) {
+                    if (!(key in player["Resources"])) {
+                        player["Resources"][key] = {"Current": value["Action"]["Max"], "Max": value["Action"]["Max"], "LR": (value["Action"]["LR"] || 0), "SR": (value["Action"]["SR"] || 0)}
+                    } else if (player["Resources"][key]["Max"] < value["Action"]["Usages"][player["Level"]]) {
+                        let difference = value["Action"]["Usages"][player["Level"]] - player["Resources"][key]["Max"]
+                        player["Resources"][key]["Max"] += difference
+                        player["Resources"][key]["Current"] += difference
+                    }
+                    let basePlayer = localStorage.get("Characters")
+                    basePlayer[getQuery("Char")]["Resources"] = player["Resources"]
+                    localStorage.set("Characters", basePlayer)
+                }
             }
             if (key in player["Choices"]) {
                 if ("Prof" in player["Choices"][key]) {
@@ -799,6 +816,28 @@ async function render(playerData, initial=false) {
                 notes.textContent = weaponData["Properties"].commaFuse()
                 weaponLine.appendChild(notes)
             })
+
+            let otherActionParent = document.createElement("div")
+            let otherActionTitle = document.createElement("h3")
+            otherActionTitle.textContent = "Other Actions"
+            otherActionParent.appendChild(otherActionTitle)
+            otherActionParent.classList.add("otherAction")
+            let otherActions = [
+                "Dash",
+                "Disengage",
+                "Dodge",
+                "Escape",
+                "Help",
+                "Hide",
+                "Ready",
+            ]
+             for (let i = 0; i < otherActions.length; i++) {
+                 let item = document.createElement("p")
+                 item.textContent = otherActions[i]
+                 item.classList.add("generic")
+                 otherActionParent.appendChild(item)
+             }
+             actionBody.appendChild(otherActionParent)
         } else if (selectedAction === "spells") {
 
         } else if (selectedAction === "inv") {

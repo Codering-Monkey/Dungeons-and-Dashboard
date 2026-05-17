@@ -275,6 +275,26 @@ table > tr > td > p, table > tbody > tr > td > p {
     font-size: .85em;
 }
 
+.otherAction {
+    width: 100%;
+    margin-top: 16px
+}
+
+.otherAction h3 {
+    float: left;
+    width: 100%;
+    display: inline;
+    text-align: left;
+}
+
+.otherAction > .generic {
+    width: calc((100% / 7) - 8px);
+    float: left;
+    display: block;
+    color: var(--sub-text);
+    margin: 4px;
+}
+
 /* Overlays */
 .featOverlay > div > div {
     border: 1px solid var(--minor-text)
