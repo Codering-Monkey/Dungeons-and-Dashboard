@@ -286,18 +286,21 @@ async function developData() {
                 player["Armour"][value["Armour"]["Name"]] = {"Type": value["Armour"]["Type"], "Amount": value["Armour"]["Amount"], "Cap": value["Armour"]["Cap"]}
             }
             if ("Action" in value) {
-                player["Actions"].pushAll(value["Action"])
-                if ("Usages" in value) {
-                    if (!(key in player["Resources"])) {
-                        player["Resources"][key] = {"Current": value["Action"]["Max"], "Max": value["Action"]["Max"], "LR": (value["Action"]["LR"] || 0), "SR": (value["Action"]["SR"] || 0)}
-                    } else if (player["Resources"][key]["Max"] < value["Action"]["Usages"][player["Level"]]) {
-                        let difference = value["Action"]["Usages"][player["Level"]] - player["Resources"][key]["Max"]
-                        player["Resources"][key]["Max"] += difference
-                        player["Resources"][key]["Current"] += difference
+                for (let i = 0; i < value["Action"].length; i++) {
+                    let currentAction = value["Action"][i]
+                    player["Actions"].push(currentAction)
+                    if ("Usages" in currentAction) {
+                        if (!(currentAction["Name"] in player["Resources"])) {
+                            player["Resources"][currentAction["Name"]] = {"Current": currentAction["Usages"][player["Level"]], "Max": currentAction["Usages"][player["Level"]], "LR": (currentAction["LR"] || 0), "SR": (currentAction["SR"] || 0)}
+                        } else if (player["Resources"][currentAction["Name"]]["Max"] < currentAction["Usages"][player["Level"]]) {
+                            let difference = currentAction["Usages"][player["Level"]] - player["Resources"][currentAction["Name"]]["Max"]
+                            player["Resources"][currentAction["Name"]]["Max"] += difference
+                            player["Resources"][currentAction["Name"]]["Current"] += difference
+                        }
+                        let basePlayer = localStorage.get("Characters")
+                        basePlayer[getQuery("Char")]["Resources"] = player["Resources"]
+                        localStorage.set("Characters", basePlayer)
                     }
-                    let basePlayer = localStorage.get("Characters")
-                    basePlayer[getQuery("Char")]["Resources"] = player["Resources"]
-                    localStorage.set("Characters", basePlayer)
                 }
             }
             if (key in player["Choices"]) {
@@ -831,13 +834,6 @@ async function render(playerData, initial=false) {
                 "Hide",
                 "Ready",
             ]
-             for (let i = 0; i < otherActions.length; i++) {
-                 let item = document.createElement("p")
-                 item.textContent = otherActions[i]
-                 item.classList.add("generic")
-                 otherActionParent.appendChild(item)
-             }
-             actionBody.appendChild(otherActionParent)
             for (let i = 0; i < otherActions.length; i++) {
                 let item = document.createElement("p")
                 item.textContent = otherActions[i]
@@ -884,6 +880,49 @@ async function render(playerData, initial=false) {
             otherParent.classList.add("actionParent")
             actionBody.appendChild(otherParent)
 
+            for (let i = 0; i < playerData["Actions"].length; i++) {
+                let action = playerData["Actions"][i]
+                let item = document.createElement("div")
+                item.classList.add("special")
+                let itemText = document.createElement("p")
+                itemText.textContent = action["Name"]
+                item.appendChild(itemText)
+                if (action["Name"] in playerData["Resources"]) {
+                    let resource = playerData["Resources"][action["Name"]]
+                    let itemUses = document.createElement("div")
+                    itemUses.classList.add("checkboxBox")
+                    for (let j = 0; j < resource["Max"]; j++) {
+                        let use = document.createElement("input")
+                        use.type = "checkbox"
+                        use.checked = (j + 1) <= resource["Current"]
+                        use.value = action["Name"]
+                        use.classList.add("usable")
+                        use.addEventListener("click", function() {
+                            let active = 0
+                            let checkboxes = this.parentElement.children
+                            for (let k = 0; k < checkboxes.length; k++) {
+                                if (checkboxes[k].checked) {
+                                    active += 1
+                                }
+                            }
+                            let basePlayer = localStorage.get("Characters")
+                            basePlayer[getQuery("Char")]["Resources"][this.value]["Current"] = active
+                            localStorage.set("Characters", basePlayer)
+                        })
+                        itemUses.appendChild(use)
+                    }
+                    item.appendChild(itemUses)
+                }
+                if (action["Type"] === "Action") {
+                    otherActionParent.appendChild(item)
+                } else if (action["Type"] === "Bonus") {
+                    bonusActionParent.appendChild(item)
+                } else if (action["Type"] === "Reactions") {
+                    reactionParent.appendChild(item)
+                } else {
+                    otherParent.appendChild(item)
+                }
+            }
         } else if (selectedAction === "spells") {
 
         } else if (selectedAction === "inv") {
