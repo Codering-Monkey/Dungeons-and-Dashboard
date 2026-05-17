@@ -381,7 +381,7 @@ String.prototype.parse = function() {
  * @returns {number}
  */
 export function roll(sides=20) {
-    return Math.floor(Math.random() * (sides + 1)) + 1
+    return Math.floor(Math.random() * sides) + 1
 }
 
 /**
