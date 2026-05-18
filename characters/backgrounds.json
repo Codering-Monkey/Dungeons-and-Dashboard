@@ -28,12 +28,80 @@
 		]
 	},
 	"Acolyte": {
-		"Abilities": ["Int", "Wis", "Cha"]
+		"Abilities": ["Int", "Wis", "Cha"],
+		"Feat": "Magic Initiate (Cleric)",
+		"Prof": [{
+			"Amount": 1,
+			"Choices": ["Calligrapher’s Supplies"],
+			"Type": "Prof"
+		},{
+			"Amount": 2,
+			"Choices": ["Insight", "Religion"],
+			"Type": "Prof"
+		}],
+		"Equipment": [
+			{
+				"Calligrapher’s Supplies": 1,
+				"Prayer Book": 1,
+				"Holy Symbol": 1,
+				"Parchment": 10,
+				"GP": 8
+			},
+			{
+				"GP": 50
+			}
+		]
 	},
 	"Sage": {
-		"Abilities": ["Con", "Int", "Wis"]
+		"Abilities": ["Con", "Int", "Wis"],
+		"Feat": "Magic Initiate (Wizard)",
+		"Prof": [{
+			"Amount": 1,
+			"Choices": ["Calligrapher’s Supplies"],
+			"Type": "Prof"
+		},{
+			"Amount": 2,
+			"Choices": ["Arcana", "History"],
+			"Type": "Prof"
+		}],
+		"Equipment": [
+			{
+				"Calligrapher’s Supplies": 1,
+				"Quarterstaff": 1,
+				"History": 1,
+				"Robe": 1,
+				"Parchment": 10,
+				"GP": 8
+			},
+			{
+				"GP": 50
+			}
+		]
 	},
 	"Criminal": {
-		"Abilities": ["Dex", "Con", "Int"]
+		"Abilities": ["Dex", "Con", "Int"],
+		"Feat": "Alert",
+		"Prof": [{
+			"Amount": 1,
+			"Choices": ["Thieves’ Tools"],
+			"Type": "Prof"
+		},{
+			"Amount": 2,
+			"Choices": ["Sleight of Hand", "Stealth"],
+			"Type": "Prof"
+		}],
+		"Equipment": [
+			{
+				"Thieves’ Tools": 1,
+				"Dagger": 2,
+				"Crowbar": 1,
+				"Pouch": 2,
+				"Traveler's Clothers": 1,
+				"GP": 16
+			},
+			{
+				"GP": 50
+			}
+		]
 	}
 }
