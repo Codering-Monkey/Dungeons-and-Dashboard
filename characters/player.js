@@ -999,6 +999,7 @@ async function render(playerData, initial=false) {
                                     active += 1
                                 }
                             }
+                            playerData["Resources"][this.value]["Current"] = active
                             let basePlayer = localStorage.get("Characters")
                             basePlayer[getQuery("Char")]["Resources"][this.value]["Current"] = active
                             localStorage.set("Characters", basePlayer)
