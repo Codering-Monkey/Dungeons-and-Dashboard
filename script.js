@@ -471,7 +471,6 @@ export function popup(data) {
             if (amount === 200) {
                 remove()
             }
-            console.log(amount)
         }, 5050 * multiplier);
     }
 
