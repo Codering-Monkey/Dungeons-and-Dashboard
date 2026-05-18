@@ -64,40 +64,13 @@ Object.prototype.statEval = function(string) {
     return amount
 }
 
-// Rest
-
-id("sr").addEventListener("click", async function() {
+function healthSave(player) {
     let basePlayer = localStorage.get("Characters")
-    let resources = basePlayer[getQuery("Char")]["Resources"]
-    Object.entries(resources).forEach(([key, value]) => {
-        if ("SR" in value) {
-            if (value["SR"] === -1) {
-                resources[key]["Current"] = resources[key]["Max"]
-            } else {
-                resources[key]["Current"] += value["SR"]
-            }
-        }
-    })
-    basePlayer[getQuery("Char")]["Resources"] = resources
+    basePlayer[getQuery("Char")]["Max Health"] = player["Max Health"]
+    basePlayer[getQuery("Char")]["Temp Health"] = player["Temp Health"]
+    basePlayer[getQuery("Char")]["Current Health"] = player["Current Health"]
     localStorage.set("Characters", basePlayer)
-    await render(await developData())
-})
-id("lr").addEventListener("click", async function() {
-    let basePlayer = localStorage.get("Characters")
-    let resources = basePlayer[getQuery("Char")]["Resources"]
-    Object.entries(resources).forEach(([key, value]) => {
-        if ("LR" in value) {
-            if (value["LR"] === -1) {
-                resources[key]["Current"] = resources[key]["Max"]
-            } else {
-                resources[key]["Current"] += value["LR"]
-            }
-        }
-    })
-    basePlayer[getQuery("Char")]["Resources"] = resources
-    localStorage.set("Characters", basePlayer)
-    await render(await developData())
-})
+}
 
 // Proficiencies
 
@@ -617,6 +590,7 @@ async function render(playerData, initial=false) {
                 if (playerData["Current Health"] > playerData["Max Health"]) {
                     playerData["Current Health"] = playerData["Max Health"]
                 }
+                healthSave(playerData)
                 render(playerData)
             }
         })
@@ -633,12 +607,14 @@ async function render(playerData, initial=false) {
                 if (playerData["Current Health"] < 0) {
                     playerData["Current Health"] = 0
                 }
+                healthSave(playerData)
                 render(playerData)
             }
         })
         id("temp").addEventListener("click", function () {
             if (parseInt(id("healthChange")["value"])) {
                 playerData["Temp Health"] = parseInt(id("healthChange")["value"])
+                healthSave(playerData)
                 render(playerData)
             }
         })
