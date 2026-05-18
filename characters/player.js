@@ -283,6 +283,8 @@ async function developData() {
         }
     })
 
+    player["Init"] = player["Stats"]["Dex"].modifier()
+
     player["WeaponsPermitted"] = classes[player["Class"]]["Weapons"]
     player["Actions"] = []
     if (!player["Resources"]) {player["Resources"] = {}}
@@ -405,7 +407,6 @@ async function developData() {
         player["WeaponTraining"].push("Martial")
     }
 
-    player["Init"] = player["Stats"]["Dex"].modifier()
     player["Max Health"] = classes[player["Class"]]["Dice"] + ((classes[player["Class"]]["Dice"] / 2 + 1) * (player["Level"] - 1)) + (player["Level"] * player["Stats"]["Con"].modifier())
     if (player["Current Health"] > player["Max Health"]) {
         player["Current Health"] = player["Max Health"]
@@ -831,7 +832,7 @@ async function render(playerData, initial=false) {
         }
     }
     let currentTab
-    if (getQuery(tabs)) {
+    if (getQuery("tab")) {
         currentTab = getQuery("tab")
     } else {
        currentTab = "actions"
@@ -1049,6 +1050,7 @@ async function render(playerData, initial=false) {
                 localStorage.set("Characters", oldData)
                 await render(await developData())
             })
+            armourChoice.value = playerData["EquipArmour"]
         }
     }
 
