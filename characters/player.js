@@ -315,6 +315,22 @@ async function developData() {
                     }
                 }
             }
+            if ("Bonus" in value) {
+                for (let i = 0; i < value["Bonus"].length; i++) {
+                    let amount = value["Bonus"][i]["Amount"]
+                    if (amount === "pb") {
+                        amount = player["Prof Bonus"]
+                    }
+                    if (Object.values(allStats).includes(value["Bonus"][i]["Stat"])) {
+                        player["Stats"][value["Bonus"][i]["Stat"]] += amount
+                        if (player["Stats"][value["Bonus"][i]["Stat"]] > value["Bonus"][i]["Cap"]) {
+                            player["Stats"][value["Bonus"][i]["Stat"]] = value["Bonus"][i]["Cap"]
+                        }
+                    } else if (value["Bonus"][i]["Stat"] === "Init") {
+                        player["Init"] += amount
+                    }
+                }
+            }
             if (key in player["Choices"]) {
                 if ("Prof" in player["Choices"][key]) {
                     player["Prof"].pushAll(player["Choices"][key]["Prof"])
