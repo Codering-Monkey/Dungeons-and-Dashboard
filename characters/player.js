@@ -302,7 +302,6 @@ async function developData() {
                     let currentAction = value["Action"][i]
                     player["Actions"].push(currentAction)
                     if ("Usages" in currentAction) {
-                        console.log(player)
                         if (!(currentAction["Name"] in player["Resources"])) {
                             player["Resources"][currentAction["Name"]] = {"Current": currentAction["Usages"][player["Level"]], "Max": currentAction["Usages"][player["Level"]], "LR": (currentAction["LR"] || 0), "SR": (currentAction["SR"] || 0)}
                         } else if (player["Resources"][currentAction["Name"]]["Max"] < currentAction["Usages"][player["Level"] - 1]) {
@@ -382,7 +381,7 @@ async function developData() {
         player["ArmourTraining"].push("Shields")
     }
 
-    player["WeaponTraining"] = player["WeaponsPermitted"][2]
+    player["WeaponTraining"] = structuredClone(player["WeaponsPermitted"][2])
     if (player["WeaponsPermitted"][0]) {
         player["WeaponTraining"].push("Simple")
     }
@@ -614,7 +613,7 @@ async function render(playerData, initial=false) {
         }
     }
 
-    // Health
+    // Health & rest
     if (initial) {
         id("heal").addEventListener("click", function () {
             if (parseInt(id("healthChange")["value"])) {
@@ -649,6 +648,57 @@ async function render(playerData, initial=false) {
                 healthSave(playerData)
                 render(playerData)
             }
+        })
+        id("sr").addEventListener("click", async function() {
+            let basePlayer = localStorage.get("Characters")
+            let resources = playerData["Resources"]
+            Object.entries(resources).forEach(([key, value]) => {
+                if ("SR" in value) {
+                    if (value["SR"] === -1) {
+                        resources[key]["Current"] = resources[key]["Max"]
+                    } else {
+                        resources[key]["Current"] += value["SR"]
+                    }
+                    if (resources[key]["Current"] > value["Max"]) {
+                        resources[key]["Current"] = value["Max"]
+                    }
+                }
+            })
+            basePlayer[getQuery("Char")]["Resources"] = resources
+            playerData["Resources"] = resources
+            localStorage.set("Characters", basePlayer)
+            popup("Short Rest Complete, Dont Forget to Roll Hit Dice")
+            await render(playerData)
+        })
+        id("lr").addEventListener("click", async function() {
+            let basePlayer = localStorage.get("Characters")
+            let resources = playerData["Resources"]
+            Object.entries(resources).forEach(([key, value]) => {
+                if ("LR" in value) {
+                    if (value["LR"] === -1) {
+                        resources[key]["Current"] = resources[key]["Max"]
+                    } else {
+                        resources[key]["Current"] += value["LR"]
+                    }
+                    if (resources[key]["Current"] > value["Max"]) {
+                        resources[key]["Current"] = value["Max"]
+                    }
+                }
+            })
+            basePlayer[getQuery("Char")]["Resources"] = resources
+            playerData["Resources"] = resources
+            basePlayer[getQuery("Char")]["Current Health"] = basePlayer[getQuery("Char")]["Max Health"]
+            playerData["Current Health"] = playerData["Max Health"]
+            let hitDice = Math.floor(playerData["Level"] / 2)
+            if (hitDice < 1) {hitDice = 1}
+            basePlayer[getQuery("Char")]["Hit Dice"] += hitDice
+            playerData["Hit Dice"] += hitDice
+            if (basePlayer[getQuery("Char")]["Hit Dice"] > basePlayer[getQuery("Char")]["Level"]) {
+                basePlayer[getQuery("Char")]["Hit Dice"] = basePlayer[getQuery("Char")]["Level"]
+                playerData["Hit Dice"] = playerData["Level"]
+            }
+            localStorage.set("Characters", basePlayer)
+            await render(playerData)
         })
     }
 

@@ -41,6 +41,11 @@ input[type=checkbox]:not(.usable) {
     height: 102px;
 }
 
+.header > .playerRest > button > span {
+    display: block;
+    font-size: 3em;
+}
+
 .player-grid {
     display: grid;
     grid-template-columns: repeat(12, calc((100% - 88px) / 12));
