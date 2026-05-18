@@ -267,6 +267,10 @@ async function developData() {
 
     player["Feats"].push(backgrounds[player["Background"]]["Feat"])
 
+    if (!("Hit Dice" in player)) {
+        player["Hit Dice"] = player["Level"]
+    }
+
     player["ArmourPermitted"] = classes[player["Class"]]["Armour"]
     player["Armour"] = {"Unarmoured": {"Type": "Other", "Amount": "10", "Cap": -1}}
     player["Weapons"] = {"Unarmed Strike": 1}
@@ -452,6 +456,34 @@ async function render(playerData, initial=false) {
         id("health").textContent = playerData["Current Health"] + " + " + playerData["Temp Health"]
     } else {
         id("health").textContent = String(playerData["Current Health"])
+    }
+
+    id("hitDice").textContent = `Roll Hit Dice (${playerData["Hit Dice"]}/${playerData["Level"]})`
+    if (initial) {
+        console.log(playerData)
+        id("hitDice").addEventListener("click", function () {
+            if (playerData["Current Health"] === playerData["Max Health"]) {
+                popup("Your health is already full")
+            } else {
+                if (playerData["Hit Dice"] > 0) {
+                    console.log(playerData)
+                    let diceSize = classes[playerData["Class"]]["Dice"]
+                    let diceRoll = roll(diceSize)
+                    popup(`You Healed ${diceRoll + playerData["Stats"]["Con"].modifier()} (${diceRoll} (d${diceSize}) + ${playerData["Stats"]["Con"].modifier()})`)
+                    playerData["Current Health"] += diceRoll + playerData["Stats"]["Con"].modifier()
+                    if (playerData["Current Health"] > playerData["Max Health"]) {
+                        playerData["Current Health"] = playerData["Max Health"]
+                    }
+                    healthSave(playerData)
+                    let basePlayer = localStorage.get("Characters")
+                    basePlayer[getQuery("Char")]["Hit Dice"] -= 1
+                    playerData["Hit Dice"] -= 1
+                    localStorage.set("Characters", basePlayer)
+                    this.textContent = `Roll Hit Dice (${playerData["Hit Dice"]}/${playerData["Level"]})`
+                    render(playerData)
+                }
+            }
+        })
     }
 
     let profParent = id("prof")
