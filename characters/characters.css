@@ -334,6 +334,29 @@ table > tr > td > p, table > tbody > tr > td > p {
     margin: 0;
 }
 
+.featureParent {
+    overflow-y: scroll;
+    height: calc(100% - 16px);
+    padding: 8px;
+    scrollbar-color: var(--text) var(--foreground);
+}
+
+.featureParent {
+    text-align: left;
+}
+
+.featureParent > h4 {
+
+}
+
+.featureParent > h2 {
+    margin: 16px 0
+}
+
+.featureParent > p {
+    margin: 1px 0 8px
+}
+
 /* Overlays */
 .featOverlay > div > div {
     border: 1px solid var(--minor-text)

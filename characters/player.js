@@ -289,13 +289,16 @@ async function developData() {
     player["Actions"] = []
     if (!player["Resources"]) {player["Resources"] = {}}
 
-    async function addFeatures(dataSource) {
+    player["Features"] = {}
+    async function addFeatures(dataSource, sourceName) {
+        player["Features"][sourceName] = {}
         for (const [key, value] of Object.entries(dataSource)) {
             if ("Level" in value) {
                 if (value["Level"] > player["Level"]) {
                     continue;
                 }
             }
+            player["Features"][sourceName][key] = eval(`let level = ${player["Level"]};\`${value["Description"]}\``)
             if ("Armour" in value) {
                 player["Armour"][value["Armour"]["Name"]] = {"Type": value["Armour"]["Type"], "Amount": value["Armour"]["Amount"], "Cap": value["Armour"]["Cap"]}
             }
@@ -365,13 +368,13 @@ async function developData() {
         basePlayer[getQuery("Char")]["Choices"] = player["Choices"]
         localStorage.set("Characters", basePlayer)
     }
-    await addFeatures(classes[player["Class"]]["Features"])
-    await addFeatures(species[player["Species"]]["Features"])
+    await addFeatures(classes[player["Class"]]["Features"], player["Class"])
+    await addFeatures(species[player["Species"]]["Features"], player["Species"])
     let featData = {}
     for (let i = 0; i < player["Feats"].length; i++) {
         featData[player["Feats"][i]] = feats[player["Feats"][i]]
     }
-    await addFeatures(featData)
+    await addFeatures(featData, "Feats")
 
     player["ToolTraining"] = []
     for (let i = 0; i < profCatagories["Artisan's Tools"].length; i++) {
@@ -1063,6 +1066,23 @@ async function render(playerData, initial=false) {
                 await render(await developData())
             })
             armourChoice.value = playerData["EquipArmour"]
+        } else if (selectedAction === "feat") {
+            let featureParent = document.createElement("div")
+            featureParent.classList.add("featureParent")
+            actionParent.appendChild(featureParent)
+            Object.entries(playerData["Features"]).forEach(([sourceKey, sourceValue]) => {
+                let featureTitle = document.createElement("h2")
+                featureTitle.textContent = sourceKey
+                featureParent.appendChild(featureTitle)
+                Object.entries(sourceValue).forEach(([itemKey, itemValue]) => {
+                    let itemTitle = document.createElement("h4")
+                    itemTitle.textContent = itemKey
+                    featureParent.appendChild(itemTitle)
+                    let itemText = document.createElement("p")
+                    itemText.textContent = itemValue
+                    featureParent.appendChild(itemText)
+                })
+            })
         }
     }
 
