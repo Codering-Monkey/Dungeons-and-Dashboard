@@ -476,13 +476,11 @@ async function render(playerData, initial=false) {
 
     id("hitDice").textContent = `Roll Hit Dice (${playerData["Hit Dice"]}/${playerData["Level"]})`
     if (initial) {
-        console.log(playerData)
         id("hitDice").addEventListener("click", function () {
             if (playerData["Current Health"] === playerData["Max Health"]) {
                 popup("Your health is already full")
             } else {
                 if (playerData["Hit Dice"] > 0) {
-                    console.log(playerData)
                     let diceSize = classes[playerData["Class"]]["Dice"]
                     let diceRoll = roll(diceSize)
                     popup(`You Healed ${diceRoll + playerData["Stats"]["Con"].modifier()} (${diceRoll} (d${diceSize}) + ${playerData["Stats"]["Con"].modifier()})`)
