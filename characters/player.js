@@ -1040,7 +1040,21 @@ async function render(playerData, initial=false) {
         } else if (selectedAction === "inv") {
             let armourLabel = document.createElement("label")
             actionParent.appendChild(armourLabel)
-            let armourChoice = actionParent.createSelect(Object.keys(playerData["Armour"]))
+            let armourNames = Object.keys(playerData["Armour"])
+            let armourNamesWithStats = []
+            for (let i = 0; i < armourNames.length; i++) {
+                let armourData = playerData["Armour"][armourNames[i]]
+                let armourAmount = playerData.statEval(armourData["Amount"])
+                let dexBonus = playerData["Stats"]["Dex"].modifier()
+                if (armourData["Cap"] !== -1) {
+                    if (dexBonus > armourData["Cap"]) {
+                        dexBonus = armourData["Cap"]
+                    }
+                }
+                armourAmount += dexBonus
+                armourNamesWithStats.push(`${armourNames[i]} [${armourAmount}]`)
+            }
+            let armourChoice = actionParent.createSelect(armourNamesWithStats, armourNames)
             armourLabel.textContent = "Select Armour: "
             armourChoice.id = "armourChoice"
             armourLabel.htmlFor = "armourChoice"
