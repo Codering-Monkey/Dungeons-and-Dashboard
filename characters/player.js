@@ -1071,6 +1071,7 @@ async function render(playerData, initial=false) {
 
             let addEquipment = actionParent.createElement("button")
             addEquipment.textContent = "Add Equipment"
+            addEquipment.style.margin = "4px"
             addEquipment.addEventListener("click", async function() {
                 let overlayItem = overlay()
                 overlayItem.classList.add("equipmentAdd")
