@@ -10,75 +10,99 @@
 		"Type": "Light",
 		"Amount": "11",
 		"StealthDis": true,
-		"Cap": -1
+		"Cap": -12,
+		"Cost": 5,
+		"Weight": 8
 	},
 	"Leather Armour": {
 		"Type": "Light",
 		"Amount": "11",
 		"StealthDis": false,
-		"Cap": -1
+		"Cap": -1,
+		"Cost": 10,
+		"Weight": 10
 	},
 	"Studded Leather Armour": {
 		"Type": "Light",
 		"Amount": "12",
 		"StealthDis": false,
-		"Cap": -1
+		"Cap": -1,
+		"Cost": 45,
+		"Weight": 13
 	},
 	"Hide Armour": {
 		"Type": "Medium",
 		"Amount": "12",
 		"StealthDis": false,
-		"Cap": 2
+		"Cap": 2,
+		"Cost": 10,
+		"Weigh": 12
 	},
 	"Chain Shirt": {
 		"Type": "Medium",
 		"Amount": "13",
 		"StealthDis": false,
-		"Cap": 2
+		"Cap": 2,
+		"Cost": 50,
+		"Weight": 20
 	},
 	"Scale Mail": {
 		"Type": "Medium",
 		"Amount": "14",
 		"StealthDis": true,
-		"Cap": 2
+		"Cap": 2,
+		"Cost": 50,
+		"Weight": 45
 	},
 	"Breastplate": {
 		"Type": "Medium",
 		"Amount": "14",
 		"StealthDis": false,
-		"Cap": 2
+		"Cap": 2,
+		"Cost": 400,
+		"Weight": 20
 	},
 	"Half Plate Armour": {
 		"Type": "Medium",
 		"Amount": "15",
 		"StealthDis": true,
-		"Cap": 2
+		"Cap": 2,
+		"Cost": 750,
+		"Weight": 40
 	},
 	"Ring Mail": {
 		"Type": "Heavy",
 		"Amount": "14",
 		"StealthDis": true,
-		"Cap": 0
+		"Cap": 0,
+		"Cost": 30,
+		"Weight": 40
 	},
 	"Chain Mail": {
 		"Type": "Heavy",
 		"Amount": "16",
 		"StealthDis": true,
 		"StrMin": 13,
-		"Cap": 0
+		"Cap": 0,
+		"Cost": 75,
+		"Weight": 55
 	},
 	"Splint Armour": {
 		"Type": "Heavy",
 		"Amount": "17",
 		"StealthDis": true,
 		"StrMin": 15,
-		"Cap": 0
+		"Cap": 0,
+		"Cost": 200,
+		"Weight": 60
 	},
 	"Plate Armour": {
 		"Type": "Heavy",
 		"Amount": "18",
 		"StealthDis": true,
 		"StrMin": 15,
-		"Cap": 0
+		"Cap": 0,
+		"Cost": 1500,
+		"Weight": 65
 	}
 }
