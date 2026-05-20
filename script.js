@@ -34,6 +34,7 @@ HTMLInputElement.prototype.buttons = function() {
         let inputThis = this
         let parent = this.parentElement
         let container = document.createElement("div")
+        container.classList.add("inputNumberParent")
         if (parent) {
             parent.insertBefore(container, this)
         } else {
@@ -43,7 +44,7 @@ HTMLInputElement.prototype.buttons = function() {
         container.appendChild(subtract)
         subtract.textContent = "-"
         subtract.addEventListener("click", function() {
-            if (parseInt(inputThis.value) - 1 >= parseInt(inputThis.min)) {
+            if (!(inputThis.min) || parseInt(inputThis.value) - 1 >= parseInt(inputThis.min)) {
                 inputThis.value = String(parseInt(inputThis.value) - 1)
                 inputThis.textContent = inputThis.value
                 container.setAttribute("value", inputThis.value)
@@ -55,7 +56,7 @@ HTMLInputElement.prototype.buttons = function() {
         add.textContent = "+"
         container.appendChild(add)
         add.addEventListener("click", function() {
-            if (parseInt(inputThis.value) + 1 <= parseInt(inputThis.max)) {
+            if (!(inputThis.max) || inputThis.max && parseInt(inputThis.value) + 1 <= parseInt(inputThis.max)) {
                 inputThis.value = String(parseInt(inputThis.value) + 1)
                 inputThis.textContent = inputThis.value
                 container.setAttribute("value", inputThis.value)
