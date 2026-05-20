@@ -1047,15 +1047,19 @@ async function render(playerData, initial=false) {
             let armourNamesWithStats = []
             for (let i = 0; i < armourNames.length; i++) {
                 let armourData = playerData["Armour"][armourNames[i]]
-                let armourAmount = playerData.statEval(armourData["Amount"])
-                let dexBonus = playerData["Stats"]["Dex"].modifier()
-                if (armourData["Cap"] !== -1) {
-                    if (dexBonus > armourData["Cap"]) {
-                        dexBonus = armourData["Cap"]
+                if (playerData["Stats"]["Str"] >= (armourData["StrMin"] || 0)) {
+                    let armourAmount = playerData.statEval(armourData["Amount"])
+                    let dexBonus = playerData["Stats"]["Dex"].modifier()
+                    if (armourData["Cap"] !== -1) {
+                        if (dexBonus > armourData["Cap"]) {
+                            dexBonus = armourData["Cap"]
+                        }
                     }
+                    armourAmount += dexBonus
+                    armourNamesWithStats.push(`${armourNames[i]} [${armourAmount}]`)
+                } else {
+                    delete armourNames[i]
                 }
-                armourAmount += dexBonus
-                armourNamesWithStats.push(`${armourNames[i]} [${armourAmount}]`)
             }
             let armourChoice = actionParent.createSelect(armourNamesWithStats, armourNames)
             armourLabel.textContent = "Select Armour: "
@@ -1073,7 +1077,7 @@ async function render(playerData, initial=false) {
             addEquipment.textContent = "Add Equipment"
             addEquipment.style.margin = "4px"
             addEquipment.addEventListener("click", async function() {
-                let overlayItem = overlay()
+                let overlayItem = overlay(async function() {await render(await developData())})
                 overlayItem.classList.add("equipmentAdd")
                 let allEquipment = {"Weapons": weapons, "Armour": armour, "Tools": tools, "Adventuring Gear": gear}
                 Object.entries(allEquipment).forEach(([title, database]) => {
