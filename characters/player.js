@@ -1102,6 +1102,9 @@ async function render(playerData, initial=false) {
                                 } else if (event.ctrlKey) {
                                     amount = 100
                                 }
+                                if (item in armour) {
+                                    playerData["Armour"][item] = armour[item]
+                                }
                                 let oldData = localStorage.get("Characters")
                                 oldData[getQuery("Char")]["Equipment"][item] = (oldData[getQuery("Char")]["Equipment"][item] || 0) + amount
                                 playerData['Equipment'][item] = oldData[getQuery("Char")]["Equipment"][item]
@@ -1193,16 +1196,25 @@ async function render(playerData, initial=false) {
                         if (event.shiftKey) {
                             delete oldData[getQuery("Char")]['Equipment'][key]
                             delete playerData['Equipment'][key]
+                            if (key in armour) {
+                                delete playerData["Armour"][key]
+                            }
                         } else {
                             oldData[getQuery("Char")]['Equipment'][key] -= 1
-                            playerData['Equipment'][key] -= 1
+                            playerData['Equipment'][key] = oldData[getQuery("Char")]['Equipment'][key]
+                            if (key in armour) {
+                                playerData["Armour"][key] = oldData[getQuery("Char")]['Equipment'][key]
+                            }
                             if (playerData['Equipment'][key] === 0) {
                                 delete oldData[getQuery("Char")]['Equipment'][key]
                                 delete playerData['Equipment'][key]
+                                if (key in armour) {
+                                    delete playerData["Armour"][key]
+                                }
                             }
                         }
                         localStorage.set("Characters", oldData)
-                        await render(await developData())
+                        await renderAction()
                     })
                 }
             })
