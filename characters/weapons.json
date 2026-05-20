@@ -1,4 +1,94 @@
 {
+	"Club": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Bludgeoning",
+		"Dice": [1, 4],
+		"Properties": ["Light"],
+		"Mastery": "Slow",
+		"Weight": 2,
+		"Cost": 0.1
+	},
+	"Dagger": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Piercing",
+		"Dice": [1, 4],
+		"Properties": ["Finesse", "Light", "Thrown (20/60)"],
+		"Mastery": "Nick",
+		"Weight": 1,
+		"Cost": 2
+	},
+	"Greatclub": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Bludgeoning",
+		"Dice": [1, 8],
+		"Properties": ["Two-Handed"],
+		"Mastery": "Push",
+		"Weight": 10,
+		"Cost": 0.2
+	},
+	"Handaxe": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Slashing",
+		"Dice": [1, 6],
+		"Properties": ["Light", "Thrown (30/120)"],
+		"Mastery": "Vex",
+		"Weight": 2,
+		"Cost": 5
+	},
+	"Javelin": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Piercing",
+		"Dice": [1, 6],
+		"Properties": ["Thrown (30/120)"],
+		"Mastery": "Slow",
+		"Weight": 2,
+		"Cost": 0.5
+	},
+	"Light Hammer": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Bludgeoning",
+		"Dice": [1, 4],
+		"Properties": ["Light", "Thrown (20/60)"],
+		"Mastery": "Nick",
+		"Weight": 2,
+		"Cost": 2
+	},
+	"Mace": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Bludgeoning",
+		"Dice": [1, 6],
+		"Properties": ["Light", "Thrown (20/60)"],
+		"Mastery": "Sap",
+		"Weight": 4,
+		"Cost": 5
+	},
+	"Quarterstaff": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Bludgeoning",
+		"Dice": [1, 6],
+		"Properties": ["Versatile (1d8)"],
+		"Mastery": "Topple",
+		"Weight": 4,
+		"Cost": 0.2
+	},
+	"Sickle": {
+		"Tier": "Simple",
+		"Type": "Melee",
+		"Damage": "Slashing",
+		"Dice": [1, 4],
+		"Properties": ["Light"],
+		"Mastery": "Nick",
+		"Weight": 2,
+		"Cost": 1
+	},
 	"Spear": {
 		"Tier": "Simple",
 		"Type": "Melee",
@@ -8,6 +98,27 @@
 		"Mastery": "Sap",
 		"Weight": 3,
 		"Cost": 1
+	},
+	"Dart": {
+		"Tier": "Simple",
+		"Type": "Ranged",
+		"Damage": "Piercing",
+		"Dice": [1, 4],
+		"Properties": ["Finesse", "Thrown (20/60)"],
+		"Mastery": "Vex",
+		"Weight": 0.25,
+		"Cost": 0.05
+	},
+	"Light Crossbow": {
+		"Tier": "Simple",
+		"Type": "Ranged",
+		"Range": [80, 320],
+		"Damage": "Piercing",
+		"Dice": [1, 8],
+		"Properties": ["Ammunition (Bolt)", "Loading", "Two-Handed"],
+		"Mastery": "Slow",
+		"Weight": 5,
+		"Cost": 25
 	},
 	"Shortbow": {
 		"Tier": "Simple",
@@ -20,6 +131,47 @@
 		"Weight": 2,
 		"Cost": 25
 	},
+	"Sling": {
+		"Tier": "Simple",
+		"Type": "Ranged",
+		"Range": [30, 120],
+		"Damage": "Bludgeoning",
+		"Dice": [1, 4],
+		"Properties": ["Ammunition (Bullet)"],
+		"Mastery": "Vex",
+		"Weight": 0,
+		"Cost": 0.1
+	},
+	"Battleaxe": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Slashing",
+		"Dice": [1, 8],
+		"Properties": ["Versatile (1d10)"],
+		"Mastery": "Topple",
+		"Weight": 4,
+		"Cost": 10
+	},
+	"Flail": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Bludgeoning",
+		"Dice": [1, 8],
+		"Properties": [],
+		"Mastery": "Sap",
+		"Weight": 2,
+		"Cost": 10
+	},
+	"Glaive": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Slashing",
+		"Dice": [1, 10],
+		"Properties": ["Heavy", "Reach", "Two-Handed"],
+		"Mastery": "Graze",
+		"Weight": 6,
+		"Cost": 20
+	},
 	"Greataxe": {
 		"Tier": "Martial",
 		"Type": "Melee",
@@ -30,15 +182,211 @@
 		"Weight": 7,
 		"Cost": 30
 	},
-	"Handaxe": {
-		"Tier": "Simple",
+	"Greatsword": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Slashing",
+		"Dice": [2, 6],
+		"Properties": ["Heavy", "Two-Handed"],
+		"Mastery": "Graze",
+		"Weight": 6,
+		"Cost": 50
+	},
+	"Halberd": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Slashing",
+		"Dice": [1, 10],
+		"Properties": ["Heavy", "Reach", "Two-Handed"],
+		"Mastery": "Cleave",
+		"Weight": 6,
+		"Cost": 20
+	},
+	"Lance": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Piercing",
+		"Dice": [1, 10],
+		"Properties": ["Heavy", "Reach", "Two-Handed (unless mounted)"],
+		"Mastery": "Topple",
+		"Weight": 6,
+		"Cost": 10
+	},
+	"Longsword": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Slashing",
+		"Dice": [1, 8],
+		"Properties": ["Versatile (1d10)"],
+		"Mastery": "Sap",
+		"Weight": 3,
+		"Cost": 10
+	},
+	"Maul": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Bludgeoning",
+		"Dice": [2, 6],
+		"Properties": ["Heavy", "Two-Handed"],
+		"Mastery": "Topple",
+		"Weight": 10,
+		"Cost": 10
+	},
+	"Morningstar": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Piercing",
+		"Dice": [1, 8],
+		"Properties": [],
+		"Mastery": "Sap",
+		"Weight": 4,
+		"Cost": 15
+	},
+	"Pike": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Piercing",
+		"Dice": [1, 10],
+		"Properties": ["Heavy", "Reach", "Two-Handed"],
+		"Mastery": "Push",
+		"Weight": 18,
+		"Cost": 5
+	},
+	"Rapier": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Piercing",
+		"Dice": [1, 8],
+		"Properties": ["Finesse"],
+		"Mastery": "Vex",
+		"Weight": 2,
+		"Cost": 25
+	},
+	"Scimitar": {
+		"Tier": "Martial",
 		"Type": "Melee",
 		"Damage": "Slashing",
 		"Dice": [1, 6],
-		"Properties": ["Light", "Thrown (30/120)"],
+		"Properties": ["Finesse", "Light"],
+		"Mastery": "Nick",
+		"Weight": 3,
+		"Cost": 25
+	},
+	"Shortsword": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Piercing",
+		"Dice": [1, 6],
+		"Properties": ["Finesse", "Light"],
 		"Mastery": "Vex",
 		"Weight": 2,
+		"Cost": 10
+	},
+	"Trident": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Piercing",
+		"Dice": [1, 8],
+		"Properties": ["Thrown (20/60)", "Versatile (1d10)"],
+		"Mastery": "Topple",
+		"Weight": 4,
 		"Cost": 5
+	},
+	"Warhammer": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Bludgeoning",
+		"Dice": [1, 8],
+		"Properties": ["Versatile (1d10)"],
+		"Mastery": "Push",
+		"Weight": 5,
+		"Cost": 15
+	},
+	"War Pick": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Piercing",
+		"Dice": [1, 8],
+		"Properties": ["Versatile (1d10)"],
+		"Mastery": "Sap",
+		"Weight": 2,
+		"Cost": 5
+	},
+	"Whip": {
+		"Tier": "Martial",
+		"Type": "Melee",
+		"Damage": "Slashing",
+		"Dice": [1, 4],
+		"Properties": ["Finesse", "Reach"],
+		"Mastery": "Slow",
+		"Weight": 3,
+		"Cost": 2
+	},
+	"Blowgun": {
+		"Tier": "Martial",
+		"Type": "Ranged",
+		"Range": [25, 100],
+		"Damage": "Piercing",
+		"Dice": [1, 1],
+		"Properties": ["Ammunition (Needle)", "Loading"],
+		"Mastery": "Vex",
+		"Weight": 1,
+		"Cost": 10
+	},
+	"Hand Crossbow": {
+		"Tier": "Martial",
+		"Type": "Ranged",
+		"Range": [30, 120],
+		"Damage": "Piercing",
+		"Dice": [1, 6],
+		"Properties": ["Ammunition (Bolt)", "Loading", "Light"],
+		"Mastery": "Vex",
+		"Weight": 3,
+		"Cost": 75
+	},
+	"Heavy Crossbow": {
+		"Tier": "Martial",
+		"Type": "Ranged",
+		"Range": [100, 400],
+		"Damage": "Piercing",
+		"Dice": [1, 10],
+		"Properties": ["Ammunition (Bolt)", "Loading", "Heavy", "Two-Handed"],
+		"Mastery": "Push",
+		"Weight": 18,
+		"Cost": 50
+	},
+	"Longbow": {
+		"Tier": "Martial",
+		"Type": "Ranged",
+		"Range": [150, 600],
+		"Damage": "Piercing",
+		"Dice": [1, 8],
+		"Properties": ["Ammunition (Arrow)", "Heavy", "Two-Handed"],
+		"Mastery": "Slow",
+		"Weight": 2,
+		"Cost": 50
+	},
+	"Musket": {
+		"Tier": "Martial",
+		"Type": "Ranged",
+		"Range": [40, 120],
+		"Damage": "Piercing",
+		"Dice": [1, 12],
+		"Properties": ["Ammunition (Bullet)", "Loading", "Two-Handed"],
+		"Mastery": "Slow",
+		"Weight": 10,
+		"Cost": 500
+	},
+	"Pistol": {
+		"Tier": "Martial",
+		"Type": "Ranged",
+		"Range": [30, 90],
+		"Damage": "Piercing",
+		"Dice": [1, 10],
+		"Properties": ["Ammunition (Bullet)", "Loading"],
+		"Mastery": "Vex",
+		"Weight": 3,
+		"Cost": 250
 	},
 	"Unarmed Strike": {
 		"Tier": "Simple",
