@@ -1202,7 +1202,7 @@ async function render(playerData, initial=false) {
                             }
                         }
                         localStorage.set("Characters", oldData)
-                        await renderAction()
+                        await render(await developData())
                     })
                 }
             })
