@@ -36,7 +36,7 @@
 		"StealthDis": false,
 		"Cap": 2,
 		"Cost": 10,
-		"Weigh": 12
+		"Weight": 12
 	},
 	"Chain Shirt": {
 		"Type": "Medium",
