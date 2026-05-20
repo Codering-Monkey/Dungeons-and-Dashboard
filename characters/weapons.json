@@ -48,7 +48,8 @@
 		"Properties": [],
 		"Mastery": "N/A",
 		"Weight": 0,
-		"Cost": 0
+		"Cost": 0,
+		"Ignore": true
 	},
 	"Shove": {
 		"Tier": "Simple",
@@ -58,7 +59,8 @@
 		"Properties": ["Str/Dex Save"],
 		"Mastery": "N/A",
 		"Weight": 0,
-		"Cost": 0
+		"Cost": 0,
+		"Ignore": true
 	},
 	"Grapple": {
 		"Tier": "Simple",
@@ -68,6 +70,7 @@
 		"Properties": ["Str/Dex Save"],
 		"Mastery": "N/A",
 		"Weight": 0,
-		"Cost": 0
+		"Cost": 0,
+		"Ignore": true
 	}
 }

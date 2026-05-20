@@ -2,6 +2,7 @@
 	"Unarmoured": {
 		"Type": "Other",
 		"Amount": "10",
-		"Cap": -1
+		"Cap": -1,
+		"Ignore": true
 	}
 }
