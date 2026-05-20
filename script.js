@@ -204,8 +204,9 @@ export function id(Object_ID) {
 	return document.getElementById(Object_ID)
 }
 
-HTMLElement.prototype.createElement = function(tag) {
+HTMLElement.prototype.createElement = function(tag, classList="") {
     let element = document.createElement(tag);
+    element.className = classList;
     this.appendChild(element)
     return element
 }
