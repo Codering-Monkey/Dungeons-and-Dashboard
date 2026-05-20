@@ -1141,6 +1141,13 @@ async function render(playerData, initial=false) {
                 moneyChild.id = coinSizes[i]
                 moneyChild.min = 0
                 moneyChild.buttons()
+                moneyChild.addEventListener("change", async function() {
+                    let oldData = localStorage.get("Characters")
+                    playerData["Equipment"][coinSizes[i]] = this.value
+                    oldData[getQuery("Char")]["Equipment"][coinSizes[i]] = this.value
+                    localStorage.set("Characters", oldData)
+                    await renderAction()
+                })
                 let moneyLabel = moneyParent.createElement("label")
                 moneyLabel.htmlFor = coinSizes[i]
                 moneyLabel.textContent = coinSizes[i]
