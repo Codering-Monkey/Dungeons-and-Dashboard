@@ -1,4 +1,4 @@
-import {getQuery, id, numSuffix, overlay, popup, roll, setQuery} from "../script.js"
+import {getQuery, id, numSuffix, overlay, popup, roll, setQuery, merge} from "../script.js"
 import weapons from "./weapons.json" with {type:"json"}
 import classes from "./classes.json" with {type:"json"}
 import species from "./species.json" with {type:"json"}
@@ -1163,6 +1163,7 @@ async function render(playerData, initial=false) {
                 equipmentHeader.textContent = equipmentTitleArray[i]
             }
 
+            let collatedEquipment = merge(weapons, armour, tools, gear)
             Object.entries(playerData["Equipment"]).forEach(([key, value]) => {
                 if (key.search("[CSGP]P")) {
                     let equipmentItem = equipmentTable.createElement("tr")
@@ -1174,10 +1175,10 @@ async function render(playerData, initial=false) {
                     equipmentAmount.textContent = value
 
                     let equipmentWeight = equipmentItem.createElement("td")
-                    equipmentWeight.textContent = "-"
+                    equipmentWeight.textContent = ((collatedEquipment[key] ? collatedEquipment[key]["Weight"] : "-") || "-")
 
                     let equipmentCost = equipmentItem.createElement("td")
-                    equipmentCost.textContent = "-"
+                    equipmentCost.textContent = (collatedEquipment[key] ? collatedEquipment[key]["Cost"] + " gp" : "-" || "-")
 
                     let equipmentRemove = equipmentItem.createElement("span")
                     equipmentRemove.classList.add("material-symbols-outlined")
