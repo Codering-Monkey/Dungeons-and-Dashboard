@@ -253,7 +253,9 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .action-content {
-    height: calc(100% - 36px)
+    height: calc(100% - 36px);
+    overflow-y: scroll;
+    scrollbar-color: var(--text) var(--foreground);
 }
 
 .actions {
@@ -359,6 +361,35 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .equipTable th, .equipTable td {
     width: 20%
+}
+
+.moneyParent {
+    display: flex;
+    justify-content: center;
+}
+
+.moneyParent > div {
+    width: fit-content;
+    float: left;
+    margin: 2px
+}
+
+.moneyParent > div > * {
+    display: block
+}
+
+.moneyParent > div > button {
+    padding: 0;
+}
+
+.moneyParent > div > input {
+    width: 38px;
+    text-align: center;
+}
+
+.moneyParent > label {
+    align-content: center;
+    margin-right: 8px
 }
 
 /* Overlays */

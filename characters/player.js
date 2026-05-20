@@ -1132,6 +1132,20 @@ async function render(playerData, initial=false) {
                 });
             })
 
+            let moneyParent = actionParent.createElement("div", "moneyParent")
+            let coinSizes = ["CP", "SP", "GP", "PP"]
+            for (let i = 0; i < coinSizes.length; i++) {
+                let moneyChild = moneyParent.createElement("input")
+                moneyChild.value = (playerData["Equipment"][coinSizes[i]] || 0)
+                moneyChild.type = "number"
+                moneyChild.id = coinSizes[i]
+                moneyChild.min = 0
+                moneyChild.buttons()
+                let moneyLabel = moneyParent.createElement("label")
+                moneyLabel.htmlFor = coinSizes[i]
+                moneyLabel.textContent = coinSizes[i]
+            }
+
             let equipmentTable = actionParent.createElement("table")
             equipmentTable.classList.add("equipTable")
             let equipmentTitle = equipmentTable.createElement("tr")
