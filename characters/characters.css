@@ -353,6 +353,14 @@ table > tr > td > p, table > tbody > tr > td > p {
     margin: 1px 0 8px
 }
 
+.equipTable {
+    width: 100%
+}
+
+.equipTable th, .equipTable td {
+    width: 20%
+}
+
 /* Overlays */
 .featOverlay > div > div {
     border: 1px solid var(--minor-text)

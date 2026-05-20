@@ -1066,6 +1066,71 @@ async function render(playerData, initial=false) {
                 await render(await developData())
             })
             armourChoice.value = playerData["EquipArmour"]
+
+            let addEquipment = actionParent.createElement("button")
+            addEquipment.textContent = "Add Equipment"
+
+            let equipmentTable = actionParent.createElement("table")
+            equipmentTable.classList.add("equipTable")
+            let equipmentTitle = equipmentTable.createElement("tr")
+            let equipmentTitleArray = ["Name", "Amount", "Weight", "Cost", "Remove"]
+            for (let i = 0; i < equipmentTitleArray.length; i++) {
+                let equipmentHeader = equipmentTitle.createElement("th")
+                equipmentHeader.id = "equipment" + equipmentTitleArray[i]
+                equipmentHeader.textContent = equipmentTitleArray[i]
+            }
+
+            Object.entries(playerData["Equipment"]).forEach(([key, value]) => {
+                if (key.search("[CSGP]P")) {
+                    let equipmentItem = equipmentTable.createElement("tr")
+
+                    let equipmentName = equipmentItem.createElement("td")
+                    equipmentName.textContent = key
+
+                    let equipmentAmount = equipmentItem.createElement("td")
+                    equipmentAmount.textContent = value
+
+                    let equipmentWeight = equipmentItem.createElement("td")
+                    equipmentWeight.textContent = "-"
+
+                    let equipmentCost = equipmentItem.createElement("td")
+                    equipmentCost.textContent = "-"
+
+                    let equipmentRemove = equipmentItem.createElement("span")
+                    equipmentRemove.classList.add("material-symbols-outlined")
+                    equipmentRemove.classList.add("clickable")
+                    equipmentRemove.textContent = "delete"
+                    equipmentRemove.addEventListener("click", async function(event) {
+                        let oldData = localStorage.get("Characters")
+                        if (event.shiftKey) {
+                            delete oldData[getQuery("Char")]['Equipment'][key]
+                            delete playerData['Equipment'][key]
+                        } else {
+                            oldData[getQuery("Char")]['Equipment'][key] -= 1
+                            playerData['Equipment'][key] -= 1
+                            if (playerData['Equipment'][key] === 0) {
+                                delete oldData[getQuery("Char")]['Equipment'][key]
+                                delete playerData['Equipment'][key]
+                            }
+                        }
+                        localStorage.set("Characters", oldData)
+                        renderAction()
+                    })
+                }
+            })
+
+            window.addEventListener('keydown', (event) => {
+                if (event.key === 'Shift') {
+                    id("equipmentRemove").textContent = "Remove All"
+                }
+            });
+
+            window.addEventListener('keyup', (event) => {
+                if (event.key === 'Shift') {
+                    id("equipmentRemove").textContent = "Remove"
+                }
+            });
+
         } else if (selectedAction === "feat") {
             let featureParent = document.createElement("div")
             featureParent.classList.add("featureParent")
