@@ -204,6 +204,12 @@ export function id(Object_ID) {
 	return document.getElementById(Object_ID)
 }
 
+HTMLElement.prototype.createElement = function(tag) {
+    let element = document.createElement(tag);
+    this.appendChild(element)
+    return element
+}
+
 /**
  * Fuses an Array into a string, with {gap} between them
  * @param {string} gap
