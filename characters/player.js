@@ -5,6 +5,8 @@ import species from "./species.json" with {type:"json"}
 import backgrounds from "./backgrounds.json" with {type:"json"}
 import feats from "./feats.json" with {type:"json"}
 import armour from "./armour.json" with {type:"json"}
+import tools from "./tools.json" with {type:"json"}
+import gear from "./gear.json" with {type:"json"}
 
 let allStats = {
     "Strength": "Str",
@@ -1069,6 +1071,65 @@ async function render(playerData, initial=false) {
 
             let addEquipment = actionParent.createElement("button")
             addEquipment.textContent = "Add Equipment"
+            addEquipment.addEventListener("click", async function() {
+                let overlayItem = overlay()
+                overlayItem.classList.add("equipmentAdd")
+                let allEquipment = {"Weapons": weapons, "Armour": armour, "Tools": tools, "Adventuring Gear": gear}
+                Object.entries(allEquipment).forEach(([title, database]) => {
+                    let addEquipTitle = overlayItem.createElement("h2")
+                    addEquipTitle.textContent = title
+                    let overlaySubtitle = overlayItem.createElement("div", "subtitle")
+                    overlaySubtitle.createElement("p").textContent = "Name"
+                    overlaySubtitle.createElement("p").textContent = "Cost"
+                    overlaySubtitle.createElement("p").textContent = "Weight"
+                    Object.entries(database).forEach(([item, data]) => {
+                        if (!data["Ignore"]) {
+                            let addEquipItem = overlayItem.createElement("div")
+                            let name = addEquipItem.createElement("p")
+                            name.id = item
+                            name.textContent = item
+                            addEquipItem.createElement("p").textContent = data["Cost"] + "gp"
+                            addEquipItem.createElement("p").textContent = data["Weight"]
+                            addEquipItem.addEventListener("click", async function(event) {
+                                let amount = 1
+                                if (event.shiftKey) {
+                                    amount = 10
+                                } else if (event.ctrlKey) {
+                                    amount = 100
+                                }
+                                let oldData = localStorage.get("Characters")
+                                oldData[getQuery("Char")]["Equipment"][item] = (oldData[getQuery("Char")]["Equipment"][item] || 0) + amount
+                                playerData['Equipment'][item] = oldData[getQuery("Char")]["Equipment"][item]
+                                localStorage.set("Characters", oldData)
+                                popup(`Added ${amount} ${item}${amount > 1 ? "s" : ""}`)
+                                await renderAction()
+                            })
+                        }
+                    })
+                })
+                window.addEventListener('keydown', (event) => {
+                    for (let i = 0; i < overlayItem.children.length; i++) {
+                        if (overlayItem.children[i].tagName === "DIV" && !(overlayItem.children[i].classList.contains("subtitle"))) {
+                            let item = overlayItem.children[i].children[0]
+                            if (event.key === "Shift") {
+                                item.textContent = item.id + " (10)"
+                            } else if (event.key === "Control") {
+                                item.textContent = item.id + " (100)"
+                            }
+                        }
+                    }
+                });
+                window.addEventListener('keyup', (event) => {
+                    for (let i = 0; i < overlayItem.children.length; i++) {
+                        if (overlayItem.children[i].tagName === "DIV" && !(overlayItem.children[i].classList.contains("subtitle"))) {
+                            let item = overlayItem.children[i].children[0]
+                            if (event.key === "Shift" || event.key === "Control") {
+                                item.textContent = item.id
+                            }
+                        }
+                    }
+                });
+            })
 
             let equipmentTable = actionParent.createElement("table")
             equipmentTable.classList.add("equipTable")
@@ -1114,7 +1175,7 @@ async function render(playerData, initial=false) {
                             }
                         }
                         localStorage.set("Characters", oldData)
-                        renderAction()
+                        await renderAction()
                     })
                 }
             })

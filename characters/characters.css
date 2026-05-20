@@ -373,3 +373,41 @@ table > tr > td > p, table > tbody > tr > td > p {
 .featOverlay > div > .selectedFeat {
     border-color: var(--pink);
 }
+
+.equipmentAdd {
+    overflow-y: scroll !important;
+    width: 30vw !important;
+}
+
+.equipmentAdd > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin: 2px;
+}
+
+.equipmentAdd > div:not(.subtitle) {
+    cursor: pointer
+}
+
+.equipmentAdd > div:not(.subtitle):hover {
+    background-color: var(--navbar);
+}
+
+.equipmentAdd > div:not(.subtitle):hover > p {
+    color: var(--blue)
+}
+
+.equipmentAdd > div > p {
+    display: inline;
+    margin: 0
+}
+
+.equipmentAdd > .subtitle > p {
+    font-weight: bold;
+    color: var(--pink)
+}
+
+.equipmentAdd > div > p:nth-child(1) {
+    font-weight: 500;
+}
