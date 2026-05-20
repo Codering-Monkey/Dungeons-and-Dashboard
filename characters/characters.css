@@ -412,7 +412,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .equipmentAdd > div {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     width: 100%;
     margin: 2px;
 }
@@ -441,4 +441,5 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .equipmentAdd > div > p:nth-child(1) {
     font-weight: 500;
+    grid-column: span 3
 }
