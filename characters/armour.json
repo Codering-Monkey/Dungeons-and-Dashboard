@@ -10,7 +10,7 @@
 		"Type": "Light",
 		"Amount": "11",
 		"StealthDis": true,
-		"Cap": -12,
+		"Cap": -1,
 		"Cost": 5,
 		"Weight": 8
 	},
