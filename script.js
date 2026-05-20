@@ -424,6 +424,16 @@ String.prototype.modifier = function() {
     return parseInt(this).modifier()
 }
 
+export function merge(...objects) {
+    let final = {}
+    for (let i = 0; i < objects.length; i++) {
+        Object.entries(objects[i]).forEach(([key, value]) => {
+            final[key] = value
+        })
+    }
+    return final
+}
+
 // Popup
 
 let popupBar = document.createElement("div");
