@@ -412,8 +412,10 @@ async function developData() {
     if (player["Level"] >= 3) {
         if (player["Subclass"]) {
             await addFeatures(subclasses[player["Class"]][player["Subclass"]]["Features"], player["Subclass"])
+            player["Prefix"] = (subclasses[player["Class"]][player["Subclass"]]["Prefix"] || player["Subclass"])
         } else {
             player["Subclass"] = await subclassChoose(player["Class"])
+            player["Prefix"] = (subclasses[player["Class"]][player["Subclass"]]["Prefix"] || player["Subclass"])
             let oldData = localStorage.get("Characters")
             oldData[getQuery("Char")]["Subclass"] = player["Subclass"]
             localStorage.set("Characters", oldData)
