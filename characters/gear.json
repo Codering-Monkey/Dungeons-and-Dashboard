@@ -19,6 +19,12 @@
         "Weight": 1,
         "Description": "As a Bonus Action, you can drink a vial of Antitoxin to gain Advantage on saving throws to avoid or end the Poisoned condition for 1 hour."
     },
+    "Arrows (Quiver of 20)": {
+        "Weight": 0.05,
+        "Cost": 1,
+        "Individual": "Arrow",
+        "Bulk": 20
+    },
     "Backpack": {
         "Cost": 2,
         "Weight": 5,
@@ -64,6 +70,12 @@
         "Weight": 5,
         "Description": "A Book contains fiction or nonfiction. If you consult an accurate nonfiction Book about its topic, you gain a +5 bonus to Intelligence (Arcana, History, Nature, or Religion) checks you make about that topic."
     },
+    "Bolts (Case, Crossbow Bolt of 20)": {
+        "Weight": 0.075,
+        "Cost": 1,
+        "Individual": "Bolt",
+        "Bulk": 20
+    },
     "Bottle, Glass": {
         "Cost": 2,
         "Weight": 2,
@@ -73,6 +85,18 @@
         "Cost": 500,
         "Weight": 2,
         "Description": "A Bucket holds up to half a cubic foot of contents."
+    },
+    "Bullets, Firearm (Pouch of 10)": {
+        "Weight": 0.2,
+        "Cost": 3,
+        "Individual": "Bullets, Firearm",
+        "Bulk": 10
+    },
+    "Bullets, Sling (Pouch of 20)": {
+        "Weight": 0.075,
+        "Cost": 400,
+        "Individual": "Bullets, Sling",
+        "Bulk": 20
     },
     "Caltrops": {
         "Cost": 2,
@@ -228,6 +252,12 @@
         "Cost": 5,
         "Weight": 0.5,
         "Description": "A handheld steel Mirror is useful for personal cosmetics but also for peeking around corners and reflecting light as a signal."
+    },
+    "Needles (Pouch of 50)": {
+        "Weight": 0.02,
+        "Cost": 1,
+        "Individual": "Needle",
+        "Bulk": 50
     },
     "Net": {
         "Cost": 1,
