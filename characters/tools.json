@@ -1,1 +1,442 @@
-{}
+{
+    "Alchemist's Supplies": {
+        "Weight": 8,
+        "Cost": 50,
+        "Craft": [
+            "Acid",
+            "Alchemist's Fire",
+            "Component Pouch",
+            "Oil",
+            "Paper",
+            "Perfume"
+        ],
+        "Utilise": {
+            "Identify a substance": {
+                "DC": 15,
+                "Stat": "int"
+            },
+            "Start a fire": {
+                "DC": 15,
+                "Stat": "int"
+            }
+        }
+    },
+    "Brewer's Supplies": {
+        "Weight": 9,
+        "Cost": 20,
+        "Craft": [
+            "Antitoxin"
+        ],
+        "Utilise": {
+            "Detect poisoned drink": {
+                "DC": 10,
+                "Stat": "int"
+            },
+            "Identify alcohol": {
+                "DC": 10,
+                "Stat": "int"
+            }
+        }
+    },
+    "Calligrapher's Supplies": {
+        "Weight": 5,
+        "Cost": 10,
+        "Craft": [
+            "Ink",
+            "Spell Scroll, Cantrip",
+            "Spell Scroll, Level 1"
+        ],
+        "Utilise": {
+            "Write text with impressive flourishes that guard against forgery": {
+                "DC": 15,
+                "Stat": "dex"
+            }
+        }
+    },
+    "Carpenter's Tools": {
+        "Weight": 6,
+        "Cost": 8,
+        "Craft": [
+            "Club",
+            "Greatclub",
+            "Quarterstaff",
+            "Barrel",
+            "Chest",
+            "Ladder",
+            "Pole",
+            "Ram, Portable",
+            "Torch"
+        ],
+        "Utilise": {
+            ": Seal or pry open a door or container": {
+                "DC": 20,
+                "Stat": "str"
+            }
+        }
+    },
+    "Cartographer's Tools": {
+        "Weight": 6,
+        "Cost": 15,
+        "Craft": [
+            "Map"
+        ],
+        "Utilise": {
+            "Draft a map of a small area": {
+                "DC": 15,
+                "Stat": "wis"
+            }
+        }
+    },
+    "Cobbler's Tools": {
+        "Weight": 5,
+        "Cost": 5,
+        "Craft": [
+            "Climber's Kit"
+        ],
+        "Utilise": {
+            "Modify footwear to give Advantage on the wearer's next Dexterity (Acrobatics) check": {
+                "DC": 10,
+                "Stat": "dex"
+            }
+        }
+    },
+    "Cook's Utensils": {
+        "Weight": 8,
+        "Cost": 1,
+        "Craft": [
+            "Rations"
+        ],
+        "Utilise": {
+            "Improve food's flavor": {
+                "DC": 10,
+                "Stat": "wis"
+            },
+            "Detect spoiled or poisoned food": {
+                "DC": 15,
+                "Stat": "wis"
+            }
+        }
+    },
+    "Disguise Kit": {
+        "Weight": 3,
+        "Cost": 25,
+        "Craft": [
+            "Costume"
+        ],
+        "Utilise": {
+            "Apply makeup": {
+                "DC": 10,
+                "Stat": "cha"
+            }
+        }
+    },
+    "Forgery Kit": {
+        "Weight": 5,
+        "Cost": 15,
+        "Utilise": {
+            "Mimic 10 or fewer words of someone else's handwriting": {
+                "DC": 15,
+                "Stat": "dex"
+            },
+            "Duplicate a wax seal": {
+                "DC": 20,
+                "Stat": "dex"
+            }
+        }
+    },
+    "Glassblower's Tools": {
+        "Weight": 5,
+        "Cost": 30,
+        "Craft": [
+            "Bottle, Glass",
+            "Magnifying Glass",
+            "Spyglass",
+            "Vial"
+        ]
+    },
+    "Herbalism Kit": {
+        "Weight": 3,
+        "Cost": 5,
+        "Craft": [
+            "Antitoxin",
+            "Candle",
+            "Healer's Kit",
+            "Potion of Healing"
+        ],
+        "Utilise": {
+            "Identify a plant": {
+                "DC": 10,
+                "Stat": "int"
+            }
+        }
+    },
+    "Jeweler's Tools": {
+        "Weight": 2,
+        "Cost": 25,
+        "Craft": [
+            "Crystal",
+            "Orb",
+            "Quarterstaff",
+            "Rod",
+            "Staff",
+            "Wand",
+            "Amulet",
+            "Emblem",
+            "Reliquary"
+        ],
+        "Utilise": {
+            " Discern a gem's value": {
+                "DC": 15,
+                "Stat": "int"
+            }
+        }
+    },
+    "Leatherworker's Tools": {
+        "Weight": 5,
+        "Cost": 5,
+        "Craft": [
+            "Sling",
+            "Whip",
+            "Hide Armor",
+            "Leather Armor",
+            "Studded Leather Armor",
+            "Backpack",
+            "Case, Crossbow Bolt",
+            "Case, Map or Scroll",
+            "Parchment",
+            "Pouch",
+            "Quiver",
+            "Waterskin"
+        ],
+        "Utilise": {
+            "Add a design to a leather item": {
+                "DC": 10,
+                "Stat": "dex"
+            }
+        }
+    },
+    "Mason's Tools": {
+        "Weight": 8,
+        "Cost": 10,
+        "Craft": [
+            "Block and tackle"
+        ],
+        "Utilise": {
+            ": Chisel a symbol or hole in stone": {
+                "DC": 10,
+                "Stat": "str"
+            }
+        }
+    },
+    "Navigator's Tools": {
+        "Weight": 2,
+        "Cost": 25,
+        "Utilise": {
+            "Plot a course": {
+                "DC": 10,
+                "Stat": "wis"
+            },
+            "Determine position by stargazing": {
+                "DC": 15,
+                "Stat": "wis"
+            }
+        }
+    },
+    "Painter's Supplies": {
+        "Weight": 5,
+        "Cost": 10,
+        "Craft": [
+            "Quarterstaff",
+            "Sprig of Mistletoe",
+            "Staff",
+            "Yew Wand",
+            "Amulet",
+            "Emblem",
+            "Reliquary"
+        ],
+        "Utilise": {
+            "Paint a recognizable image of something you've seen": {
+                "DC": 10,
+                "Stat": "wis"
+            }
+        }
+    },
+    "Poisoner's Kit": {
+        "Weight": 2,
+        "Cost": 5,
+        "Craft": [
+            "Poison, Basic"
+        ],
+        "Utilise": {
+            "Detect a poisoned object": {
+                "DC": 10,
+                "Stat": "int"
+            }
+        }
+    },
+    "Potter's Tools": {
+        "Weight": 3,
+        "Cost": 10,
+        "Craft": [
+            "Jug",
+            "Lamp"
+        ],
+        "Utilise": {
+            "Discern what a ceramic object held in the past 24 hours": {
+                "DC": 15,
+                "Stat": "int"
+            }
+        }
+    },
+    "Smith's Tools": {
+        "Weight": 8,
+        "Cost": 20,
+        "Craft": [
+            "Battleaxe",
+            "Dagger",
+            "Flail",
+            "Glaive",
+            "Greataxe",
+            "Greatsword",
+            "Halberd",
+            "Handaxe",
+            "Javelin",
+            "Lance",
+            "Light Hammer",
+            "Longsword",
+            "Mace",
+            "Maul",
+            "Sickle",
+            "Spear",
+            "Trident",
+            "Warhammer",
+            "War Pick",
+            "Breastplate",
+            "Chain Shirt",
+            "Half-Plate Armor",
+            "Scale Mail",
+            "Chain Mail",
+            "Plate Armor",
+            "Ring Mail",
+            "Splint Armor",
+            "Ball bearings",
+            "Bucket",
+            "Caltrops",
+            "Chain",
+            "Crowbar",
+            "Bullets, Firearm",
+            "Grappling Hook",
+            "Pot, Iron",
+            "Spikes, Iron",
+            "Bullets, Sling"
+        ],
+        "Utilise": {
+            "Pry open a door or container": {
+                "DC": 20,
+                "Stat": "str"
+            }
+        }
+    },
+    "Thieves' Tools": {
+        "Weight": 1,
+        "Cost": 25,
+        "Utilise": {
+            "Pick a lock": {
+                "DC": 15,
+                "Stat": "dex"
+            },
+            "Disarm a trap": {
+                "DC": 15,
+                "Stat": "dex"
+            }
+        }
+    },
+    "Tinker's Tools": {
+        "Weight": 10,
+        "Cost": 50,
+        "Craft": [
+            "Musket",
+            "Pistol",
+            "Bell",
+            "Lantern, Bullseye",
+            "Flask",
+            "Lantern, Hooded",
+            "Hunting Trap",
+            "Lock",
+            "Manacles",
+            "Mirror",
+            "Shovel",
+            "Signal Whistle",
+            "Tinderbox"
+        ],
+        "Utilise": {
+            "Assemble a Tiny item composed of scrap, which falls apart in 1 minute": {
+                "DC": 10,
+                "Stat": "dex"
+            }
+        }
+    },
+    "Weaver's Tools": {
+        "Weight": 5,
+        "Cost": 1,
+        "Craft": [
+            "Padded Armor",
+            "Basket",
+            "Bedroll",
+            "Blanket",
+            "Clothes, Fine",
+            "Net",
+            "Robe",
+            "Rope",
+            "Sack",
+            "String",
+            "Tent",
+            "Clothes, Traveler's"
+        ],
+        "Utilise": {
+            "Mend a tear in clothing": {
+                "DC": 10,
+                "Stat": "dex"
+            },
+            "sew a Tiny design": {
+                "DC": 10,
+                "Stat": "dex"
+            }
+        }
+    },
+    "Woodcarver's Tools": {
+        "Weight": 5,
+        "Cost": 1,
+        "Craft": [
+            "Club",
+            "Greatclub",
+            "Quarterstaff",
+            "Blowgun",
+            "Dart",
+            "Hand Crossbow",
+            "Heavy Crossbow",
+            "Light Crossbow",
+            "Longbow",
+            "Shortbow",
+            "Crystal",
+            "Orb",
+            "Quarterstaff",
+            "Rod",
+            "Staff",
+            "Wand",
+            "Arrows",
+            "Bolts",
+            "Sprig of Mistletoe",
+            "Staff",
+            "Yew Wand",
+            "Ink Pen",
+            "Needles"
+        ],
+        "Utilise": {
+            "Carve a pattern in wood": {
+                "DC": 10,
+                "Stat": "dex"
+            }
+        }
+    }
+}
