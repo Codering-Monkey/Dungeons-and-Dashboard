@@ -24,10 +24,41 @@
 }
 
 .characters-grid-char {
-    grid-row: span 2;
     background-color: var(--foreground);
     aspect-ratio: 1 / 1;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--foreground);
+    padding: 8px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.characters-grid-char:hover {
+    border-color: var(--blue);
+}
+
+.characters-grid-char:hover * {
+    color: var(--blue);
+}
+
+.characters-grid-char:active {
+    border-color: var(--pink);
+}
+
+.characters-grid-char:active * {
+    color: var(--pink);
+}
+
+.characters-grid-char > img {
+    width: 50%;
+    height: 50%;
+}
+
+.characters-grid-char p, .characters-grid-char h3 {
+    width: 100%;
+    text-align: center;
 }
 
 .characters-grid-other {
@@ -43,7 +74,7 @@
     font-size: 1.5em;
     padding: 8px;
     text-align: center;
-    height: calc(100% - 20px);
+    height: calc(100% - 16px);
     align-content: center;
     color: var(--text);
     cursor: pointer;
