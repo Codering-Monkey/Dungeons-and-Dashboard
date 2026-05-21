@@ -353,6 +353,11 @@ async function developData() {
                             let difference = currentAction["Usages"][player["Level"]] - player["Resources"][currentAction["Name"]]["Max"]
                             player["Resources"][currentAction["Name"]]["Max"] += difference
                             player["Resources"][currentAction["Name"]]["Current"] += difference
+                        } else if (player["Resources"][currentAction["Name"]]["Max"] > currentAction["Usages"][player["Level"] - 1]) {
+                            player["Resources"][currentAction["Name"]]["Max"] = currentAction["Usages"][player["Level"] - 1]
+                            if (player["Resources"][currentAction["Name"]]["Current"] > player["Resources"][currentAction["Name"]]["Max"]) {
+                                player["Resources"][currentAction["Name"]]["Current"] = player["Resources"][currentAction["Name"]]["Max"]
+                            }
                         }
                         let basePlayer = localStorage.get("Characters")
                         basePlayer[getQuery("Char")]["Resources"] = player["Resources"]
