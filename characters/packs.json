@@ -1,0 +1,109 @@
+{
+    "Burglar's Pack": {
+        "Weight": 20,
+        "Cost": 16,
+        "Contains": {
+            "Backpack": 1,
+            "Ball bearings": 1,
+            "Bell": 1,
+            "Candle": 10,
+            "Crowbar": 1,
+            "Lantern, Hooded": 1,
+            "Flask": 7,
+            "Oil": 7,
+            "Rations": 5,
+            "Rope": 1,
+            "Tinderbox": 1,
+            "Waterskin": 1
+        }
+    },
+    "Diplomat's Pack": {
+        "Weight": 20,
+        "Cost": 39,
+        "Contains": {
+            "Chest": 1,
+            "Clothes, Fine": 1,
+            "Ink": 1,
+            "Ink Pen": 5,
+            "Lamp": 1,
+            "Case, Map or Scroll": 2,
+            "Flask": 4,
+            "Oil": 4,
+            "Paper": 5,
+            "Parchment": 5,
+            "Perfume": 1,
+            "Tinderbox": 1
+        }
+    },
+    "Dungeoneer's Pack": {
+        "Weight": 55,
+        "Cost": 12,
+        "Contains": {
+            "Backpack": 1,
+            "Caltrops": 10,
+            "Crowbar": 1,
+            "Flask": 2,
+            "Oil": 2,
+            "Rations": 10,
+            "Rope": 1,
+            "Tinderbox": 1,
+            "Torch": 10,
+            "Waterskin": 1
+        }
+    },
+    "Entertainer's Pack": {
+        "Weight": 58.5,
+        "Cost": 40,
+        "Contains": {
+            "Backpack": 1,
+            "Bedroll": 1,
+            "Costume": 2,
+            "Candle": 5,
+            "Rations": 5,
+            "Waterskin": 1,
+            "Disguise Kit": 1
+        }
+    },
+    "Explorer's Pack": {
+        "Weight": 58.5,
+        "Cost": 10,
+        "Contains": {
+            "Backpack": 1,
+            "Bedroll": 1,
+            "Oil": 2,
+            "Rations": 10,
+            "Rope": 1,
+            "Tinderbox": 1,
+            "Torch": 10,
+            "Waterskin": 1
+        }
+    },
+    "Priest's Pack": {
+        "Weight": 29,
+        "Cost": 33,
+        "Contains": {
+            "Backpack": 1,
+            "Blanket": 1,
+            "Holy Water": 1,
+            "Lamp": 1,
+            "Rations": 7,
+            "Robe": 1,
+            "Tinderbox": 1
+        }
+    },
+    "Scholar's Pack": {
+        "Weight": 22,
+        "Cost": 40,
+        "Contains": {
+            "Backpack": 1,
+            "Blanket": 1,
+            "Book": 1,
+            "Ink": 1,
+            "Ink Pen": 1,
+            "Lamp": 1,
+            "Oil": 10,
+            "Parchment": 10,
+            "Tinderbox": 1
+        }
+    }
+}
