@@ -1095,13 +1095,17 @@ async function render(playerData, initial=false) {
                             name.id = item
                             name.textContent = item
                             addEquipItem.createElement("p").textContent = data["Cost"] + "gp"
-                            addEquipItem.createElement("p").textContent = data["Weight"]
+                            addEquipItem.createElement("p").textContent = data["Bulk"] ? data["Weight"] * data["Bulk"] : data["Weight"]
                             addEquipItem.addEventListener("click", async function(event) {
                                 let amount = 1
                                 if (event.shiftKey) {
                                     amount = 10
                                 } else if (event.ctrlKey) {
                                     amount = 100
+                                }
+                                let visualAmount = amount
+                                if (data["Bulk"]) {
+                                    amount *= data["Bulk"]
                                 }
                                 if (item in armour) {
                                     playerData["Armour"][item] = armour[item]
@@ -1110,7 +1114,7 @@ async function render(playerData, initial=false) {
                                 oldData[getQuery("Char")]["Equipment"][item] = (oldData[getQuery("Char")]["Equipment"][item] || 0) + amount
                                 playerData['Equipment'][item] = oldData[getQuery("Char")]["Equipment"][item]
                                 localStorage.set("Characters", oldData)
-                                popup(`Added ${amount} ${item}${amount > 1 ? "s" : ""}`)
+                                popup(`Added ${visualAmount} ${item}${visualAmount > 1 ? "s" : ""}`)
                                 await renderAction()
                             })
                         }
@@ -1177,13 +1181,13 @@ async function render(playerData, initial=false) {
                     let equipmentItem = equipmentTable.createElement("tr")
 
                     let equipmentName = equipmentItem.createElement("td")
-                    equipmentName.textContent = key
+                    equipmentName.textContent =  collatedEquipment[key] ? (collatedEquipment[key]["Individual"] ? collatedEquipment[key]["Individual"] : key) : key
 
                     let equipmentAmount = equipmentItem.createElement("td")
                     equipmentAmount.textContent = value
 
                     let equipmentWeight = equipmentItem.createElement("td")
-                    equipmentWeight.textContent = ((collatedEquipment[key] ? collatedEquipment[key]["Weight"] : "-") || "-")
+                    equipmentWeight.textContent = ((collatedEquipment[key] ? (collatedEquipment[key]["Bulk"] ? collatedEquipment[key]["Weight"] * collatedEquipment[key]["Bulk"] : collatedEquipment[key]["Weight"]) : "-") || "-")
 
                     let equipmentCost = equipmentItem.createElement("td")
                     equipmentCost.textContent = (collatedEquipment[key] ? collatedEquipment[key]["Cost"] + " gp" : "-" || "-")

@@ -1,1 +1,42 @@
-{}
+{
+	"Acid": {
+		"Weight": 1,
+		"Cost": 25,
+		"Description": "When you take the Attack action, you can replace one of your attacks with throwing a vial of Acid. Target one creature or object you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or take 2d6 Acid damage."
+	},
+	"Alchemist's Fire": {
+		"Weight": 1,
+		"Cost": 50,
+		"Description": "When you take the Attack action, you can replace one of your attacks with throwing a flask of Alchemist’s Fire. Target one creature or object you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or take 1d4 Fire damage and start burning (see “Rules Glossary”)."
+	},
+	"Arrow (Quiver of 20)": {
+		"Weight": 0.05,
+		"Individual": "Arrow",
+		"Cost": 1,
+		"Bulk": 20
+	},
+	"Bolt (Case of 20)": {
+		"Weight": 0.075,
+		"Individual": "Bolt",
+		"Cost": 1,
+		"Bulk": 20
+	},
+	"Bullets, Firearm (Pouch of 10)": {
+		"Weight": 0.2,
+		"Individual": "Bullet, Firearm",
+		"Cost": 3,
+		"Bulk": 10
+	},
+	"Bullets, Sling (Pouch of 20)": {
+		"Weight": 0.075,
+		"Individual": "Bullet, Sling",
+		"Cost": 0.04,
+		"Bulk": 20
+	},
+	"Needles (Pouch of 50)": {
+		"Weight": 0.02,
+		"Individual": "Needle",
+		"Cost": 1,
+		"Bulk": 50
+	}
+}
