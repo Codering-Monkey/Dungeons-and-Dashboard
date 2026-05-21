@@ -1,6 +1,7 @@
 import {getQuery, id, numSuffix, overlay, popup, roll, setQuery, merge} from "../script.js"
 import weapons from "./weapons.json" with {type:"json"}
 import classes from "./classes.json" with {type:"json"}
+import subclasses from "./subclasses.json" with {type:"json"}
 import species from "./species.json" with {type:"json"}
 import backgrounds from "./backgrounds.json" with {type:"json"}
 import feats from "./feats.json" with {type:"json"}
@@ -233,6 +234,43 @@ function featChoose(featItem, existingFeat) {
     })
 }
 
+// Subclasses
+
+function subclassChoose(playerClass) {
+    let overlayParent = overlay(function() {}, false)
+    overlayParent.classList.add('featOverlay')
+    let subclassScroll = overlayParent.createElement("div")
+    Object.entries(subclasses[playerClass]).forEach(([key, value]) => {
+        let subclassItem = subclassScroll.createElement("div")
+        let subclassTitle = subclassItem.createElement("h3")
+        subclassTitle.textContent = key
+        let subclassText = subclassItem.createElement("p")
+        subclassText.textContent = value["Description"]
+        subclassItem.addEventListener("click", function() {
+            if (this.classList.contains("selectedFeat")) {
+                this.classList.remove("selectedFeat")
+            } else {
+                if (document.getElementsByClassName("selectedFeat")[0]) {
+                    document.getElementsByClassName("selectedFeat")[0].classList.remove("selectedFeat")
+                }
+                this.classList.add("selectedFeat")
+            }
+        })
+    })
+    let finishButton = document.createElement("button")
+    finishButton.textContent = "Confirm"
+    overlayParent.appendChild(finishButton)
+    return new Promise((resolve) => {
+        finishButton.addEventListener("click", function() {
+            if (document.getElementsByClassName("selectedFeat") && document.getElementsByClassName("selectedFeat")[0]) {
+                resolve(document.getElementsByClassName("selectedFeat")[0].children[0].textContent)
+                overlayParent.parentElement.remove()
+            } else {
+                popup(`Please select a Subclass`)
+            }
+        })
+    })
+}
 
 // Load the Page
 
@@ -371,6 +409,17 @@ async function developData() {
         localStorage.set("Characters", basePlayer)
     }
     await addFeatures(classes[player["Class"]]["Features"], player["Class"])
+    if (player["Level"] >= 3) {
+        if (player["Subclass"]) {
+            await addFeatures(subclasses[player["Class"]][player["Subclass"]]["Features"], player["Subclass"])
+        } else {
+            player["Subclass"] = await subclassChoose(player["Class"])
+            let oldData = localStorage.get("Characters")
+            oldData[getQuery("Char")]["Subclass"] = player["Subclass"]
+            localStorage.set("Characters", oldData)
+            await addFeatures(subclasses[player["Class"]][player["Subclass"]]["Features"], player["Subclass"])
+        }
+    }
     await addFeatures(species[player["Species"]]["Features"], player["Species"])
     let featData = {}
     for (let i = 0; i < player["Feats"].length; i++) {
@@ -1252,6 +1301,19 @@ async function render(playerData, initial=false) {
                     itemText.textContent = itemValue
                     featureParent.appendChild(itemText)
                 })
+            })
+        } else if (selectedAction === "set") {
+            let levelInput = actionParent.createElement("input")
+            levelInput.type = "number"
+            levelInput.max = 20
+            levelInput.min = 1
+            levelInput.value = playerData["Level"]
+            levelInput.buttons()
+            levelInput.addEventListener("change", async function() {
+                let oldData = localStorage.get("Characters")
+                oldData[getQuery("Char")]["Level"] = this.value
+                localStorage.set("Characters", oldData)
+                await render(await developData())
             })
         }
     }
