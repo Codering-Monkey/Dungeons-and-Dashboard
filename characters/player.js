@@ -1200,7 +1200,7 @@ async function render(playerData, initial=false) {
                 weaponLine.appendChild(damage)
 
                 let notes = document.createElement("td")
-                let properties = weaponData["Properties"]
+                let properties = structuredClone(weaponData["Properties"])
                 if (playerData["Choices"]["Mastery"].includes(key)) {
                     properties.push(weaponData["Mastery"])
                 }
