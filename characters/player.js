@@ -409,6 +409,7 @@ async function developData() {
     player["WeaponsPermitted"] = classes[player["Class"]]["Weapons"]
     player["Actions"] = []
     if (!player["Resources"]) {player["Resources"] = {}}
+    if (!player["ACbonus"]) {player["ACbonus"] = []}
 
     player["Features"] = {}
     async function addFeatures(dataSource, sourceName) {
@@ -480,6 +481,9 @@ async function developData() {
                         player["Init"] += amount
                     }
                 }
+            }
+            if ("ACbonus" in value) {
+                player["ACbonus"].pushAll(value["ACbonus"])
             }
             if (key in player["Choices"]) {
                 if ("Prof" in player["Choices"][key]) {
@@ -591,6 +595,14 @@ async function developData() {
         }
     }
     player["Armour Class"] += dexBonus
+    for (let i = 0; i < player["ACbonus"].length; i++) {
+        if ("Armour" in player["ACbonus"][i]["Conditions"]) {
+            if (!(player["ACbonus"][i]["Conditions"]["Armour"].includes(armourData["Type"]))) {
+                continue
+            }
+        }
+        player["Armour Class"] += player["ACbonus"][i]["Amount"]
+    }
 
     return player
 }
@@ -1215,6 +1227,14 @@ async function render(playerData, initial=false) {
                     }
                 }
                 armourAmount += dexBonus
+                for (let i = 0; i < playerData["ACbonus"].length; i++) {
+                    if ("Armour" in playerData["ACbonus"][i]["Conditions"]) {
+                        if (!(playerData["ACbonus"][i]["Conditions"]["Armour"].includes(armourData["Type"]))) {
+                            continue
+                        }
+                    }
+                    armourAmount += playerData["ACbonus"][i]["Amount"]
+                }
                 armourNamesWithStats.push(`${armourNames[i]} [${armourAmount}]`)
             }
             let armourChoice = actionParent.createSelect(armourNamesWithStats, armourNames)
