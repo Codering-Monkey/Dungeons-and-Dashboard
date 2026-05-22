@@ -98,7 +98,35 @@
 		}
 	},
 	"Orc": {
-		"NameSet": "o"
+		"Speed": 30,
+		"NameSet": "o",
+		"Features": {
+			"Adrenaline Rush": {
+				"Description": "You can take the Dash action as a Bonus Action. When you do so, you gain a number of Temporary Hit Points equal to your Proficiency Bonus. You can use this trait a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Short or Long Rest.",
+				"Action": [{
+					"Type": "Bonus",
+					"Name": "Adrenaline Rush",
+					"Usages": "pb",
+					"LR": -1,
+					"SR": -1
+				}]
+			},
+			"Darkvision": {
+				"Description": "You have Darkvision with a range of 120 feet.",
+				"Senses": {
+					"Darkvision": 120
+				}
+			},
+			"Relentless Endurance": {
+				"Description":"When you are reduced to 0 Hit Points but not killed outright, you can drop to 1 Hit Point instead. Once you use this trait, you can’t do so again until you finish a Long Rest.",
+				"Action": [{
+					"Type": "Other",
+					"Name": "Relentless Endurance",
+					"Usages": 1,
+					"LR": 1
+				}]
+			}
+		}
 	},
 	"Teifling": {
 		"NameSet": "h"
