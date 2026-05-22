@@ -11,7 +11,7 @@
 				"Mindless Rage": {
 					"Level": 6,
 					"Description": "You have Immunity to the Charmed and Frightened conditions while your Rage is active. If you’re Charmed or Frightened when you enter your Rage, the condition ends on you.",
-					"Immune": "Charmed & Frightened During Rage"
+					"Immune": ["Charmed & Frightened During Rage"]
 				},
 				"Retaliation": {
 					"Level": 10,
