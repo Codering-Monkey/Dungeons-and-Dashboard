@@ -307,6 +307,27 @@ async function developData() {
 
     player["Feats"].push(backgrounds[player["Background"]]["Feat"])
 
+    let saveImprovements = false
+    if (!player["Improvements"]) {
+        player["Improvements"] = []
+        saveImprovements = true
+    }
+    for (let i = 0; i < classes[player["Class"]]["Improvements"][player["Level"] - 1]; i++) {
+        if (player["Improvements"].length >= i && i !== 0) {
+            player["Feats"].push(player["Improvements"][i])
+        } else {
+            let newFeat = await featChoose({"Amount": 1, "Type": ["General", "Epic"]}, [...player["Feats"], ...player["Improvements"]])
+            player["Improvements"].push(newFeat)
+            player["Feats"].push(newFeat)
+            saveImprovements = true
+        }
+    }
+    if (saveImprovements) {
+        let oldData = localStorage.get("Characters")
+        oldData[getQuery("Char")]["Improvements"] = player["Improvements"]
+        localStorage.set("Characters", oldData)
+    }
+
     if (!("Hit Dice" in player)) {
         player["Hit Dice"] = player["Level"]
     }
