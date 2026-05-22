@@ -174,7 +174,7 @@ function proficiencyChoose(profItem, existingProf) {
 
 // Feats
 
-function featChoose(featItem, existingFeat) {
+function featChoose(featItem, existingFeat, player) {
     let overlayParent = overlay(function() {}, false)
     overlayParent.classList.add('featOverlay')
     let possibleChoices = []
@@ -191,6 +191,29 @@ function featChoose(featItem, existingFeat) {
     }
     let possibleFeats = {}
     for (let i = 0; i < possibleChoices.length; i++) {
+        if ("PreReq" in feats[possibleChoices[i]]) {
+            if ("Level" in feats[possibleChoices[i]]["PreReq"]) {
+                if (player["Level"] < feats[possibleChoices[i]]["PreReq"]["Level"]) {
+                    continue
+                }
+            }
+            if ("Stat" in feats[possibleChoices[i]]["PreReq"]) {
+                let anyValid = false
+                for (let j = 0; j < feats[possibleChoices[i]]["PreReq"]["Stat"]["Valid"].length; j++) {
+                    if (player["Stats"][feats[possibleChoices[i]]["PreReq"]["Stat"]["Valid"][j]] >= feats[possibleChoices[i]]["PreReq"]["Stat"]["Min"]) {
+                        anyValid = true
+                    }
+                }
+                if (!anyValid) {
+                    continue
+                }
+            }
+            if ("Feat" in feats[possibleChoices[i]]["PreReq"]) {
+                if (!existingFeat.includes(feats[possibleChoices[i]]["PreReq"]["Feat"])) {
+                    continue
+                }
+            }
+        }
         possibleFeats[possibleChoices[i]] = feats[possibleChoices[i]]["Description"]
     }
     let featScroll = document.createElement("div")
@@ -352,7 +375,7 @@ async function developData() {
         if (player["Improvements"].length >= i && player["Improvements"].length !== 0) {
             player["Feats"].push(player["Improvements"][i])
         } else {
-            let newFeat = await featChoose({"Amount": 1, "Type": ["General", "Epic"]}, [...player["Feats"], ...player["Improvements"]])
+            let newFeat = await featChoose({"Amount": 1, "Type": ["General", "Epic"]}, [...player["Feats"], ...player["Improvements"]], player)
             player["Improvements"].push(newFeat)
             player["Feats"].push(newFeat)
             saveImprovements = true
@@ -429,13 +452,15 @@ async function developData() {
                         amount = player["Prof Bonus"]
                     }
                     let increasedStat = value["Bonus"][i]["Stat"]
-                    // player["Choices"][key]["Bonus"] = ["Name": "...{str}"]
                     if (Array.isArray(increasedStat)) {
                         if (key in player["Choices"] && player["Choices"][key]["Bonus"]) {
                             increasedStat = player["Choices"][key]["Bonus"][i]
                         } else {
                             increasedStat = await statChoose(increasedStat)
                             let basePlayer = localStorage.get("Characters")
+                            if (!player["Choices"][key]) {
+                                player["Choices"][key] = {}
+                            }
                             if (player["Choices"][key]["Bonus"]) {
                                 player["Choices"][key]["Bonus"].push(increasedStat)
                             } else {
@@ -475,7 +500,7 @@ async function developData() {
                 if ("Feat" in value) {
                     let featChoices = []
                     for (let i = 0; i < value["Feat"].length; i++) {
-                        featChoices.push(await featChoose(value["Feat"][i], player["Feats"]))
+                        featChoices.push(await featChoose(value["Feat"][i], player["Feats"], player))
                     }
                     player["Choices"][key]["Feat"] = featChoices
                     player["Feats"].pushAll(featChoices)
