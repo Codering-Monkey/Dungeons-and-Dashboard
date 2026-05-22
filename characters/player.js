@@ -1,13 +1,17 @@
 import {getQuery, id, numSuffix, overlay, popup, roll, setQuery, merge} from "../script.js"
-import weapons from "./weapons.json" with {type:"json"}
-import classes from "./classes.json" with {type:"json"}
-import subclasses from "./subclasses.json" with {type:"json"}
-import species from "./species.json" with {type:"json"}
-import backgrounds from "./backgrounds.json" with {type:"json"}
-import feats from "./feats.json" with {type:"json"}
-import armour from "./armour.json" with {type:"json"}
-import tools from "./tools.json" with {type:"json"}
-import gear from "./gear.json" with {type:"json"}
+import weapons from "../Data/weapons.json" with {type:"json"}
+import classes from "../Data/classes.json" with {type:"json"}
+import subclasses from "../Data/subclasses.json" with {type:"json"}
+import species from "../Data/species.json" with {type:"json"}
+import backgrounds from "../Data/backgrounds.json" with {type:"json"}
+import feats from "../Data/feats.json" with {type:"json"}
+import armour from "../Data/armour.json" with {type:"json"}
+import tools from "../Data/tools.json" with {type:"json"}
+import gear from "../Data/gear.json" with {type:"json"}
+import instruments from "../Data/instruments.json" with {type:"json"}
+import otherTools from "../Data/otherTools.json" with {type:"json"}
+import gaming from "../Data/gaming.json" with {type:"json"}
+
 
 let allStats = {
     "Strength": "Str",
@@ -98,13 +102,10 @@ let profCatagories = {
         "Stealth",
         "Survival"
     ],
-    "Gaming Set": [
-        "Dice Set",
-        "Playing Card Set"
-    ],
-    "Artisan's Tools": [
-
-    ],
+    "Gaming Set": Object.keys(gaming),
+    "Artisan's Tools": Object.keys(tools),
+    "Other Tools": Object.keys(otherTools),
+    "Musical Instruments": Object.keys(instruments),
     "Language": [
         "Common",
         "Elvish",
