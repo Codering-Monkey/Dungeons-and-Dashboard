@@ -181,5 +181,13 @@
 				"Armour": ["Light", "Medium", "Heavy"]
 			}
 		}]
+	},
+	"Archery": {
+		"Type": "Fighting Style",
+		"Description": "You gain a +2 bonus to attack rolls you make with Ranged weapons.",
+		"Bonus": [{
+			"Stat": "RangedAttack",
+			"Amount": 2
+		}]
 	}
 }
