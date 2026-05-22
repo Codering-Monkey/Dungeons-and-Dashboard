@@ -217,6 +217,7 @@ function featChoose(featItem, existingFeat, player) {
         possibleFeats[possibleChoices[i]] = feats[possibleChoices[i]]["Description"]
     }
     let featScroll = document.createElement("div")
+    featScroll.classList.add("featScroll")
     overlayParent.appendChild(featScroll)
     Object.entries(possibleFeats).forEach(([key, value]) => {
         let featItem = document.createElement("div")
@@ -262,7 +263,7 @@ function featChoose(featItem, existingFeat, player) {
 function subclassChoose(playerClass) {
     let overlayParent = overlay(function() {}, false)
     overlayParent.classList.add('featOverlay')
-    let subclassScroll = overlayParent.createElement("div")
+    let subclassScroll = overlayParent.createElement("div", "featScroll")
     Object.entries(subclasses[playerClass]).forEach(([key, value]) => {
         let subclassItem = subclassScroll.createElement("div")
         let subclassTitle = subclassItem.createElement("h3")
@@ -300,7 +301,7 @@ function subclassChoose(playerClass) {
 function statChoose(possibleStats) {
     let overlayParent = overlay(function() {}, false)
     overlayParent.classList.add('featOverlay')
-    let statScroll = overlayParent.createElement("div")
+    let statScroll = overlayParent.createElement("div", "featScroll")
     for (let i = 0; i < possibleStats.length; i++) {
         let statItem = statScroll.createElement("div")
         let statTitle = statItem.createElement("h3")
@@ -372,10 +373,10 @@ async function developData() {
         saveImprovements = true
     }
     for (let i = 0; i < classes[player["Class"]]["Improvements"][player["Level"] - 1]; i++) {
-        if (player["Improvements"].length >= i && player["Improvements"].length !== 0) {
+        if (player["Improvements"].length > i) {
             player["Feats"].push(player["Improvements"][i])
         } else {
-            let newFeat = await featChoose({"Amount": 1, "Type": ["General", "Epic"]}, [...player["Feats"], ...player["Improvements"]], player)
+            let newFeat = await featChoose({"Amount": 1, "Type": ["Origin", "General", "Epic"]}, [...player["Feats"], ...player["Improvements"]], player)
             player["Improvements"].push(newFeat)
             player["Feats"].push(newFeat)
             saveImprovements = true
@@ -453,7 +454,7 @@ async function developData() {
                     }
                     let increasedStat = value["Bonus"][i]["Stat"]
                     if (Array.isArray(increasedStat)) {
-                        if (key in player["Choices"] && player["Choices"][key]["Bonus"]) {
+                        if (key in player["Choices"] && player["Choices"][key]["Bonus"] && player["Choices"][key]["Bonus"][i]) {
                             increasedStat = player["Choices"][key]["Bonus"][i]
                         } else {
                             increasedStat = await statChoose(increasedStat)

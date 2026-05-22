@@ -217,8 +217,11 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .overlay > div {
-    overflow: hidden;
-    width: 956px
+    overflow-x: hidden;
+    width: 956px;
+    overflow-y:scroll;
+    padding: 0;
+    border: 8px solid var(--background)
 }
 
 .current {
@@ -393,16 +396,42 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 /* Overlays */
+.featOverlay {
+    overflow-y: scroll;
+}
+
 .featOverlay > div > div {
-    border: 1px solid var(--minor-text)
+    border: 2px solid var(--minor-text);
+    padding: 8px;
+    margin: 8px;
+    transition: .25s;
+    cursor: pointer;
+}
+
+.featOverlay > div > .selectedFeat {
+    border-color: var(--pink) !important;
+}
+
+.featOverlay > div > .selectedFeat > h3 {
+    color: var(--pink) !important;
 }
 
 .featOverlay > div > div:hover {
     border-color: var(--blue);
 }
 
-.featOverlay > div > .selectedFeat {
-    border-color: var(--pink);
+.featOverlay > div > div:hover > h3 {
+    color: var(--blue);
+}
+
+
+.featOverlay:has(.featScroll) {
+    overflow:hidden;
+}
+
+.featScroll {
+    overflow-y: scroll;
+    height: calc(80vh - 28px);
 }
 
 .equipmentAdd {
