@@ -7,9 +7,12 @@
 		"Features": {
 			"Resourceful": {
 				"Description": "You gain Heroic Inspiration whenever you finish a Long Rest",
-				"Usages": 1,
-				"Recovery": "lr",
-				"Usage Name": "Heroic Inspiration"
+				"Action": [{
+					"Type": "Other",
+					"Name": "Heroic Inspiration",
+					"Usages": 1,
+					"LR": 1
+				}]
 			},
 			"Skillful": {
 				"Description": "You gain proficiency in one skill of your choice.",
