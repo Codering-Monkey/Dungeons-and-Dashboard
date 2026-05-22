@@ -4,14 +4,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .not-nav {
     --gap: calc((100vh - ((5vw + 6px) + ((100vw - 128px) / 12 * 5))) / 2);
-    margin: var(--gap) 72px var(--gap) 0;
+    margin: var(--gap) calc(3vh + 24px) var(--gap) 0;
     height: calc(100vh - (var(--gap) * 2));
+    width: calc(100vw - 6vh - 56px);
     padding: 0
+}
+
+body {
+    font-size: 0.83vw;
 }
 
 input[type=checkbox]:not(.usable) {
     pointer-events: none;
     opacity: 1;
+    max-height: 1vw;
+    max-width: 1vw;
 }
 
 /* Player */
@@ -28,7 +35,7 @@ input[type=checkbox]:not(.usable) {
 
 .header > .playerData {
     align-content: center;
-    padding-left: 8px
+    padding-left:.5em
 }
 
 .header > .playerRest {
@@ -37,27 +44,30 @@ input[type=checkbox]:not(.usable) {
 }
 
 .header > .playerRest > button {
-    width: 102px;
-    height: 102px;
+    width: 5vw;
+    height: 5vw;
+    font-size: .8em;
+    padding: 0
 }
 
 .header > .playerRest > button > span {
     display: block;
     font-size: 3em;
+    margin: 0 calc((5vw - 1em) / 2);
 }
 
 .player-grid {
     display: grid;
     grid-template-columns: repeat(12, calc((100% - 88px) / 12));
-    gap: 8px;
+    gap:.5em;
     grid-auto-rows: calc((100vw - 224px) / 12);
-    margin-top: 8px;
+    margin-top:.5em;
 }
 
 .player-grid > div, .player-grid > table {
-    padding: 8px;
+    padding:.5em;
     background-color: var(--foreground);
-    border-radius: 8px;
+    border-radius:.5em;
     corner-shape: scoop;
     text-align: center;
     align-content: center;
@@ -67,7 +77,7 @@ input[type=checkbox]:not(.usable) {
     grid-column: span 4;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    gap:.5em;
 }
 
 .health > div:nth-child(1) {
@@ -88,7 +98,9 @@ input[type=checkbox]:not(.usable) {
 }
 
 .health button {
-    width: calc(100% - 8px);
+    width: calc(100% - .5em);
+    font-size: .75em;
+    padding: 0;
 }
 
 .health > * {
@@ -99,6 +111,16 @@ input[type=checkbox]:not(.usable) {
 .prof {
     grid-column: span 3;
     grid-row: span 4;
+}
+
+.prof table {
+    width: 100%
+}
+
+.prof > div {
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: var(--text) var(--foreground);
 }
 
 .prof input[type=number] {
@@ -127,7 +149,6 @@ table > tr > td > p, table > tbody > tr > td > p {
     height: 100%;
     width: 100%;
     scrollbar-color: var(--text) var(--foreground);
-
 }
 
 .defenses {
@@ -175,7 +196,10 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .conditions button {
-    float: right
+    float: right;
+    height: 1.75em;
+    padding: 0 .5em;
+    font-size: 1em;
 }
 
 .conditions h4 {
@@ -199,7 +223,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .tabs > h5 {
     float: left;
-    margin: 8px;
+    margin:.5em;
     cursor: pointer;
 }
 
@@ -221,13 +245,13 @@ table > tr > td > p, table > tbody > tr > td > p {
     width: 956px;
     overflow-y:scroll;
     padding: 0;
-    border: 8px solid var(--background)
+    border:.5em solid var(--background)
 }
 
 .current {
     float: right;
     width: calc(50% - 4px);
-    margin-left: 8px
+    margin-left:.5em
 }
 
 .current > * {
@@ -273,7 +297,6 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .action-body {
     width: 100%;
-    overflow-y: scroll;
     scrollbar-color: var(--text) var(--foreground);
     float: left;
     height: calc(100% - 32px);
@@ -314,7 +337,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .actionParent > .generic {
-    width: calc(100% - 8px);
+    width: calc(100% - .5em);
     float: left;
     display: block;
     margin: 4px;
@@ -323,7 +346,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .actionParent > .special {
-    width: calc(100% - 8px);
+    width: calc(100% - .5em);
     display: block;
     float: left;
     margin: 4px;
@@ -342,7 +365,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 .featureParent {
     overflow-y: scroll;
     height: calc(100% - 16px);
-    padding: 8px;
+    padding:.5em;
     scrollbar-color: var(--text) var(--foreground);
 }
 
@@ -355,7 +378,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .featureParent > p {
-    margin: 1px 0 8px
+    margin: 1px 0.5em
 }
 
 .equipTable {
@@ -392,7 +415,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .moneyParent > label {
     align-content: center;
-    margin-right: 8px
+    margin-right:.5em
 }
 
 /* Overlays */
@@ -402,8 +425,8 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .featOverlay > div > div {
     border: 2px solid var(--minor-text);
-    padding: 8px;
-    margin: 8px;
+    padding:.5em;
+    margin:.5em;
     transition: .25s;
     cursor: pointer;
 }

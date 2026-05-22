@@ -206,7 +206,7 @@ body {
     height: 100vh;
     float: left;
     border-left: 8px solid var(--background);
-    width: 40px;
+    width: calc(3vh + 16px);
     justify-content: center;
     flex-wrap: wrap;
     align-content: center;
@@ -218,9 +218,9 @@ body {
     padding: 8px;
     margin: 4px 0;
     border-radius: 8px;
-    height: 24px;
-    width: 24px;
-    font-size: 24px;
+    height: 3vh;
+    width: 3vh;
+    font-size: 3vh;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -263,7 +263,7 @@ body {
     height: calc(100vh - 144px);
     padding: 16px 0;
     margin: 56px 72px 56px 0;
-    width: calc(100vw - 136px);
+    width: calc(100vw - 112px - 3vh);
     z-index: -2;
     position: relative;
 }
