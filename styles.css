@@ -113,6 +113,10 @@ input[type=file] {
     display: none;
 }
 
+body {
+    font-size: 0.83vw;
+}
+
 .file {
     cursor: pointer;
     display: block;
