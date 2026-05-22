@@ -332,6 +332,51 @@ function statChoose(possibleStats) {
     })
 }
 
+// Mastery
+
+function masteryChoose(newMasteries, existingMasteries) {
+    let overlayParent = overlay(function() {}, false)
+    overlayParent.classList.add('featOverlay')
+    overlayParent.createElement("h2").textContent = `Choose ${newMasteries} Weapon Masteries`
+    let masteryScroll = overlayParent.createElement("div", "featScroll")
+    masteryScroll.style.height = "calc(80vh - 70px)"
+    Object.entries(weapons).forEach(([key, value]) => {
+        if (!value["Ignore"] && value["Mastery"] && value["Mastery"] !== "N/A") {
+            let masteryItem = masteryScroll.createElement("input", "usable")
+            masteryItem.type = "Checkbox"
+            masteryItem.id = "mastery" + key
+            masteryItem.value = key
+            let masteryLabel = masteryScroll.createElement("label")
+            masteryLabel.textContent = `${key} (${value["Mastery"]})`
+            masteryLabel.htmlFor = "mastery" + key
+            if (existingMasteries.includes(key)) {
+                masteryLabel.style.opacity = "50%"
+                masteryItem.display = true
+            }
+            masteryScroll.break()
+        }
+    })
+    let masteryConfirm = overlayParent.createElement("button")
+    masteryConfirm.textContent = "Confirm"
+    return new Promise((resolve) => {
+        masteryConfirm.addEventListener("click", function() {
+            let selected = []
+            let checkboxes = masteryScroll.getElementsByTagName("INPUT")
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    selected.push(checkboxes[i].value)
+                }
+            }
+            if (selected.length === newMasteries) {
+                overlayParent.parentElement.remove()
+                resolve(selected)
+            } else {
+                popup(`Please select ${newMasteries} options`)
+            }
+        })
+    })
+}
+
 // Load the Page
 
 async function developData() {
@@ -415,6 +460,7 @@ async function developData() {
     player["RangedDamage"] = 0
     player["MeleeAttack"] = 0
     player["MeleeDamage"] = 0
+    player["Mastery"] = 0
 
     player["Features"] = {}
     async function addFeatures(dataSource, sourceName) {
@@ -492,6 +538,9 @@ async function developData() {
             if ("ACbonus" in value) {
                 player["ACbonus"].pushAll(value["ACbonus"])
             }
+            if ("Mastery" in value) {
+                player["Mastery"] += value["Mastery"][player["Level"]]
+            }
             if (key in player["Choices"]) {
                 if ("Prof" in player["Choices"][key]) {
                     player["Prof"].pushAll(player["Choices"][key]["Prof"])
@@ -543,6 +592,20 @@ async function developData() {
         featData[player["Feats"][i]] = feats[player["Feats"][i]]
     }
     await addFeatures(featData, "Feats")
+
+    let saveMastery = false
+    if (!player["Choices"]["Mastery"]) {
+        saveMastery = true
+        player["Choices"]["Mastery"] = []
+    }
+    if (player["Choices"]["Mastery"].length < player["Mastery"]) {
+        player["Choices"]["Mastery"].pushAll(await masteryChoose(player["Mastery"] - player["Choices"]["Mastery"].length, player["Choices"]["Mastery"]))
+    }
+    if (saveMastery) {
+        let basePlayer = localStorage.get("Characters")
+        basePlayer[getQuery("Char")]["Choices"] = player["Choices"]
+        localStorage.set("Characters", basePlayer)
+    }
 
     player["ToolTraining"] = []
     for (let i = 0; i < profCatagories["Artisan's Tools"].length; i++) {
@@ -1116,7 +1179,11 @@ async function render(playerData, initial=false) {
                 weaponLine.appendChild(damage)
 
                 let notes = document.createElement("td")
-                notes.textContent = weaponData["Properties"].commaFuse()
+                let properties = weaponData["Properties"]
+                if (playerData["Choices"]["Mastery"].includes(key)) {
+                    properties.push(weaponData["Mastery"])
+                }
+                notes.textContent = properties.commaFuse()
                 weaponLine.appendChild(notes)
             })
 
