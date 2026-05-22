@@ -487,9 +487,9 @@ async function developData() {
                             usages = Array(20).fill(usages)
                         }
                         if (!(currentAction["Name"] in player["Resources"])) {
-                            player["Resources"][currentAction["Name"]] = {"Current": usages[player["Level"]], "Max": usages[player["Level"]], "LR": (currentAction["LR"] || 0), "SR": (currentAction["SR"] || 0)}
+                            player["Resources"][currentAction["Name"]] = {"Current": usages[player["Level"] - 1], "Max": usages[player["Level"] -1], "LR": (currentAction["LR"] || 0), "SR": (currentAction["SR"] || 0)}
                         } else if (player["Resources"][currentAction["Name"]]["Max"] < usages[player["Level"] - 1]) {
-                            let difference = usages[player["Level"]] - player["Resources"][currentAction["Name"]]["Max"]
+                            let difference = usages[player["Level"] - 1] - player["Resources"][currentAction["Name"]]["Max"]
                             player["Resources"][currentAction["Name"]]["Max"] += difference
                             player["Resources"][currentAction["Name"]]["Current"] += difference
                         } else if (player["Resources"][currentAction["Name"]]["Max"] > usages[player["Level"] - 1]) {
@@ -549,7 +549,7 @@ async function developData() {
                 player["ACbonus"].pushAll(value["ACbonus"])
             }
             if ("Mastery" in value) {
-                player["Mastery"] += value["Mastery"][player["Level"]]
+                player["Mastery"] += value["Mastery"][player["Level"] - 1]
             }
             if ("Resist" in value) {
                 player["Resist"].pushAll(value["Resist"])
@@ -665,7 +665,7 @@ async function developData() {
         player["Current Health"] = player["Max Health"]
     }
     player["Saves"] = classes[player["Class"]]["Saves"]
-    player["Attacks"] = classes[player["Class"]]["Attacks"][player["Level"]]
+    player["Attacks"] = classes[player["Class"]]["Attacks"][player["Level"] - 1]
     player["Speed"] = species[player["Species"]]["Speed"]
 
     player["Armour Class"] = 0
