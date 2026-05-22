@@ -456,6 +456,8 @@ async function developData() {
     if (!player["Resources"]) {player["Resources"] = {}}
     if (!player["ACbonus"]) {player["ACbonus"] = []}
 
+    player["Max Health"] = classes[player["Class"]]["Dice"] + ((classes[player["Class"]]["Dice"] / 2 + 1) * (player["Level"] - 1)) + (player["Level"] * player["Stats"]["Con"].modifier())
+
     player["RangedAttack"] = 0
     player["RangedDamage"] = 0
     player["MeleeAttack"] = 0
@@ -503,6 +505,8 @@ async function developData() {
                     let amount = value["Bonus"][i]["Amount"]
                     if (amount === "pb") {
                         amount = player["Prof Bonus"]
+                    } else if (amount === "lvl") {
+                        amount = player["Level"]
                     }
                     let increasedStat = value["Bonus"][i]["Stat"]
                     if (Array.isArray(increasedStat)) {
@@ -532,6 +536,8 @@ async function developData() {
                         player["Init"] += amount
                     } else if (increasedStat === "RangedAttack") {
                         player["RangedAttack"] += amount
+                    } else if (increasedStat === "hp") {
+                        player["Max Health"] += amount
                     }
                 }
             }
@@ -540,6 +546,15 @@ async function developData() {
             }
             if ("Mastery" in value) {
                 player["Mastery"] += value["Mastery"][player["Level"]]
+            }
+            if ("Resist" in value) {
+                player["Resist"].pushAll(value["Resist"])
+            }
+            if ("Immune" in value) {
+                player["Immune"].pushAll(value["Immune"])
+            }
+            if ("Weak" in value) {
+                player["Weak"].pushAll(value["Weak"])
             }
             if (key in player["Choices"]) {
                 if ("Prof" in player["Choices"][key]) {
@@ -641,7 +656,6 @@ async function developData() {
         player["WeaponTraining"].push("Martial")
     }
 
-    player["Max Health"] = classes[player["Class"]]["Dice"] + ((classes[player["Class"]]["Dice"] / 2 + 1) * (player["Level"] - 1)) + (player["Level"] * player["Stats"]["Con"].modifier())
     if (player["Current Health"] > player["Max Health"]) {
         player["Current Health"] = player["Max Health"]
     }

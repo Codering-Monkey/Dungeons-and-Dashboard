@@ -45,7 +45,7 @@
 			},
 			"Dwarven Resilience": {
 				"Description": "You have Resistance to Poison damage. You also have Advantage on saving throws you make to avoid or end the Poisoned condition.",
-				"Resist": "Poison"
+				"Resist": ["Poison"]
 			},
 			"Dwarven Toughness": {
 				"Description": "Your Hit Point maximum increases by 1, and it increases by 1 again whenever you gain a level.",
