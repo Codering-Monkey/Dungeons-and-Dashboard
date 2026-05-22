@@ -272,6 +272,42 @@ function subclassChoose(playerClass) {
     })
 }
 
+// Stat Increase
+
+function statChoose(possibleStats) {
+    let overlayParent = overlay(function() {}, false)
+    overlayParent.classList.add('featOverlay')
+    let statScroll = overlayParent.createElement("div")
+    for (let i = 0; i < possibleStats.length; i++) {
+        let statItem = statScroll.createElement("div")
+        let statTitle = statItem.createElement("h3")
+        statTitle.textContent = possibleStats[i]
+        statItem.addEventListener("click", function() {
+            if (this.classList.contains("selectedFeat")) {
+                this.classList.remove("selectedFeat")
+            } else {
+                if (document.getElementsByClassName("selectedFeat")[0]) {
+                    document.getElementsByClassName("selectedFeat")[0].classList.remove("selectedFeat")
+                }
+                this.classList.add("selectedFeat")
+            }
+        })
+    }
+    let finishButton = document.createElement("button")
+    finishButton.textContent = "Confirm"
+    overlayParent.appendChild(finishButton)
+    return new Promise((resolve) => {
+        finishButton.addEventListener("click", function() {
+            if (document.getElementsByClassName("selectedFeat") && document.getElementsByClassName("selectedFeat")[0]) {
+                resolve(document.getElementsByClassName("selectedFeat")[0].children[0].textContent)
+                overlayParent.parentElement.remove()
+            } else {
+                popup(`Please select a Stat to Increase`)
+            }
+        })
+    })
+}
+
 // Load the Page
 
 async function developData() {
@@ -313,7 +349,7 @@ async function developData() {
         saveImprovements = true
     }
     for (let i = 0; i < classes[player["Class"]]["Improvements"][player["Level"] - 1]; i++) {
-        if (player["Improvements"].length >= i && i !== 0) {
+        if (player["Improvements"].length >= i && player["Improvements"].length !== 0) {
             player["Feats"].push(player["Improvements"][i])
         } else {
             let newFeat = await featChoose({"Amount": 1, "Type": ["General", "Epic"]}, [...player["Feats"], ...player["Improvements"]])
@@ -392,12 +428,29 @@ async function developData() {
                     if (amount === "pb") {
                         amount = player["Prof Bonus"]
                     }
-                    if (Object.values(allStats).includes(value["Bonus"][i]["Stat"])) {
-                        player["Stats"][value["Bonus"][i]["Stat"]] += amount
-                        if (player["Stats"][value["Bonus"][i]["Stat"]] > value["Bonus"][i]["Cap"]) {
-                            player["Stats"][value["Bonus"][i]["Stat"]] = value["Bonus"][i]["Cap"]
+                    let increasedStat = value["Bonus"][i]["Stat"]
+                    // player["Choices"][key]["Bonus"] = ["Name": "...{str}"]
+                    if (Array.isArray(increasedStat)) {
+                        if (key in player["Choices"] && player["Choices"][key]["Bonus"]) {
+                            increasedStat = player["Choices"][key]["Bonus"][i]
+                        } else {
+                            increasedStat = await statChoose(increasedStat)
+                            let basePlayer = localStorage.get("Characters")
+                            if (player["Choices"][key]["Bonus"]) {
+                                player["Choices"][key]["Bonus"].push(increasedStat)
+                            } else {
+                                player["Choices"][key]["Bonus"] = [increasedStat]
+                            }
+                            basePlayer[getQuery("Char")]["Choices"] = player["Choices"][key]["Bonus"]
+                            localStorage.set("Characters", basePlayer)
                         }
-                    } else if (value["Bonus"][i]["Stat"] === "Init") {
+                    }
+                    if (Object.values(allStats).includes(increasedStat)) {
+                        player["Stats"][increasedStat] += amount
+                        if (player["Stats"][increasedStat] > value["Bonus"][i]["Cap"]) {
+                            player["Stats"][increasedStat] = value["Bonus"][i]["Cap"]
+                        }
+                    } else if (increasedStat === "Init") {
                         player["Init"] += amount
                     }
                 }
@@ -409,7 +462,6 @@ async function developData() {
                 if ("Feat" in player["Choices"][key]) {
                     player["Feats"].pushAll(player["Choices"][key]["Feat"])
                 }
-
             } else {
                 player["Choices"][key] = {}
                 if ("Prof" in value) {
