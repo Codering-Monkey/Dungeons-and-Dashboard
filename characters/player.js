@@ -483,7 +483,9 @@ async function developData() {
                     player["Actions"].push(currentAction)
                     if ("Usages" in currentAction) {
                         let usages = currentAction["Usages"]
-                        if (!Array.isArray(usages)) {
+                        if (usages === "pb") {
+                            usages = player["Prof Bonus"]
+                        } else if (!Array.isArray(usages)) {
                             usages = Array(20).fill(usages)
                         }
                         if (!(currentAction["Name"] in player["Resources"])) {
