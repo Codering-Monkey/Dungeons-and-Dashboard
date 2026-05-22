@@ -510,7 +510,7 @@ async function developData() {
                     if (amount === "pb") {
                         amount = player["Prof Bonus"]
                     } else if (amount === "lvl") {
-                        amount = player["Level"]
+                        amount = parseInt(player["Level"])
                     }
                     let increasedStat = value["Bonus"][i]["Stat"]
                     if (Array.isArray(increasedStat)) {
@@ -619,6 +619,7 @@ async function developData() {
     }
     if (player["Choices"]["Mastery"].length < player["Mastery"]) {
         player["Choices"]["Mastery"].pushAll(await masteryChoose(player["Mastery"] - player["Choices"]["Mastery"].length, player["Choices"]["Mastery"]))
+        saveMastery = true
     }
     if (saveMastery) {
         let basePlayer = localStorage.get("Characters")
