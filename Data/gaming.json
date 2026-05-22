@@ -1,0 +1,58 @@
+{
+    "Dice": {
+        "Weight": 0,
+        "Cost": 10,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "wis"
+            },
+            {
+                "DC": 20,
+                "Stat": "wis"
+            }
+        ]
+    },
+    "Dragonchess": {
+        "Weight": 0,
+        "Cost": 1,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "wis"
+            },
+            {
+                "DC": 20,
+                "Stat": "wis"
+            }
+        ]
+    },
+    "Playing Cards": {
+        "Weight": 0,
+        "Cost": 50,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "wis"
+            },
+            {
+                "DC": 20,
+                "Stat": "wis"
+            }
+        ]
+    },
+    "Three-Dragon Ante": {
+        "Weight": 0,
+        "Cost": 1,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "wis"
+            },
+            {
+                "DC": 20,
+                "Stat": "wis"
+            }
+        ]
+    }
+}

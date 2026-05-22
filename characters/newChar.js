@@ -1,7 +1,7 @@
 import {id, popup, setQuery} from "../script.js"
-import classes from "./classes.json" with { type: "json" }
-import species from "./species.json" with { type: "json" }
-import backgrounds from "./backgrounds.json" with { type: "json" }
+import classes from "../Data/classes.json" with { type: "json" }
+import species from "../Data/species.json" with { type: "json" }
+import backgrounds from "../Data/backgrounds.json" with { type: "json" }
 
 let allStats = {
     "Strength": "Str",

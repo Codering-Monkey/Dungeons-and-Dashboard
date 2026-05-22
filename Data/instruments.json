@@ -1,0 +1,142 @@
+{
+    "Bagpipes": {
+        "Weight": 6,
+        "Cost": 30,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "cha"
+            },
+            {
+                "DC": 15,
+                "Stat": "cha"
+            }
+        ]
+    },
+    "Drum": {
+        "Weight": 3,
+        "Cost": 6,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "cha"
+            },
+            {
+                "DC": 15,
+                "Stat": "cha"
+            }
+        ]
+    },
+    "Dulcimer": {
+        "Weight": 10,
+        "Cost": 25,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "cha"
+            },
+            {
+                "DC": 15,
+                "Stat": "cha"
+            }
+        ]
+    },
+    "Flute": {
+        "Weight": 1,
+        "Cost": 2,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "cha"
+            },
+            {
+                "DC": 15,
+                "Stat": "cha"
+            }
+        ]
+    },
+    "Horn": {
+        "Weight": 2,
+        "Cost": 3,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "cha"
+            },
+            {
+                "DC": 15,
+                "Stat": "cha"
+            }
+        ]
+    },
+    "Lute": {
+        "Weight": 2,
+        "Cost": 35,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "cha"
+            },
+            {
+                "DC": 15,
+                "Stat": "cha"
+            }
+        ]
+    },
+    "Lyre": {
+        "Weight": 2,
+        "Cost": 30,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "cha"
+            },
+            {
+                "DC": 15,
+                "Stat": "cha"
+            }
+        ]
+    },
+    "Pan flute": {
+        "Weight": 2,
+        "Cost": 12,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "cha"
+            },
+            {
+                "DC": 15,
+                "Stat": "cha"
+            }
+        ]
+    },
+    "Shawm": {
+        "Weight": 1,
+        "Cost": 2,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "cha"
+            },
+            {
+                "DC": 15,
+                "Stat": "cha"
+            }
+        ]
+    },
+    "Viol": {
+        "Weight": 2,
+        "Cost": 30,
+        "Utilise": [
+            {
+                "DC": 10,
+                "Stat": "cha"
+            },
+            {
+                "DC": 15,
+                "Stat": "cha"
+            }
+        ]
+    }
+}

@@ -117,33 +117,6 @@
             }
         }
     },
-    "Disguise Kit": {
-        "Weight": 3,
-        "Cost": 25,
-        "Craft": [
-            "Costume"
-        ],
-        "Utilise": {
-            "Apply makeup": {
-                "DC": 10,
-                "Stat": "cha"
-            }
-        }
-    },
-    "Forgery Kit": {
-        "Weight": 5,
-        "Cost": 15,
-        "Utilise": {
-            "Mimic 10 or fewer words of someone else's handwriting": {
-                "DC": 15,
-                "Stat": "dex"
-            },
-            "Duplicate a wax seal": {
-                "DC": 20,
-                "Stat": "dex"
-            }
-        }
-    },
     "Glassblower's Tools": {
         "Weight": 5,
         "Cost": 30,
@@ -153,22 +126,6 @@
             "Spyglass",
             "Vial"
         ]
-    },
-    "Herbalism Kit": {
-        "Weight": 3,
-        "Cost": 5,
-        "Craft": [
-            "Antitoxin",
-            "Candle",
-            "Healer's Kit",
-            "Potion of Healing"
-        ],
-        "Utilise": {
-            "Identify a plant": {
-                "DC": 10,
-                "Stat": "int"
-            }
-        }
     },
     "Jeweler's Tools": {
         "Weight": 2,
@@ -228,20 +185,6 @@
             }
         }
     },
-    "Navigator's Tools": {
-        "Weight": 2,
-        "Cost": 25,
-        "Utilise": {
-            "Plot a course": {
-                "DC": 10,
-                "Stat": "wis"
-            },
-            "Determine position by stargazing": {
-                "DC": 15,
-                "Stat": "wis"
-            }
-        }
-    },
     "Painter's Supplies": {
         "Weight": 5,
         "Cost": 10,
@@ -258,19 +201,6 @@
             "Paint a recognizable image of something you've seen": {
                 "DC": 10,
                 "Stat": "wis"
-            }
-        }
-    },
-    "Poisoner's Kit": {
-        "Weight": 2,
-        "Cost": 5,
-        "Craft": [
-            "Poison, Basic"
-        ],
-        "Utilise": {
-            "Detect a poisoned object": {
-                "DC": 10,
-                "Stat": "int"
             }
         }
     },
@@ -334,20 +264,6 @@
             "Pry open a door or container": {
                 "DC": 20,
                 "Stat": "str"
-            }
-        }
-    },
-    "Thieves' Tools": {
-        "Weight": 1,
-        "Cost": 25,
-        "Utilise": {
-            "Pick a lock": {
-                "DC": 15,
-                "Stat": "dex"
-            },
-            "Disarm a trap": {
-                "DC": 15,
-                "Stat": "dex"
             }
         }
     },

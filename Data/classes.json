@@ -226,7 +226,44 @@
 			}
 		}
 	},
-	"Monk": {},
+	"Monk": {
+		"Ability": ["Dex", "Wis"],
+		"Dice": 8,
+		"Improvements": [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+		"Saves": ["Str", "Dex"],
+		"Prof": [{
+			"Amount": 2,
+			"Type": "Prof",
+			"Choices": ["Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"]
+		}],
+		"Armour": [false, false, false, false],
+		"Weapons": [true, false, ["Light"]],
+		"Equipment": [
+			{
+				"Spear": 1,
+				"Dagger": 5,
+				"Artisans Tool / Musical Instrument": 1,
+				"Explorer's Pack": 1,
+				"GP": 11
+			},
+			{
+				"GP": 50
+			}
+		],
+		"Attacks": [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+		"Features": {
+			"Unarmoured Defense": {
+				"Level": 1,
+				"Description": "While you aren’t wearing armor or wielding a Shield, your base Armor Class equals 10 plus your Dexterity and Wisdom modifiers.",
+				"Armour": {
+					"Name": "Unarmoured Defense (Con)",
+					"Amount": "10+wis",
+					"Cap": -1,
+					"Type": "Other"
+				}
+			}
+		}
+	},
 	"Paladin": {},
 	"Ranger": {},
 	"Rogue": {},
