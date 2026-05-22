@@ -1,5 +1,5 @@
 {
-	"Ability Score Improvement": {
+	"Ability Score Improvement #1": {
 		"Type": "General",
 		"Description": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
 		"Bonus": [{
@@ -15,7 +15,103 @@
 	"Ability Score Improvement #2": {
 		"Type": "General",
 		"PreReq": {
-			"Feat": "Ability Score Improvement"
+			"Feat": "Ability Score Improvement #1"
+		},
+		"Description": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
+		"Bonus": [{
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}, {
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}]
+	},
+	"Ability Score Improvement #3": {
+		"Type": "General",
+		"PreReq": {
+			"Feat": "Ability Score Improvement #2"
+		},
+		"Description": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
+		"Bonus": [{
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}, {
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}]
+	},
+	"Ability Score Improvement #4": {
+		"Type": "General",
+		"PreReq": {
+			"Feat": "Ability Score Improvement #3"
+		},
+		"Description": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
+		"Bonus": [{
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}, {
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}]
+	},
+	"Ability Score Improvement #5": {
+		"Type": "General",
+		"PreReq": {
+			"Feat": "Ability Score Improvement #4"
+		},
+		"Description": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
+		"Bonus": [{
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}, {
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}]
+	},
+	"Ability Score Improvement #6": {
+		"Type": "General",
+		"PreReq": {
+			"Feat": "Ability Score Improvement #5"
+		},
+		"Description": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
+		"Bonus": [{
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}, {
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}]
+	},
+	"Ability Score Improvement #7": {
+		"Type": "General",
+		"PreReq": {
+			"Feat": "Ability Score Improvement #6"
+		},
+		"Description": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
+		"Bonus": [{
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}, {
+			"Stat": ["Str", "Dex", "Con", "Int", "Wis", "Cha"],
+			"Amount": 1,
+			"Cap": 20
+		}]
+	},
+	"Ability Score Improvement #8": {
+		"Type": "General",
+		"PreReq": {
+			"Feat": "Ability Score Improvement #7"
 		},
 		"Description": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
 		"Bonus": [{
