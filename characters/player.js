@@ -482,14 +482,18 @@ async function developData() {
                     let currentAction = value["Action"][i]
                     player["Actions"].push(currentAction)
                     if ("Usages" in currentAction) {
+                        let usages = currentAction["Usages"]
+                        if (!Array.isArray(usages)) {
+                            usages = Array(20).fill(usages)
+                        }
                         if (!(currentAction["Name"] in player["Resources"])) {
-                            player["Resources"][currentAction["Name"]] = {"Current": currentAction["Usages"][player["Level"]], "Max": currentAction["Usages"][player["Level"]], "LR": (currentAction["LR"] || 0), "SR": (currentAction["SR"] || 0)}
-                        } else if (player["Resources"][currentAction["Name"]]["Max"] < currentAction["Usages"][player["Level"] - 1]) {
-                            let difference = currentAction["Usages"][player["Level"]] - player["Resources"][currentAction["Name"]]["Max"]
+                            player["Resources"][currentAction["Name"]] = {"Current": usages[player["Level"]], "Max": usages[player["Level"]], "LR": (currentAction["LR"] || 0), "SR": (currentAction["SR"] || 0)}
+                        } else if (player["Resources"][currentAction["Name"]]["Max"] < usages[player["Level"] - 1]) {
+                            let difference = usages[player["Level"]] - player["Resources"][currentAction["Name"]]["Max"]
                             player["Resources"][currentAction["Name"]]["Max"] += difference
                             player["Resources"][currentAction["Name"]]["Current"] += difference
-                        } else if (player["Resources"][currentAction["Name"]]["Max"] > currentAction["Usages"][player["Level"] - 1]) {
-                            player["Resources"][currentAction["Name"]]["Max"] = currentAction["Usages"][player["Level"] - 1]
+                        } else if (player["Resources"][currentAction["Name"]]["Max"] > usages[player["Level"] - 1]) {
+                            player["Resources"][currentAction["Name"]]["Max"] = usages[player["Level"] - 1]
                             if (player["Resources"][currentAction["Name"]]["Current"] > player["Resources"][currentAction["Name"]]["Max"]) {
                                 player["Resources"][currentAction["Name"]]["Current"] = player["Resources"][currentAction["Name"]]["Max"]
                             }
