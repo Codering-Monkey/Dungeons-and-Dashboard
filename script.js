@@ -434,6 +434,22 @@ export function merge(...objects) {
     return final
 }
 
+export function forceArray(baseValue) {
+    if (Array.isArray(baseValue)) {
+        if (baseValue.length !== 20) {
+            let fillValue = baseValue.slice(-1)[0]
+            baseValue.length = 20
+            baseValue.fill = fillValue
+        }
+        return baseValue
+    } else {
+        let fillValue = baseValue
+        baseValue.length = 20
+        baseValue.fill = fillValue
+        return baseValue
+    }
+}
+
 // Popup
 
 let popupBar = document.createElement("div");
