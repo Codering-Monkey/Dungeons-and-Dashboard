@@ -342,9 +342,9 @@ function statChoose(possibleStats) {
 
 function masteryChoose(newMasteries, existingMasteries) {
     let overlayParent = overlay(function() {}, false)
-    overlayParent.classList.add('featOverlay')
+    overlayParent.classList.add('profOverlay')
     overlayParent.createElement("h2").textContent = `Choose ${newMasteries} Weapon Masteries`
-    let masteryScroll = overlayParent.createElement("div", "featScroll")
+    let masteryScroll = overlayParent.createElement("div")
     masteryScroll.style.height = "calc(80vh - 70px)"
     Object.entries(weapons).forEach(([key, value]) => {
         if (!value["Ignore"] && value["Mastery"] && value["Mastery"] !== "N/A") {
@@ -362,7 +362,7 @@ function masteryChoose(newMasteries, existingMasteries) {
             masteryScroll.break()
         }
     })
-    let masteryConfirm = overlayParent.createElement("button")
+    let masteryConfirm = masteryScroll.createElement("button")
     masteryConfirm.textContent = "Confirm"
     return new Promise((resolve) => {
         masteryConfirm.addEventListener("click", function() {
