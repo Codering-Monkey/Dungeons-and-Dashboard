@@ -208,10 +208,10 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    height: 100vh;
+    height: 100svh;
     float: left;
     border-left: 8px solid var(--background);
-    width: calc(3vh + 16px);
+    width: calc(3svh + 16px);
     justify-content: center;
     flex-wrap: wrap;
     align-content: center;
@@ -223,9 +223,9 @@ body {
     padding: 8px;
     margin: 4px 0;
     border-radius: 8px;
-    height: 3vh;
-    width: 3vh;
-    font-size: 3vh;
+    height: 3svh;
+    width: 3svh;
+    font-size: 3svh;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -265,10 +265,10 @@ body {
 
 .not-nav {
     float: right;
-    height: calc(100vh - 144px);
+    height: calc(100svh - 144px);
     padding: 16px 0;
     margin: 56px 72px 56px 0;
-    width: calc(100vw - 112px - 3vh);
+    width: calc(100vw - 112px - 3svh);
     z-index: -2;
     position: relative;
 }
@@ -320,7 +320,7 @@ body {
     position: absolute;
     background-color: hsla(0, 0%, 0%, .5);
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -328,7 +328,7 @@ body {
 
 .overlay > div {
     background-color: var(--background);
-    max-height: 80vh;
+    max-height: 80svh;
     max-width: 80vw;
     overflow-y: scroll;
     width: fit-content;
