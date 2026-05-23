@@ -479,7 +479,7 @@ async function developData() {
                     continue;
                 }
             }
-            player["Features"][sourceName][key] = eval(`let level = ${player["Level"]};\`${value["Description"]}\``)
+            player["Features"][sourceName][key] = value["Description"].parse(player)
             if ("Armour" in value) {
                 player["Armour"][value["Armour"]["Name"]] = {"Type": value["Armour"]["Type"], "Amount": value["Armour"]["Amount"], "Cap": value["Armour"]["Cap"]}
             }
@@ -1279,7 +1279,7 @@ async function render(playerData, initial=false) {
                 let item = document.createElement("div")
                 item.classList.add("special")
                 let itemText = document.createElement("p")
-                itemText.textContent = action["Name"]
+                itemText.textContent = action["Name"].parse(playerData)
                 item.appendChild(itemText)
                 if (action["Name"] in playerData["Resources"]) {
                     let resource = playerData["Resources"][action["Name"]]

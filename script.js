@@ -380,8 +380,8 @@ File.prototype.read = function() {
  * DOES NOTHING YET LOL (will eventually add dice rolling buttons and such)
  * @returns {String}
  */
-String.prototype.parse = function() {
-    return this
+String.prototype.parse = function(player) {
+    return eval(`let level = ${player["Level"]};\`${this}\``)
 }
 
 /**
@@ -444,7 +444,7 @@ export function forceArray(baseValue) {
         return baseValue
     } else {
         let fillValue = baseValue
-        baseValue.length = 20
+        baseValue = Array(20)
         baseValue.fill = fillValue
         return baseValue
     }
