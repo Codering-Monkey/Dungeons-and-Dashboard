@@ -248,7 +248,7 @@ body {
     position: absolute;
     top: 0;
     font-size: 16px;
-    height: 2.3em;
+    height: 24px;
     transition: left .6s cubic-bezier(0, 0.6, 0.75, 1), color .5s;
     z-index: -1;
     align-items: center;
@@ -265,7 +265,7 @@ body {
 
 .not-nav {
     float: right;
-    height: calc(100svh - 14.3em);
+    height: calc(100svh - 144px);
     padding: 16px 0;
     margin: 56px 72px 56px 0;
     width: calc(100vw - 112px - 3svh);
