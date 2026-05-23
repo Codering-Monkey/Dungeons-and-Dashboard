@@ -439,13 +439,13 @@ export function forceArray(baseValue) {
         if (baseValue.length !== 20) {
             let fillValue = baseValue.slice(-1)[0]
             baseValue.length = 20
-            baseValue.fill = fillValue
+            baseValue.fill(fillValue)
         }
         return baseValue
     } else {
         let fillValue = baseValue
         baseValue = Array(20)
-        baseValue.fill = fillValue
+        baseValue.fill(fillValue)
         return baseValue
     }
 }
