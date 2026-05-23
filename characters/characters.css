@@ -450,7 +450,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .featScroll {
     overflow-y: scroll;
-    height: calc(80vh - 28px);
+    height: calc(80vh - 2.1em - 1em);
     position: relative;
 }
 
