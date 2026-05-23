@@ -1,38 +1,40 @@
 .characters-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
+    --tiles-wide: 7;
+    grid-template-columns: repeat(var(--tiles-wide), calc((100% - ((var(--tiles-wide) - 1) * .5em)) / var(--tiles-wide)));
+    gap: .5em;
     grid-auto-rows: 1fr;
-}
-
-@media (max-width: 1300px) {
-    .characters-grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
-    .characters-grid-other {
-        font-size: 1.25em;
-    }
+    height: 100%;
+    overflow-y: scroll;
 }
 
 @media (max-width: 900px) {
     .characters-grid {
-        grid-template-columns: repeat(3, 1fr);
+        --tiles-wide: 3;
     }
     .characters-grid-other {
         font-size: 1em;
     }
 }
 
+@media (max-width: 1300px) {
+    .characters-grid {
+        --tiles-wide: 5;
+    }
+    .characters-grid-other {
+        font-size: 1.25em;
+    }
+}
+
 .characters-grid-char {
     background-color: var(--foreground);
-    aspect-ratio: 1 / 1;
     cursor: pointer;
     display: flex;
     justify-content: center;
-    border: 1px solid var(--foreground);
-    padding: 8px;
+    border: .1em solid var(--foreground);
+    padding: .5em;
     flex-wrap: wrap;
-    align-content: center;
+    align-content: space-around;
 }
 
 .characters-grid-char:hover {
@@ -53,7 +55,7 @@
 
 .characters-grid-char > img {
     width: 50%;
-    height: 50%;
+    aspect-ratio: 1 / 1;
 }
 
 .characters-grid-char p, .characters-grid-char h3 {
@@ -63,7 +65,7 @@
 
 .characters-grid-other {
     display: grid;
-    gap: 8px;
+    gap: .5em;
     grid-template-columns: 1fr;
     aspect-ratio: 1 / 1;
     grid-auto-rows: 1fr;
@@ -72,9 +74,9 @@
 .characters-grid-other > div {
     background-color: var(--foreground);
     font-size: 1.5em;
-    padding: 8px;
+    padding: 0 .5em;
     text-align: center;
-    height: calc(100% - 16px);
+    height: 100%;
     align-content: center;
     color: var(--text);
     cursor: pointer;
