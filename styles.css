@@ -106,7 +106,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .inputNumberParent button {
-    width: 50px
+    width: 2.8em
 }
 
 input[type=file] {
@@ -175,10 +175,11 @@ a:hover {
 button {
     background-color: var(--background);
     text-decoration: none;
-    padding: 4px 20px;
+    padding: .3em 1.55em;
     border: 1px solid var(--sub-sub-text);
     transition: .25s;
     cursor: pointer;
+    font-size: 1em;
 }
 
 button:hover {

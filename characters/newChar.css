@@ -27,7 +27,7 @@
 .listParent > div {
     background-color: var(--foreground);
     width: 100%;
-    height: calc(((100% - 5vh) / 12) - 8px);
+    height: calc(((100% - 5vh) / 12) - .5em);
     cursor: pointer;
 }
 
