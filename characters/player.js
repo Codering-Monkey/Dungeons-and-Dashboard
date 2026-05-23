@@ -246,7 +246,7 @@ function featChoose(featItem, existingFeat, player) {
     })
     let finishButton = document.createElement("button")
     finishButton.textContent = "Confirm"
-    overlayParent.appendChild(finishButton)
+    featScroll.appendChild(finishButton)
     return new Promise((resolve) => {
         finishButton.addEventListener("click", function() {
             if (document.getElementsByClassName("selectedFeat") && document.getElementsByClassName("selectedFeat")[0]) {

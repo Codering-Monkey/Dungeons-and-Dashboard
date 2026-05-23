@@ -451,6 +451,13 @@ table > tr > td > p, table > tbody > tr > td > p {
 .featScroll {
     overflow-y: scroll;
     height: calc(80vh - 28px);
+    position: relative;
+}
+
+.featScroll button {
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 
 .equipmentAdd {
