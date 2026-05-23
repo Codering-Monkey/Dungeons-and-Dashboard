@@ -22,7 +22,7 @@ input[type=checkbox]:not(.usable) {
 .header > img {
     aspect-ratio: 1 / 1;
     width: 5vw;
-    border: 3px solid var(--fronterground);
+    border: .23em solid var(--fronterground);
 }
 
 .header {
@@ -86,7 +86,7 @@ input[type=checkbox]:not(.usable) {
 
 .health button:nth-child(4) {
     color: var(--pink);
-    margin-top: 4px
+    margin-top:.3em
 }
 
 .health input[type="number"] {
@@ -157,7 +157,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .defenses div {
-    margin-top: 4px;
+    margin-top:.3em;
     overflow-y: scroll;
     height: calc(100% - 28px);
     scrollbar-color: var(--text) var(--foreground);
@@ -185,7 +185,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .conditions div {
-    margin-top: 4px;
+    margin-top:.3em;
     overflow-y: scroll;
     height: calc(100% - 28px);
     scrollbar-color: var(--text) var(--foreground);
@@ -246,7 +246,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .current {
     float: right;
-    width: calc(50% - 4px);
+    width: calc(50% - .3em);
     margin-left:.5em
 }
 
@@ -267,12 +267,12 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .add {
     float: left;
-    width: calc(50% - 4px);
+    width: calc(50% - .3em);
 }
 
 .add > button {
     width: 150px;
-    margin: 4px
+    margin: .3em
 }
 
 .action-content {
@@ -336,7 +336,7 @@ table > tr > td > p, table > tbody > tr > td > p {
     width: calc(100% - .5em);
     float: left;
     display: block;
-    margin: 4px;
+    margin:.3em;
     height: 54px;
     align-content: center;
 }
@@ -345,13 +345,13 @@ table > tr > td > p, table > tbody > tr > td > p {
     width: calc(100% - .5em);
     display: block;
     float: left;
-    margin: 4px;
+    margin:.3em;
     height: 54px;
     align-content: center;
 }
 
 .actionParent > .special > * {
-    margin: 4px;
+    margin:.3em;
 }
 
 .actionParent > .special > .checkboxBox {

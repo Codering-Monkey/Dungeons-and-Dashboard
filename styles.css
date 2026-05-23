@@ -75,7 +75,7 @@ input[type=range]:hover {
 input[type=checkbox] {
     background-color: var(--navbar);
     border: 1px var(--sub-sub-text) solid;
-    margin: auto 3px auto 4px;
+    margin: auto .23em auto .3em;
     appearance: none;
     width: 1.15em;
     height: 1.15em;
@@ -97,7 +97,7 @@ input[type=checkbox]:disabled:not(.undisable) {
 input[type=text], input[type=number] {
     background-color: var(--background);
     border: none;
-    margin: 4px
+    margin: .3em
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -120,8 +120,8 @@ body {
 .file {
     cursor: pointer;
     display: block;
-    padding: 4px;
-    margin: 4px;
+    padding: .3em;
+    margin: .3em;
     background-color: var(--background);
     border: 1px solid var(--sub-text);
 }
@@ -221,7 +221,7 @@ body {
 .navbar > div {
     background-color: var(--navbar);
     padding: 8px;
-    margin: 4px 0;
+    margin: .3em 0;
     border-radius: 8px;
     height: 3svh;
     width: 3svh;
@@ -248,7 +248,7 @@ body {
     position: absolute;
     top: 0;
     font-size: 16px;
-    height: 24px;
+    height: 2.3em;
     transition: left .6s cubic-bezier(0, 0.6, 0.75, 1), color .5s;
     z-index: -1;
     align-items: center;
@@ -265,7 +265,7 @@ body {
 
 .not-nav {
     float: right;
-    height: calc(100svh - 144px);
+    height: calc(100svh - 14.3em);
     padding: 16px 0;
     margin: 56px 72px 56px 0;
     width: calc(100vw - 112px - 3svh);
