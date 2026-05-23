@@ -455,9 +455,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .featScroll button {
-    /*position: absolute;*/
-    left: 0;
-    bottom: 0;
+    margin-left: .5em
 }
 
 .equipmentAdd {
