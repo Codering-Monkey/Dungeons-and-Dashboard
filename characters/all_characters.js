@@ -1,4 +1,5 @@
-import {id, numSuffix, setQuery} from "../script.js"
+import {id, numSuffix} from "../script.js"
+import subclasses from "../Data/subclasses.json" with {type: "json"};
 
 let charactersJSON = localStorage.get("Characters")
 if (!charactersJSON) {
@@ -18,7 +19,7 @@ for (let i = 0; i < charactersJSON.length; i++) {
     if (charData["Level"] < 3) {
         tile.createElement("p").textContent = `${numSuffix(charData["Level"])} level ${charData["Species"]} ${charData["Class"]}`
     } else {
-       tile.createElement("p").textContent = `${numSuffix(charData["Level"])} level ${charData["Species"]} ${charData["Prefix"]} ${charData["Class"]}`
+       tile.createElement("p").textContent = `${numSuffix(charData["Level"])} level ${charData["Species"]} ${(subclasses[charData["Class"]][charData["Subclass"]]["Prefix"] || charData["Subclass"])} ${charData["Class"]}`
     }
 
     tile.addEventListener("click", function() {

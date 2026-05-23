@@ -67,7 +67,6 @@
     display: grid;
     gap: .5em;
     grid-template-columns: 1fr;
-    aspect-ratio: 1 / 1;
     grid-auto-rows: 1fr;
 }
 
