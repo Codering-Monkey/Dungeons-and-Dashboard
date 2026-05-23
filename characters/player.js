@@ -176,78 +176,83 @@ function proficiencyChoose(profItem, existingProf) {
 // Feats
 
 function featChoose(featItem, existingFeat, player) {
-    let overlayParent = overlay(function() {}, false)
-    overlayParent.classList.add('featOverlay')
-    let possibleChoices = []
-    if ("Type" in featItem) {
-        Object.entries(feats).forEach(([key, value]) => {
-            if (featItem["Type"].includes(value["Type"])) {
-                possibleChoices.push(key)
-            }
-        })
-    } else if ("Choices" in featItem) {
-        possibleChoices = featItem["Choices"]
-    } else {
-        throw TypeError("Incorrectly formatted featItem")
-    }
-    let possibleFeats = {}
-    for (let i = 0; i < possibleChoices.length; i++) {
-        if ("PreReq" in feats[possibleChoices[i]]) {
-            if ("Level" in feats[possibleChoices[i]]["PreReq"]) {
-                if (player["Level"] < feats[possibleChoices[i]]["PreReq"]["Level"]) {
-                    continue
-                }
-            }
-            if ("Stat" in feats[possibleChoices[i]]["PreReq"]) {
-                let anyValid = false
-                for (let j = 0; j < feats[possibleChoices[i]]["PreReq"]["Stat"]["Valid"].length; j++) {
-                    if (player["Stats"][feats[possibleChoices[i]]["PreReq"]["Stat"]["Valid"][j]] >= feats[possibleChoices[i]]["PreReq"]["Stat"]["Min"]) {
-                        anyValid = true
-                    }
-                }
-                if (!anyValid) {
-                    continue
-                }
-            }
-            if ("Feat" in feats[possibleChoices[i]]["PreReq"]) {
-                if (!existingFeat.includes(feats[possibleChoices[i]]["PreReq"]["Feat"])) {
-                    continue
-                }
-            }
-        }
-        possibleFeats[possibleChoices[i]] = feats[possibleChoices[i]]["Description"]
-    }
-    let featScroll = document.createElement("div")
-    featScroll.classList.add("featScroll")
-    overlayParent.appendChild(featScroll)
-    Object.entries(possibleFeats).forEach(([key, value]) => {
-        let featItem = document.createElement("div")
-        featScroll.appendChild(featItem)
-        let featTitle = document.createElement("h3")
-        featTitle.textContent = key
-        featItem.appendChild(featTitle)
-        let featText = document.createElement("p")
-        featText.textContent = value
-        featItem.appendChild(featText)
-        if (existingFeat.includes(key)) {
-            featItem.style.opacity = "50%"
-        } else {
-            featItem.addEventListener("click", function() {
-                if (this.classList.contains("selectedFeat")) {
-                    this.classList.remove("selectedFeat")
-                } else {
-                    if (document.getElementsByClassName("selectedFeat")[0]) {
-                        document.getElementsByClassName("selectedFeat")[0].classList.remove("selectedFeat")
-                    }
-                    this.classList.add("selectedFeat")
+    return new Promise((resolve) => {
+        let overlayParent = overlay(function() {}, false)
+        overlayParent.classList.add('featOverlay')
+        let possibleChoices = []
+        if ("Type" in featItem) {
+            Object.entries(feats).forEach(([key, value]) => {
+                if (featItem["Type"].includes(value["Type"])) {
+                    possibleChoices.push(key)
                 }
             })
+        } else if ("Choices" in featItem) {
+            possibleChoices = featItem["Choices"]
+        } else {
+            throw TypeError("Incorrectly formatted featItem")
         }
-    })
-    let finishButton = document.createElement("button")
-    finishButton.textContent = "Confirm"
-    featScroll.appendChild(finishButton)
-    return new Promise((resolve) => {
+        let possibleFeats = {}
+        for (let i = 0; i < possibleChoices.length; i++) {
+            if ("PreReq" in feats[possibleChoices[i]]) {
+                if ("Level" in feats[possibleChoices[i]]["PreReq"]) {
+                    if (player["Level"] < feats[possibleChoices[i]]["PreReq"]["Level"]) {
+                        continue
+                    }
+                }
+                if ("Stat" in feats[possibleChoices[i]]["PreReq"]) {
+                    let anyValid = false
+                    for (let j = 0; j < feats[possibleChoices[i]]["PreReq"]["Stat"]["Valid"].length; j++) {
+                        if (player["Stats"][feats[possibleChoices[i]]["PreReq"]["Stat"]["Valid"][j]] >= feats[possibleChoices[i]]["PreReq"]["Stat"]["Min"]) {
+                            anyValid = true
+                        }
+                    }
+                    if (!anyValid) {
+                        continue
+                    }
+                }
+                if ("Feat" in feats[possibleChoices[i]]["PreReq"]) {
+                    if (!existingFeat.includes(feats[possibleChoices[i]]["PreReq"]["Feat"])) {
+                        continue
+                    }
+                }
+            }
+            possibleFeats[possibleChoices[i]] = feats[possibleChoices[i]]["Description"]
+        }
+        let featScroll = document.createElement("div")
+        featScroll.classList.add("featScroll")
+        overlayParent.appendChild(featScroll)
+        Object.entries(possibleFeats).forEach(([key, value]) => {
+            let featItem = document.createElement("div")
+            featScroll.appendChild(featItem)
+            let featTitle = document.createElement("h3")
+            featTitle.textContent = key
+            featItem.appendChild(featTitle)
+            let featText = document.createElement("p")
+            featText.textContent = value
+            featItem.appendChild(featText)
+            if (existingFeat.includes(key)) {
+                featItem.style.opacity = "50%"
+            } else {
+                featItem.addEventListener("click", function() {
+                    if (this.classList.contains("selectedFeat")) {
+                        this.classList.remove("selectedFeat")
+                    } else {
+                        if (document.getElementsByClassName("selectedFeat")[0]) {
+                            document.getElementsByClassName("selectedFeat")[0].classList.remove("selectedFeat")
+                        }
+                        this.classList.add("selectedFeat")
+                    }
+                })
+                featItem.addEventListener("dblclick", function() {
+                    resolve(this.children[0].textContent)
+                    overlayParent.parentElement.remove()
+                })
+            }
+        })
+        let finishButton = document.createElement("button")
+        finishButton.textContent = "Confirm"
+        featScroll.appendChild(finishButton)
+
         finishButton.addEventListener("click", function() {
             if (document.getElementsByClassName("selectedFeat") && document.getElementsByClassName("selectedFeat")[0]) {
                 resolve(document.getElementsByClassName("selectedFeat")[0].children[0].textContent)
