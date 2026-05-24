@@ -415,6 +415,72 @@ table > tr > td > p, table > tbody > tr > td > p {
     margin-right:.5em
 }
 
+.spellHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.spellHeader h4 {
+    margin-top: .25em
+}
+
+.changeKnownSpells {
+    grid-row: span 2;
+    margin-top: .25em
+}
+
+.overlay:has(.allSpells) h1 {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: normal;
+    color: var(--minor-text)
+}
+
+.allSpells {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.allSpells th[colspan="3"] {
+    font-size: 1.5em;
+}
+
+.allSpells tr td {
+    color: var(--minor-text)
+}
+
+.allSpells tr td, .allSpells tr th {
+    text-align: left;
+}
+
+.allSpells tr td:nth-child(3), .allSpells tr th:nth-child(3) {
+    text-align: center;
+}
+
+.allSpells tr button {
+    width: 100%
+}
+
+.allSpells .learnt td {
+    font-weight: 800;
+    color: var(--text)
+}
+
+.spellTable {
+    width: 100%;
+}
+
+.spellTable tr *:nth-child(3) {
+    text-align: left;
+}
+
+.spellSlots {
+    display: grid;
+    --slots: 1;
+    grid-template-columns: repeat(var(--slots), 1fr);
+    margin-top: .5em
+}
+
 /* Overlays */
 .featOverlay {
     overflow-y: scroll;

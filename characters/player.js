@@ -1,5 +1,6 @@
-import {getQuery, id, numSuffix, overlay, popup, roll, setQuery, merge, forceArray} from "../script.js"
+import {getQuery, id, numSuffix, overlay, popup, roll, setQuery, merge, forceArray, filterSpells} from "../script.js"
 import weapons from "../Data/weapons.json" with {type:"json"}
+import spells from "../Data/spells.json" with {type:"json"}
 import classes from "../Data/classes.json" with {type:"json"}
 import subclasses from "../Data/subclasses.json" with {type:"json"}
 import species from "../Data/species.json" with {type:"json"}
@@ -12,6 +13,7 @@ import instruments from "../Data/instruments.json" with {type:"json"}
 import otherTools from "../Data/otherTools.json" with {type:"json"}
 import gaming from "../Data/gaming.json" with {type:"json"}
 
+spells.homebrew("Spells")
 weapons.homebrew("Weapons")
 classes.homebrew("Classes")
 subclasses.homebrew("Subclasses")
@@ -83,6 +85,29 @@ Object.prototype.statEval = function(string) {
     }
     return amount
 }
+
+const spellSlots = [
+    [2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [3, 0, 0, 0, 0, 0, 0, 0, 0],
+    [4, 2, 0, 0, 0, 0, 0, 0, 0],
+    [4, 3, 0, 0, 0, 0, 0, 0, 0],
+    [4, 3, 2, 0, 0, 0, 0, 0, 0],
+    [4, 3, 3, 0, 0, 0, 0, 0, 0],
+    [4, 3, 3, 1, 0, 0, 0, 0, 0],
+    [4, 3, 3, 2, 0, 0, 0, 0, 0],
+    [4, 3, 3, 3, 1, 0, 0, 0, 0],
+    [4, 3, 3, 3, 2, 0, 0, 0, 0],
+    [4, 3, 3, 3, 2, 1, 0, 0, 0],
+    [4, 3, 3, 3, 2, 1, 0, 0, 0],
+    [4, 3, 3, 3, 2, 1, 1, 0, 0],
+    [4, 3, 3, 3, 2, 1, 1, 0, 0],
+    [4, 3, 3, 3, 2, 1, 1, 1, 0],
+    [4, 3, 3, 3, 2, 1, 1, 1, 0],
+    [4, 3, 3, 3, 2, 1, 1, 1, 1],
+    [4, 3, 3, 3, 3, 1, 1, 1, 1],
+    [4, 3, 3, 3, 3, 2, 1, 1, 1],
+    [4, 3, 3, 3, 3, 2, 2, 1, 1]
+]
 
 function healthSave(player) {
     let basePlayer = localStorage.get("Characters")
@@ -481,6 +506,38 @@ async function developData() {
     player["MeleeAttack"] = 0
     player["MeleeDamage"] = 0
     player["Mastery"] = 0
+
+    player["Spells"] = {}
+    let spellCastingTier = -1
+    if (player["Level"] >= 3) {
+        if (player["Subclass"] && "Spellcasting" in subclasses[player["Class"]][player["Subclass"]]) {
+            spellCastingTier = subclasses[player["Class"]][player["Subclass"]]["Spellcasting"]["CastTier"]
+            player["Spellcaster"] = player["Subclass"]
+        }
+    }
+    if ("Spellcasting" in classes[player["Class"]]) {
+        spellCastingTier = Math.max(spellCastingTier, classes[player["Class"]]["Spellcasting"]["CastTier"])
+        if (spellCastingTier === classes[player["Class"]]["Spellcasting"]["CastTier"]) {
+            player["Spellcaster"] = player["Class"]
+        }
+    }
+    if ([1, 2, 3].includes(spellCastingTier)) {
+        player["SpellSlots"] = spellSlots[Math.ceil((player["Level"] - 1) / spellCastingTier)]
+    } else {
+        player["SpellSlots"] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    }
+    for (let i = 0; i < player["SpellSlots"].length; i++) {
+        if (player["SpellSlots"][i] !== 0) {
+            player["Resources"][i + 1] = (player["Resources"][i + 1] || {})
+            player["Resources"][i + 1]["Current"] = (player["Resources"][i + 1]["Current"] || player["SpellSlots"][i])
+            player["Resources"][i + 1]["Max"] =  player["SpellSlots"][i]
+            player["Resources"][i + 1][(classes[player["Class"]]["Spellcasting"]["Recovery"] || "LR")] = -1
+        }
+    }
+    let basePlayer = localStorage.get("Characters")
+    basePlayer[getQuery("Char")]["Resources"] = player["Resources"]
+    basePlayer[getQuery("Char")]["Spellcaster"] = player["Spellcaster"]
+    localStorage.set("Characters", basePlayer)
 
     player["Features"] = {}
     async function addFeatures(dataSource, sourceName) {
@@ -1341,7 +1398,147 @@ async function render(playerData, initial=false) {
                 }
             }
         } else if (selectedAction === "spells") {
+            if (playerData["Spellcaster"]) {
+                let spellHeader = actionParent.createElement("div", "spellHeader")
+                let spellTitle = spellHeader.createElement("h2")
+                spellTitle.style.gridColumn = "span 3"
+                spellTitle.textContent = playerData["Spellcaster"]
+                let spellcastingData = playerData["Spellcaster"] === playerData["Subclass"] ? subclasses[playerData["Class"]][playerData["Subclass"]]["Spellcasting"] : classes[playerData["Class"]]["Spellcasting"]
+                let modifier = playerData["Stats"][spellcastingData["Stat"]].modifier()
+                let spellAttack = modifier + playerData["Prof Bonus"]
+                let spellSave = spellAttack + 8
 
+                let highestSlot = 0
+                for (let i = 0; i < playerData["SpellSlots"].length; i++) {
+                    if (playerData["SpellSlots"][i] !== 0) {
+                        highestSlot += 1
+                    } else {
+                        break
+                    }
+                }
+
+                spellHeader.createElement("h4").textContent = modifier.symbol()
+                spellHeader.createElement("h4").textContent = spellAttack.symbol()
+                spellHeader.createElement("h4").textContent = spellSave
+                spellHeader.createElement("h6").textContent = "Modifier"
+                spellHeader.createElement("h6").textContent = "Attack Bonus"
+                spellHeader.createElement("h6").textContent = "Save DC"
+
+                let slotParent = actionParent.createElement("div", "spellSlots")
+                slotParent.style.setProperty("--slots", String(highestSlot))
+                for (let i = 1; i <= highestSlot; i++) {
+                    let checkboxContainer = slotParent.createElement("div")
+                    for (let j = 1; j < playerData["SpellSlots"][i - 1] + 1; j++) {
+                        let slot = checkboxContainer.createElement("input", "usable")
+                        slot.type = "checkbox"
+                        if (j <= playerData["Resources"][i]["Current"]) {
+                            slot.checked = true
+                        }
+                        slot.addEventListener("change", function() {
+                            if (this.checked) {
+                                playerData["Resources"][i]["Current"] += 1
+                            } else {
+                                playerData["Resources"][i]["Current"] -= 1
+                            }
+                            let oldData = localStorage.get("Characters")
+                            oldData[getQuery("Char")]["Resources"] = playerData["Resources"]
+                            localStorage.set("Characters", oldData)
+                        })
+                    }
+                }
+                for (let i = 1; i <= highestSlot; i++) {
+                    slotParent.createElement("h6").textContent = `${numSuffix(i)} level`
+                }
+
+                let spellTable = actionParent.createElement("table", "spellTable")
+                spellTable.columnWidth("10%", "10%", "80%")
+                let titleRow = spellTable.createElement("tr")
+                titleRow.createElement("th").textContent = "Prepared"
+                titleRow.createElement("th").textContent = "Level"
+                titleRow.createElement("th").textContent = "Name"
+
+                let preparedSpells = 0
+                let knownCantrips = 0
+                playerData["KnownSpells"] = (playerData["KnownSpells"] || [])
+                playerData["PreparedSpells"] = (playerData["PreparedSpells"] || [])
+                playerData["KnownSpells"].forEach((spellName) => {
+                    let spellRow = spellTable.createElement("tr")
+                    let preparedItem = spellRow.createElement("td").createElement("input", spells[spellName]["Level"] !== 0 ? "usable" : "")
+                    preparedItem.type = "checkbox"
+                    preparedItem.checked = spells[spellName]["Level"] === 0 ? true :playerData["PreparedSpells"].includes(spellName)
+                    preparedItem.addEventListener("change", function() {
+                        if (this.checked) {
+                            preparedSpells += 1
+                            playerData["PreparedSpells"].push(spellName)
+                        } else {
+                            preparedSpells -= 1
+                            playerData["PreparedSpells"].pull(spellName)
+                        }
+                        calculateKnownSpells()
+                    })
+                    spellRow.createElement("td").textContent = spells[spellName]["Level"]
+                    spellRow.createElement("td").textContent = spellName
+                    if (spells[spellName]["Level"] === 0) {
+                        knownCantrips += 1
+                    } else if (preparedItem.checked){
+                        preparedSpells += 1
+                    }
+                })
+
+                let knownCantripsElement = spellHeader.createElement("h4")
+                let preparedSpellsElement = spellHeader.createElement("h4")
+                function calculateKnownSpells() {
+                    knownCantripsElement.textContent = `${knownCantrips} / ${spellcastingData["Cantrips"][playerData["Level"] - 1]}`
+                    preparedSpellsElement.textContent = `${preparedSpells} / ${spellcastingData["Known"][playerData["Level"] - 1]}`
+                }
+                calculateKnownSpells()
+                let changeKnown = spellHeader.createElement("button", "changeKnownSpells")
+                spellHeader.createElement("h6").textContent = "Cantrips Known"
+                spellHeader.createElement("h6").textContent = "Spells Prepared"
+
+                changeKnown.textContent = "Learn Spells"
+                changeKnown.addEventListener("click", function() {
+                    let overlayItem = overlay(async function() {
+                        let oldData = localStorage.get("Characters")
+                        oldData[getQuery("Char")]["KnownSpells"] = playerData["KnownSpells"]
+                        localStorage.set("Characters", oldData)
+                        await render(playerData)
+                    })
+                    overlayItem.createElement("h1").textContent = `${playerData["Spellcaster"]}s learn spells through ${spellcastingData["Learning"]}`
+                    let allSpells = overlayItem.createElement("table", "allSpells");
+                    allSpells.columnWidth("20%", "40%", "20%")
+                    let validSpells = filterSpells("", null, null, forceArray(spellcastingData["SpellList"])[playerData["Level"] - 1].toLowerCase(), 0, highestSlot)
+                    let currentLevel = -1
+                    Object.entries(validSpells).forEach(([spellName, spellData]) => {
+                        if (spellData["Level"] > currentLevel) {
+                            currentLevel = spellData["Level"]
+                            let spellTitle = allSpells.createElement("tr").createElement("th")
+                            spellTitle.setAttribute("colspan", "3")
+                            spellTitle.textContent = currentLevel === 0 ? "Cantrip" : `Level ${currentLevel}`
+                            let headerRow = allSpells.createElement("tr")
+                            headerRow.createElement("th").textContent = "School"
+                            headerRow.createElement("th").textContent = "Name"
+                            headerRow.createElement("th").textContent = "Learn"
+                        }
+                        let currentRow = allSpells.createElement("tr", playerData["KnownSpells"].includes(spellName) ? "learnt" : "")
+                        currentRow.createElement("td").textContent = spellData["School"]
+                        currentRow.createElement("td").textContent = spellName
+                        let learnButton = currentRow.createElement("td").createElement("button")
+                        learnButton.textContent = playerData["KnownSpells"].includes(spellName) ? "Forget" : "Learn"
+                        learnButton.addEventListener("click", function() {
+                            if (this.textContent === "Forget") {
+                                this.textContent = "Learn"
+                                playerData["KnownSpells"].pull(spellName)
+                                currentRow.classList.remove("learnt")
+                            } else {
+                                this.textContent = "Forget"
+                                playerData["KnownSpells"].push(spellName)
+                                currentRow.classList.add("learnt")
+                            }
+                        })
+                    })
+                })
+            }
         } else if (selectedAction === "inv") {
             let armourLabel = document.createElement("label")
             actionParent.appendChild(armourLabel)
