@@ -12,6 +12,19 @@ import instruments from "../Data/instruments.json" with {type:"json"}
 import otherTools from "../Data/otherTools.json" with {type:"json"}
 import gaming from "../Data/gaming.json" with {type:"json"}
 
+weapons.homebrew("Weapons")
+classes.homebrew("Classes")
+subclasses.homebrew("Subclasses")
+species.homebrew("Species")
+backgrounds.homebrew("Backgrounds")
+feats.homebrew("Feats")
+armour.homebrew("Armour")
+tools.homebrew("Tools")
+gear.homebrew("Gear")
+instruments.homebrew("Instruments")
+otherTools.homebrew("OtherTools")
+gaming.homebrew("Gaming")
+
 
 let allStats = {
     "Strength": "Str",
