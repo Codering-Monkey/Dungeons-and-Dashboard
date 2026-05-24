@@ -56,7 +56,11 @@ const insults = [
     "Dark Mode was season 1, but Netflix cancelled anything after that",
     "I will delete system32",
     "I will install Linux on here",
-    "Dark Mode? Seriously?"
+    "Dark Mode? Seriously?",
+    "No Light Mode? {Insert Megamind Meme}",
+    "Hippity Hoppity 'Light Mode' is no longer your property",
+    "Join us, Thrive",
+    "Not even the Konami code can do that"
 ]
 colourMode.addEventListener("change", function() {
     if (this.value === "light") {
