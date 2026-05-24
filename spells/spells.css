@@ -30,8 +30,6 @@
     background-color: var(--foreground);
 }
 
-.not-nav {font-size: 1.3vh;}
-
 .spellOption:hover {
     padding: 16px 8px;
 }
