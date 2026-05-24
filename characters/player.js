@@ -796,7 +796,7 @@ async function render(playerData, initial=false) {
         expCheckbox.type = "checkbox"
         if (playerData["Exp"].includes(key)) {
             expCheckbox.checked = true
-            bonusNumber.textContent = (mod + (prof * 2)).symbol()
+            bonusNumber.textContent = (mod + (playerData["Prof Bonus"] * 2)).symbol()
             bonus += playerData["Prof Bonus"]
         }
         container.shellAppend(expCheckbox)
