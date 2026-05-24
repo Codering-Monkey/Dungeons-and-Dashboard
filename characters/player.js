@@ -1509,7 +1509,7 @@ async function render(playerData, initial=false) {
                     allSpells.columnWidth("20%", "40%", "20%")
                     let validSpells = filterSpells("", null, null, forceArray(spellcastingData["SpellList"])[playerData["Level"] - 1].toLowerCase(), 0, highestSlot)
                     let currentLevel = -1
-                    Object.entries(validSpells).forEach(([spellName, spellData]) => {
+                    Object.entries(validSpells).sort((a, b) => a[1]["Level"] - b[1]["Level"]).forEach(([spellName, spellData]) => {
                         if (spellData["Level"] > currentLevel) {
                             currentLevel = spellData["Level"]
                             let spellTitle = allSpells.createElement("tr").createElement("th")
