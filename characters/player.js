@@ -628,7 +628,8 @@ async function developData() {
             let oldData = localStorage.get("Characters")
             oldData[getQuery("Char")]["Subclass"] = player["Subclass"]
             localStorage.set("Characters", oldData)
-            await addFeatures(subclasses[player["Class"]][player["Subclass"]]["Features"], player["Subclass"])
+            await render(await developData(), true)
+            return
         }
     }
     await addFeatures(species[player["Species"]]["Features"], player["Species"])
@@ -723,6 +724,9 @@ async function developData() {
 }
 
 async function render(playerData, initial=false) {
+    if (!playerData) {
+        return
+    }
     // Generate Static Data
     id("pfp").src = (playerData["Pfp"] || "../Images/players/blank.png")
     id("name").textContent = playerData["Name"]
