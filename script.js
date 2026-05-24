@@ -637,3 +637,11 @@ export function filterSpells(query, sources, schools, classes, minLevel=0, maxLe
     })
     return filteredData
 }
+
+// colours
+
+import colours from "./Data/colours.json" with { type: "json" }
+colours.homebrew("Colours")
+
+document.body.style.setProperty("--primary", (colours[(localStorage.get("primary") || "Red")] || colours["Red"]))
+document.body.style.setProperty("--secondary", (colours[(localStorage.get("secondary") || "Green")] || colours["Green"]))

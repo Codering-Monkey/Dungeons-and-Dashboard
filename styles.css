@@ -14,8 +14,6 @@
     --minor-text: hsla(0, 0%, 100%, .6);
     --sub-text: hsla(0, 0%, 100%, .4);
     --sub-sub-text: hsla(0, 0%, 100%, .2);
-    --pink: hsla(340, 70%, 82%, 0.8);
-    --blue: hsla(200, 65%, 80%, 0.8)
 }
 
 * {
@@ -60,16 +58,16 @@ h1 {
 }
 
 strong {
-    color: var(--pink)
+    color: var(--primary)
 }
 
 input[type=range] {
-    accent-color: var(--pink);
+    accent-color: var(--primary);
     background-color: var(--background);
 }
 
 input[type=range]:hover {
-    accent-color: var(--blue);
+    accent-color: var(--secondary);
 }
 
 input[type=checkbox] {
@@ -87,7 +85,7 @@ input[type=checkbox]:hover {
 }
 
 input[type=checkbox]:checked {
-    background-color: var(--pink);
+    background-color: var(--primary);
 }
 
 input[type=checkbox]:disabled:not(.undisable) {
@@ -127,13 +125,13 @@ body {
 }
 
 .file:hover {
-    color: var(--blue);
-    border-color: var(--blue);
+    color: var(--secondary);
+    border-color: var(--secondary);
 }
 
 .file:active {
-    color: var(--pink);
-    border-color: var(--pink);
+    color: var(--primary);
+    border-color: var(--primary);
 }
 
 select {
@@ -142,14 +140,14 @@ select {
 }
 
 a {
-    color: var(--pink);
+    color: var(--primary);
     text-decoration: underline;
     transition: .25s;
     cursor: pointer;
 }
 
 a:hover {
-    color: var(--blue)
+    color: var(--secondary)
 }
 
 .clickable {
@@ -157,19 +155,19 @@ a:hover {
 }
 
 .clickable:hover {
-    color: var(--blue);
+    color: var(--secondary);
 }
 
 .clickable:hover > * {
-    color: var(--blue);
+    color: var(--secondary);
 }
 
 .clickable:active {
-    color: var(--pink);
+    color: var(--primary);
 }
 
 .clickable:active > * {
-    color: var(--pink);
+    color: var(--primary);
 }
 
 button {
@@ -183,13 +181,13 @@ button {
 }
 
 button:hover {
-    color: var(--blue);
-    border-color: var(--blue);
+    color: var(--secondary);
+    border-color: var(--secondary);
 }
 
 button:active {
-    color: var(--pink);
-    border-color: var(--pink);
+    color: var(--primary);
+    border-color: var(--primary);
 }
 
 textarea {
@@ -241,7 +239,7 @@ body {
 
 .navbar > div:hover span {
     font-size: 32px;
-    color: var(--blue);
+    color: var(--secondary);
 }
 
 .navbar > div > div {
@@ -303,12 +301,12 @@ body {
     height: 8px;
     width: 200px;
     margin-top: 8px;
-    background-color: var(--pink);
+    background-color: var(--primary);
     user-select: none;
 }
 
 .progress {
-    background-color: var(--blue);
+    background-color: var(--secondary);
     height: 8px;
     transition: width 5s ease-out;
     width: 0;
@@ -351,7 +349,7 @@ body {
 }
 
 .tooltip:hover:not(.tooltip-text) {
-	text-decoration: underline var(--blue)
+	text-decoration: underline var(--secondary)
 }
 
 .tooltip-text {
