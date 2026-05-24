@@ -287,9 +287,8 @@ function subclassChoose(playerClass) {
             }
         })
     })
-    let finishButton = document.createElement("button")
+    let finishButton = subclassScroll.createElement("button")
     finishButton.textContent = "Confirm"
-    overlayParent.appendChild(finishButton)
     return new Promise((resolve) => {
         finishButton.addEventListener("click", function() {
             if (document.getElementsByClassName("selectedFeat") && document.getElementsByClassName("selectedFeat")[0]) {
