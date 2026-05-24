@@ -3,7 +3,13 @@ import { id } from "./script.js"
 let navbar = id("navbar");
 navbar.classList.add("navbar");
 
-const pages = {"home": ["Home", "index.html"], "groups":["Characters", "characters/all_characters.html"], "wand_shine":["Spells", "spells/spells.html"], "build_circle":["Import", "import/import.html"]};
+const pages = {
+    "home": ["Home", "index.html"],
+    "groups":["Characters", "characters/all_characters.html"],
+    "wand_shine":["Spells", "spells/spells.html"],
+    "build_circle":["Import", "import/import.html"],
+    "settings":["Settings", "settings/settings.html"]
+};
 
 function createIcon(icon_name) {
     let icon = document.createElement("span")
