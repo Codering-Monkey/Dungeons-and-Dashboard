@@ -106,7 +106,7 @@
 }
 
 .nameParent > button {
-    margin-left: .17em
+    margin-left: calc(.17em + 1px)
 }
 
 .nameParent > div:has(input[type="checkbox"]) {
