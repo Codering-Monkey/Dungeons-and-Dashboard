@@ -55,11 +55,14 @@ const insults = [
     "EA wants me to charge you $9.99 for that",
     "Dark Mode was season 1, but Netflix cancelled anything after that",
     "I will delete system32",
-    "I will install Linux on here"
+    "I will install Linux on here",
+    "Dark Mode? Seriously?"
 ]
 colourMode.addEventListener("change", function() {
     if (this.value === "light") {
-        this.value = "dark"
         popup(insults[roll(insults.length) - 1])
+        setTimeout(function() {
+            colourMode.value = "dark"
+        }, 100)
     }
 })
