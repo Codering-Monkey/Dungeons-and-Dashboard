@@ -360,7 +360,7 @@ function selectEquip() {
             if (i < dataSet.length) {
                 let equipElement = parent.createElement("ul")
                 equipElement.collate(dataSet[i])
-                if (sessionStorage.get(shorthand) && sessionStorage.get(shorthand) === i) {
+                if (sessionStorage.get(shorthand) && sessionStorage.get(shorthand) === String(i)) {
                     equipElement.classList.add("active")
                 }
                 equipElement.addEventListener("click", function () {
