@@ -135,18 +135,18 @@ function proficiencyChoose(profItem, existingProf) {
     let profContainer = document.createElement("div")
     overlayParent.appendChild(profContainer)
     for (let i = 0; i < possibleChoices.length; i++) {
-        let profItem = document.createElement("input")
-        profItem.type = "Checkbox"
-        profItem.id = "choice" + i
-        profItem.value = possibleChoices[i]
-        profItem.classList.add("usable")
-        profContainer.appendChild(profItem)
+        let profInput = document.createElement("input")
+        profInput.type = "Checkbox"
+        profInput.id = "choice" + i
+        profInput.value = possibleChoices[i]
+        profInput.classList.add("usable")
+        profContainer.appendChild(profInput)
         let profLabel = document.createElement("label")
         profLabel.textContent = possibleChoices[i]
         profLabel.htmlFor = "choice" + i
-        if (existingProf.includes(possibleChoices[i])) {
+        if ((profItem["Type"] !== "Exp" && existingProf.includes(possibleChoices[i])) || (profItem["Type"] === "Exp" && !(existingProf.includes(possibleChoices[i])))) {
             profLabel.style.opacity = "50%"
-            profItem.disabled = true
+            profInput.disabled = true
         }
         profContainer.appendChild(profLabel)
         profContainer.break()
