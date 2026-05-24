@@ -1,5 +1,5 @@
 import spellData from "../Data/spells.json" with { type: "json" }
-import {id, numSuffix, setQuery, getQuery} from "../script.js"
+import {id, numSuffix, setQuery, getQuery, filterSpells} from "../script.js"
 
 // ?search={str}&source={str},{str}&minLevel={int}&maxLevel={int}&school={str},{str}&class={str},{str}&desc={bool}&sort={level, name, school}
 
@@ -24,54 +24,6 @@ Object.entries(spellData).forEach(([spellName, spellInfo]) => {
         }
     }
 })
-
-/**
- * @param {string} query
- * @param {string[]} sources
- * @param {string[]} schools
- * @param {string[]} classes
- * @param {number} minLevel
- * @param {number} maxLevel
- */
-function filterSpells(query, sources, schools, classes, minLevel=0, maxLevel=9) {
-    let filteredData = structuredClone(spellData)
-    Object.entries(filteredData).forEach(([spellName, spellInfo]) => {
-        if (query) {
-            if (!spellName.toLowerCase().includes(query)) {
-                delete filteredData[spellName];
-                return
-            }
-        }
-        if (sources) {
-            if (!sources.includes(spellInfo["Source"].toLowerCase())) {
-                delete filteredData[spellName];
-                return
-            }
-        }
-        if (!((minLevel <= spellInfo["Level"]) && (spellInfo["Level"] <= maxLevel))) {
-            delete filteredData[spellName];
-            return
-        }
-        if (schools) {
-            if (!schools.includes(spellInfo["School"].toLowerCase())) {
-                delete filteredData[spellName];
-                return
-            }
-        }
-        if (classes) {
-            let validClass = false
-            for (let i = 0; i < spellInfo["Classes"].length; i++) {
-                if (classes.includes(spellInfo["Classes"][i].toLowerCase())) {
-                    validClass = true
-                }
-            }
-            if (!validClass) {
-                delete filteredData[spellName];
-            }
-        }
-    })
-    return filteredData
-}
 
 function renderSpells() {
     let filteredData = filterSpells(
