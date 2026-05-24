@@ -522,7 +522,7 @@ async function developData() {
         }
     }
     if ([1, 2, 3].includes(spellCastingTier)) {
-        player["SpellSlots"] = spellSlots[Math.ceil((player["Level"] - 1) / spellCastingTier)]
+        player["SpellSlots"] = spellSlots[Math.ceil((player["Level"]) / spellCastingTier) - 1]
     } else {
         player["SpellSlots"] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     }
