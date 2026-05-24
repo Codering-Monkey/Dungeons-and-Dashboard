@@ -108,6 +108,28 @@ const spellSlots = [
     [4, 3, 3, 3, 3, 2, 1, 1, 1],
     [4, 3, 3, 3, 3, 2, 2, 1, 1]
 ]
+const warlockSpellSlots = [
+    [1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 3, 1, 0, 0, 0],
+    [0, 0, 0, 0, 3, 1, 0, 0, 0],
+    [0, 0, 0, 0, 3, 1, 1, 0, 0],
+    [0, 0, 0, 0, 3, 1, 1, 0, 0],
+    [0, 0, 0, 0, 3, 1, 1, 1, 0],
+    [0, 0, 0, 0, 3, 1, 1, 1, 0],
+    [0, 0, 0, 0, 4, 1, 1, 1, 1],
+    [0, 0, 0, 0, 4, 1, 1, 1, 1],
+    [0, 0, 0, 0, 4, 1, 1, 1, 1],
+    [0, 0, 0, 0, 4, 1, 1, 1, 1],
+]
 
 function healthSave(player) {
     let basePlayer = localStorage.get("Characters")
@@ -523,16 +545,26 @@ async function developData() {
     }
     if ([1, 2, 3].includes(spellCastingTier)) {
         player["SpellSlots"] = spellSlots[Math.ceil((player["Level"]) / spellCastingTier) - 1]
+        for (let i = 0; i < player["SpellSlots"].length; i++) {
+            if (player["SpellSlots"][i] !== 0) {
+                player["Resources"][i + 1] = (player["Resources"][i + 1] || {})
+                player["Resources"][i + 1]["Current"] = (player["Resources"][i + 1]["Current"] || player["SpellSlots"][i])
+                player["Resources"][i + 1]["Max"] = player["SpellSlots"][i]
+                player["Resources"][i + 1][(classes[player["Class"]]["Spellcasting"]["Recovery"] || "LR")] = -1
+            }
+        }
+    } else if (spellCastingTier === 4) {
+        player["SpellSlots"] = warlockSpellSlots[player["Level"]]
+        for (let i = 0; i < player["SpellSlots"].length; i++) {
+            if (player["SpellSlots"][i] !== 0) {
+                player["Resources"][i + 1] = (player["Resources"][i + 1] || {})
+                player["Resources"][i + 1]["Current"] = (player["Resources"][i + 1]["Current"] || player["SpellSlots"][i])
+                player["Resources"][i + 1]["Max"] = player["SpellSlots"][i]
+                player["Resources"][i + 1][i + 1 <= 5 ? "SR" : "LR"] = -1
+            }
+        }
     } else {
         player["SpellSlots"] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    }
-    for (let i = 0; i < player["SpellSlots"].length; i++) {
-        if (player["SpellSlots"][i] !== 0) {
-            player["Resources"][i + 1] = (player["Resources"][i + 1] || {})
-            player["Resources"][i + 1]["Current"] = (player["Resources"][i + 1]["Current"] || player["SpellSlots"][i])
-            player["Resources"][i + 1]["Max"] =  player["SpellSlots"][i]
-            player["Resources"][i + 1][(classes[player["Class"]]["Spellcasting"]["Recovery"] || "LR")] = -1
-        }
     }
     let basePlayer = localStorage.get("Characters")
     basePlayer[getQuery("Char")]["Resources"] = player["Resources"]
