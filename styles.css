@@ -106,7 +106,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .inputNumberParent button {
-    /*width: 2.8em*/
+    width: 2.8em
 }
 
 input[type=file] {

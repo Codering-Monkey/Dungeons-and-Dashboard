@@ -62,6 +62,10 @@
     height: 5svh;
 }
 
+.statParent > .inputNumberParent > button {
+    width: auto;
+}
+
 .equipParent {
     display: grid;
     height: calc(100% - 5svh);
