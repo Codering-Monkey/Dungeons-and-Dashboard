@@ -181,6 +181,14 @@ function selectList(data, storageKey) {
             this.classList.add("active")
             sessionStorage.set(storageKey, key)
         })
+        listItem.addEventListener("dblclick", function () {
+            if (sessionStorage.get(storageKey)) {
+                id(sessionStorage.get(storageKey)).classList.remove("active")
+            }
+            this.classList.add("active")
+            sessionStorage.set(storageKey, key)
+            next.click()
+        })
         parent.appendChild(listItem)
         if (sessionStorage.get(storageKey) === key) {
             listItem.classList.add("active")
