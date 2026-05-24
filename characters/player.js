@@ -1444,11 +1444,15 @@ async function render(playerData, initial=false) {
                 let spellSave = spellAttack + 8
 
                 let highestSlot = 0
-                for (let i = 0; i < playerData["SpellSlots"].length; i++) {
-                    if (playerData["SpellSlots"][i] !== 0) {
-                        highestSlot += 1
-                    } else {
-                        break
+                let smallestSlot = 9
+                for (let i = 1; i < playerData["SpellSlots"].length + 1; i++) {
+                    if (playerData["SpellSlots"][i - 1] !== 0) {
+                        if (i > highestSlot) {
+                            highestSlot = i
+                        }
+                        if (i < smallestSlot) {
+                            smallestSlot = i
+                        }
                     }
                 }
 
@@ -1542,7 +1546,7 @@ async function render(playerData, initial=false) {
                     overlayItem.createElement("h1").textContent = `${playerData["Spellcaster"]}s learn spells through ${spellcastingData["Learning"]}`
                     let allSpells = overlayItem.createElement("table", "allSpells");
                     allSpells.columnWidth("20%", "40%", "20%")
-                    let validSpells = filterSpells("", null, null, forceArray(spellcastingData["SpellList"])[playerData["Level"] - 1].toLowerCase(), 0, highestSlot)
+                    let validSpells = filterSpells("", null, null, forceArray(spellcastingData["SpellList"])[playerData["Level"] - 1].toLowerCase(), smallestSlot, highestSlot)
                     let currentLevel = -1
                     Object.entries(validSpells).sort((a, b) => a[1]["Level"] - b[1]["Level"]).forEach(([spellName, spellData]) => {
                         if (spellData["Level"] > currentLevel) {
