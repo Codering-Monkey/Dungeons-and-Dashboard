@@ -38,19 +38,19 @@
 }
 
 .characters-grid-char:hover {
-    border-color: var(--blue);
+    border-color: var(--secondary);
 }
 
 .characters-grid-char:hover * {
-    color: var(--blue);
+    color: var(--secondary);
 }
 
 .characters-grid-char:active {
-    border-color: var(--pink);
+    border-color: var(--primary);
 }
 
 .characters-grid-char:active * {
-    color: var(--pink);
+    color: var(--primary);
 }
 
 .characters-grid-char > img {
@@ -82,9 +82,9 @@
 }
 
 .characters-grid-other > div:hover {
-    color: var(--blue)
+    color: var(--secondary)
 }
 
 .characters-grid-other > div:active {
-    color: var(--pink)
+    color: var(--primary)
 }

@@ -30,7 +30,7 @@
 }
 
 .import-add-box-bar span:hover {
-    color: var(--blue);
+    color: var(--secondary);
 }
 
 .import-add-box-bar span[active="true"] {
@@ -79,11 +79,11 @@
 }
 
 .import-data > div > div:hover > * {
-    color: var(--blue)
+    color: var(--secondary)
 }
 
 .import-data > div > div:active > * {
-    color: var(--pink)
+    color: var(--primary)
 }
 
 #dataInput textarea {

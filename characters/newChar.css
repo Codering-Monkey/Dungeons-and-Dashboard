@@ -32,11 +32,11 @@
 }
 
 .listParent > div:hover > * {
-    color: var(--blue)
+    color: var(--secondary)
 }
 
 .listParent .active > * {
-    color: var(--pink)
+    color: var(--primary)
 }
 
 .statParent {
@@ -84,11 +84,11 @@
 }
 
 .equipParent > .active {
-    border-color: var(--pink);
+    border-color: var(--primary);
 }
 
 .equipParent > ul:hover {
-    border-color: var(--blue);
+    border-color: var(--secondary);
 }
 
 .equipParent > .header {

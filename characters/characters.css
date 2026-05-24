@@ -81,11 +81,11 @@ input[type=checkbox]:not(.usable) {
 }
 
 .health button:nth-child(1), .health button:nth-child(3) {
-    color: var(--blue)
+    color: var(--secondary)
 }
 
 .health button:nth-child(4) {
-    color: var(--pink);
+    color: var(--primary);
     margin-top:.3em
 }
 
@@ -225,16 +225,16 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .tabs > *:hover {
-    color: var(--blue)
+    color: var(--secondary)
 }
 
 .tabs > *:active {
-    color: var(--pink)
+    color: var(--primary)
 }
 
 .tabs > .active {
-    color: var(--pink);
-    border-bottom: 2px solid var(--pink);
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
 }
 
 .overlay > div {
@@ -495,19 +495,19 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .featOverlay > div > .selectedFeat {
-    border-color: var(--pink) !important;
+    border-color: var(--primary) !important;
 }
 
 .featOverlay > div > .selectedFeat > h3 {
-    color: var(--pink) !important;
+    color: var(--primary) !important;
 }
 
 .featOverlay > div > div:hover {
-    border-color: var(--blue);
+    border-color: var(--secondary);
 }
 
 .featOverlay > div > div:hover > h3 {
-    color: var(--blue);
+    color: var(--secondary);
 }
 
 
@@ -546,7 +546,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .equipmentAdd > div:not(.subtitle):hover > p {
-    color: var(--blue)
+    color: var(--secondary)
 }
 
 .equipmentAdd > div > p {
@@ -556,7 +556,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .equipmentAdd > .subtitle > p {
     font-weight: bold;
-    color: var(--pink)
+    color: var(--primary)
 }
 
 .equipmentAdd > div > p:nth-child(1) {
