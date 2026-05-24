@@ -1550,32 +1550,34 @@ async function render(playerData, initial=false) {
                     let validSpells = filterSpells("", null, null, forceArray(spellcastingData["SpellList"])[playerData["Level"] - 1].toLowerCase(), smallestSlot, highestSlot)
                     let currentLevel = -1
                     Object.entries(validSpells).sort((a, b) => a[1]["Level"] - b[1]["Level"]).forEach(([spellName, spellData]) => {
-                        if (spellData["Level"] > currentLevel) {
-                            currentLevel = spellData["Level"]
-                            let spellTitle = allSpells.createElement("tr").createElement("th")
-                            spellTitle.setAttribute("colspan", "3")
-                            spellTitle.textContent = currentLevel === 0 ? "Cantrip" : `Level ${currentLevel}`
-                            let headerRow = allSpells.createElement("tr")
-                            headerRow.createElement("th").textContent = "School"
-                            headerRow.createElement("th").textContent = "Name"
-                            headerRow.createElement("th").textContent = "Learn"
-                        }
-                        let currentRow = allSpells.createElement("tr", playerData["KnownSpells"].includes(spellName) ? "learnt" : "")
-                        currentRow.createElement("td").textContent = spellData["School"]
-                        currentRow.createElement("td").textContent = spellName
-                        let learnButton = currentRow.createElement("td").createElement("button")
-                        learnButton.textContent = playerData["KnownSpells"].includes(spellName) ? "Forget" : "Learn"
-                        learnButton.addEventListener("click", function() {
-                            if (this.textContent === "Forget") {
-                                this.textContent = "Learn"
-                                playerData["KnownSpells"].pull(spellName)
-                                currentRow.classList.remove("learnt")
-                            } else {
-                                this.textContent = "Forget"
-                                playerData["KnownSpells"].push(spellName)
-                                currentRow.classList.add("learnt")
+                        if (spellData["Level"] === 0 || playerData["SpellSlots"][spellData["Level"] - 1] !== 0) {
+                            if (spellData["Level"] > currentLevel) {
+                                currentLevel = spellData["Level"]
+                                let spellTitle = allSpells.createElement("tr").createElement("th")
+                                spellTitle.setAttribute("colspan", "3")
+                                spellTitle.textContent = currentLevel === 0 ? "Cantrip" : `Level ${currentLevel}`
+                                let headerRow = allSpells.createElement("tr")
+                                headerRow.createElement("th").textContent = "School"
+                                headerRow.createElement("th").textContent = "Name"
+                                headerRow.createElement("th").textContent = "Learn"
                             }
-                        })
+                            let currentRow = allSpells.createElement("tr", playerData["KnownSpells"].includes(spellName) ? "learnt" : "")
+                            currentRow.createElement("td").textContent = spellData["School"]
+                            currentRow.createElement("td").textContent = spellName
+                            let learnButton = currentRow.createElement("td").createElement("button")
+                            learnButton.textContent = playerData["KnownSpells"].includes(spellName) ? "Forget" : "Learn"
+                            learnButton.addEventListener("click", function() {
+                                if (this.textContent === "Forget") {
+                                    this.textContent = "Learn"
+                                    playerData["KnownSpells"].pull(spellName)
+                                    currentRow.classList.remove("learnt")
+                                } else {
+                                    this.textContent = "Forget"
+                                    playerData["KnownSpells"].push(spellName)
+                                    currentRow.classList.add("learnt")
+                                }
+                            })
+                        }
                     })
                 })
             }
