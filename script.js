@@ -50,9 +50,13 @@ HTMLInputElement.prototype.buttons = function() {
         let subtract = document.createElement("button")
         container.appendChild(subtract)
         subtract.textContent = "-"
-        subtract.addEventListener("click", function() {
+        subtract.addEventListener("click", function(event) {
             if (!(inputThis.min) || parseInt(inputThis.value) - 1 >= parseInt(inputThis.min)) {
-                inputThis.value = String(parseInt(inputThis.value) - 1)
+                if (inputThis.min && event.shiftKey) {
+                    inputThis.value = inputThis.min
+                } else {
+                    inputThis.value = String(parseInt(inputThis.value) - 1)
+                }
                 inputThis.textContent = inputThis.value
                 container.setAttribute("value", inputThis.value)
                 inputThis.dispatchEvent(new Event("change"))
@@ -62,9 +66,13 @@ HTMLInputElement.prototype.buttons = function() {
         let add = document.createElement("button")
         add.textContent = "+"
         container.appendChild(add)
-        add.addEventListener("click", function() {
+        add.addEventListener("click", function(event) {
             if (!(inputThis.max) || inputThis.max && parseInt(inputThis.value) + 1 <= parseInt(inputThis.max)) {
-                inputThis.value = String(parseInt(inputThis.value) + 1)
+                if (inputThis.max && event.shiftKey) {
+                    inputThis.value = inputThis.max
+                } else {
+                    inputThis.value = String(parseInt(inputThis.value) + 1)
+                }
                 inputThis.textContent = inputThis.value
                 container.setAttribute("value", inputThis.value)
                 inputThis.dispatchEvent(new Event("change"))
