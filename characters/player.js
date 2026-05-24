@@ -1445,9 +1445,8 @@ async function render(playerData, initial=false) {
 
                 let highestSlot = 0
                 let smallestSlot = 9
-                let slots = [1, ...playerData["SpellSlots"]]
-                for (let i = 0; i < slots.length + 1; i++) {
-                    if (slots[i - 1] !== 0) {
+                for (let i = 1; i < playerData["SpellSlots"].length + 1; i++) {
+                    if (playerData["SpellSlots"][i - 1] !== 0) {
                         if (i > highestSlot) {
                             highestSlot = i
                         }
@@ -1455,6 +1454,9 @@ async function render(playerData, initial=false) {
                             smallestSlot = i
                         }
                     }
+                }
+                if (spellcastingData["Cantrip"]) {
+                    smallestSlot = 0
                 }
 
                 spellHeader.createElement("h4").textContent = modifier.symbol()
@@ -1505,7 +1507,7 @@ async function render(playerData, initial=false) {
                     let spellRow = spellTable.createElement("tr")
                     let preparedItem = spellRow.createElement("td").createElement("input", spells[spellName]["Level"] !== 0 ? "usable" : "")
                     preparedItem.type = "checkbox"
-                    preparedItem.checked = spells[spellName]["Level"] === 0 ? true :playerData["PreparedSpells"].includes(spellName)
+                    preparedItem.checked = spells[spellName]["Level"] === 0 ? true : playerData["PreparedSpells"].includes(spellName)
                     preparedItem.addEventListener("change", function() {
                         if (this.checked) {
                             preparedSpells += 1
