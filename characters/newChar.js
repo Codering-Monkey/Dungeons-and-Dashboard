@@ -338,7 +338,7 @@ function selectStats() {
     let totalBonus = document.createElement("div")
     totalBonus.classList.add("header")
     totalBonus.id = "totalBonus"
-    totalBonus.textContent = String(sessionStorage.get("Bonus")[1].length + sessionStorage.get("Bonus")[2].length);
+    totalBonus.textContent = String(sessionStorage.get("Bonus")[1].length + (sessionStorage.get("Bonus")[2].length * 2));
     totalBonus.style.gridColumn = "span 2"
     parent.appendChild(totalBonus)
     parent.blank(2)
@@ -349,66 +349,36 @@ function selectEquip() {
     parent.className = "equipParent"
     sessionStorage.set("createStage", "Equip")
 
-    let optionATitle = document.createElement("div")
-    optionATitle.classList.add("header")
-    optionATitle.textContent = "Background Equipment"
-    parent.appendChild(optionATitle)
-    let optionBTitle = document.createElement("div")
-    optionBTitle.classList.add("header")
-    optionBTitle.textContent = "Class Equipment"
-    parent.appendChild(optionBTitle)
+    let backgroundData = backgrounds[sessionStorage.get("Background")]["Equipment"]
+    let classData = classes[sessionStorage.get("Class")]["Equipment"]
+    let height = Math.max(backgroundData.length, classData.length)
+    parent.style.setProperty("--height", height)
 
-    let optionABack = document.createElement("ul")
-    optionABack.collate(backgrounds[sessionStorage.get("Background")]["Equipment"][0])
-    let optionBBack = document.createElement("ul")
-    optionBBack.collate(backgrounds[sessionStorage.get("Background")]["Equipment"][1])
-    let backEquip = sessionStorage.get("BackEquip")
-    if (backEquip) {
-        if (backEquip === "0") {
-            optionABack.classList.add("active")
-        } else if (backEquip === "1") {
-            optionBBack.classList.add("active")
+    function loadEquip(title, dataSet, shorthand) {
+        parent.createElement("div", "header").textContent = title
+        for (let i = 0; i < height; i++) {
+            if (i < dataSet.length) {
+                let equipElement = parent.createElement("ul")
+                equipElement.collate(dataSet[i])
+                if (sessionStorage.get(shorthand) && sessionStorage.get(shorthand) === i) {
+                    equipElement.classList.add("active")
+                }
+                equipElement.addEventListener("click", function () {
+                    let allEquipElements = document.getElementsByTagName("UL")
+                    for (let j = 0; j < allEquipElements.length; j++) {
+                        allEquipElements[j].classList.remove("active")
+                        this.classList.add("active")
+                        sessionStorage.set(shorthand, i)
+                    }
+                })
+            } else {
+                parent.createElement("div", )
+            }
         }
     }
 
-    let optionAClass = document.createElement("ul")
-    optionAClass.collate(classes[sessionStorage.get("Class")]["Equipment"][0])
-    let optionBClass = document.createElement("ul")
-    optionBClass.collate(classes[sessionStorage.get("Class")]["Equipment"][1])
-    let classEquip = sessionStorage.get("ClassEquip")
-    if (classEquip) {
-        if (classEquip === "0") {
-            optionAClass.classList.add("active")
-        } else if (classEquip === "1") {
-            optionBClass.classList.add("active")
-        }
-    }
-
-    parent.appendChild(optionABack)
-    parent.appendChild(optionAClass)
-    parent.appendChild(optionBBack)
-    parent.appendChild(optionBClass)
-
-    optionABack.addEventListener("click", function() {
-        optionBBack.classList.remove("active")
-        optionABack.classList.add("active")
-        sessionStorage.set("BackEquip", "0")
-    })
-    optionBBack.addEventListener("click", function() {
-        optionABack.classList.remove("active")
-        optionBBack.classList.add("active")
-        sessionStorage.set("BackEquip", "1")
-    })
-    optionAClass.addEventListener("click", function() {
-        optionBClass.classList.remove("active")
-        optionAClass.classList.add("active")
-        sessionStorage.set("ClassEquip", "0")
-    })
-    optionBClass.addEventListener("click", function() {
-        optionAClass.classList.remove("active")
-        optionBClass.classList.add("active")
-        sessionStorage.set("ClassEquip", "1")
-    })
+    loadEquip("Background Equipment", backgroundData, "BackEquip")
+    loadEquip("Class Equipment", classData, "BackEquip")
 }
 
 function selectName() {
