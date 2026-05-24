@@ -1,0 +1,53 @@
+.not-nav {
+    display: flex;
+    gap: .5em
+}
+
+.colourBox {
+    background-color: var(--foreground);
+    width: 15%;
+    max-height: 20em;
+    padding: 0.5em
+}
+
+.colourBox h3 {
+    text-align: center;
+}
+
+.colourScroll {
+    overflow-y: scroll;
+    scrollbar-color: var(--text) var(--foreground);
+    height: calc(100% - 2.6em);
+}
+
+.colourScroll > div {
+    --feature-colour: red;
+    cursor: pointer;
+    border: .1em solid var(--foreground);
+    padding: 0.25em
+}
+
+.colourScroll > div > p {
+    margin: 0
+}
+
+.colourScroll > div:hover > p {
+    font-weight: bold;
+}
+
+.colourScroll > div > div {
+    width: 1.3em;
+    display: inline;
+    margin-right: 0.25em;
+    float:left;
+    height: 1.3em;
+    background-color: var(--feature-colour);
+}
+
+.colourScroll > .active {
+    border-color: var(--feature-colour);
+}
+
+.colourScroll .selected {
+    opacity: 30%;
+}
