@@ -130,7 +130,7 @@ function proficiencyChoose(profItem, existingProf) {
         throw TypeError("Incorrectly formatted profItem")
     }
     let profTitle = document.createElement("h2")
-    profTitle.textContent = `Choose ${profItem["Amount"]}`
+    profTitle.textContent = `Choose ${profItem["Amount"]} ${profItem["Type"] === "Exp" ? "Expertises" : (profItem["Catagory"] ? (profItem["Catagory"].slice(-1) === "s" ? profItem["Catagory"] : profItem["Catagory"] + "s") : "")}`
     overlayParent.appendChild(profTitle)
     let profContainer = document.createElement("div")
     overlayParent.appendChild(profContainer)
