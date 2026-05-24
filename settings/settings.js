@@ -1,4 +1,4 @@
-import { id } from "../script.js"
+import {id, popup, roll} from "../script.js"
 import colours from "../Data/colours.json" with { type: "json" }
 colours.homebrew("Colours")
 
@@ -36,3 +36,30 @@ function renderColourBox(currentProperty, otherProperty) {
 
 renderColourBox("primary", "secondary")
 renderColourBox("secondary", "primary")
+
+let colourMode = id("colourMode")
+colourMode.value = "dark"
+const insults = [
+    "no",
+    "Because you exist, along with Dinosaurs",
+    "Because you exist, along with Unicorns",
+    "Because you exist, along with Fairies",
+    "FLASHBANG!",
+    "Let me save you some battery",
+    "ew no",
+    "Allow me to introduce you to dark mode",
+    "Come to the Dark Side, we have Dungeons and Dashboard",
+    "You cannot be serious",
+    "What if... you didn't?",
+    "Try Sunlight First",
+    "EA wants me to charge you $9.99 for that",
+    "Dark Mode was season 1, but Netflix cancelled anything after that",
+    "I will delete system32",
+    "I will install Linux on here"
+]
+colourMode.addEventListener("change", function() {
+    if (this.value === "light") {
+        this.value = "dark"
+        popup(insults[roll(insults.length) - 1])
+    }
+})

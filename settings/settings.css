@@ -51,3 +51,19 @@
 .colourScroll .selected {
     opacity: 30%;
 }
+
+.dropdownBox {
+    background-color: var(--foreground);
+    padding: 1em;
+    height: fit-content;
+    text-align: center;
+}
+
+.dropdownBox > h3 {
+    margin: 0
+}
+
+.dropdownBox select {
+    width: 100%;
+    margin-top: .5em
+}
