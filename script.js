@@ -562,7 +562,7 @@ export function overlay(closeEvent=function() {}, closeable=true) {
 
 Object.prototype.homebrew = function(dataKey) {
     let importData = localStorage.get("Import")
-    if (importData) {
+    if (importData && importData[dataKey]) {
         let specificData = importData[dataKey]
         Object.entries(specificData).forEach(([key, value]) => {
             this[key] = value
