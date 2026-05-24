@@ -1,55 +1,3 @@
-import spellData from "./Data/spells.json" with { type: "json" }
-spellData.homebrew("Spells")
-
-/**
- * @param {string} query
- * @param {string[]} sources
- * @param {string[]} schools
- * @param {string[]} classes
- * @param {number} minLevel
- * @param {number} maxLevel
- */
-export function filterSpells(query, sources, schools, classes, minLevel=0, maxLevel=9) {
-    let filteredData = structuredClone(spellData)
-    Object.entries(filteredData).forEach(([spellName, spellInfo]) => {
-        if (query) {
-            if (!spellName.toLowerCase().includes(query)) {
-                delete filteredData[spellName];
-                return
-            }
-        }
-        if (sources) {
-            if (!sources.includes(spellInfo["Source"].toLowerCase())) {
-                delete filteredData[spellName];
-                return
-            }
-        }
-        if (!((minLevel <= spellInfo["Level"]) && (spellInfo["Level"] <= maxLevel))) {
-            delete filteredData[spellName];
-            return
-        }
-        if (schools) {
-            if (!schools.includes(spellInfo["School"].toLowerCase())) {
-                delete filteredData[spellName];
-                return
-            }
-        }
-        if (classes) {
-            let validClass = false
-            for (let i = 0; i < spellInfo["Classes"].length; i++) {
-                if (classes.includes(spellInfo["Classes"][i].toLowerCase())) {
-                    validClass = true
-                }
-            }
-            if (!validClass) {
-                delete filteredData[spellName];
-            }
-        }
-    })
-    return filteredData
-}
-
-
 class LogicError extends Error {
   constructor(message) {
     super(message);
@@ -619,4 +567,57 @@ Object.prototype.homebrew = function(dataKey) {
             this[key] = value
         })
     }
+}
+
+// Spell Sorting
+
+import spellData from "./Data/spells.json" with { type: "json" }
+spellData.homebrew("Spells")
+
+/**
+ * @param {string} query
+ * @param {string[]} sources
+ * @param {string[]} schools
+ * @param {string[]} classes
+ * @param {number} minLevel
+ * @param {number} maxLevel
+ */
+export function filterSpells(query, sources, schools, classes, minLevel=0, maxLevel=9) {
+    let filteredData = structuredClone(spellData)
+    Object.entries(filteredData).forEach(([spellName, spellInfo]) => {
+        if (query) {
+            if (!spellName.toLowerCase().includes(query)) {
+                delete filteredData[spellName];
+                return
+            }
+        }
+        if (sources) {
+            if (!sources.includes(spellInfo["Source"].toLowerCase())) {
+                delete filteredData[spellName];
+                return
+            }
+        }
+        if (!((minLevel <= spellInfo["Level"]) && (spellInfo["Level"] <= maxLevel))) {
+            delete filteredData[spellName];
+            return
+        }
+        if (schools) {
+            if (!schools.includes(spellInfo["School"].toLowerCase())) {
+                delete filteredData[spellName];
+                return
+            }
+        }
+        if (classes) {
+            let validClass = false
+            for (let i = 0; i < spellInfo["Classes"].length; i++) {
+                if (classes.includes(spellInfo["Classes"][i].toLowerCase())) {
+                    validClass = true
+                }
+            }
+            if (!validClass) {
+                delete filteredData[spellName];
+            }
+        }
+    })
+    return filteredData
 }
