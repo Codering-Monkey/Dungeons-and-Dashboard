@@ -519,7 +519,7 @@ async function developData() {
                     } else if (amount === "lvl") {
                         amount = parseInt(player["Level"])
                     }
-                    amount = forceArray(amount)
+                    amount = forceArray(amount)[player["Level"] - 1]
                     let increasedStat = value["Bonus"][i]["Stat"]
                     if (Array.isArray(increasedStat)) {
                         if (key in player["Choices"] && player["Choices"][key]["Bonus"] && player["Choices"][key]["Bonus"][i]) {
