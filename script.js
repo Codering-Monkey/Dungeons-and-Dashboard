@@ -301,6 +301,14 @@ Array.prototype.sum = function() {
     return total
 }
 
+Array.prototype.toLowerCase = function() {
+    let final = []
+    for (let i = 0; i < this.length; i++) {
+        final.push(this[i].toLowerCase())
+    }
+    return final
+}
+
 /**
  * Returns the Object with its values as keys and keys as values
  * @returns {{}}
