@@ -748,6 +748,9 @@ async function developData() {
     if (player["Current Health"] > player["Max Health"]) {
         player["Current Health"] = player["Max Health"]
     }
+    if (player["Hit Dice"] > player["Level"]) {
+        player["Hit Dice"] = player["Level"]
+    }
     player["Saves"] = classes[player["Class"]]["Saves"]
     player["Attacks"] = forceArray(classes[player["Class"]]["Attacks"])[player["Level"] - 1]
     player["Speed"] = species[player["Species"]]["Speed"]
