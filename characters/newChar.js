@@ -354,8 +354,11 @@ function selectEquip() {
     let height = Math.max(backgroundData.length, classData.length)
     parent.style.setProperty("--height", height)
 
+    let boxes = {}
+
     function loadEquip(title, dataSet, shorthand) {
         parent.createElement("div", "header").textContent = title
+        boxes[shorthand] = []
         for (let i = 0; i < height; i++) {
             if (i < dataSet.length) {
                 let equipElement = parent.createElement("ul")
@@ -363,13 +366,13 @@ function selectEquip() {
                 if (sessionStorage.get(shorthand) && sessionStorage.get(shorthand) === String(i)) {
                     equipElement.classList.add("active")
                 }
+                boxes[shorthand].push(equipElement)
                 equipElement.addEventListener("click", function () {
-                    let allEquipElements = document.getElementsByTagName("UL")
-                    for (let j = 0; j < allEquipElements.length; j++) {
-                        allEquipElements[j].classList.remove("active")
-                        this.classList.add("active")
-                        sessionStorage.set(shorthand, i)
+                    for (let j = 0; j < boxes[shorthand].length; j++) {
+                        boxes[shorthand][j].classList.remove("active")
                     }
+                    this.classList.add("active")
+                    sessionStorage.set(shorthand, String(i))
                 })
             } else {
                 parent.createElement("div", )
@@ -378,7 +381,7 @@ function selectEquip() {
     }
 
     loadEquip("Background Equipment", backgroundData, "BackEquip")
-    loadEquip("Class Equipment", classData, "BackEquip")
+    loadEquip("Class Equipment", classData, "ClassEquip")
 }
 
 function selectName() {
