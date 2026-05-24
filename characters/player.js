@@ -1445,8 +1445,9 @@ async function render(playerData, initial=false) {
 
                 let highestSlot = 0
                 let smallestSlot = 9
-                for (let i = 1; i < playerData["SpellSlots"].length + 1; i++) {
-                    if (playerData["SpellSlots"][i - 1] !== 0) {
+                let slots = [1, ...playerData["SpellSlots"]]
+                for (let i = 0; i < slots.length + 1; i++) {
+                    if (slots[i - 1] !== 0) {
                         if (i > highestSlot) {
                             highestSlot = i
                         }
