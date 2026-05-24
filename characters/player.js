@@ -579,10 +579,16 @@ async function developData() {
                 player["Choices"][key] = {}
                 if ("Prof" in value) {
                     let profChoices = []
+                    let expChoices = []
                     for (let i = 0; i < value["Prof"].length; i++) {
-                        profChoices.pushAll(await proficiencyChoose(value["Prof"][i], player["Prof"]))
+                        if (value["Prof"][i]["Type"] === "Exp") {
+                            expChoices.pushAll(await proficiencyChoose(value["Prof"][i], player["Prof"]))
+                        } else {
+                            profChoices.pushAll(await proficiencyChoose(value["Prof"][i], player["Prof"]))
+                        }
                     }
                     player["Choices"][key]["Prof"] = profChoices
+                    player["Exp"].pushAll(expChoices)
                     player["Prof"].pushAll(profChoices)
                 }
                 if ("Feat" in value) {
