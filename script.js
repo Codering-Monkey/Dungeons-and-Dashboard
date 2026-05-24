@@ -226,6 +226,14 @@ HTMLElement.prototype.createElement = function(tag, classList="") {
     return element
 }
 
+HTMLTableElement.prototype.columnWidth = function(...widths) {
+    let columnGroup = document.createElement("colgroup");
+    for (let i = 0; i < widths.length; i++) {
+        columnGroup.createElement("col").width = widths[i]
+    }
+    this.insertBefore(columnGroup, this.firstChild)
+}
+
 /**
  * Fuses an Array into a string, with {gap} between them
  * @param {string} gap
