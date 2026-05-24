@@ -123,7 +123,46 @@
 			}
 		}
 	},
-	"Bard": {},
+	"Bard": {
+		"Ability": ["Cha"],
+		"Dice": 8,
+		"Improvements": [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+		"Saves": ["Dex", "Cha"],
+		"Prof": [{
+			"Amount": 3,
+			"Type": "Prof",
+			"Catagory": "Skill"
+		}, {
+			"Amount": 3,
+			"Type": "Prof",
+			"Catagory": "Musical Instruments"
+		}],
+		"Armour": [true, false, false, false],
+		"Weapons": [true, false, []],
+		"Equipment": [
+			{
+				"Leather Armour": 1,
+				"Dagger": 2,
+				"Musical Instrument": 1,
+				"Entertainer's Pack": 1,
+				"GP": 19
+			},
+			{
+				"GP": 90
+			}
+		],
+		"Attacks": 1,
+		"Spellcasting": {
+			"CastTier": 1,
+			"Stat": "Cha",
+			"Cantrips": [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+			"Known": [4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 16, 17, 17, 18, 18, 19, 20, 21, 22],
+			"SpellList": [["Bard"], ["Bard"], ["Bard"], ["Bard"], ["Bard"], ["Bard"], ["Bard"], ["Bard"], ["Bard"], ["Bard", "Cleric", "Druid", "Wizard"], ["Bard", "Cleric", "Druid", "Wizard"], ["Bard", "Cleric", "Druid", "Wizard"], ["Bard", "Cleric", "Druid", "Wizard"], ["Bard", "Cleric", "Druid", "Wizard"], ["Bard", "Cleric", "Druid", "Wizard"], ["Bard", "Cleric", "Druid", "Wizard"], ["Bard", "Cleric", "Druid", "Wizard"], ["Bard", "Cleric", "Druid", "Wizard"], ["Bard", "Cleric", "Druid", "Wizard"], ["Bard", "Cleric", "Druid", "Wizard"]],
+			"Learning": "level up",
+			"Recovery": "LR"
+		},
+		"Features": {}
+	},
 	"Cleric": {},
 	"Druid": {},
 	"Fighter": {
@@ -266,7 +305,88 @@
 	},
 	"Paladin": {},
 	"Ranger": {},
-	"Rogue": {},
+	"Rogue": {
+		"Ability": ["Dex"],
+		"Dice": 8,
+		"Improvements": [0, 0, 0, 1, 1, 1, 1, 2, 2, 3, 3, 4, 4, 4, 4, 5, 5, 5, 6, 6],
+		"Saves": ["Dex", "Int"],
+		"Prof": [{
+			"Amount": 4,
+			"Type": "Prof",
+			"Choices": ["Acrobatics", "Athletics", "Deception", "Investigation", "Perception", "Persuasion", "Sleight of Hand", "Stealth"]
+		}, {
+			"Amount": 1,
+			"Type": "Prof",
+			"Choices": ["Thieves' Tools"]
+		}],
+		"Armour": [true, false, false, false],
+		"Weapons": [true, false, ["Light"]],
+		"Attacks": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		"Equipment": [
+			{
+				"Leather Armour": 1,
+				"Dagger": 2,
+				"Shortsword": 1,
+				"Shortbow": 1,
+				"Arrow (Quiver of 20)": 20,
+				"Quiver": 1,
+				"Thieves' Tools": 1,
+				"Burglar's Pack": 1,
+				"GP": 8
+			},
+			{
+				"GP": 100
+			}
+		],
+		"Features": {
+			"Expertise #1": {
+				"Level": 1,
+				"Description": "You gain Expertise in two of your skill proficiencies of your choice. Sleight of Hand and Stealth are recommended if you have proficiency in them. At Rogue level 6, you gain Expertise in two more of your skill proficiencies of your choice.",
+				"Prof": [{
+					"Amount": 2,
+					"Catagory": "Skill",
+					"Type": "Exp"
+				}]
+			},
+			"Expertise #2": {
+				"Level": 6,
+				"Description": "You gain Expertise in two of your skill proficiencies of your choice. Sleight of Hand and Stealth are recommended if you have proficiency in them. At Rogue level 6, you gain Expertise in two more of your skill proficiencies of your choice.",
+				"Prof": [{
+					"Amount": 2,
+					"Catagory": "Skill",
+					"Type": "Exp"
+				}]
+			},
+			"Sneak Attack": {
+				"Level": 1,
+				"Description": "You know how to strike subtly and exploit a foe’s distraction. Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack roll if you have Advantage on the roll and the attack uses a Finesse or a Ranged weapon. The extra damage’s type is the same as the weapon’s type. You don’t need Advantage on the attack roll if at least one of your allies is within 5 feet of the target, the ally doesn’t have the Incapacitated condition, and you don’t have Disadvantage on the attack roll. The extra damage increases as you gain Rogue levels, as shown in the Sneak Attack column of the Rogue Features table.",
+				"Action": [{
+					"Type": "Other",
+					"Name": "Sneak Attack (${['1d6', '1d6', '2d6', '2d6', '3d6', '3d6', '4d6', '4d6', '5d6', '5d6', '6d6', '6d6', '7d6', '7d6', '8d6', '8d6', '9d6', '9d6', '10d6', '10d6'][level]})"
+				}]
+			},
+			"Thieves' Cant": {
+				"Level": 1,
+				"Description": "You picked up various languages in the communities where you plied your roguish talents. You know Thieves’ Cant and one other language of your choice, which you choose from the language tables in “Character Creation.”",
+				"Prof": [{
+					"Amount": 1,
+					"Type": "Prof",
+					"Choices": ["Thieves' Cant"]
+				}, {
+					"Amount": 1,
+					"Type": "Prof",
+					"Catagory": "Language"
+				}]
+			},
+			"Weapon Mastery": {
+				"Level": 1,
+				"Description": "Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Daggers and Shortbows.",
+				"Mastery": 2
+			}
+
+		}
+
+	},
 	"Sorcerer": {},
 	"Warlock": {},
 	"Wizard": {}
