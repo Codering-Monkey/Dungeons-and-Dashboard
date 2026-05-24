@@ -40,6 +40,13 @@ HTMLInputElement.prototype.buttons = function() {
         } else {
             throw new LogicError("Please Append this Object prior to calling .buttons()")
         }
+        inputThis.addEventListener("change", function() {
+            if (this.min && (parseInt(this.value) < parseInt(this.min))) {
+                this.value = this.min
+            } else if (this.max && (parseInt(this.value) > parseInt(this.max))) {
+                this.value = this.max
+            }
+        })
         let subtract = document.createElement("button")
         container.appendChild(subtract)
         subtract.textContent = "-"
