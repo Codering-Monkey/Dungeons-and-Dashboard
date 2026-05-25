@@ -170,10 +170,24 @@
 		"Choice": {
 			"Magic Initiate (Cleric) [Wisdom]": {
 				"Description": "Wise i am",
-				"Prof": [{
-					"Type": "Prof",
+				"Spells": [{
+					"Amount": 2,
+					"Min": 0,
+					"Max": 0,
+					"Class": ["Cleric"],
+					"Ability": "Wis",
+					"Identifier": "Magic Initiate (Cleric) Cantrips"
+				}, {
 					"Amount": 1,
-					"Catagory": "Skill"
+					"Min": 1,
+					"Max": 1,
+					"Class": ["Cleric"],
+					"Ability": "Wis",
+					"Limited": {
+						"Usages": 1,
+						"LR": 1
+					},
+					"Identifier": "Magic Initiate (Cleric) Level 1 Spell"
 				}]
 			},
 			"Magic Initiate (Cleric) [Intelligence]": {},

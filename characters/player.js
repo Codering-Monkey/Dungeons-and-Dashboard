@@ -607,6 +607,7 @@ async function developData() {
     } else {
         player["SpellSlots"] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     }
+    player["Spells"] = {}
     let basePlayer = localStorage.get("Characters")
     basePlayer[getQuery("Char")]["Resources"] = player["Resources"]
     basePlayer[getQuery("Char")]["Spellcaster"] = player["Spellcaster"]
@@ -709,6 +710,28 @@ async function developData() {
             }
             if ("Weak" in value) {
                 player["Weak"].pushAll(value["Weak"])
+            }
+            if ("Spells" in value) {
+                player["Spells"][key] = (player["Spells"][key] || [])
+                for (let i = 0; i < value["Spells"].length; i++) {
+                    let identifier = value["Spells"][i]["Identifier"]
+                    player["Spells"][key].push(value["Spells"][i])
+                    if ("Limited" in value["Spells"][i]) {
+                        let spellLimit = value["Spells"][i]["Limited"]
+                        if (!(identifier in player["Resources"])) {
+                            player["Resources"][identifier] = {"Current": forceArray(spellLimit["Usages"])[player["Level"] - 1], "Max": forceArray(spellLimit["Usages"])[player["Level"] - 1], "LR": (spellLimit["LR"] || 0), "SR": (spellLimit["SR"] || 0)}
+                        } else if (player["Resources"][identifier]["Max"] < forceArray(spellLimit["Usages"])[player["Level"] - 1]) {
+                            let difference = forceArray(spellLimit["Usages"])[player["Level"] - 1] - player["Resources"][identifier]["Max"]
+                            player["Resources"][identifier]["Max"] += difference
+                            player["Resources"][identifier]["Current"] += difference
+                        } else if (player["Resources"][identifier]["Max"] > forceArray(spellLimit["Usages"])[player["Level"] - 1]) {
+                            player["Resources"][identifier]["Max"] = forceArray(spellLimit["Usages"])[player["Level"] - 1]
+                            if (player["Resources"][identifier]["Current"] > player["Resources"][identifier]["Max"]) {
+                                player["Resources"][identifier]["Current"] = player["Resources"][identifier]["Max"]
+                            }
+                        }
+                    }
+                }
             }
             if (key in player["Choices"]) {
                 if ("Prof" in player["Choices"][key]) {
