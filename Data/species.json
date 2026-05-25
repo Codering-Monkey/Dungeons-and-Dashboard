@@ -32,7 +32,283 @@
 		}
 	},
 	"Dragonborn": {
-		"NameSet": "h"
+		"Speed": 30,
+		"Size": ["Medium"],
+		"NameSet": "h",
+		"Type": "Humanoid",
+		"Features": {
+			"Ancestry": {
+				"Description": "Your lineage stems from a dragon progenitor. Choose the kind of dragon from the Draconic Ancestors table. Your choice affects your Breath Weapon and Damage Resistance traits as well as your appearance.",
+				"Choice": {
+					"Black Dragonborn": {
+						"Resist": ["Acid"],
+						"Description": "Acid Resist / Breath Weapon",
+						"Action": [{
+							"Type": "Action",
+							"Name": "Breath Weapon",
+							"Usages": "pb",
+							"LR": -1
+						}],
+						"Weapon": [{
+							"Name": "Breath Weapon (Acid)",
+							"WeaponData": {
+								"Tier": "Other",
+								"Type": "Other",
+								"DC": "8+Prof+Con",
+								"Dice": [[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4], 10],
+								"Properties": ["Con Save", "15ft Cone / 30ft * 5ft Line"],
+								"Mastery": "N/A",
+								"Weight": 0,
+								"Cost": 0,
+								"Damage": "Acid",
+								"FlatDamage": true
+							}
+						}]
+					},
+					"Blue Dragonborn": {
+						"Resist": ["Lightning"],
+						"Description": "Lightning Resist / Breath Weapon",
+						"Action": [{
+							"Type": "Action",
+							"Name": "Breath Weapon",
+							"Usages": "pb",
+							"LR": -1
+						}],
+						"Weapon": [{
+							"Name": "Breath Weapon (Lightning)",
+							"WeaponData": {
+								"Tier": "Other",
+								"Type": "Other",
+								"DC": "8+Prof+Con",
+								"Dice": [[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4], 10],
+								"Properties": ["Con Save", "15ft Cone / 30ft * 5ft Line"],
+								"Mastery": "N/A",
+								"Weight": 0,
+								"Cost": 0,
+								"Damage": "Lightning",
+								"FlatDamage": true
+							}
+						}]
+					},
+					"Brass Dragonborn": {
+						"Resist": ["Fire"],
+						"Description": "Fire Resist / Breath Weapon",
+						"Action": [{
+							"Type": "Action",
+							"Name": "Breath Weapon",
+							"Usages": "pb",
+							"LR": -1
+						}],
+						"Weapon": [{
+							"Name": "Breath Weapon (Fire)",
+							"WeaponData": {
+								"Tier": "Other",
+								"Type": "Other",
+								"DC": "8+Prof+Con",
+								"Dice": [[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4], 10],
+								"Properties": ["Con Save", "15ft Cone / 30ft * 5ft Line"],
+								"Mastery": "N/A",
+								"Weight": 0,
+								"Cost": 0,
+								"Damage": "Fire",
+								"FlatDamage": true
+							}
+						}]
+					},
+					"Bronze Dragonborn": {
+						"Resist": ["Lightning"],
+						"Description": "Lightning Resist / Breath Weapon",
+						"Action": [{
+							"Type": "Action",
+							"Name": "Breath Weapon",
+							"Usages": "pb",
+							"LR": -1
+						}],
+						"Weapon": [{
+							"Name": "Breath Weapon (Lightning)",
+							"WeaponData": {
+								"Tier": "Other",
+								"Type": "Other",
+								"DC": "8+Prof+Con",
+								"Dice": [[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4], 10],
+								"Properties": ["Con Save", "15ft Cone / 30ft * 5ft Line"],
+								"Mastery": "N/A",
+								"Weight": 0,
+								"Cost": 0,
+								"Damage": "Lightning",
+								"FlatDamage": true
+							}
+						}]
+					},
+					"Copper Dragonborn": {
+						"Resist": ["Acid"],
+						"Description": "Acid Resist / Breath Weapon",
+						"Action": [{
+							"Type": "Action",
+							"Name": "Breath Weapon",
+							"Usages": "pb",
+							"LR": -1
+						}],
+						"Weapon": [{
+							"Name": "Breath Weapon (Acid)",
+							"WeaponData": {
+								"Tier": "Other",
+								"Type": "Other",
+								"DC": "8+Prof+Con",
+								"Dice": [[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4], 10],
+								"Properties": ["Con Save", "15ft Cone / 30ft * 5ft Line"],
+								"Mastery": "N/A",
+								"Weight": 0,
+								"Cost": 0,
+								"Damage": "Acid",
+								"FlatDamage": true
+							}
+						}]
+					},
+					"Gold Dragonborn": {
+						"Resist": ["Fire"],
+						"Description": "Fire Resist / Breath Weapon",
+						"Action": [{
+							"Type": "Action",
+							"Name": "Breath Weapon",
+							"Usages": "pb",
+							"LR": -1
+						}],
+						"Weapon": [{
+							"Name": "Breath Weapon (Fire)",
+							"WeaponData": {
+								"Tier": "Other",
+								"Type": "Other",
+								"DC": "8+Prof+Con",
+								"Dice": [[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4], 10],
+								"Properties": ["Con Save", "15ft Cone / 30ft * 5ft Line"],
+								"Mastery": "N/A",
+								"Weight": 0,
+								"Cost": 0,
+								"Damage": "Fire",
+								"FlatDamage": true
+							}
+						}]
+					},
+					"Green Dragonborn": {
+						"Resist": ["Poison"],
+						"Description": "Poison Resist / Breath Weapon",
+						"Action": [{
+							"Type": "Action",
+							"Name": "Breath Weapon",
+							"Usages": "pb",
+							"LR": -1
+						}],
+						"Weapon": [{
+							"Name": "Breath Weapon (Poison)",
+							"WeaponData": {
+								"Tier": "Other",
+								"Type": "Other",
+								"DC": "8+Prof+Con",
+								"Dice": [[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4], 10],
+								"Properties": ["Con Save", "15ft Cone / 30ft * 5ft Line"],
+								"Mastery": "N/A",
+								"Weight": 0,
+								"Cost": 0,
+								"Damage": "Poison",
+								"FlatDamage": true
+							}
+						}]
+					},
+					"Red Dragonborn": {
+						"Resist": ["Fire"],
+						"Description": "Fire Resist / Breath Weapon",
+						"Action": [{
+							"Type": "Action",
+							"Name": "Breath Weapon",
+							"Usages": "pb",
+							"LR": -1
+						}],
+						"Weapon": [{
+							"Name": "Breath Weapon (Fire)",
+							"WeaponData": {
+								"Tier": "Other",
+								"Type": "Other",
+								"DC": "8+Prof+Con",
+								"Dice": [[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4], 10],
+								"Properties": ["Con Save", "15ft Cone / 30ft * 5ft Line"],
+								"Mastery": "N/A",
+								"Weight": 0,
+								"Cost": 0,
+								"Damage": "Fire",
+								"FlatDamage": true
+							}
+						}]
+					},
+					"Silver Dragonborn": {
+						"Resist": ["Cold"],
+						"Description": "Cold Resist / Breath Weapon",
+						"Action": [{
+							"Type": "Action",
+							"Name": "Breath Weapon",
+							"Usages": "pb",
+							"LR": -1
+						}],
+						"Weapon": [{
+							"Name": "Breath Weapon (Cold)",
+							"WeaponData": {
+								"Tier": "Other",
+								"Type": "Other",
+								"DC": "8+Prof+Con",
+								"Dice": [[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4], 10],
+								"Properties": ["Con Save", "15ft Cone / 30ft * 5ft Line"],
+								"Mastery": "N/A",
+								"Weight": 0,
+								"Cost": 0,
+								"Damage": "Cold",
+								"FlatDamage": true
+							}
+						}]
+					},
+					"White Dragonborn": {
+						"Resist": ["Cold"],
+						"Description": "Cold Resist / Breath Weapon",
+						"Action": [{
+							"Type": "Action",
+							"Name": "Breath Weapon",
+							"Usages": "pb",
+							"LR": -1
+						}],
+						"Weapon": [{
+							"Name": "Breath Weapon (Cold)",
+							"WeaponData": {
+								"Tier": "Other",
+								"Type": "Other",
+								"DC": "8+Prof+Con",
+								"Dice": [[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4], 10],
+								"Properties": ["Con Save", "15ft Cone / 30ft * 5ft Line"],
+								"Mastery": "N/A",
+								"Weight": 0,
+								"Cost": 0,
+								"Damage": "Cold",
+								"FlatDamage": true
+							}
+						}]
+					}
+				}
+			},
+			"Darkvision": {
+				"Description": "You have Darkvision with a range of 60 feet.",
+				"Sense": {
+					"Darkvision": 60
+				}
+			},
+			"Draconic Flight": {
+				"Level": 5,
+				"Description": "When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the Incapacitated condition. During that time, you have a Fly Speed equal to your Speed. Your wings appear to be made of the same energy as your Breath Weapon. Once you use this trait, you can’t use it again until you finish a Long Rest.",
+				"Action": [{
+					"Type": "Bonus",
+					"Name": "Draconic Flight",
+					"Usages": 1,
+					"LR": 1
+				}]
+			}
+		}
 	},
 	"Dwarf": {
 		"Speed": 30,
