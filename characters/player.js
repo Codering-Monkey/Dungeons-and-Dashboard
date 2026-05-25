@@ -442,6 +442,47 @@ function masteryChoose(newMasteries, existingMasteries) {
     })
 }
 
+// Feature Choices
+
+function featureChoose(choiceTitle, possibleChoices) {
+    return new Promise((resolve) => {
+        let overlayItem = overlay(function () {
+        }, false)
+        overlayItem.classList.add('featOverlay')
+        overlayItem.createElement("h2").textContent = choiceTitle
+        let choiceScroll = overlayItem.createElement("div", "featScroll")
+        Object.entries(possibleChoices).forEach(([key, value]) => {
+            let choiceItem = choiceScroll.createElement("div")
+            choiceItem.createElement("h3").textContent = key
+            choiceItem.createElement("p").textContent = (value["Description"] || "")
+            choiceItem.addEventListener("click", function() {
+                if (this.classList.contains("selectedFeat")) {
+                    this.classList.remove("selectedFeat")
+                } else {
+                    if (document.getElementsByClassName("selectedFeat")[0]) {
+                        document.getElementsByClassName("selectedFeat")[0].classList.remove("selectedFeat")
+                    }
+                    this.classList.add("selectedFeat")
+                }
+            })
+            choiceItem.addEventListener("dblclick", function() {
+                resolve(this.children[0].textContent)
+                overlayItem.parentElement.remove()
+            })
+        })
+        let finishButton = choiceScroll.createElement("button")
+        finishButton.textContent = "Confirm"
+        finishButton.addEventListener("click", function() {
+            if (document.getElementsByClassName("selectedFeat") && document.getElementsByClassName("selectedFeat")[0]) {
+                resolve(document.getElementsByClassName("selectedFeat")[0].children[0].textContent)
+                overlayItem.parentElement.remove()
+            } else {
+                popup(`Please select a Choice for ${choiceTitle}`)
+            }
+        })
+    })
+}
+
 // Load the Page
 
 async function developData() {
@@ -676,6 +717,9 @@ async function developData() {
                 if ("Feat" in player["Choices"][key]) {
                     player["Feats"].pushAll(player["Choices"][key]["Feat"])
                 }
+                if ("Choice" in player["Choices"][key]) {
+                    await addFeatures(value["Choice"][player["Choices"][key]["Choice"]])
+                }
             } else {
                 player["Choices"][key] = {}
                 if ("Prof" in value) {
@@ -699,6 +743,11 @@ async function developData() {
                     }
                     player["Choices"][key]["Feat"] = featChoices
                     player["Feats"].pushAll(featChoices)
+                }
+                if ("Choice" in value) {
+                    let selectedChoice = await featureChoose(key, value["Choice"])
+                    player["Choices"][key]["Choice"] = selectedChoice
+                    await addFeatures(value["Choice"][selectedChoice])
                 }
             }
         }
