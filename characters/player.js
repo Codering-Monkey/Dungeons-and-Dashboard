@@ -1,4 +1,16 @@
-import {getQuery, id, numSuffix, overlay, popup, roll, setQuery, merge, forceArray, filterSpells} from "../script.js"
+import {
+    getQuery,
+    id,
+    numSuffix,
+    overlay,
+    popup,
+    roll,
+    setQuery,
+    merge,
+    forceArray,
+    filterSpells,
+    forceLevel
+} from "../script.js"
 import weapons from "../Data/weapons.json" with {type:"json"}
 import spells from "../Data/spells.json" with {type:"json"}
 import classes from "../Data/classes.json" with {type:"json"}
