@@ -730,6 +730,9 @@ async function developData() {
                                 player["Resources"][identifier]["Current"] = player["Resources"][identifier]["Max"]
                             }
                         }
+                        let basePlayer = localStorage.get("Characters")
+                        basePlayer[getQuery("Char")]["Resources"] = player["Resources"]
+                        localStorage.set("Characters", basePlayer)
                     }
                 }
             }
