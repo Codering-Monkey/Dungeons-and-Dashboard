@@ -701,8 +701,10 @@ async function developData() {
                         }
                     } else if (increasedStat === "Init") {
                         player["Init"] += amount
-                    } else if (increasedStat === "RangedAttack") {
-                        player["RangedAttack"] += amount
+                    } else if (["RangedAttack", "RangedDamage", "MeleeAttack", "MeleeDamage"].includes(increasedStat)) {
+                        player[increasedStat] += amount
+                    } else if (increasedStat === "Speed") {
+                        player["Speed"] += amount
                     } else if (increasedStat === "hp") {
                         player["Max Health"] += amount
                     }
