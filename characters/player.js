@@ -1375,7 +1375,7 @@ async function render(playerData, initial=false) {
                 weaponLine.appendChild(name)
 
                 let range = document.createElement("td")
-                range.textContent = weaponData["Type"] === "Ranged" ? weaponData["Range"][0] + "ft / " + weaponData["Range"][1] + "ft" : "Melee"
+                range.textContent = weaponData["Type"] === "Ranged" ? weaponData["Range"][0] + "ft / " + weaponData["Range"][1] + "ft" : weaponData["Type"]
                 weaponLine.appendChild(range)
 
                 let hit = document.createElement("td")
