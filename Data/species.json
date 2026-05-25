@@ -745,7 +745,121 @@
 		}
 	},
 	"Gnome": {
-		"NameSet": "d"
+		"Speed": 30,
+		"NameSet": "d",
+		"Size": ["Small"],
+		"Type": "Humanoid",
+		"Features": {
+			"Darkvision": {
+				"Description": "You have Darkvision with a range of 60 feet.",
+				"Sense": {
+					"Darkvision": 60
+				}
+			},
+			"Gnommish Cunning": {
+				"Description": "You have Advantage on Intelligence, Wisdom, and Charisma saving throws"
+			},
+			"Gnomish Lineage": {
+				"Description": "You are part of a lineage that grants you supernatural abilities. Choose one of the following options; whichever one you choose, Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the lineage)",
+				"Choice": {
+					"Forest Gnome": {
+						"Description": "You know the Minor Illusion cantrip. You also always have the Speak with Animals spell prepared. You can cast it without a spell slot a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest. You can also use any spell slots you have to cast the spell.",
+						"Choice": {
+							"Forest Gnome [Intelligence]": {
+								"Description": "Intelligence based spellcasting",
+								"Spells": [{
+									"Amount": 1,
+									"Choices": ["Minor Illusion"],
+									"Ability": "Int",
+									"Identifier": "Forest Gnome spellcasting (Minor Illusion)"
+								}, {
+									"Amount": 1,
+									"Choices": ["Speak with Animals"],
+									"Ability": "Int",
+									"Limited": {
+										"Usages": "pb",
+										"LR": -1
+									},
+									"Identifier": "Forest Gnome spellcasting (Speak with Animals)"
+								}]
+							},
+							"Forest Gnome [Wisdom]": {
+								"Description": "Wisdom based spellcasting",
+								"Spells": [{
+									"Amount": 1,
+									"Choices": ["Minor Illusion"],
+									"Ability": "Wis",
+									"Identifier": "Forest Gnome spellcasting (Minor Illusion)"
+								}, {
+									"Amount": 1,
+									"Choices": ["Speak with Animals"],
+									"Ability": "Wis",
+									"Limited": {
+										"Usages": "pb",
+										"LR": -1
+									},
+									"Identifier": "Forest Gnome spellcasting (Speak with Animals)"
+								}]
+							},
+							"Forest Gnome [Charisma]": {
+								"Description": "Charisma based spellcasting",
+								"Spells": [{
+									"Amount": 1,
+									"Choices": ["Minor Illusion"],
+									"Ability": "Cha",
+									"Identifier": "Forest Gnome spellcasting (Minor Illusion)"
+								}, {
+									"Amount": 1,
+									"Choices": ["Speak with Animals"],
+									"Ability": "Cha",
+									"Limited": {
+										"Usages": "pb",
+										"LR": -1
+									},
+									"Identifier": "Forest Gnome spellcasting (Speak with Animals)"
+								}]
+							}
+						}
+					},
+					"Rock Gnome": {
+						"Description": "You know the Mending and Prestidigitation cantrips. In addition, you can spend 10 minutes casting Prestidigitation to create a Tiny clockwork device (AC 5, 1 HP), such as a toy, fire starter, or music box. When you create the device, you determine its function by choosing one effect from Prestidigitation; the device produces that effect whenever you or another creature takes a Bonus Action to activate it with a touch. If the chosen effect has options within it, you choose one of those options for the device when you create it. For example, if you choose the spell’s ignite-extinguish effect, you determine whether the device ignites or extinguishes fire; the device doesn’t do both. You can have three such devices in existence at a time, and each falls apart 8 hours after its creation or when you dismantle it with a touch as a Utilize action.",
+						"Choices": {
+							"Rock Gnome [Intelligence]": {
+								"Description": "Intelligence based spellcasting",
+								"Spells": [{
+									"Amount": 2,
+									"Choices": ["Mending", "Prestdigitation"],
+									"Ability": "Int",
+									"Identifier": "Rock Gnome spellcasting"
+								}]
+							},
+							"Rock Gnome [Wisdom]": {
+								"Description": "Wisdom based spellcasting",
+								"Spells": [{
+									"Amount": 2,
+									"Choices": ["Mending", "Prestdigitation"],
+									"Ability": "Wis",
+									"Identifier": "Rock Gnome spellcasting"
+								}]
+							},
+							"Rock Gnome [Charisma]": {
+								"Description": "Charisma based spellcasting",
+								"Spells": [{
+									"Amount": 2,
+									"Choices": ["Mending", "Prestdigitation"],
+									"Ability": "Cha",
+									"Identifier": "Rock Gnome spellcasting"
+								}]
+							}
+						},
+						"Action": [{
+							"Type": "Action",
+							"Name": "Create Clockwork Device"
+						}]
+					}
+				}
+			}
+		}
 	},
 	"Goliath": {
 		"NameSet": "d"
