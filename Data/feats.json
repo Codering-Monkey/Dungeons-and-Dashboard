@@ -169,6 +169,7 @@
 		"Description": "You gain the following benefits. Two Cantrips. You learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Intelligence, Wisdom, or Charisma is your spellcasting ability for this feat’s spells (choose when you select this feat). Level 1 Spell. Choose a level 1 spell from the same list you selected for this feat’s cantrips. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have. Spell Change. Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list. Repeatable. You can take this feat more than once, but you must choose a different spell list each time.",
 		"Choice": {
 			"Magic Initiate (Cleric) [Wisdom]": {
+				"Nested": false,
 				"Description": "Wisdom Save / Modifier / Attack Bonus",
 				"Spells": [{
 					"Amount": 2,
@@ -191,6 +192,7 @@
 				}]
 			},
 			"Magic Initiate (Cleric) [Intelligence]": {
+				"Nested": false,
 				"Description": "Intelligence Save / Modifier / Attack Bonus",
 				"Spells": [{
 					"Amount": 2,
@@ -213,6 +215,7 @@
 				}]
 			},
 			"Magic Initiate (Cleric) [Charisma]": {
+				"Nested": false,
 				"Description": "Charisma Save / Modifier / Attack Bonus",
 				"Spells": [{
 					"Amount": 2,
@@ -241,6 +244,7 @@
 		"Description": "You gain the following benefits. Two Cantrips. You learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Intelligence, Wisdom, or Charisma is your spellcasting ability for this feat’s spells (choose when you select this feat). Level 1 Spell. Choose a level 1 spell from the same list you selected for this feat’s cantrips. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have. Spell Change. Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list. Repeatable. You can take this feat more than once, but you must choose a different spell list each time.",
 		"Choice": {
 			"Magic Initiate (Wizard) [Wisdom]": {
+				"Nested": false,
 				"Description": "Wisdom Save / Modifier / Attack Bonus",
 				"Spells": [{
 					"Amount": 2,
@@ -263,6 +267,7 @@
 				}]
 			},
 			"Magic Initiate (Wizard) [Intelligence]": {
+				"Nested": false,
 				"Description": "Intelligence Save / Modifier / Attack Bonus",
 				"Spells": [{
 					"Amount": 2,
@@ -285,6 +290,7 @@
 				}]
 			},
 			"Magic Initiate (Wizard) [Charisma]": {
+				"Nested": false,
 				"Description": "Charisma Save / Modifier / Attack Bonus",
 				"Spells": [{
 					"Amount": 2,
@@ -313,6 +319,7 @@
 		"Description": "You gain the following benefits. Two Cantrips. You learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Intelligence, Wisdom, or Charisma is your spellcasting ability for this feat’s spells (choose when you select this feat). Level 1 Spell. Choose a level 1 spell from the same list you selected for this feat’s cantrips. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have. Spell Change. Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list. Repeatable. You can take this feat more than once, but you must choose a different spell list each time.",
 		"Choice": {
 			"Magic Initiate (Druid) [Wisdom]": {
+				"Nested": false,
 				"Description": "Wisdom Save / Modifier / Attack Bonus",
 				"Spells": [{
 					"Amount": 2,
@@ -335,6 +342,7 @@
 				}]
 			},
 			"Magic Initiate (Druid) [Intelligence]": {
+				"Nested": false,
 				"Description": "Intelligence Save / Modifier / Attack Bonus",
 				"Spells": [{
 					"Amount": 2,
@@ -357,6 +365,7 @@
 				}]
 			},
 			"Magic Initiate (Druid) [Charisma]": {
+				"Nested": false,
 				"Description": "Charisma Save / Modifier / Attack Bonus",
 				"Spells": [{
 					"Amount": 2,

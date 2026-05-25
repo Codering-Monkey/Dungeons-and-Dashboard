@@ -380,6 +380,7 @@
 						},
 						"Choice": {
 							"Drow Spellcasting [Intelligence]": {
+								"Nested": true,
 								"Description": "Intelligence-based Spellcasting",
 								"Drow Cantrip": {
 									"Spells": [{
@@ -417,6 +418,7 @@
 								}
 							},
 							"Drow Spellcasting [Wisdom]": {
+								"Nested": true,
 								"Description": "Wisdom-based Spellcasting",
 								"Drow Cantrip": {
 									"Spells": [{
@@ -454,6 +456,7 @@
 								}
 							},
 							"Drow Spellcasting [Charisma]": {
+								"Nested": true,
 								"Description": "Charisma-based Spellcasting",
 								"Drow Cantrip": {
 									"Spells": [{
@@ -496,6 +499,7 @@
 						"Description": "Any wizard cantrip at level 1, Detect magic at level 3, Misty step at level 5",
 						"Choice": {
 							"High Elf Spellcasting [Intelligence]": {
+								"Nested": true,
 								"Description": "Intelligence-based Spellcasting",
 								"High Elf Cantrip": {
 									"Spells": [{
@@ -534,6 +538,7 @@
 								}
 							},
 							"High Elf Spellcasting [Wisdom]": {
+								"Nested": true,
 								"Description": "Wisdom-based Spellcasting",
 								"High Elf Cantrip": {
 									"Spells": [{
@@ -572,6 +577,7 @@
 								}
 							},
 							"High Elf Spellcasting [Charisma]": {
+								"Nested": true,
 								"Description": "Charisma-based Spellcasting",
 								"High Elf Cantrip": {
 									"Spells": [{
@@ -619,6 +625,7 @@
 						}],
 						"Choice": {
 							"Wood Elf Spellcasting [Intelligence]": {
+								"Nested": true,
 								"Description": "Intelligence-based Spellcasting",
 								"Wood Elf Cantrip": {
 									"Spells": [{
@@ -656,6 +663,7 @@
 								}
 							},
 							"Wood Elf Spellcasting [Wisdom]": {
+								"Nested": true,
 								"Description": "Wisdom-based Spellcasting",
 								"Wood Elf Cantrip": {
 									"Spells": [{
@@ -693,6 +701,7 @@
 								}
 							},
 							"Wood Elf Spellcasting [Charisma]": {
+								"Nested": true,
 								"Description": "Charisma-based Spellcasting",
 								"Wood Elf Cantrip": {
 									"Spells": [{

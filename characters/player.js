@@ -762,8 +762,21 @@ async function developData() {
                     player["Feats"].pushAll(player["Choices"][key]["Feat"])
                 }
                 if ("Choice" in player["Choices"][key]) {
+                    player["Choices"][key]["Choice"] = await featureChoose(key, value["Choice"])
                     let featureFeatures = {}
-                    featureFeatures[player["Choices"][key]["Choice"]] = value["Choice"][player["Choices"][key]["Choice"]]
+                    if (value["Choice"][player["Choices"][key]["Choice"]]["Nested"]) {
+                        featureFeatures = value["Choice"][player["Choices"][key]["Choice"]]
+                        delete featureFeatures["Nested"]
+                        if ("Description" in featureFeatures) {
+                            let desc = featureFeatures["Description"]
+                            delete featureFeatures["Description"]
+                            Object.keys(featureFeatures).forEach((key) => {
+                                featureFeatures[key]["Description"] = desc
+                            })
+                        }
+                    } else {
+                        featureFeatures[player["Choices"][key]["Choice"]] = value["Choice"][player["Choices"][key]["Choice"]]
+                    }
                     await addFeatures(featureFeatures, key)
                 }
             } else {
@@ -793,7 +806,17 @@ async function developData() {
                 if ("Choice" in value) {
                     player["Choices"][key]["Choice"] = await featureChoose(key, value["Choice"])
                     let featureFeatures = {}
-                    featureFeatures[player["Choices"][key]["Choice"]] = value["Choice"][player["Choices"][key]["Choice"]]
+                    if (value["Choice"][player["Choices"][key]["Choice"]]["Nested"]) {
+                        featureFeatures = value["Choice"][player["Choices"][key]["Choice"]]
+                        if ("Description" in featureFeatures) {
+                            Object.keys(featureFeatures).forEach((key) => {
+                                featureFeatures[key]["Description"] = featureFeatures["Description"]
+                            })
+                            delete featureFeatures["Description"]
+                        }
+                    } else {
+                        featureFeatures[player["Choices"][key]["Choice"]] = value["Choice"][player["Choices"][key]["Choice"]]
+                    }
                     await addFeatures(featureFeatures, key)
                 }
             }
