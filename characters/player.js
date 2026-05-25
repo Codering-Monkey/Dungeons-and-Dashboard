@@ -1797,7 +1797,8 @@ async function render(playerData, initial=false) {
                         changeKnown.addEventListener("click", function() {
                             let overlayItem = overlay(async function() {
                                 let oldData = localStorage.get("Characters")
-                                oldData[getQuery("Char")]["Choices"][currentSpell["Identifier"]] = playerData["Choices"]["KnownSpells"][currentSpell["Identifier"]]
+                                oldData[getQuery("Char")]["Choices"]["KnownSpells"] = (oldData[getQuery("Char")]["Choices"]["KnownSpells"] || {})
+                                oldData[getQuery("Char")]["Choices"]["KnownSpells"][currentSpell["Identifier"]] = playerData["Choices"]["KnownSpells"][currentSpell["Identifier"]]
                                 localStorage.set("Characters", oldData)
                                 await render(playerData)
                             })
