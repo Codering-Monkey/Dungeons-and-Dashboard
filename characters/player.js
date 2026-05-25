@@ -1401,13 +1401,13 @@ async function render(playerData, initial=false) {
                 if ("AltDamage" in weaponData) {
                     damage.textContent = weaponData["AltDamage"]
                 } else {
-                    damage.textContent = `${weaponData["Dice"][0] + "d" + weaponData["Dice"][1] + damageBonus.bonus()}${weaponData["Damage"] ? ` (${weaponData["Damage"]})`: ""}`
+                    damage.textContent = `${forceLevel(weaponData["Dice"][0], playerData["Level"]) + "d" + forceLevel(weaponData["Dice"][1], playerData["Level"]) + (damageBonus !== "" ? damageBonus.bonus() : "")}${weaponData["Damage"] ? ` (${weaponData["Damage"]})`: ""}`
                     damage.classList.add("clickable")
                     damage.addEventListener("click", function() {
                         let dice = []
                         let diceString = ""
-                        for (let i = 0; i < weaponData["Dice"][0]; i++) {
-                            dice.push(roll(weaponData["Dice"][1]))
+                        for (let i = 0; i < forceLevel(weaponData["Dice"][0], playerData["Level"]); i++) {
+                            dice.push(roll(forceLevel(weaponData["Dice"][1], playerData["Level"])))
                             diceString += dice[i] + " + "
                         }
                         diceString.slice(0, - 3)
