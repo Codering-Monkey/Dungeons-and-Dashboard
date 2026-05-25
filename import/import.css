@@ -93,3 +93,18 @@
     margin-bottom: 8px;
     max-height: 30vh;
 }
+
+.overlay:has(.importParent) {
+    text-align: center;
+}
+
+.importParent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.importParent > a {
+    width: 15em;
+    text-align: center;
+}

@@ -44,6 +44,7 @@ id("button").addEventListener("click", async function () {
     }
     try {
         Object.entries(newData).forEach(([key, value]) => {
+            currentImport[key] = (currentImport[key] || {})
             Object.entries(newData[key]).forEach(([innerKey, innerValue]) => {
                 currentImport[key][innerKey] = innerValue
             })
@@ -60,7 +61,7 @@ function renderData() {
     data.clear()
     let imports = localStorage.get("Import")
     Object.keys(imports).forEach((key) => {
-        if (imports[key]) {
+        if (imports[key] && Object.keys(imports[key]).length > 0) {
             let tile = document.createElement("div")
             data.appendChild(tile)
             let title = document.createElement("h3")
@@ -88,6 +89,26 @@ function renderData() {
     })
 }
 
-id("guide").addEventListener("click", function () {overlay()})
+id("guide").addEventListener("click", function () {
+    let overlayItem = overlay()
+    overlayItem.createElement("h2").textContent = "How to Import"
+    overlayItem.createElement("p").textContent = "The file structure for this website is loosely based off of MPMB's (More Purple More Better) custom form-fillable character sheets, and much of the data was gathered from free to use online sources (so that i dont have to manually transcribe it all) as such i have decided to leave links to downlad all my .json files for your own reference/usages"
+    overlayItem.createElement("p").textContent = "In order to import, attach a JSON formatted string / file / link, where each catagory you wish to import into is a separate key"
+    let linkItem = overlayItem.createElement("a")
+    linkItem.download = "sampleImport.json"
+    linkItem.href = "sampleImport.json"
+    linkItem.textContent = "Sample Import"
+    overlayItem.break()
+    overlayItem.break()
+    let importParent = overlayItem.createElement("div", "importParent")
+    let importables = ["Armour", "Backgrounds", "Classes", "Colours", "Feats", "Gaming", "Gear", "Instruments", "OtherTools", "Packs", "Premade", "Species", "Spells", "Subclasses", "Tools", "Weapons"]
+    importables.forEach(importable => {
+        let linkItem = importParent.createElement("a")
+        let link = `/Data/${importable.toLowerCase()}.json`
+        linkItem.download = link
+        linkItem.href = link
+        linkItem.textContent = importable
+    })
+})
 
 renderData()
