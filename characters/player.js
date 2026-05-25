@@ -718,7 +718,9 @@ async function developData() {
                     player["Feats"].pushAll(player["Choices"][key]["Feat"])
                 }
                 if ("Choice" in player["Choices"][key]) {
-                    await addFeatures(value["Choice"][player["Choices"][key]["Choice"]])
+                    let featureFeatures = {}
+                    featureFeatures[player["Choices"][key]["Choice"]] = value["Choice"][player["Choices"][key]["Choice"]]
+                    await addFeatures(featureFeatures)
                 }
             } else {
                 player["Choices"][key] = {}
@@ -745,9 +747,10 @@ async function developData() {
                     player["Feats"].pushAll(featChoices)
                 }
                 if ("Choice" in value) {
-                    let selectedChoice = await featureChoose(key, value["Choice"])
-                    player["Choices"][key]["Choice"] = selectedChoice
-                    await addFeatures(value["Choice"][selectedChoice])
+                    player["Choices"][key]["Choice"] = await featureChoose(key, value["Choice"])
+                    let featureFeatures = {}
+                    featureFeatures[player["Choices"][key]["Choice"]] = value["Choice"][player["Choices"][key]["Choice"]]
+                    await addFeatures(featureFeatures)
                 }
             }
         }

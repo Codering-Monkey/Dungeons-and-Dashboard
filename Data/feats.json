@@ -168,9 +168,16 @@
 		"Type": "Origin",
 		"Description": "i am the pope, i speak for god, promote atheism again and i will beat you with a rod",
 		"Choice": {
-			"Spellcasting Ability: Wisdom": {},
-			"Spellcasting Ability: Intelligence": {},
-			"Spellcasting Ability: Charisma": {}
+			"Magic Initiate (Cleric) [Wisdom]": {
+				"Description": "Wise i am",
+				"Prof": [{
+					"Type": "Prof",
+					"Amount": 1,
+					"Catagory": "Skill"
+				}]
+			},
+			"Magic Initiate (Cleric) [Intelligence]": {},
+			"Magic Initiate (Cleric) [Charisma]": {}
 		}
 	},
 	"Great Weapon Fighting": {
