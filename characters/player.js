@@ -625,6 +625,8 @@ async function developData() {
     basePlayer[getQuery("Char")]["Spellcaster"] = player["Spellcaster"]
     localStorage.set("Characters", basePlayer)
 
+    player["Speed"] = species[player["Species"]]["Speed"]
+
     player["Features"] = {}
     async function addFeatures(dataSource, sourceName) {
         player["Features"][sourceName] = {}
@@ -699,12 +701,8 @@ async function developData() {
                         if (player["Stats"][increasedStat] > value["Bonus"][i]["Cap"]) {
                             player["Stats"][increasedStat] = value["Bonus"][i]["Cap"]
                         }
-                    } else if (increasedStat === "Init") {
-                        player["Init"] += amount
-                    } else if (["RangedAttack", "RangedDamage", "MeleeAttack", "MeleeDamage"].includes(increasedStat)) {
+                    } else if (["RangedAttack", "RangedDamage", "MeleeAttack", "MeleeDamage", "Speed", "Init"].includes(increasedStat)) {
                         player[increasedStat] += amount
-                    } else if (increasedStat === "Speed") {
-                        player["Speed"] += amount
                     } else if (increasedStat === "hp") {
                         player["Max Health"] += amount
                     }
@@ -883,7 +881,6 @@ async function developData() {
     }
     player["Saves"] = classes[player["Class"]]["Saves"]
     player["Attacks"] = forceArray(classes[player["Class"]]["Attacks"])[player["Level"] - 1]
-    player["Speed"] = species[player["Species"]]["Speed"]
 
     player["Armour Class"] = 0
     let armourData = player["Armour"][player["EquipArmour"]]
