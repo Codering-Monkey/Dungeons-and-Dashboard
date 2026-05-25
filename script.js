@@ -480,6 +480,10 @@ export function forceArray(baseValue) {
     }
 }
 
+export function forceLevel(baseValue, level) {
+    return forceArray(baseValue)[level - 1]
+}
+
 // Popup
 
 let popupBar = document.createElement("div");
