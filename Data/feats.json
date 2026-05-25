@@ -166,10 +166,10 @@
 	},
 	"Magic Initiate (Cleric)": {
 		"Type": "Origin",
-		"Description": "i am the pope, i speak for god, promote atheism again and i will beat you with a rod",
+		"Description": "You gain the following benefits. Two Cantrips. You learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Intelligence, Wisdom, or Charisma is your spellcasting ability for this feat’s spells (choose when you select this feat). Level 1 Spell. Choose a level 1 spell from the same list you selected for this feat’s cantrips. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have. Spell Change. Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list. Repeatable. You can take this feat more than once, but you must choose a different spell list each time.",
 		"Choice": {
 			"Magic Initiate (Cleric) [Wisdom]": {
-				"Description": "Wise i am",
+				"Description": "Wisdom Save / Modifier / Attack Bonus",
 				"Spells": [{
 					"Amount": 2,
 					"Min": 0,
@@ -190,8 +190,194 @@
 					"Identifier": "Magic Initiate (Cleric) Level 1 Spell"
 				}]
 			},
-			"Magic Initiate (Cleric) [Intelligence]": {},
-			"Magic Initiate (Cleric) [Charisma]": {}
+			"Magic Initiate (Cleric) [Intelligence]": {
+				"Description": "Intelligence Save / Modifier / Attack Bonus",
+				"Spells": [{
+					"Amount": 2,
+					"Min": 0,
+					"Max": 0,
+					"Class": ["Cleric"],
+					"Ability": "Int",
+					"Identifier": "Magic Initiate (Cleric) Cantrips"
+				}, {
+					"Amount": 1,
+					"Min": 1,
+					"Max": 1,
+					"Class": ["Cleric"],
+					"Ability": "Int",
+					"Limited": {
+						"Usages": 1,
+						"LR": 1
+					},
+					"Identifier": "Magic Initiate (Cleric) Level 1 Spell"
+				}]
+			},
+			"Magic Initiate (Cleric) [Charisma]": {
+				"Description": "Charisma Save / Modifier / Attack Bonus",
+				"Spells": [{
+					"Amount": 2,
+					"Min": 0,
+					"Max": 0,
+					"Class": ["Cleric"],
+					"Ability": "Cha",
+					"Identifier": "Magic Initiate (Cleric) Cantrips"
+				}, {
+					"Amount": 1,
+					"Min": 1,
+					"Max": 1,
+					"Class": ["Cleric"],
+					"Ability": "Cha",
+					"Limited": {
+						"Usages": 1,
+						"LR": 1
+					},
+					"Identifier": "Magic Initiate (Cleric) Level 1 Spell"
+				}]
+			}
+		}
+	},
+	"Magic Initiate (Wizard)": {
+		"Type": "Origin",
+		"Description": "You gain the following benefits. Two Cantrips. You learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Intelligence, Wisdom, or Charisma is your spellcasting ability for this feat’s spells (choose when you select this feat). Level 1 Spell. Choose a level 1 spell from the same list you selected for this feat’s cantrips. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have. Spell Change. Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list. Repeatable. You can take this feat more than once, but you must choose a different spell list each time.",
+		"Choice": {
+			"Magic Initiate (Wizard) [Wisdom]": {
+				"Description": "Wisdom Save / Modifier / Attack Bonus",
+				"Spells": [{
+					"Amount": 2,
+					"Min": 0,
+					"Max": 0,
+					"Class": ["Wizard"],
+					"Ability": "Wis",
+					"Identifier": "Magic Initiate (Wizard) Cantrips"
+				}, {
+					"Amount": 1,
+					"Min": 1,
+					"Max": 1,
+					"Class": ["Wizard"],
+					"Ability": "Wis",
+					"Limited": {
+						"Usages": 1,
+						"LR": 1
+					},
+					"Identifier": "Magic Initiate (Wizard) Level 1 Spell"
+				}]
+			},
+			"Magic Initiate (Wizard) [Intelligence]": {
+				"Description": "Intelligence Save / Modifier / Attack Bonus",
+				"Spells": [{
+					"Amount": 2,
+					"Min": 0,
+					"Max": 0,
+					"Class": ["Wizard"],
+					"Ability": "Int",
+					"Identifier": "Magic Initiate (Wizard) Cantrips"
+				}, {
+					"Amount": 1,
+					"Min": 1,
+					"Max": 1,
+					"Class": ["Wizard"],
+					"Ability": "Int",
+					"Limited": {
+						"Usages": 1,
+						"LR": 1
+					},
+					"Identifier": "Magic Initiate (Wizard) Level 1 Spell"
+				}]
+			},
+			"Magic Initiate (Wizard) [Charisma]": {
+				"Description": "Charisma Save / Modifier / Attack Bonus",
+				"Spells": [{
+					"Amount": 2,
+					"Min": 0,
+					"Max": 0,
+					"Class": ["Wizard"],
+					"Ability": "Cha",
+					"Identifier": "Magic Initiate (Wizard) Cantrips"
+				}, {
+					"Amount": 1,
+					"Min": 1,
+					"Max": 1,
+					"Class": ["Wizard"],
+					"Ability": "Cha",
+					"Limited": {
+						"Usages": 1,
+						"LR": 1
+					},
+					"Identifier": "Magic Initiate (Wizard) Level 1 Spell"
+				}]
+			}
+		}
+	},
+	"Magic Initiate (Druid)": {
+		"Type": "Origin",
+		"Description": "You gain the following benefits. Two Cantrips. You learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Intelligence, Wisdom, or Charisma is your spellcasting ability for this feat’s spells (choose when you select this feat). Level 1 Spell. Choose a level 1 spell from the same list you selected for this feat’s cantrips. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have. Spell Change. Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list. Repeatable. You can take this feat more than once, but you must choose a different spell list each time.",
+		"Choice": {
+			"Magic Initiate (Druid) [Wisdom]": {
+				"Description": "Wisdom Save / Modifier / Attack Bonus",
+				"Spells": [{
+					"Amount": 2,
+					"Min": 0,
+					"Max": 0,
+					"Class": ["Druid"],
+					"Ability": "Wis",
+					"Identifier": "Magic Initiate (Druid) Cantrips"
+				}, {
+					"Amount": 1,
+					"Min": 1,
+					"Max": 1,
+					"Class": ["Druid"],
+					"Ability": "Wis",
+					"Limited": {
+						"Usages": 1,
+						"LR": 1
+					},
+					"Identifier": "Magic Initiate (Druid) Level 1 Spell"
+				}]
+			},
+			"Magic Initiate (Druid) [Intelligence]": {
+				"Description": "Intelligence Save / Modifier / Attack Bonus",
+				"Spells": [{
+					"Amount": 2,
+					"Min": 0,
+					"Max": 0,
+					"Class": ["Druid"],
+					"Ability": "Int",
+					"Identifier": "Magic Initiate (Druid) Cantrips"
+				}, {
+					"Amount": 1,
+					"Min": 1,
+					"Max": 1,
+					"Class": ["Druid"],
+					"Ability": "Int",
+					"Limited": {
+						"Usages": 1,
+						"LR": 1
+					},
+					"Identifier": "Magic Initiate (Druid) Level 1 Spell"
+				}]
+			},
+			"Magic Initiate (Druid) [Charisma]": {
+				"Description": "Charisma Save / Modifier / Attack Bonus",
+				"Spells": [{
+					"Amount": 2,
+					"Min": 0,
+					"Max": 0,
+					"Class": ["Druid"],
+					"Ability": "Cha",
+					"Identifier": "Magic Initiate (Druid) Cantrips"
+				}, {
+					"Amount": 1,
+					"Min": 1,
+					"Max": 1,
+					"Class": ["Druid"],
+					"Ability": "Cha",
+					"Limited": {
+						"Usages": 1,
+						"LR": 1
+					},
+					"Identifier": "Magic Initiate (Druid) Level 1 Spell"
+				}]
+			}
 		}
 	},
 	"Great Weapon Fighting": {
