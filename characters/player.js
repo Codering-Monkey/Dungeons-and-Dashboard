@@ -1383,7 +1383,7 @@ async function render(playerData, initial=false) {
                 if ("AltDamage" in weaponData) {
                     damage.textContent = weaponData["AltDamage"]
                 } else {
-                    damage.textContent = weaponData["Dice"][0] + "d" + weaponData["Dice"][1] + damageBonus.bonus()
+                    damage.textContent = `${weaponData["Dice"][0] + "d" + weaponData["Dice"][1] + damageBonus.bonus()}${weaponData["Damage"] ? ` (${weaponData["Damage"]})`: ""}`
                     damage.classList.add("clickable")
                     damage.addEventListener("click", function() {
                         let dice = []
