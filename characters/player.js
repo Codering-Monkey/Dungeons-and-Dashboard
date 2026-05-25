@@ -1738,7 +1738,7 @@ async function render(playerData, initial=false) {
                             let spellRow = spellTable.createElement("tr")
                             let preparedItem = spellRow.createElement("td").createElement("input", spells[spellName]["Level"] !== 0 ? "usable" : "")
                             preparedItem.type = "checkbox"
-                            preparedItem.checked = spells[spellName]["Level"] === 0 ? true : playerData.includes(spellName)
+                            preparedItem.checked = spells[spellName]["Level"] === 0 ? true : playerData["Choices"]["PreparedSpells"][currentSpell["Identifier"]].includes(spellName)
                             preparedItem.addEventListener("change", function() {
                                 if (this.checked) {
                                     preparedSpells += 1
