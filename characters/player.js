@@ -738,7 +738,8 @@ async function developData() {
             }
             if ("Weapon" in value) {
                 for (let i = 0; i < value["Weapon"].length; i++) {
-                    player["Weapons"][value["Weapon"][i]["Name"]] = value["Weapon"][i]["WeaponData"]
+                    player["Weapons"][value["Weapon"][i]["Name"]] = 1
+                    weapons[value["Weapon"][i]["Name"]] = value["Weapon"][i]["WeaponData"]
                 }
             }
             if (key in player["Choices"]) {
