@@ -1662,6 +1662,145 @@ async function render(playerData, initial=false) {
                     })
                 })
             }
+            if (playerData["Spells"] && playerData["Spells"] !== {}) {
+                Object.entries(playerData["Spells"]).forEach(([key, value]) => {
+                    for (let i = 0; i < value.length; i++) {
+                        let currentSpell = value[i]
+                        let spellHeader = actionParent.createElement("div", "spellHeader")
+                        let spellTitle = spellHeader.createElement("h2")
+                        spellTitle.style.gridColumn = "span 3"
+                        spellTitle.textContent = currentSpell["Identifier"]
+                        let modifier = currentSpell["Fixed"] ? currentSpell["Fixed"] : playerData["Stats"][currentSpell["Ability"]].modifier()
+                        let spellAttack = currentSpell["Fixed"] ? modifier : modifier + playerData["Prof Bonus"]
+                        let spellSave = spellAttack + 8
+
+                        spellHeader.createElement("h4").textContent = modifier.symbol()
+                        spellHeader.createElement("h4").textContent = spellAttack.symbol()
+                        spellHeader.createElement("h4").textContent = spellSave
+                        spellHeader.createElement("h6").textContent = "Modifier"
+                        spellHeader.createElement("h6").textContent = "Attack Bonus"
+                        spellHeader.createElement("h6").textContent = "Save DC"
+
+                        if (currentSpell["Limited"]) {
+                            let slotParent = actionParent.createElement("div", "spellSlots")
+                            let checkboxContainer = slotParent.createElement("div")
+                            let resource = playerData["Resources"][currentSpell["Identifier"]]
+                            for (let j = 1; j < resource["Max"] + 1; j++) {
+                                let slot = checkboxContainer.createElement("input", "usable")
+                                slot.type = "checkbox"
+                                if (j <= resource["Current"]) {
+                                    slot.checked = true
+                                }
+                                slot.addEventListener("change", function() {
+                                    if (this.checked) {
+                                        resource["Current"] += 1
+                                    } else {
+                                        resource["Current"] -= 1
+                                    }
+                                    let oldData = localStorage.get("Characters")
+                                    oldData[getQuery("Char")]["Resources"] = playerData["Resources"]
+                                    localStorage.set("Characters", oldData)
+                                })
+                            }
+                            slotParent.createElement("h6").textContent = `Usages`
+                        }
+
+                        let spellTable = actionParent.createElement("table", "spellTable")
+                        spellTable.columnWidth("10%", "10%", "80%")
+                        let titleRow = spellTable.createElement("tr")
+                        titleRow.createElement("th").textContent = "Prepared"
+                        titleRow.createElement("th").textContent = "Level"
+                        titleRow.createElement("th").textContent = "Name"
+
+                        let preparedSpells = 0
+                        playerData["Choices"]["KnownSpells"] = (playerData["Choices"]["KnownSpells"] || {})
+                        playerData["Choices"]["PreparedSpells"] = (playerData["Choices"]["PreparedSpells"] || {})
+                        playerData["Choices"]["KnownSpells"][currentSpell["Identifier"]] = (playerData["Choices"]["KnownSpells"][currentSpell["Identifier"]] || [])
+                        playerData["Choices"]["PreparedSpells"][currentSpell["Identifier"]] = (playerData["Choices"]["PreparedSpells"][currentSpell["Identifier"]] || [])
+                        playerData["Choices"]["KnownSpells"][currentSpell["Identifier"]].forEach((spellName) => {
+                            let spellRow = spellTable.createElement("tr")
+                            let preparedItem = spellRow.createElement("td").createElement("input", spells[spellName]["Level"] !== 0 ? "usable" : "")
+                            preparedItem.type = "checkbox"
+                            preparedItem.checked = spells[spellName]["Level"] === 0 ? true : playerData.includes(spellName)
+                            preparedItem.addEventListener("change", function() {
+                                if (this.checked) {
+                                    preparedSpells += 1
+                                    playerData.push(spellName)
+                                } else {
+                                    preparedSpells -= 1
+                                    playerData.pull(spellName)
+                                }
+                                calculateKnownSpells()
+                            })
+                            spellRow.createElement("td").textContent = spells[spellName]["Level"]
+                            spellRow.createElement("td").textContent = spellName
+                            if (preparedItem.checked) {
+                                preparedSpells += 1
+                            }
+                        })
+
+                        let preparedSpellsElement = spellHeader.createElement("h4")
+                        function calculateKnownSpells() {
+                            preparedSpellsElement.textContent = `${preparedSpells} / ${currentSpell["Amount"]}`
+                        }
+                        calculateKnownSpells()
+                        let changeKnown = spellHeader.createElement("button", "changeKnownSpells")
+                        spellHeader.blank()
+                        spellHeader.createElement("h6").textContent = "Spells Prepared"
+                        changeKnown.textContent = "Learn Spells"
+                        changeKnown.addEventListener("click", function() {
+                            let overlayItem = overlay(async function() {
+                                let oldData = localStorage.get("Characters")
+                                oldData[getQuery("Char")]["KnownSpells"] = playerData["KnownSpells"]
+                                localStorage.set("Characters", oldData)
+                                await render(playerData)
+                            })
+                            overlayItem.createElement("h1").textContent = `Learn ${currentSpell["Amount"]} Spells`
+                            let allSpells = overlayItem.createElement("table", "allSpells");
+                            allSpells.columnWidth("20%", "40%", "20%")
+                            let validSpells = {}
+                            if (currentSpell["Class"]) {
+                                validSpells = filterSpells("", null, null, forceArray(currentSpell["Class"])[playerData["Level"] - 1].toLowerCase(), currentSpell["Min"], currentSpell["Max"])
+                            } else {
+                                for (let i = 0; i < currentSpell["Choices"].length; i++) {
+                                    validSpells[currentSpell["Choices"][i]] = spells[currentSpell["Choices"][i]]
+                                }
+                            }
+                            let currentLevel = -1
+                            Object.entries(validSpells).sort((a, b) => a[1]["Level"] - b[1]["Level"]).forEach(([spellName, spellData]) => {
+                                if (spellData["Level"] === 0 || playerData["SpellSlots"][spellData["Level"] - 1] !== 0) {
+                                    if (spellData["Level"] > currentLevel) {
+                                        currentLevel = spellData["Level"]
+                                        let spellTitle = allSpells.createElement("tr").createElement("th")
+                                        spellTitle.setAttribute("colspan", "3")
+                                        spellTitle.textContent = currentLevel === 0 ? "Cantrip" : `Level ${currentLevel}`
+                                        let headerRow = allSpells.createElement("tr")
+                                        headerRow.createElement("th").textContent = "School"
+                                        headerRow.createElement("th").textContent = "Name"
+                                        headerRow.createElement("th").textContent = "Learn"
+                                    }
+                                    let currentRow = allSpells.createElement("tr", playerData["KnownSpells"].includes(spellName) ? "learnt" : "")
+                                    currentRow.createElement("td").textContent = spellData["School"]
+                                    currentRow.createElement("td").textContent = spellName
+                                    let learnButton = currentRow.createElement("td").createElement("button")
+                                    learnButton.textContent = playerData["KnownSpells"].includes(spellName) ? "Forget" : "Learn"
+                                    learnButton.addEventListener("click", function() {
+                                        if (this.textContent === "Forget") {
+                                            this.textContent = "Learn"
+                                            playerData["Choices"]["KnownSpells"][currentSpell["Identifier"]].pull(spellName)
+                                            currentRow.classList.remove("learnt")
+                                        } else {
+                                            this.textContent = "Forget"
+                                            playerData["Choices"]["KnownSpells"][currentSpell["Identifier"]].push(spellName)
+                                            currentRow.classList.add("learnt")
+                                        }
+                                    })
+                                }
+                            })
+                        })
+                    }
+                })
+            }
         } else if (selectedAction === "inv") {
             let armourLabel = document.createElement("label")
             actionParent.appendChild(armourLabel)
