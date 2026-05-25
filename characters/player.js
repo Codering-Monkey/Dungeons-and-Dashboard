@@ -894,6 +894,7 @@ async function render(playerData, initial=false) {
     if (!playerData) {
         return
     }
+    console.log(playerData)
     // Generate Static Data
     id("pfp").src = (playerData["Pfp"] || "../Images/players/blank.png")
     id("name").textContent = playerData["Name"]
