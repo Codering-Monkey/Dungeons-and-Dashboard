@@ -736,6 +736,11 @@ async function developData() {
                     }
                 }
             }
+            if ("Weapon" in value) {
+                for (let i = 0; i < value["Weapon"].length; i++) {
+                    player["Weapons"][value["Weapon"][i]["Name"]] = value["Weapon"][i]["WeaponData"]
+                }
+            }
             if (key in player["Choices"]) {
                 if ("Prof" in player["Choices"][key]) {
                     player["Prof"].pushAll(player["Choices"][key]["Prof"])
