@@ -769,7 +769,6 @@ async function developData() {
                     player["Feats"].pushAll(player["Choices"][key]["Feat"])
                 }
                 if ("Choice" in player["Choices"][key]) {
-                    player["Choices"][key]["Choice"] = await featureChoose(key, value["Choice"])
                     let featureFeatures = {}
                     if (value["Choice"][player["Choices"][key]["Choice"]]["Nested"]) {
                         featureFeatures = value["Choice"][player["Choices"][key]["Choice"]]
