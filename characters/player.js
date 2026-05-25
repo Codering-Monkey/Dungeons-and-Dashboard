@@ -730,14 +730,21 @@ async function developData() {
                     player["Spells"][key].push(value["Spells"][i])
                     if ("Limited" in value["Spells"][i]) {
                         let spellLimit = value["Spells"][i]["Limited"]
+                        let amount = spellLimit["Usages"]
+                        if (amount === "pb") {
+                            amount = player["Prof Bonus"]
+                        } else if (amount === "lvl") {
+                            amount = parseInt(player["Level"])
+                        }
+                        amount = forceArray(amount)[player["Level"] - 1]
                         if (!(identifier in player["Resources"])) {
-                            player["Resources"][identifier] = {"Current": forceArray(spellLimit["Usages"])[player["Level"] - 1], "Max": forceArray(spellLimit["Usages"])[player["Level"] - 1], "LR": (spellLimit["LR"] || 0), "SR": (spellLimit["SR"] || 0)}
-                        } else if (player["Resources"][identifier]["Max"] < forceArray(spellLimit["Usages"])[player["Level"] - 1]) {
-                            let difference = forceArray(spellLimit["Usages"])[player["Level"] - 1] - player["Resources"][identifier]["Max"]
+                            player["Resources"][identifier] = {"Current": amount, "Max": amount, "LR": (spellLimit["LR"] || 0), "SR": (spellLimit["SR"] || 0)}
+                        } else if (player["Resources"][identifier]["Max"] < amount) {
+                            let difference = amount - player["Resources"][identifier]["Max"]
                             player["Resources"][identifier]["Max"] += difference
                             player["Resources"][identifier]["Current"] += difference
-                        } else if (player["Resources"][identifier]["Max"] > forceArray(spellLimit["Usages"])[player["Level"] - 1]) {
-                            player["Resources"][identifier]["Max"] = forceArray(spellLimit["Usages"])[player["Level"] - 1]
+                        } else if (player["Resources"][identifier]["Max"] > amount) {
+                            player["Resources"][identifier]["Max"] = amount
                             if (player["Resources"][identifier]["Current"] > player["Resources"][identifier]["Max"]) {
                                 player["Resources"][identifier]["Current"] = player["Resources"][identifier]["Max"]
                             }
