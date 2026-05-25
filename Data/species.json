@@ -345,7 +345,395 @@
 		}
 	},
 	"Elf": {
-		"NameSet": "e"
+		"Speed": 30,
+		"NameSet": "e",
+		"Size": ["Medium"],
+		"Type": "Humanoid",
+		"Features": {
+			"Darkvision": {
+				"Description": "You have Darkvision with a range of 60 feet.",
+				"Sense": {
+					"Darkvision": 60
+				}
+			},
+			"Fey Ancestry": {
+				"Description": "You have Advantage on saving throws you make to avoid or end the Charmed condition."
+			},
+			"Keen Senses": {
+				"Description": "You have proficiency in the Insight, Perception, or Survival skill.",
+				"Prof": [{
+					"Type": "Prof",
+					"Choices": ["Insight", "Perception", "Survival"],
+					"Amount": 1
+				}]
+			},
+			"Trance": {
+				"Description": "You don’t need to sleep, and magic can’t put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness."
+			},
+			"Elven Lineage": {
+				"Description": "You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the lineage).",
+				"Choice": {
+					"Drow": {
+						"Description": "120ft Darkvision; Dancing Lights cantrip at level 1, Faerie Fire spell at level 3, Darkness spell at level 5",
+						"Sense": {
+							"Darkvision": 120
+						},
+						"Choice": {
+							"Drow Spellcasting [Intelligence]": {
+								"Description": "Intelligence-based Spellcasting",
+								"Drow Cantrip": {
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Dancing Lights"],
+										"Ability": "Int",
+										"Identifier": "Drow Cantrip"
+									}]
+								},
+								"Drow Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Faerie Fire"],
+										"Ability": "Int",
+										"Identifier": "Drow Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Drow Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Darkness"],
+										"Ability": "Int",
+										"Identifier": "Drow Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"Drow Spellcasting [Wisdom]": {
+								"Description": "Wisdom-based Spellcasting",
+								"Drow Cantrip": {
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Dancing Lights"],
+										"Ability": "Wis",
+										"Identifier": "Drow Cantrip"
+									}]
+								},
+								"Drow Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Faerie Fire"],
+										"Ability": "Wis",
+										"Identifier": "Drow Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Drow Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Darkness"],
+										"Ability": "Wis",
+										"Identifier": "Drow Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"Drow Spellcasting [Charisma]": {
+								"Description": "Charisma-based Spellcasting",
+								"Drow Cantrip": {
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Dancing Lights"],
+										"Ability": "Cha",
+										"Identifier": "Drow Cantrip"
+									}]
+								},
+								"Drow Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Faerie Fire"],
+										"Ability": "Cha",
+										"Identifier": "Drow Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Drow Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Darkness"],
+										"Ability": "Cha",
+										"Identifier": "Drow Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							}
+						}
+					},
+					"High Elf": {
+						"Description": "Any wizard cantrip at level 1, Detect magic at level 3, Misty step at level 5",
+						"Choice": {
+							"High Elf Spellcasting [Intelligence]": {
+								"Description": "Intelligence-based Spellcasting",
+								"High Elf Cantrip": {
+									"Spells": [{
+										"Amount": 1,
+										"Min": 0,
+										"Max": 0,
+										"Class": ["Wizard"],
+										"Ability": "Int"
+									}]
+								},
+								"High Elf Level 1 Spell": {
+									"Level": 1,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Detect Magic"],
+										"Ability": "Int",
+										"Identifier": "High Elf Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"High Elf Level 2 Spell": {
+									"Level": 1,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Misty Step"],
+										"Ability": "Int",
+										"Identifier": "High Elf Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"High Elf Spellcasting [Wisdom]": {
+								"Description": "Wisdom-based Spellcasting",
+								"High Elf Cantrip": {
+									"Spells": [{
+										"Amount": 1,
+										"Min": 0,
+										"Max": 0,
+										"Class": ["Wizard"],
+										"Ability": "Wis"
+									}]
+								},
+								"High Elf Level 1 Spell": {
+									"Level": 1,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Detect Magic"],
+										"Ability": "Wis",
+										"Identifier": "High Elf Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"High Elf Level 2 Spell": {
+									"Level": 1,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Misty Step"],
+										"Ability": "Wis",
+										"Identifier": "High Elf Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"High Elf Spellcasting [Charisma]": {
+								"Description": "Charisma-based Spellcasting",
+								"High Elf Cantrip": {
+									"Spells": [{
+										"Amount": 1,
+										"Min": 0,
+										"Max": 0,
+										"Class": ["Wizard"],
+										"Ability": "Cha"
+									}]
+								},
+								"High Elf Level 1 Spell": {
+									"Level": 1,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Detect Magic"],
+										"Ability": "Cha",
+										"Identifier": "High Elf Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"High Elf Level 2 Spell": {
+									"Level": 1,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Misty Step"],
+										"Ability": "Cha",
+										"Identifier": "High Elf Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							}
+						}
+					},
+					"Wood Elf": {
+						"Description": "+5ft Movement speed; Druidcraft cantrip at level 1, Longstrider at level 3, Pass without trace at level 5",
+						"Bonus": [{
+							"Amount": 5,
+							"Stat": "Speed"
+						}],
+						"Choice": {
+							"Wood Elf Spellcasting [Intelligence]": {
+								"Description": "Intelligence-based Spellcasting",
+								"Wood Elf Cantrip": {
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Druidcraft"],
+										"Ability": "Int",
+										"Identifier": "Wood Elf Cantrip"
+									}]
+								},
+								"Wood Elf Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Longstrider"],
+										"Ability": "Int",
+										"Identifier": "Wood Elf Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Wood Elf Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Pass without Trace"],
+										"Ability": "Int",
+										"Identifier": "Wood Elf Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"Wood Elf Spellcasting [Wisdom]": {
+								"Description": "Wisdom-based Spellcasting",
+								"Wood Elf Cantrip": {
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Druidcraft"],
+										"Ability": "Wis",
+										"Identifier": "Wood Elf Cantrip"
+									}]
+								},
+								"Wood Elf Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Longstrider"],
+										"Ability": "Wis",
+										"Identifier": "Wood Elf Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Wood Elf Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Pass without Trace"],
+										"Ability": "Wis",
+										"Identifier": "Wood Elf Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"Wood Elf Spellcasting [Charisma]": {
+								"Description": "Charisma-based Spellcasting",
+								"Wood Elf Cantrip": {
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Druidcraft"],
+										"Ability": "Cha",
+										"Identifier": "Wood Elf Cantrip"
+									}]
+								},
+								"Wood Elf Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Longstrider"],
+										"Ability": "Cha",
+										"Identifier": "Wood Elf Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Wood Elf Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Pass without Trace"],
+										"Ability": "Cha",
+										"Identifier": "Wood Elf Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	},
 	"Gnome": {
 		"NameSet": "d"
