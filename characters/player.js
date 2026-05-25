@@ -1791,7 +1791,7 @@ async function render(playerData, initial=false) {
                         changeKnown.addEventListener("click", function() {
                             let overlayItem = overlay(async function() {
                                 let oldData = localStorage.get("Characters")
-                                oldData[getQuery("Char")]["KnownSpells"] = playerData["KnownSpells"]
+                                oldData[getQuery("Char")]["Choices"][currentSpell["Identifier"]] = playerData["Choices"]["KnownSpells"][currentSpell["Identifier"]]
                                 localStorage.set("Characters", oldData)
                                 await render(playerData)
                             })
@@ -1819,11 +1819,11 @@ async function render(playerData, initial=false) {
                                         headerRow.createElement("th").textContent = "Name"
                                         headerRow.createElement("th").textContent = "Learn"
                                     }
-                                    let currentRow = allSpells.createElement("tr", playerData["KnownSpells"].includes(spellName) ? "learnt" : "")
+                                    let currentRow = allSpells.createElement("tr", playerData["Choices"]["KnownSpells"][currentSpell["Identifier"]].includes(spellName) ? "learnt" : "")
                                     currentRow.createElement("td").textContent = spellData["School"]
                                     currentRow.createElement("td").textContent = spellName
                                     let learnButton = currentRow.createElement("td").createElement("button")
-                                    learnButton.textContent = playerData["KnownSpells"].includes(spellName) ? "Forget" : "Learn"
+                                    learnButton.textContent = playerData["Choices"]["KnownSpells"][currentSpell["Identifier"]].includes(spellName) ? "Forget" : "Learn"
                                     learnButton.addEventListener("click", function() {
                                         if (this.textContent === "Forget") {
                                             this.textContent = "Learn"
