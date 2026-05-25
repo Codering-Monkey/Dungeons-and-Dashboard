@@ -1410,8 +1410,8 @@ async function render(playerData, initial=false) {
                             dice.push(roll(forceLevel(weaponData["Dice"][1], playerData["Level"])))
                             diceString += dice[i] + " + "
                         }
-                        diceString.slice(0, - 3)
-                        popup(`You rolled a ${dice.sum() + damageBonus} on your ${key} roll (${diceString}${damageBonus})`)
+                        diceString = diceString.slice(0, - 3)
+                        popup(`You rolled a ${dice.sum() + damageBonus} on your ${key} roll (${diceString}${damageBonus ? " + " + damageBonus : ""})`)
                     })
                 }
                 weaponLine.appendChild(damage)
