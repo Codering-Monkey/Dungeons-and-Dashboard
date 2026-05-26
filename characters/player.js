@@ -636,7 +636,7 @@ async function developData() {
                     continue;
                 }
             }
-            player["Features"][sourceName][key] = value["Description"].parse(player)
+            player["Features"][sourceName][key] = value["Description"] ? value["Description"].parse(player) : ""
             if ("Armour" in value) {
                 player["Armour"][value["Armour"]["Name"]] = {"Type": value["Armour"]["Type"], "Amount": value["Armour"]["Amount"], "Cap": value["Armour"]["Cap"]}
             }
