@@ -993,6 +993,388 @@
 		}
 	},
 	"Teifling": {
-		"NameSet": "h"
+		"Speed": 30,
+		"NameSet": "h",
+		"Size": ["Small", "Medium"],
+		"Type": "Humanoid",
+		"Features": {
+			"Darkvision": {
+				"Description": "You have Darkvision with a range of 60 feet.",
+				"Sense": {
+					"Darkvision": 60
+				}
+			},
+			"Fiendish Legacy": {
+				"Description": "You are the recipient of a legacy that grants you supernatural abilities. Choose a legacy from the Fiendish Legacies table. You gain the level 1 benefit of the chosen legacy. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the legacy). You also know the Thaumaturgy cantrip, cast with the same ability",
+				"Choice": {
+					"Abyssal": {
+						"Description": "Poison Resist; Poison Spray cantrip at level 1, Ray of Sickness spell at level 3, Hold Person spell at level 5",
+						"Abyssal Resistance": {
+							"Resist": ["Poison"]
+						},
+						"Choice": {
+							"Abyssal Spellcasting [Intelligence]": {
+								"Nested": true,
+								"Description": "Intelligence-based Spellcasting",
+								"Abyssal Cantrip": {
+									"Spells": [{
+										"Amount": 2,
+										"Choices": ["Poison Spray", "Thaumaturgy"],
+										"Ability": "Int",
+										"Identifier": "Abyssal Cantrip"
+									}]
+								},
+								"Abyssal Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Ray of Sickness"],
+										"Ability": "Int",
+										"Identifier": "Abyssal Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Abyssal Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Hold Person"],
+										"Ability": "Int",
+										"Identifier": "Abyssal Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"Abyssal Spellcasting [Wisdom]": {
+								"Nested": true,
+								"Description": "Wisdom-based Spellcasting",
+								"Abyssal Cantrip": {
+									"Spells": [{
+										"Amount": 2,
+										"Choices": ["Poison Spray", "Thaumaturgy"],
+										"Ability": "Wis",
+										"Identifier": "Abyssal Cantrip"
+									}]
+								},
+								"Abyssal Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Ray of Sickness"],
+										"Ability": "Wis",
+										"Identifier": "Abyssal Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Abyssal Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Hold Person"],
+										"Ability": "Wis",
+										"Identifier": "Abyssal Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"Abyssal Spellcasting [Charisma]": {
+								"Nested": true,
+								"Description": "Charisma-based Spellcasting",
+								"Abyssal Cantrip": {
+									"Spells": [{
+										"Amount": 2,
+										"Choices": ["Poison Spray", "Thaumaturgy"],
+										"Ability": "Cha",
+										"Identifier": "Abyssal Cantrip"
+									}]
+								},
+								"Abyssal Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Ray of Sickness"],
+										"Ability": "Cha",
+										"Identifier": "Abyssal Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Abyssal Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Hold Person"],
+										"Ability": "Cha",
+										"Identifier": "Abyssal Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							}
+						}
+					},
+					"Chthonic": {
+						"Description": "Necrotic Resist; Chill Touch cantrip at level 1, False Life at level 3, Ray of Enfeeblement at level 5",
+						"Abyssal Resistance": {
+							"Resist": ["Necrotic"]
+						},
+						"Choice": {
+							"Chthonic Spellcasting [Intelligence]": {
+								"Nested": true,
+								"Description": "Intelligence-based Spellcasting",
+								"Chthonic Cantrip": {
+									"Spells": [{
+										"Amount": 2,
+										"Choices": ["Chill Touch", "Thaumaturgy"],
+										"Ability": "Int",
+										"Identifier": "Chthonic Cantrip"
+									}]
+								},
+								"Chthonic Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["False Life"],
+										"Ability": "Int",
+										"Identifier": "Chthonic Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Chthonic Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Ray of Enfeeblement"],
+										"Ability": "Int",
+										"Identifier": "Chthonic Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"Chthonic Spellcasting [Wisdom]": {
+								"Nested": true,
+								"Description": "Wisdom-based Spellcasting",
+								"Chthonic Cantrip": {
+									"Spells": [{
+										"Amount": 2,
+										"Choices": ["Chill Touch", "Thaumaturgy"],
+										"Ability": "Wis",
+										"Identifier": "Chthonic Cantrip"
+									}]
+								},
+								"Chthonic Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["False Life"],
+										"Ability": "Wis",
+										"Identifier": "Chthonic Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Chthonic Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Ray of Enfeeblement"],
+										"Ability": "Wis",
+										"Identifier": "Chthonic Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"Chthonic Spellcasting [Charisma]": {
+								"Nested": true,
+								"Description": "Charisma-based Spellcasting",
+								"Chthonic Cantrip": {
+									"Spells": [{
+										"Amount": 2,
+										"Choices": ["Chill Touch", "Thaumaturgy"],
+										"Ability": "Cha",
+										"Identifier": "Chthonic Cantrip"
+									}]
+								},
+								"Chthonic Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["False Life"],
+										"Ability": "Cha",
+										"Identifier": "Chthonic Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Chthonic Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Ray of Enfeeblement"],
+										"Ability": "Cha",
+										"Identifier": "Chthonic Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							}
+						}
+					},
+					"Infernal": {
+						"Description": "Fire Resist; Fire Bold cantrip at level 1, Hellish Rebuke at level 3, Darkness at level 5",
+						"Abyssal Resistance": {
+							"Resist": ["Fire"]
+						},
+						"Choice": {
+							"Infernal Spellcasting [Intelligence]": {
+								"Nested": true,
+								"Description": "Intelligence-based Spellcasting",
+								"Infernal Cantrip": {
+									"Spells": [{
+										"Amount": 2,
+										"Choices": ["Fire Bolt", "Thaumaturgy"],
+										"Ability": "Int",
+										"Identifier": "Infernal Cantrip"
+									}]
+								},
+								"Infernal Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Hellish Rebuke"],
+										"Ability": "Int",
+										"Identifier": "Infernal Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Infernal Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Darkness"],
+										"Ability": "Int",
+										"Identifier": "Infernal Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"Infernal Spellcasting [Wisdom]": {
+								"Nested": true,
+								"Description": "Wisdom-based Spellcasting",
+								"Infernal Cantrip": {
+									"Spells": [{
+										"Amount": 2,
+										"Choices": ["Fire Bolt", "Thaumaturgy"],
+										"Ability": "Wis",
+										"Identifier": "Infernal Cantrip"
+									}]
+								},
+								"Infernal Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Hellish Rebuke"],
+										"Ability": "Wis",
+										"Identifier": "Infernal Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Infernal Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Darkness"],
+										"Ability": "Wis",
+										"Identifier": "Infernal Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							},
+							"Infernal Spellcasting [Charisma]": {
+								"Nested": true,
+								"Description": "Charisma-based Spellcasting",
+								"Infernal Cantrip": {
+									"Spells": [{
+										"Amount": 2,
+										"Choices": ["Fire Bolt", "Thaumaturgy"],
+										"Ability": "Cha",
+										"Identifier": "Infernal Cantrip"
+									}]
+								},
+								"Infernal Level 1 Spell": {
+									"Level": 3,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Hellish Rebuke"],
+										"Ability": "Cha",
+										"Identifier": "Infernal Level 1 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								},
+								"Infernal Level 2 Spell": {
+									"Level": 5,
+									"Spells": [{
+										"Amount": 1,
+										"Choices": ["Darkness"],
+										"Ability": "Cha",
+										"Identifier": "Infernal Level 2 Spell",
+										"Limited": {
+											"Usages": 1,
+											"LR": 1
+										}
+									}]
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
