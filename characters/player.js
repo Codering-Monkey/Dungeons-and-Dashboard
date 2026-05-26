@@ -1551,7 +1551,7 @@ async function render(playerData, initial=false) {
                     otherActionParent.appendChild(item)
                 } else if (action["Type"] === "Bonus") {
                     bonusActionParent.appendChild(item)
-                } else if (action["Type"] === "Reactions") {
+                } else if (action["Type"] === "Reaction") {
                     reactionParent.appendChild(item)
                 } else {
                     otherParent.appendChild(item)
