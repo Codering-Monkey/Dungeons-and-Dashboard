@@ -814,11 +814,13 @@ async function developData() {
                     let featureFeatures = {}
                     if (value["Choice"][player["Choices"][key]["Choice"]]["Nested"]) {
                         featureFeatures = value["Choice"][player["Choices"][key]["Choice"]]
+                        delete featureFeatures["Nested"]
                         if ("Description" in featureFeatures) {
-                            Object.keys(featureFeatures).forEach((key) => {
-                                featureFeatures[key]["Description"] = featureFeatures["Description"]
-                            })
+                            let desc = featureFeatures["Description"]
                             delete featureFeatures["Description"]
+                            Object.keys(featureFeatures).forEach((key) => {
+                                featureFeatures[key]["Description"] = desc
+                            })
                         }
                     } else {
                         featureFeatures[player["Choices"][key]["Choice"]] = value["Choice"][player["Choices"][key]["Choice"]]
