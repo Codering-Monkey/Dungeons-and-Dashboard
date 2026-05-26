@@ -862,7 +862,84 @@
 		}
 	},
 	"Goliath": {
-		"NameSet": "d"
+		"Speed": 35,
+		"NameSet": "d",
+		"Size": ["Medium"],
+		"Type": "Humanoid",
+		"Features": {
+			"Giant Ancestry": {
+				"Description": "You are descended from Giants. Choose one of the following benefits—a supernatural boon from your ancestry; you can use the chosen benefit a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest",
+				"Choice": {
+					"Cloud's Jaunt (Cloud Giant)": {
+						"Description": "As a Bonus Action, you magically teleport up to 30 feet to an unoccupied space you can see.",
+						"Action": [{
+							"Type": "Bonus",
+							"Name": "Cloud's Jaunt",
+							"Usages": "pb",
+							"LR": -1
+						}]
+					},
+					"Fire's Burn (Fire Giant)": {
+						"Description": "When you hit a target with an attack roll and deal damage to it, you can also deal 1d10 Fire damage to that target.",
+						"Action": [{
+							"Type": "Other",
+							"Name": "Fire's Burn",
+							"Usages": "pb",
+							"LR": -1
+						}]
+					},
+					"Frost's Chill (Frost Giant)": {
+						"Description": "When you hit a target with an attack roll and deal damage to it, you can also deal 1d6 Cold damage to that target and reduce its Speed by 10 feet until the start of your next turn.",
+						"Action": [{
+							"Type": "Other",
+							"Name": "Frost's Chill",
+							"Usages": "pb",
+							"LR": -1
+						}]
+					},
+					"Hill's Tumble (Hill Giant)": {
+						"Description": "When you hit a Large or smaller creature with an attack roll and deal damage to it, you can give that target the Prone condition.",
+						"Action": [{
+							"Type": "Other",
+							"Name": "Hill's Tumble",
+							"Usages": "pb",
+							"LR": -1
+						}]
+					},
+					"Stone's Endurance (Stone Giant)": {
+						"Description": "When you take damage, you can take a Reaction to roll 1d12. Add your Constitution modifier to the number rolled and reduce the damage by that total.",
+						"Action": [{
+							"Type": "Reaction",
+							"Name": "Stone's Endurance",
+							"Usages": "pb",
+							"LR": -1
+						}]
+					},
+					"Storm's Thunder (Storm Giant)": {
+						"Description": "When you take damage from a creature within 60 feet of you, you can take a Reaction to deal 1d8 Thunder damage to that creature.",
+						"Action": [{
+							"Type": "Reaction",
+							"Name": "Storm's Thunder",
+							"Usages": "pb",
+							"LR": -1
+						}]
+					}
+				}
+			},
+			"Large Form": {
+				"Level": 5,
+				"Action": [{
+					"Type": "Bonus",
+					"Name": "Large Form",
+					"Usages": 1,
+					"LR": 1
+				}],
+				"Description": "Starting at character level 5, you can change your size to Large as a Bonus Action if you’re in a big enough space. This transformation lasts for 10 minutes or until you end it (no action required). For that duration, you have Advantage on Strength checks, and your Speed increases by 10 feet. Once you use this trait, you can’t use it again until you finish a Long Rest."
+			},
+			"Powerful Build": {
+				"Description": "You have Advantage on any ability check you make to end the Grappled condition. You also count as one size larger when determining your carrying capacity."
+			}
+		}
 	},
 	"Halfling": {
 		"Speed": 30,
