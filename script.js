@@ -360,6 +360,9 @@ export function numSuffix(number) {
     number = String(number)
     let finalDigit = number.slice(-1)
     let otherDigits = number.slice(0, -1)
+    if (["11", "12", "13"].includes(number)) {
+        return number + "th"
+    }
     if (finalDigit === "1") {
         return otherDigits + "1st"
     } else if (finalDigit === "2") {
