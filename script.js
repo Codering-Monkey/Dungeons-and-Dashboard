@@ -380,7 +380,7 @@ export function numSuffix(number) {
  * @param {string[]|false} values optional, must be the same length as options
  * @returns {Object} the select element
  */
-Object.prototype.createSelect = function(options, values=false) {
+HTMLElement.prototype.createSelect = function(options, values=false) {
     let select = document.createElement("select");
     if (!values) {
         values = options
