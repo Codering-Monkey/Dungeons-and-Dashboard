@@ -771,7 +771,7 @@ async function developData() {
                 if ("Choice" in player["Choices"][key]) {
                     let featureFeatures = {}
                     if (value["Choice"][player["Choices"][key]["Choice"]]["Nested"]) {
-                        featureFeatures = value["Choice"][player["Choices"][key]["Choice"]]
+                        featureFeatures = structuredClone(value["Choice"][player["Choices"][key]["Choice"]])
                         delete featureFeatures["Nested"]
                         if ("Description" in featureFeatures) {
                             let desc = featureFeatures["Description"]
@@ -813,7 +813,7 @@ async function developData() {
                     player["Choices"][key]["Choice"] = await featureChoose(key, value["Choice"])
                     let featureFeatures = {}
                     if (value["Choice"][player["Choices"][key]["Choice"]]["Nested"]) {
-                        featureFeatures = value["Choice"][player["Choices"][key]["Choice"]]
+                        featureFeatures = structuredClone(value["Choice"][player["Choices"][key]["Choice"]])
                         delete featureFeatures["Nested"]
                         if ("Description" in featureFeatures) {
                             let desc = featureFeatures["Description"]
