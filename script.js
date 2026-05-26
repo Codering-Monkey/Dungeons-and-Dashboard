@@ -153,7 +153,7 @@ Storage.prototype.wipe = function(...items) {
  * Creates a td object to append a child in
  * @param {object} object
  */
-Object.prototype.shellAppend = function (object) {
+HTMLElement.prototype.shellAppend = function (object) {
     let shell = document.createElement("td")
     this.appendChild(shell)
     shell.appendChild(object)
@@ -163,7 +163,7 @@ Object.prototype.shellAppend = function (object) {
  * Clears the Object, keeping the first {keep} elements
  * @param {number} keep
  */
-Object.prototype.clear = function(keep=0) {
+HTMLElement.prototype.clear = function(keep=0) {
     while (this.children.length > keep) {
 		this.removeChild(this.lastChild)
 	}
@@ -173,7 +173,7 @@ Object.prototype.clear = function(keep=0) {
  * Adds Line breaks to Object {amount} amount of times
  * @param {number} amount
  */
-Object.prototype.break = function(amount=1) {
+HTMLElement.prototype.break = function(amount=1) {
     for (let i = 0; i < amount; i++) {
         this.appendChild(document.createElement("br"))
     }
@@ -183,7 +183,7 @@ Object.prototype.break = function(amount=1) {
  * Adds blank divs to Object {amount} time
  * @param {number} amount
  */
-Object.prototype.blank = function(amount=1) {
+HTMLElement.prototype.blank = function(amount=1) {
     for (let i = 0; i < amount; i++) {
         this.appendChild(document.createElement("div"))
     }
