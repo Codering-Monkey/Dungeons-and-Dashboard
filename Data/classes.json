@@ -161,7 +161,70 @@
 			"Learning": "level up",
 			"Recovery": "LR"
 		},
-		"Features": {}
+		"Features": {
+			"Bardic Inspiration": {
+				"Description": "You can supernaturally inspire others through words, music, or dance. This inspiration is represented by your Bardic Inspiration die, which is a d6. Using Bardic Inspiration. As a Bonus Action, you can inspire another creature within 60 feet of yourself who can see or hear you. That creature gains one of your Bardic Inspiration dice. A creature can have only one Bardic Inspiration die at a time. Once within the next hour when the creature fails a D20 Test, the creature can roll the Bardic Inspiration die and add the number rolled to the d20, potentially turning the failure into a success. A Bardic Inspiration die is expended when it’s rolled. Number of Uses. You can confer a Bardic Inspiration die a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a Long Rest. At Higher Levels. Your Bardic Inspiration die changes when you reach certain Bard levels, as shown in the Bardic Die column of the Bard Features table. The die becomes a d8 at level 5, a d10 at level 10, and a d12 at level 15.",
+				"Action": [{
+					"Type": "Bonus",
+					"Name": "Bardic Inspiration d${[6, 6, 6, 6, 8, 8, 8, 8, 8, 10, 10, 10, 10, 10, 12, 12, 12, 12, 12, 12][level]}",
+					"Usages": "Cha",
+					"LR": -1,
+					"SR": [0, 0, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+				}]
+			},
+			"Expertise #1": {
+				"Level": 1,
+				"Description": "You gain Expertise in two of your skill proficiencies of your choice. Sleight of Hand and Stealth are recommended if you have proficiency in them. At Rogue level 6, you gain Expertise in two more of your skill proficiencies of your choice.",
+				"Prof": [{
+					"Amount": 2,
+					"Catagory": "Skill",
+					"Type": "Exp"
+				}]
+			},
+			"Expertise #2": {
+				"Level": 9,
+				"Description": "You gain Expertise in two of your skill proficiencies of your choice. Sleight of Hand and Stealth are recommended if you have proficiency in them. At Rogue level 6, you gain Expertise in two more of your skill proficiencies of your choice.",
+				"Prof": [{
+					"Amount": 2,
+					"Catagory": "Skill",
+					"Type": "Exp"
+				}]
+			},
+			"Jack of All Trades {ADD THIS}": {
+				"Level": 2,
+				"Description": "You can add half your Proficiency Bonus (round down) to any ability check you make that uses a skill proficiency you lack and that doesn’t otherwise use your Proficiency Bonus. For example, if you make a Strength (Athletics) check and lack Athletics proficiency, you can add half your Proficiency Bonus to the check."
+			},
+			"Font of Inspiration": {
+				"Level": 5,
+				"Description": "You now regain all your expended uses of Bardic Inspiration when you finish a Short or Long Rest. In addition, you can expend a spell slot (no action required) to regain one expended use of Bardic Inspiration.",
+				"Action": [{
+					"Type": "Other",
+					"Name": "Font of Inspiration"
+				}]
+			},
+			"Countercharm": {
+				"Level": 7,
+				"Description": "You can use musical notes or words of power to disrupt mind-influencing effects. If you or a creature within 30 feet of you fails a saving throw against an effect that applies the Charmed or Frightened condition, you can take a Reaction to cause the save to be rerolled, and the new roll has Advantage.",
+				"Action": [{
+					"Type": "Reaction",
+					"Name": "Countercharm"
+				}]
+			},
+			"Superior Inspiration": {
+				"Level": 18,
+				"Description": "When you roll Initiative, you regain expended uses of Bardic Inspiration until you have two if you have fewer than that."
+			},
+			"Words of Creation": {
+				"Level": 20,
+				"Description": "You have mastered two of the Words of Creation: the words of life and death. You therefore always have the Power Word Heal and Power Word Kill spells prepared. When you cast either spell, you can target a second creature with it if that creature is within 10 feet of the first target.",
+				"Spells": [{
+					"Choices": ["Power Word Heal", "Power Word Kill"],
+					"Amount": 2,
+					"Identifier": "Words of Creation",
+					"Ability": "Cha"
+				}]
+			}
+		}
 	},
 	"Cleric": {},
 	"Druid": {},
