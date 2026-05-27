@@ -330,7 +330,7 @@
 				"Description": "Your Hit Point maximum increases by 1, and it increases by 1 again whenever you gain a level.",
 				"Bonus": [{
 					"Stat": "hp",
-					"Amount": "lvl"
+					"Amount": "Level"
 				}]
 			},
 			"Stonecunning": {
