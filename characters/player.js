@@ -72,7 +72,7 @@ const proficiencies = {
 Object.prototype.statEval = function(string) {
     string = String(string)
     Object.entries(this["Stats"]).forEach(([key, value]) => {
-        string.replaceAll(key, value.modifier())
+        string = string.replaceAll(key, value.modifier())
     })
     Object.entries(proficiencies).forEach(([key, value]) => {
         let profBonus = this["Stats"][value].modifier()
@@ -82,10 +82,10 @@ Object.prototype.statEval = function(string) {
             }
             profBonus += this["Prof Bonus"]
         }
-        string.replaceAll(key, profBonus)
+        string = string.replaceAll(key, profBonus)
     })
-    string.replaceAll("Prof", this["Prof Bonus"])
-    string.replaceAll("Level", this["Level"])
+    string = string.replaceAll("Prof", this["Prof Bonus"])
+    string = string.replaceAll("Level", this["Level"])
     return eval(string)
 }
 
