@@ -70,7 +70,7 @@ const proficiencies = {
 }
 
 Object.prototype.statEval = function(string) {
-    let split = string.split("+")
+    let split = String(string).split("+")
     if (!Array.isArray(split)) {
         split = [split]
     }
