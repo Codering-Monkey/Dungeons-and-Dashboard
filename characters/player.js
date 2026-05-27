@@ -569,8 +569,6 @@ async function developData() {
         }
     })
 
-    player["Init"] = player["Stats"]["Dex"].modifier()
-
     player["WeaponsPermitted"] = classes[player["Class"]]["Weapons"]
     player["Actions"] = []
     if (!player["Resources"]) {player["Resources"] = {}}
@@ -628,6 +626,7 @@ async function developData() {
     localStorage.set("Characters", basePlayer)
 
     player["Speed"] = species[player["Species"]]["Speed"]
+    let initBonus = 0
 
     player["Features"] = {}
     async function addFeatures(dataSource, sourceName) {
@@ -699,10 +698,12 @@ async function developData() {
                         if (player["Stats"][increasedStat] > value["Bonus"][i]["Cap"]) {
                             player["Stats"][increasedStat] = value["Bonus"][i]["Cap"]
                         }
-                    } else if (["RangedAttack", "RangedDamage", "MeleeAttack", "MeleeDamage", "Speed", "Init"].includes(increasedStat)) {
+                    } else if (["RangedAttack", "RangedDamage", "MeleeAttack", "MeleeDamage", "Speed"].includes(increasedStat)) {
                         player[increasedStat] += amount
                     } else if (increasedStat === "hp") {
                         player["Max Health"] += amount
+                    } else if (increasedStat === "Init") {
+                        initBonus += amount
                     }
                 }
             }
@@ -846,6 +847,8 @@ async function developData() {
         featData[player["Feats"][i]] = feats[player["Feats"][i]]
     }
     await addFeatures(featData, "Feats")
+
+    player["Init"] = player["Stats"]["Dex"].modifier() + initBonus
 
     let saveMastery = false
     if (!player["Choices"]["Mastery"]) {
