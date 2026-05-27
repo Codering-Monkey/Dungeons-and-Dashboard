@@ -686,11 +686,14 @@ async function developData() {
                             localStorage.set("Characters", basePlayer)
                         }
                     }
+
                     if (Object.values(allStats).includes(increasedStat)) {
                         player["Stats"][increasedStat] += amount
                         if (player["Stats"][increasedStat] > value["Bonus"][i]["Cap"]) {
                             player["Stats"][increasedStat] = value["Bonus"][i]["Cap"]
                         }
+                    } else if (proficiencies.includes(increasedStat)) {
+                        player["ProfIncrease"][increasedStat] = (player["ProfIncrease"][increasedStat] || 0) + amount
                     } else if (["RangedAttack", "RangedDamage", "MeleeAttack", "MeleeDamage", "Speed"].includes(increasedStat)) {
                         player[increasedStat] += amount
                     } else if (increasedStat === "hp") {
@@ -1044,28 +1047,28 @@ async function render(playerData, initial=false) {
         let container = document.createElement("tr")
         profParent.appendChild(container)
         let bonusNumber = document.createElement("p")
-        let mod = playerData["Stats"][value].modifier()
-        let bonus = mod
-        bonusNumber.textContent = mod.symbol()
+        let bonus = playerData["Stats"][value].modifier()
         let profCheckbox = document.createElement("input")
         profCheckbox.type = "checkbox"
         if (playerData["Prof"].includes(key)) {
             profCheckbox.checked = true
-            bonusNumber.textContent = (mod + playerData["Prof Bonus"]).symbol()
             bonus += playerData["Prof Bonus"]
         } else {
-            bonusNumber.textContent = (mod + playerData["Not Prof"]).symbol()
             bonus += playerData["Not Prof"]
+        }
+        if (playerData["ProfIncrease"].includes(key)) {
+            bonus += playerData["ProfIncrease"][key]
         }
         container.shellAppend(profCheckbox)
         let expCheckbox = document.createElement("input")
         expCheckbox.type = "checkbox"
         if (playerData["Exp"].includes(key)) {
             expCheckbox.checked = true
-            bonusNumber.textContent = (mod + (playerData["Prof Bonus"] * 2)).symbol()
             bonus += playerData["Prof Bonus"]
         }
         container.shellAppend(expCheckbox)
+
+        bonusNumber.textContent = bonus.symbol()
 
         container.shellAppend(bonusNumber)
         let name = document.createElement("p")
