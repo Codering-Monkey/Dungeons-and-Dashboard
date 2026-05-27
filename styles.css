@@ -26,6 +26,11 @@
     scrollbar-color: var(--text) var(--background)
 }
 
+*::selection {
+    background-color: var(--secondary);
+    color: var(--navbar);
+}
+
 p {
     color: var(--minor-text);
 }
