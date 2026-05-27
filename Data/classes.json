@@ -230,7 +230,129 @@
 			}
 		}
 	},
-	"Cleric": {},
+	"Cleric": {
+		"Ability": ["Wis"],
+		"Dice": 8,
+		"Improvements": [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+		"Saves": ["Wis", "Cha"],
+		"Prof": [{
+			"Amount": 2,
+			"Type": "Prof",
+			"Choices": ["History", "Insight", "Medicine", "Persuasion", "Religion"]
+		}],
+		"Armour": [true, true, false, true],
+		"Weapons": [true, false, []],
+		"Equipment": [
+			{
+				"Chain Shirt": 1,
+				"Shield": 1,
+				"Mace": 1,
+				"Holy Symbol": 1,
+				"Priest's Pack": 1,
+				"GP": 7
+			},
+			{
+				"GP": 110
+			}
+		],
+		"Attacks": 1,
+		"Spellcasting": {
+			"CastTier": 1,
+			"Stat": "Cha",
+			"Cantrips": [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+			"Known": [4, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 16, 17, 17, 18, 18, 19, 20, 21, 22],
+			"SpellList": ["Cleric"],
+			"Learning": "preparing",
+			"Recovery": "LR"
+		},
+		"Features": {
+			"Divine Order": {
+				"Level": 1,
+				"Description": "You have dedicated yourself to one of the following sacred roles of your choice.",
+				"Choices": {
+					"Protector": {
+						"Description": "Trained for battle, you gain proficiency with Martial weapons and training with Heavy armor.",
+						"Prof": [{
+							"Type": "Armour",
+							"Data": [false, false, true, false]
+						}, {
+							"Type": "Weapon",
+							"Data": [false, true, []]
+						}]
+					},
+					"Thaumaturge": {
+						"Description": "You know one extra cantrip from the Cleric spell list. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Arcana or Religion) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+						"Spells": [{
+							"Amount": 1,
+							"Min": 0,
+							"Max": 0,
+							"Class": ["Cleric"],
+							"Ability": "Wis",
+							"Identifier": "Thaumaturge Cantrip"
+						}],
+						"Bonus": [{
+							"Stat": "Arcana",
+							"Amount": "Wis"
+						}, {
+							"Stat": "Religion",
+							"Amount": "Wis"
+						}]
+					}
+				}
+			},
+			"Channel Divinity": {
+				"Level": 2,
+				"Description": "You can channel divine energy directly from the Outer Planes to fuel magical effects. You start with two such effects: Divine Spark and Turn Undead, each of which is described below. Each time you use this class’s Channel Divinity, choose which Channel Divinity effect from this class to create. You gain additional effect options at higher Cleric levels. You can use this class’s Channel Divinity twice. You regain one of its expended uses when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. You gain additional uses when you reach certain Cleric levels, as shown in the Channel Divinity column of the Cleric Features table. If a Channel Divinity effect requires a saving throw, the DC equals the spell save DC from this class’s Spellcasting feature. Divine Spark. As a Magic action, you point your Holy Symbol at another creature you can see within 30 feet of yourself and focus divine energy at it. Roll 1d8 and add your Wisdom modifier. You either restore Hit Points to the creature equal to that total or force the creature to make a Constitution saving throw. On a failed save, the creature takes Necrotic or Radiant damage (your choice) equal to that total. On a successful save, the creature takes half as much damage (round down). You roll an additional d8 when you reach Cleric levels 7 (2d8), 13 (3d8), and 18 (4d8). Turn Undead. As a Magic action, you present your Holy Symbol and censure Undead creatures. Each Undead of your choice within 30 feet of you must make a Wisdom saving throw. If the creature fails its save, it has the Frightened and Incapacitated conditions for 1 minute. For that duration, it tries to move as far from you as it can on its turns. This effect ends early on the creature if it takes any damage, if you have the Incapacitated condition, or if you die.",
+				"Action": [{
+					"Type": "Other",
+					"Name": "Channel Divinity",
+					"Usages": [0, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4],
+					"LR": -1,
+					"SR": 1
+				}, {
+					"Type": "Action",
+					"Name": "Channel Divinity: Divine Spark"
+				}, {
+					"Type": "Action",
+					"Name": "Channel Divinity: Turn Undead"
+				}]
+			},
+			"Sear Undead": {
+				"Level": 6,
+				"Description": "Whenever you use Turn Undead, you can roll a number of d8s equal to your Wisdom modifier (${wis}d8) and add the rolls together. Each Undead that fails its saving throw against that use of Turn Undead takes Radiant damage equal to the roll’s total. This damage doesn’t end the turn effect."
+			},
+			"Blessed Strikes": {
+				"Level": 6,
+				"Description": "Divine power infuses you in battle. You gain one of the following options of your choice (if you get either option from a Cleric subclass in an older book, use only the option you choose for this feature).",
+				"Choices": {
+					"Divine Strike": {
+						"Description": "Once on each of your turns when you hit a creature with an attack roll using a weapon, you can cause the target to take an extra ${level > 13 ? 2 : 1}d8 Necrotic or Radiant damage (your choice).'\n",
+						"Action": [{
+							"Type": "Other",
+							"Name": "Blessed Strike (${level > 13 ? 2 : 1}d8)"
+						}]
+					},
+					"Potent Spellcasting": {
+						"Description": "Add your Wisdom modifier (+${wis}) to the damage you deal with any Cleric cantrip. ${level > 13 ? `When you cast a Cleric cantrip and deal damage to a creature with it, you can give vitality to yourself or another creature within 60 feet of yourself, granting a number of Temporary Hit Points equal to twice your Wisdom modifier (${wis * 2}).` : ``}"
+					}
+				}
+			},
+			"Divine Intervention": {
+				"Level": 10,
+				"Description": "You can call on your deity or pantheon to intervene on your behalf. As a Magic action, choose any Cleric spell of level 5 or lower that doesn’t require a Reaction to cast. As part of the same action, you cast that spell without expending a spell slot or needing Material components. You can’t use this feature again until you finish a Long Rest.",
+				"Action": [{
+					"Type": "Action",
+					"Usages": 1,
+					"Name": "Divine Intervention",
+					"LR": 1
+				}]
+			},
+			"Greater Divine Intervention": {
+				"Level": 20,
+				"Description": "You can call on even more powerful divine intervention. When you use your Divine Intervention feature, you can choose Wish when you select a spell. If you do so, you can’t use Divine Intervention again until you finish 2d4 Long Rests.",
+			}
+		}
+	},
 	"Druid": {},
 	"Fighter": {
 		"Ability": ["Str", "Dex"],
