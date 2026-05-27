@@ -93,6 +93,8 @@ Object.prototype.statEval = function(string) {
             amount += this["Prof Bonus"]
         } else if (split[i].search("^d[0-9]+")) {
             amount += roll(parseInt(split[i].slice(1)))
+        } else if (split[i] === "Level") {
+            amount += this["Level"]
         }
     }
     return amount
