@@ -1431,7 +1431,7 @@ async function render(playerData, initial=false) {
             Object.entries(weaponOptions).forEach(([key, value]) => {
                 let weaponData = weapons[key]
                 let proficient = (playerData["WeaponTraining"].includes(weaponData["Type"]) || playerData["WeaponTraining"].includes(key))
-                let attackBonus = weaponData["Type"] === "Ranged" ? playerData["Stats"]["Dex"].modifier() + playerData["RangedAttack"] : playerData["Stats"]["Str"].modifier() + playerData["MeleeAttack"]
+                let attackBonus = weaponData["Ability"] ? playerData["Stats"][weaponData["Ability"]] :  (weaponData["Type"] === "Ranged" ? playerData["Stats"]["Dex"].modifier() + playerData["RangedAttack"] : playerData["Stats"]["Str"].modifier() + playerData["MeleeAttack"])
                 let damageBonus = weaponData["FlatDamage"] ? "" : (weaponData["Type"] === "Ranged" ? playerData["Stats"]["Dex"].modifier() + playerData["RangedDamage"] : playerData["Stats"]["Str"].modifier() + playerData["MeleeDamage"])
 
                 let weaponLine = document.createElement("tr")
