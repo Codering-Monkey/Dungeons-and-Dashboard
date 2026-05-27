@@ -840,7 +840,7 @@ async function developData() {
                     player["Feats"].pushAll(featChoices)
                 }
                 if ("Choice" in value) {
-                    player["Choices"][key]["Choice"] = await featureChoose(key, value["Choice"])
+                    player["Choices"][key]["Choice"] = await featureChoose(key, value["Choice"], player)
                     let featureFeatures = {}
                     if (value["Choice"][player["Choices"][key]["Choice"]]["Nested"]) {
                         featureFeatures = structuredClone(value["Choice"][player["Choices"][key]["Choice"]])
