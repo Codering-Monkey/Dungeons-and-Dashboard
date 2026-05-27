@@ -751,6 +751,7 @@ async function developData() {
             if (key in player["Choices"]) {
                 if ("Prof" in player["Choices"][key]) {
                     player["Prof"].pushAll(player["Choices"][key]["Prof"])
+                    player["Exp"].pushAll(player["Choices"][key]["Exp"])
                 }
                 if ("Feat" in player["Choices"][key]) {
                     player["Feats"].pushAll(player["Choices"][key]["Feat"])
@@ -785,6 +786,7 @@ async function developData() {
                         }
                     }
                     player["Choices"][key]["Prof"] = profChoices
+                    player["Choices"][key]["Exp"] = expChoices
                     player["Exp"].pushAll(expChoices)
                     player["Prof"].pushAll(profChoices)
                 }
