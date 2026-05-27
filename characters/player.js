@@ -81,6 +81,8 @@ Object.prototype.statEval = function(string) {
                 profBonus += this["Prof Bonus"]
             }
             profBonus += this["Prof Bonus"]
+        } else {
+            profBonus += this["Not Prof"]
         }
         string = string.replaceAll(key, profBonus)
     })
@@ -616,6 +618,7 @@ async function developData() {
 
     player["Speed"] = species[player["Species"]]["Speed"]
     let initBonus = 0
+    player["Not Prof"] = 0
 
     player["Features"] = {}
     async function addFeatures(dataSource, sourceName) {
@@ -693,6 +696,8 @@ async function developData() {
                         player["Max Health"] += amount
                     } else if (increasedStat === "Init") {
                         initBonus += amount
+                    } else if (increasedStat === "Not Prof") {
+                        player["Not Prof"] += amount
                     }
                 }
             }
@@ -1009,6 +1014,9 @@ async function render(playerData, initial=false) {
             profCheckbox.checked = true
             bonusNumber.textContent = (mod + playerData["Prof Bonus"]).symbol()
             bonus += playerData["Prof Bonus"]
+        } else {
+            bonusNumber.textContent = (mod + playerData["Not Prof"]).symbol()
+            bonus += playerData["Not Prof"]
         }
         container.shellAppend(profCheckbox)
         let expCheckbox = document.createElement("input")
