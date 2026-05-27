@@ -674,13 +674,7 @@ async function developData() {
             }
             if ("Bonus" in value) {
                 for (let i = 0; i < value["Bonus"].length; i++) {
-                    let amount = value["Bonus"][i]["Amount"]
-                    if (amount === "pb") {
-                        amount = player["Prof Bonus"]
-                    } else if (amount === "lvl") {
-                        amount = parseInt(player["Level"])
-                    }
-                    amount = forceArray(amount)[player["Level"] - 1]
+                    let amount = player.statEval(forceLevel(value["Bonus"][i]["Amount"], player["Level"]))
                     let increasedStat = value["Bonus"][i]["Stat"]
                     if (Array.isArray(increasedStat)) {
                         if (key in player["Choices"] && player["Choices"][key]["Bonus"] && player["Choices"][key]["Bonus"][i]) {
@@ -734,13 +728,7 @@ async function developData() {
                     player["Spells"][key].push(value["Spells"][i])
                     if ("Limited" in value["Spells"][i]) {
                         let spellLimit = value["Spells"][i]["Limited"]
-                        let amount = spellLimit["Usages"]
-                        if (amount === "pb") {
-                            amount = player["Prof Bonus"]
-                        } else if (amount === "lvl") {
-                            amount = parseInt(player["Level"])
-                        }
-                        amount = forceArray(amount)[player["Level"] - 1]
+                        let amount = player.statEval(forceLevel(spellLimit["Usages"], player["Level"]))
                         if (!(identifier in player["Resources"])) {
                             player["Resources"][identifier] = {"Current": amount, "Max": amount, "LR": (spellLimit["LR"] || 0), "SR": (spellLimit["SR"] || 0)}
                         } else if (player["Resources"][identifier]["Max"] < amount) {
