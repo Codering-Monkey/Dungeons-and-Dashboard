@@ -507,7 +507,8 @@
 										"Min": 0,
 										"Max": 0,
 										"Class": ["Wizard"],
-										"Ability": "Int"
+										"Ability": "Int",
+										"Identifier": "High Elf Cantrip"
 									}]
 								},
 								"High Elf Level 1 Spell": {
@@ -546,7 +547,8 @@
 										"Min": 0,
 										"Max": 0,
 										"Class": ["Wizard"],
-										"Ability": "Wis"
+										"Ability": "Wis",
+										"Identifier": "High Elf Cantrip"
 									}]
 								},
 								"High Elf Level 1 Spell": {
@@ -585,7 +587,8 @@
 										"Min": 0,
 										"Max": 0,
 										"Class": ["Wizard"],
-										"Ability": "Cha"
+										"Ability": "Cha",
+										"Identifier": "High Elf Cantrip"
 									}]
 								},
 								"High Elf Level 1 Spell": {
