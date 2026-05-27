@@ -14,6 +14,8 @@
     --minor-text: hsla(0, 0%, 100%, .6);
     --sub-text: hsla(0, 0%, 100%, .4);
     --sub-sub-text: hsla(0, 0%, 100%, .2);
+    --primary: pink;
+    --secondary: chartreuse;
 }
 
 * {
