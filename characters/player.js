@@ -1057,7 +1057,7 @@ async function render(playerData, initial=false) {
         } else {
             bonus += playerData["Not Prof"]
         }
-        if (playerData["ProfIncrease"].includes(key)) {
+        if (key in playerData["ProfIncrease"]) {
             bonus += playerData["ProfIncrease"][key]
         }
         container.shellAppend(profCheckbox)
