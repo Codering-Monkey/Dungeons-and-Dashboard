@@ -620,6 +620,7 @@ async function developData() {
     player["Speed"] = species[player["Species"]]["Speed"]
     let initBonus = 0
     player["Not Prof"] = 0
+    player["ProfIncrease"] = (player["ProfIncrease"] || {})
 
     player["Features"] = {}
     async function addFeatures(dataSource, sourceName) {
