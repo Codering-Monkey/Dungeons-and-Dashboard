@@ -219,6 +219,13 @@ export function id(Object_ID) {
 	return document.getElementById(Object_ID)
 }
 
+export function any(...booleans) {
+    booleans.forEach(bool => {
+        if (bool) {return true}
+    })
+    return false
+}
+
 HTMLElement.prototype.createElement = function(tag, classList="") {
     let element = document.createElement(tag);
     element.className = classList;
