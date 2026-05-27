@@ -361,10 +361,10 @@
 		"Prof": [{
 			"Amount": 2,
 			"Type": "Prof",
-			"Choices": ["Animal Handling", "Arcana", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"],
-			"Armour": [true, false, false, true],
-			"Weapons": [true, false, []]
+			"Choices": ["Animal Handling", "Arcana", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"]
 		}],
+		"Armour": [true, false, false, true],
+		"Weapons": [true, false, []],
 		"Equipment": [
 			{
 				"Leather Armour": 1,
