@@ -70,34 +70,23 @@ const proficiencies = {
 }
 
 Object.prototype.statEval = function(string) {
-    let split = String(string).split("+")
-    if (!Array.isArray(split)) {
-        split = [split]
-    }
-    let amount = 0
-    for (let i = 0; i < split.length; i++) {
-        split[i] = split[i].capitalise()
-        if (Number.isFinite(Number(split[i]))) {
-            amount += parseInt(split[i])
-        } else if (split[i] in this["Stats"]) {
-            amount += this["Stats"][split[i]].modifier()
-        } else if (split[i] in proficiencies) {
-            amount += this["Stats"][proficiencies[split[i]]].modifier()
-            if (this["Prof"].includes(split[i]) ) {
-                if (this["Exp"].includes(split[i])) {
-                    amount += this["Prof Bonus"]
-                }
-                amount += this["Prof Bonus"]
+    string = String(string)
+    Object.entries(this["Stats"]).forEach(([key, value]) => {
+        string.replaceAll(key, value.modifier())
+    })
+    Object.entries(proficiencies).forEach(([key, value]) => {
+        let profBonus = this["Stats"][value].modifier()
+        if (this["Prof"].includes(key) ) {
+            if (this["Exp"].includes(key)) {
+                profBonus += this["Prof Bonus"]
             }
-        } else if (split[i] === "Prof") {
-            amount += this["Prof Bonus"]
-        } else if (split[i].search("^d[0-9]+")) {
-            amount += roll(parseInt(split[i].slice(1)))
-        } else if (split[i] === "Level") {
-            amount += this["Level"]
+            profBonus += this["Prof Bonus"]
         }
-    }
-    return amount
+        string.replaceAll(key, profBonus)
+    })
+    string.replaceAll("Prof", this["Prof Bonus"])
+    string.replaceAll("Level", this["Level"])
+    return eval(string)
 }
 
 const spellSlots = [
