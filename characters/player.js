@@ -693,7 +693,7 @@ async function developData() {
                         if (player["Stats"][increasedStat] > value["Bonus"][i]["Cap"]) {
                             player["Stats"][increasedStat] = value["Bonus"][i]["Cap"]
                         }
-                    } else if (proficiencies.includes(increasedStat)) {
+                    } else if (Object.keys(proficiencies).includes(increasedStat)) {
                         player["ProfIncrease"][increasedStat] = (player["ProfIncrease"][increasedStat] || 0) + amount
                     } else if (["RangedAttack", "RangedDamage", "MeleeAttack", "MeleeDamage", "Speed"].includes(increasedStat)) {
                         player[increasedStat] += amount
