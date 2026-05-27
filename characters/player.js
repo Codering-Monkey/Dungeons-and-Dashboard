@@ -648,6 +648,8 @@ async function developData() {
                         let usages = currentAction["Usages"]
                         if (usages === "pb") {
                             usages = player["Prof Bonus"]
+                        } else if (usages in player["Stats"]) {
+                            usages = player["Stats"][usages].modifier()
                         }
                         usages = forceArray(usages)
                         if (!(currentAction["Name"] in player["Resources"])) {
