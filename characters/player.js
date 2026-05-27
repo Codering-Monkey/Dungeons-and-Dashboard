@@ -1810,10 +1810,10 @@ async function render(playerData, initial=false) {
                             preparedItem.addEventListener("change", function() {
                                 if (this.checked) {
                                     preparedSpells += 1
-                                    playerData.push(spellName)
+                                    playerData["Choices"]["PreparedSpells"][currentSpell["Identifier"]].push(spellName)
                                 } else {
                                     preparedSpells -= 1
-                                    playerData.pull(spellName)
+                                    playerData["Choices"]["PreparedSpells"][currentSpell["Identifier"]].pull(spellName)
                                 }
                                 calculateKnownSpells()
                             })
