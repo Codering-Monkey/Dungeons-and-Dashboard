@@ -9,7 +9,8 @@ import {
     merge,
     forceArray,
     filterSpells,
-    forceLevel
+    forceLevel,
+    any
 } from "../script.js"
 import weapons from "../Data/weapons.json" with {type:"json"}
 import spells from "../Data/spells.json" with {type:"json"}
@@ -752,6 +753,9 @@ async function developData() {
                 if ("Prof" in player["Choices"][key]) {
                     player["Prof"].pushAll(player["Choices"][key]["Prof"])
                     player["Exp"].pushAll(player["Choices"][key]["Exp"])
+                    for (let j = 0; j < 4; j++) {
+                        player["ArmourPermitted"] = any(player["ArmourPermitted"][j], player["Choices"][key]["Armour"][j])
+                    }
                 }
                 if ("Feat" in player["Choices"][key]) {
                     player["Feats"].pushAll(player["Choices"][key]["Feat"])
@@ -778,17 +782,26 @@ async function developData() {
                 if ("Prof" in value) {
                     let profChoices = []
                     let expChoices = []
+                    let armourChoices = [false, false, false, false]
                     for (let i = 0; i < value["Prof"].length; i++) {
                         if (value["Prof"][i]["Type"] === "Exp") {
                             expChoices.pushAll(await proficiencyChoose(value["Prof"][i], player["Prof"]))
+                        } else if (value["Prof"][i]["Type"] === "Armour") {
+                            for (let j = 0; j < 4; j++) {
+                                armourChoices[j] = any(armourChoices[j], value["Prof"][i][j])
+                            }
                         } else {
                             profChoices.pushAll(await proficiencyChoose(value["Prof"][i], player["Prof"]))
                         }
                     }
                     player["Choices"][key]["Prof"] = profChoices
                     player["Choices"][key]["Exp"] = expChoices
+                    player["Choices"][key]["Armour"] = armourChoices
                     player["Exp"].pushAll(expChoices)
                     player["Prof"].pushAll(profChoices)
+                    for (let j = 0; j < 4; j++) {
+                        player["ArmourPermitted"] = any(player["ArmourPermitted"][j], armourChoices[j])
+                    }
                 }
                 if ("Feat" in value) {
                     let featChoices = []
