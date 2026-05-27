@@ -796,11 +796,11 @@ async function developData() {
                             expChoices.pushAll(await proficiencyChoose(value["Prof"][i], player["Prof"]))
                         } else if (value["Prof"][i]["Type"] === "Armour") {
                             for (let j = 0; j < 4; j++) {
-                                armourChoices[j] = any(armourChoices[j], value["Prof"][i][j])
+                                armourChoices[j] = any(armourChoices[j], value["Prof"]["Data"][i][j])
                             }
                         } else if (value["Prof"][i]["Type"] === "Weapon") {
-                            weaponChoices[1] = any(weaponChoices[0], value["Prof"][i][0])
-                            weaponChoices[1] = any(weaponChoices[1], value["Prof"][i][1])
+                            weaponChoices[1] = any(weaponChoices[0], value["Prof"]["Data"][i][0])
+                            weaponChoices[1] = any(weaponChoices[1], value["Prof"]["Data"][i][1])
                             value["Prof"][i][2].forEach((weapon) => {
                                 if (!weaponChoices[2].includes(weapon)) {
                                     weaponChoices[2].push(weapon)
