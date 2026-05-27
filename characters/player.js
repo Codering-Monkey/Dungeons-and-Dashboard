@@ -450,7 +450,7 @@ function masteryChoose(newMasteries, existingMasteries) {
 
 // Feature Choices
 
-function featureChoose(choiceTitle, possibleChoices) {
+function featureChoose(choiceTitle, possibleChoices, player) {
     return new Promise((resolve) => {
         let overlayItem = overlay(function () {
         }, false)
@@ -460,7 +460,7 @@ function featureChoose(choiceTitle, possibleChoices) {
         Object.entries(possibleChoices).forEach(([key, value]) => {
             let choiceItem = choiceScroll.createElement("div")
             choiceItem.createElement("h3").textContent = key
-            choiceItem.createElement("p").textContent = (value["Description"] || "")
+            choiceItem.createElement("p").textContent = (value["Description"].parse(player) || "")
             choiceItem.addEventListener("click", function() {
                 if (this.classList.contains("selectedFeat")) {
                     this.classList.remove("selectedFeat")
