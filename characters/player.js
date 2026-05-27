@@ -1181,10 +1181,11 @@ async function render(playerData, initial=false) {
             let resources = playerData["Resources"]
             Object.entries(resources).forEach(([key, value]) => {
                 if ("SR" in value) {
-                    if (value["SR"] === -1) {
+                    let change = forceLevel(value["SR"], playerData["Level"])
+                    if (change === -1) {
                         resources[key]["Current"] = resources[key]["Max"]
                     } else {
-                        resources[key]["Current"] += value["SR"]
+                        resources[key]["Current"] += change
                     }
                     if (resources[key]["Current"] > value["Max"]) {
                         resources[key]["Current"] = value["Max"]
@@ -1202,10 +1203,11 @@ async function render(playerData, initial=false) {
             let resources = playerData["Resources"]
             Object.entries(resources).forEach(([key, value]) => {
                 if ("LR" in value) {
-                    if (value["LR"] === -1) {
+                    let change = forceLevel(value["LR"], playerData["Level"])
+                    if (change === -1) {
                         resources[key]["Current"] = resources[key]["Max"]
                     } else {
-                        resources[key]["Current"] += value["LR"]
+                        resources[key]["Current"] += change
                     }
                     if (resources[key]["Current"] > value["Max"]) {
                         resources[key]["Current"] = value["Max"]
