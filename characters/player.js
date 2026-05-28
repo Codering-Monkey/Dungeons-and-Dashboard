@@ -289,6 +289,9 @@ function featChoose(featItem, existingFeat, player) {
                         continue
                     }
                 }
+                if ("Class" in feats[possibleChoices[i]]["PreReq"]) {
+                    if (!feats[possibleChoices[i]]["PreReq"]["Class"].includes(player["Class"])) {}
+                }
             }
             possibleFeats[possibleChoices[i]] = structuredClone(feats[possibleChoices[i]]["Description"])
         }
