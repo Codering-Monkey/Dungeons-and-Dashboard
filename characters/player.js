@@ -290,7 +290,7 @@ function featChoose(featItem, existingFeat, player) {
                     }
                 }
             }
-            possibleFeats[possibleChoices[i]] = feats[possibleChoices[i]]["Description"]
+            possibleFeats[possibleChoices[i]] = structuredClone(feats[possibleChoices[i]]["Description"])
         }
         let featScroll = document.createElement("div")
         featScroll.classList.add("featScroll")
@@ -557,7 +557,7 @@ async function developData() {
         player["Hit Dice"] = player["Level"]
     }
 
-    player["ArmourPermitted"] = classes[player["Class"]]["Armour"]
+    player["ArmourPermitted"] = structuredClone(classes[player["Class"]]["Armour"])
     player["Armour"] = {"Unarmoured": {"Type": "Other", "Amount": "10", "Cap": -1}}
     player["Weapons"] = {"Unarmed Strike": 1}
     Object.entries(player["Equipment"]).forEach(([key, value]) => {
@@ -565,11 +565,11 @@ async function developData() {
             player["Weapons"][key] = value
         }
         if (key in armour) {
-            player["Armour"][key] = armour[key]
+            player["Armour"][key] = structuredClone(armour[key])
         }
     })
 
-    player["WeaponsPermitted"] = classes[player["Class"]]["Weapons"]
+    player["WeaponsPermitted"] = structuredClone(classes[player["Class"]]["Weapons"])
     player["Actions"] = []
     if (!player["Resources"]) {player["Resources"] = {}}
     if (!player["ACbonus"]) {player["ACbonus"] = []}
@@ -586,7 +586,7 @@ async function developData() {
     let spellCastingTier = -1
     if (player["Level"] >= 3) {
         if (player["Subclass"] && "Spellcasting" in subclasses[player["Class"]][player["Subclass"]]) {
-            spellCastingTier = subclasses[player["Class"]][player["Subclass"]]["Spellcasting"]["CastTier"]
+            spellCastingTier = structuredClone(subclasses[player["Class"]][player["Subclass"]]["Spellcasting"]["CastTier"])
             player["Spellcaster"] = player["Subclass"]
         }
     }
@@ -625,11 +625,11 @@ async function developData() {
     basePlayer[getQuery("Char")]["Spellcaster"] = player["Spellcaster"]
     localStorage.set("Characters", basePlayer)
 
-    player["Speed"] = species[player["Species"]]["Speed"]
+    player["Speed"] = structuredClone(species[player["Species"]]["Speed"])
     let initBonus = 0
     player["Not Prof"] = 0
     player["ProfIncrease"] = (player["ProfIncrease"] || {})
-    player["Saves"] = classes[player["Class"]]["Saves"]
+    player["Saves"] = structuredClone(classes[player["Class"]]["Saves"])
 
     player["Features"] = {}
     async function addFeatures(dataSource, sourceName) {
@@ -972,7 +972,7 @@ async function developData() {
         let oldData = localStorage.get("Characters")
         oldData[getQuery("Char")]["EquipArmour"] = "Unarmoured"
         localStorage.set("Characters", oldData)
-        armourData = armour["Unarmoured"]
+        armourData = structuredClone(armour["Unarmoured"])
     }
     player["Armour Class"] = player.statEval(armourData["Amount"])
     let dexBonus = player["Stats"]["Dex"].modifier()
@@ -1982,7 +1982,7 @@ async function render(playerData, initial=false) {
                                     amount *= data["Bulk"]
                                 }
                                 if (item in armour) {
-                                    playerData["Armour"][item] = armour[item]
+                                    playerData["Armour"][item] = structuredClone(armour[item])
                                 }
                                 let oldData = localStorage.get("Characters")
                                 oldData[getQuery("Char")]["Equipment"][item] = (oldData[getQuery("Char")]["Equipment"][item] || 0) + amount
