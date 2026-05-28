@@ -415,6 +415,21 @@
 			"Amount": 2
 		}]
 	},
+	"Blessed Warrior": {
+		"Type": "Fighting Style",
+		"PreReq": {
+			"Class": ["Paladin"]
+		},
+		"Description": "You learn two Cleric cantrips of your choice (see the Cleric class’s section for a list of Cleric spells). Guidance and Sacred Flame are recommended. The chosen cantrips count as Paladin spells for you, and Charisma is your spellcasting ability for them. Whenever you gain a Paladin level, you can replace one of these cantrips with another Cleric cantrip.",
+		"Spells": [{
+			"Amount": 2,
+			"Min": 0,
+			"Max": 0,
+			"Class": ["Cleric"],
+			"Ability": "Cha",
+			"Identifier": "Blessed Warrior"
+		}]
+	},
 	"Boon of Combat Prowess": {
 		"Type": "Epic",
 		"PreReq": {
