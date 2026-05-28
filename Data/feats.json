@@ -430,6 +430,21 @@
 			"Identifier": "Blessed Warrior"
 		}]
 	},
+	"Druidic Warrior": {
+		"Type": "Fighting Style",
+		"PreReq": {
+			"Class": ["Ranger"]
+		},
+		"Description": "You learn two Druid cantrips of your choice (see the Druid class’s section for a list of Druid spells). Guidance and Starry Wisp are recommended. The chosen cantrips count as Ranger spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a Ranger level, you can replace one of these cantrips with another Druid cantrip.",
+		"Spells": [{
+			"Amount": 2,
+			"Min": 0,
+			"Max": 0,
+			"Class": ["Druid"],
+			"Ability": "Wis",
+			"Identifier": "Druidic Warrior"
+		}]
+	},
 	"Boon of Combat Prowess": {
 		"Type": "Epic",
 		"PreReq": {
