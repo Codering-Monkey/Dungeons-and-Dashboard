@@ -1140,7 +1140,7 @@ async function render(playerData, initial=false) {
         let name = document.createElement("p")
         let save = mod
         if (playerData["Saves"].includes(stats[i])) {
-            save += 2
+            save += playerData["Prof Bonus"]
             saveCheckbox.checked = true
         }
         name.textContent = stats[i]
