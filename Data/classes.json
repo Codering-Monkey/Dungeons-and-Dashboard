@@ -934,7 +934,141 @@
 			}
 		}
 	},
-	"Ranger": {},
+	"Ranger": {
+		"Ability": ["Dex", "Wis"],
+		"Dice": 10,
+		"Improvements": [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+		"Saves": ["Str", "Dex"],
+		"Prof": [{
+			"Amount": 3,
+			"Type": "Prof",
+			"Choices": ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"]
+		}],
+		"Armour": [true, true, false, true],
+		"Weapons": [true, true, []],
+		"Equipment": [
+			{
+				"Studded Leather Armour": 1,
+				"Scimitar": 1,
+				"Shortsword": 1,
+				"Longbow": 1,
+				"Arrow (Quiver of 20)": 1,
+				"Druidic Focus": 1,
+				"Explorer's Pack": 1,
+				"GP": 7
+			},
+			{
+				"GP": 150
+			}
+		],
+		"Attacks": [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+		"Spellcasting": {
+			"CastTier": 2,
+			"Stat": "Wis",
+			"Known": [2, 3, 4, 5, 6, 6, 7, 7, 9, 9, 10, 10, 11, 11, 12, 12, 14, 14, 15, 15],
+			"SpellList": ["Ranger"],
+			"Learning": "preparing",
+			"Recovery": "LR"
+		},
+		"Features": {
+			"Favoured Enemy": {
+				"Level": 1,
+				"Description": "You always have the Hunter’s Mark spell prepared. You can cast it twice without expending a spell slot, and you regain all expended uses of this ability when you finish a Long Rest. The number of times you can cast the spell without a spell slot increases when you reach certain Ranger levels, as shown in the Favored Enemy column of the Ranger Features table.",
+				"Spells": [{
+					"Amount": 1,
+					"Choices": ["Hunter's Mark"],
+					"Ability": "Wis",
+					"Identifier": "Favoured Enemy",
+					"Limited": {
+						"Usages": [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+						"LR": -1
+					}
+				}]
+			},
+			"Weapon Mastery": {
+				"Level": 1,
+				"Description": "Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Shortswords. Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Longswords.",
+				"Mastery": 2
+			},
+			"Deft Explorer": {
+				"Level": 2,
+				"Description": "Thanks to your travels, you gain the following benefits. Expertise. Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in that skill. Languages. You know two languages of your choice from the language tables in “Character Creation.”",
+				"Prof": [{
+					"Type": "Exp",
+					"Amount": 1,
+					"Catagory": "Skill"
+				}, {
+					"Amount": 1,
+					"Type": "Prof",
+					"Catagory": "Language"
+				}]
+			},
+			"Fighting Style": {
+				"Level": 2,
+				"Description": "You gain a Fighting Style feat of your choice",
+				"Feat": [{
+					"Type": ["Fighting Style"],
+					"Amount": 1
+				}]
+			},
+			"Roving": {
+				"Level": 6,
+				"Description": "Your Speed increases by 10 feet while you aren’t wearing Heavy armor. You also have a Climb Speed and a Swim Speed equal to your Speed.",
+				"Speed": {
+					"Climb": "speed",
+					"Swim": "speed"
+				}
+			},
+			"Expertise": {
+				"Level": 9,
+				"Description": "Choose two of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills.",
+				"Prof": [{
+					"Amount": 2,
+					"Catagory": "Skill",
+					"Type": "Exp"
+				}]
+			},
+			"Tireless": {
+				"Level": 10,
+				"Description": "Primal forces now help fuel you on your journeys, granting you the following benefits. Temporary Hit Points. As a Magic action, you can give yourself a number of Temporary Hit Points equal to 1d8 plus your Wisdom modifier (minimum of 1). You can use this action a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest. Decrease Exhaustion. Whenever you finish a Short Rest, your Exhaustion level, if any, decreases by 1.",
+				"Action": [{
+					"Name": "Tireless",
+					"Type": "Action",
+					"Usages": "wis",
+					"LR": -1
+				}]
+			},
+			"Relentless Hunter": {
+				"Level": 13,
+				"Description": "Taking damage can’t break your Concentration on Hunter’s Mark."
+			},
+			"Nature's Veil": {
+				"Level": 14,
+				"Description": "You invoke spirits of nature to magically hide yourself. As a Bonus Action, you can give yourself the Invisible condition until the end of your next turn. You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.",
+				"Action": [{
+					"Name": "Nature's Veil",
+					"Type": "Bonus",
+					"Usages": "wis",
+					"LR": -1
+				}]
+			},
+			"Precise Hunter": {
+				"Level": 17,
+				"Description": "You have Advantage on attack rolls against the creature currently marked by your Hunter’s Mark."
+			},
+			"Feral Senses": {
+				"Level": 18,
+				"Description": "Your connection to the forces of nature grants you Blindsight with a range of 30 feet.",
+				"Senses": {
+					"Blindsight": 30
+				}
+			},
+			"Foe Slayer": {
+				"Level": 20,
+				"Description": "The damage die of your Hunter’s Mark is a d10 rather than a d6."
+			}
+		}
+	},
 	"Rogue": {
 		"Ability": ["Dex"],
 		"Dice": 8,
