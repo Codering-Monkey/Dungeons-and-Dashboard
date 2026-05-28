@@ -1640,8 +1640,10 @@ async function render(playerData, initial=false) {
                         }
                     }
                 }
-                if (spellcastingData["Cantrip"]) {
+                if (spellcastingData["Cantrips"]) {
                     smallestSlot = 0
+                } else {
+                    spellcastingData["Cantrips"] = forceArray(0)
                 }
 
                 spellHeader.createElement("h4").textContent = modifier.symbol()
