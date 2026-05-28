@@ -857,8 +857,13 @@
 					"LR": -1
 				}]
 			},
-			"Fighting Style": {
+			"Weapon Mastery": {
 				"Level": 1,
+				"Description": "Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Shortswords. Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Longswords.",
+				"Mastery": 2
+			},
+			"Fighting Style": {
+				"Level": 2,
 				"Description": "You gain a Fighting Style feat of your choice",
 				"Feat": [{
 					"Type": ["Fighting Style"],
