@@ -172,6 +172,14 @@ let profCatagories = {
     "Artisan's Tools": Object.keys(tools),
     "Other Tools": Object.keys(otherTools),
     "Musical Instruments": Object.keys(instruments),
+    "Stats": [
+        "Str",
+        "Dex",
+        "Con",
+        "Int",
+        "Wis",
+        "Cha"
+    ],
     "Language": [
         "Common",
         "Elvish",
@@ -210,7 +218,7 @@ function proficiencyChoose(profItem, existingProf) {
         let profLabel = document.createElement("label")
         profLabel.textContent = possibleChoices[i]
         profLabel.htmlFor = "choice" + i
-        if ((profItem["Type"] !== "Exp" && existingProf.includes(possibleChoices[i])) || (profItem["Type"] === "Exp" && !(existingProf.includes(possibleChoices[i])))) {
+        if ((profItem["Type"] !== "Exp" && existingProf.includes(possibleChoices[i]) && !(profItem["DoAll"])) || (profItem["Type"] === "Exp" && !(existingProf.includes(possibleChoices[i])))) {
             profLabel.style.opacity = "50%"
             profInput.disabled = true
         }
@@ -621,6 +629,7 @@ async function developData() {
     let initBonus = 0
     player["Not Prof"] = 0
     player["ProfIncrease"] = (player["ProfIncrease"] || {})
+    player["Saves"] = classes[player["Class"]]["Saves"]
 
     player["Features"] = {}
     async function addFeatures(dataSource, sourceName) {
@@ -767,6 +776,11 @@ async function developData() {
                             player["WeaponsPermitted"][2].push(weapon)
                         }
                     })
+                    player["Choices"][key]["Saves"].forEach(save => {
+                        if (!player["Saves"].includes(save)) {
+                            player["Saves"].push(save)
+                        }
+                    })
                 }
                 if ("Feat" in player["Choices"][key]) {
                     player["Feats"].pushAll(player["Choices"][key]["Feat"])
@@ -795,6 +809,7 @@ async function developData() {
                     let expChoices = []
                     let armourChoices = [false, false, false, false]
                     let weaponChoices = [false, false, []]
+                    let saveChoices = []
                     for (let i = 0; i < value["Prof"].length; i++) {
                         if (value["Prof"][i]["Type"] === "Exp") {
                             expChoices.pushAll(await proficiencyChoose(value["Prof"][i], player["Prof"]))
@@ -810,6 +825,12 @@ async function developData() {
                                     weaponChoices[2].push(weapon)
                                 }
                             })
+                        } else if (value["Prof"][i]["Type"] === "Save") {
+                            (await proficiencyChoose(value["Prof"][i], [...player["Prof"], ...player["Saves"]])).forEach((save) => {
+                                if (!saveChoices.includes(save)) {
+                                    saveChoices.push(save)
+                                }
+                            })
                         } else {
                             profChoices.pushAll(await proficiencyChoose(value["Prof"][i], player["Prof"]))
                         }
@@ -818,6 +839,7 @@ async function developData() {
                     player["Choices"][key]["Exp"] = expChoices
                     player["Choices"][key]["Armour"] = armourChoices
                     player["Choices"][key]["Weapons"] = weaponChoices
+                    player["Choices"][key]["Saves"] = saveChoices
                     player["Exp"].pushAll(expChoices)
                     player["Prof"].pushAll(profChoices)
                     for (let j = 0; j < 4; j++) {
@@ -942,7 +964,6 @@ async function developData() {
     if (player["Hit Dice"] > player["Level"]) {
         player["Hit Dice"] = player["Level"]
     }
-    player["Saves"] = classes[player["Class"]]["Saves"]
     player["Attacks"] = forceArray(classes[player["Class"]]["Attacks"])[player["Level"] - 1]
 
     player["Armour Class"] = 0
