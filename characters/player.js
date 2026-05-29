@@ -609,7 +609,7 @@ async function developData() {
                 player["Resources"][i + 1][(classes[player["Class"]]["Spellcasting"]["Recovery"] || "LR")] = -1
             }
         }
-    } else if (spellCastingTier === 4) {
+    } else if (spellCastingTier === 0) {
         player["SpellSlots"] = warlockSpellSlots[player["Level"]]
         for (let i = 0; i < player["SpellSlots"].length; i++) {
             if (player["SpellSlots"][i] !== 0) {
