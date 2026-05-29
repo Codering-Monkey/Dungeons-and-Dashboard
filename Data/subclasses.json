@@ -444,5 +444,83 @@
 				}
 			}
 		}
+	},
+	"Sorcerer": {
+		"Draconic Sorcery": {
+			"Prefix": "Draconic",
+			"Description": "Your innate magic comes from the gift of a dragon. Perhaps an ancient dragon facing death bequeathed some of its magical power to you or your ancestor. You might have absorbed magic from a site infused with dragons’ power. Or perhaps you handled a treasure taken from a dragon’s hoard that was steeped in draconic power. Or you might have a dragon for an ancestor.",
+			"Features": {
+				"Draconic Resilience": {
+					"Level": 3,
+					"Description": "The magic in your body manifests physical traits of your draconic gift. Your Hit Point maximum increases by 3, and it increases by 1 whenever you gain another Sorcerer level. Parts of you are also covered by dragon-like scales. While you aren’t wearing armor, your base Armor Class equals 10 plus your Dexterity and Charisma modifiers.",
+					"Bonus": [{
+						"Stat": "hp",
+						"Amount": "Level"
+					}],
+					"Armour": {
+						"Name": "Draconic Resilience",
+						"Amount": "10+cha",
+						"Cap": -1,
+						"Type": "Other"
+					}
+				},
+				"Draconic Spells": {
+					"Level": 3,
+					"Description": "When you reach a Sorcerer level specified in the Draconic Spells table, you thereafter always have the listed spells prepared.",
+					"Spells": [{
+						"Amount": 10,
+						"Choices": ["Alter Self", "Chromatic Orb", "Command", "Dragon's Breath", "Fear", "Fly", "Arcane Eye", "Charm Monster", "Legend Lore", "Summon Dragon"],
+						"Ability": "Cha",
+						"Identifier": "Draconic Spells"
+					}]
+				},
+				"Elemental Affinity": {
+					"Level": 6,
+					"Description": "Your draconic magic has an affinity with a damage type associated with dragons. Choose one of those types: Acid, Cold, Fire, Lightning, or Poison. You have Resistance to that damage type, and when you cast a spell that deals damage of that type, you can add your Charisma modifier (+${cha}) to one damage roll of that spell.",
+					"Choice": {
+						"Acid": {
+							"Description": "Acid Resist, +${cha} damage to Acid spells",
+							"Resist": ["Acid"]
+						},
+						"Cold": {
+							"Description": "Cold Resist, +${cha} damage to Cold spells",
+							"Resist": ["Cold"]
+						},
+						"Fire": {
+							"Description": "Fire Resist, +${cha} damage to Fire spells",
+							"Resist": ["Fire"]
+						},
+						"Lightning": {
+							"Description": "Lightning Resist, +${cha} damage to Lightning spells",
+							"Resist": ["Lightning"]
+						},
+						"Poison": {
+							"Description": "Poison Resist, +${cha} damage to Poison spells",
+							"Resist": ["Poison"]
+						}
+					}
+				},
+				"Dragon Wings": {
+					"Level": 14,
+					"Description": "As a Bonus Action, you can cause draconic wings to appear on your back. The wings last for 1 hour or until you dismiss them (no action required). For the duration, you have a Fly Speed of 60 feet. Once you use this feature, you can’t use it again until you finish a Long Rest unless you spend 3 Sorcery Points (no action required) to restore your use of it.",
+					"Action": [{
+						"Type": "Bonus",
+						"Name": "Dragon Wings",
+						"Usages": 1,
+						"LR": 1
+					}]
+				},
+				"Dragon Companion": {
+					"Level": 18,
+					"Description": "You can cast Summon Dragon without a Material component. You can also cast it once without a spell slot, and you regain the ability to cast it in this way when you finish a Long Rest. Whenever you start casting the spell, you can modify it so that it doesn’t require Concentration. If you do so, the spell’s duration becomes 1 minute for that casting.",
+					"Spells": [{
+						"Amount": 1,
+						"Choices": ["Summon Dragon"],
+						"Ability": "Cha",
+						"Identifier": "Dragon Companion"
+					}]
+				}
+			}
+		}
 	}
 }
