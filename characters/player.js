@@ -1872,7 +1872,7 @@ async function render(playerData, initial=false) {
                             allSpells.columnWidth("20%", "40%", "20%")
                             let validSpells = {}
                             if (currentSpell["Class"]) {
-                                validSpells = filterSpells("", null, null, forceArray(currentSpell["Class"])[playerData["Level"] - 1].toLowerCase(), currentSpell["Min"], currentSpell["Max"])
+                                validSpells = filterSpells("", null, (currentSpell["Schools"] || null), forceArray(currentSpell["Class"])[playerData["Level"] - 1].toLowerCase(), currentSpell["Min"], currentSpell["Max"])
                             } else {
                                 for (let i = 0; i < currentSpell["Choices"].length; i++) {
                                     validSpells[currentSpell["Choices"][i]] = spells[currentSpell["Choices"][i]]
