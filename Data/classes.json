@@ -1310,6 +1310,8 @@
 			}
 		}
 	},
-	"Warlock": {},
+	"Warlock": {
+
+	},
 	"Wizard": {}
 }
