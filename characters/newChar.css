@@ -29,9 +29,11 @@
     background-color: var(--foreground);
     width: calc(100% - 3em);
     margin: 0.5em;
+    height: 2.05em;
+    overflow: hidden;
+    transition: height .5s ease-in-out;
     padding: 1em;
     cursor: pointer;
-    overflow-x:hidden;
 }
 
 .listParent > div > h2 {
@@ -44,6 +46,10 @@
 
 .listParent .active > * {
     color: var(--primary)
+}
+
+.listParent > div > div > p:last-child {
+    margin-bottom: 0;
 }
 
 .statParent {

@@ -175,13 +175,14 @@ function selectList(data, storageKey) {
     Object.keys(data).forEach((key) => {
         let listItem = parent.createElement("div")
         listItem.id = key
+        let shownDataElements = 0
         listItem.addEventListener("click", function () {
             if (sessionStorage.get(storageKey)) {
                 id(sessionStorage.get(storageKey)).classList.remove("active")
-                id(sessionStorage.get(storageKey)).children[1].style.display = "none"
+                id(sessionStorage.get(storageKey)).style.height = "2.05em"
             }
             this.classList.add("active")
-            this.children[1].style.display = "block"
+            this.style.height = `${2.38 + (2.4 * shownDataElements)}em`
             sessionStorage.set(storageKey, key)
         })
         listItem.addEventListener("dblclick", function () {
@@ -194,8 +195,8 @@ function selectList(data, storageKey) {
         let listName = listItem.createElement("h2")
         listName.textContent = key
         let listData = listItem.createElement("div")
-        listData.style.display = "none"
         if (storageKey === "Class") {
+            shownDataElements = 4
             listData.createElement("p").textContent = `Primary Ability: ${classes[key]["Ability"].commaFuse()}`
             listData.createElement("p").textContent = `Hit Dice: d${classes[key]["Dice"]}`
             listData.createElement("p").textContent = `Saves: ${classes[key]["Saves"].commaFuse()}`
