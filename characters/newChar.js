@@ -193,8 +193,14 @@ function selectList(data, storageKey) {
         }
         let listName = listItem.createElement("h2")
         listName.textContent = key
-        let listData = listItem.createElement("p")
+        let listData = listItem.createElement("div")
         listData.style.display = "none"
+        if (storageKey === "Class") {
+            listData.createElement("p").textContent = `Primary Ability: ${classes[key]["Ability"].commaFuse()}`
+            listData.createElement("p").textContent = `Hit Dice: d${classes[key]["Dice"]}`
+            listData.createElement("p").textContent = `Saves: ${classes[key]["Saves"].commaFuse()}`
+            listData.createElement("p").textContent = `Proficiencies: ${classes[key]["Prof"][0]["Amount"]}${classes[key]["Prof"][0]["Choices"] ? " from " + classes[key]["Prof"][0]["Choices"].commaFuse() : " skill proficiencies"}`
+        }
     })
 }
 
