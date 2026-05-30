@@ -430,10 +430,12 @@ function statChoose(possibleStats) {
 
 // Mastery
 
-function masteryChoose(newMasteries, existingMasteries) {
+function masteryChoose(newMasteries, existingMasteries, existingProficiencies) {
     let overlayParent = overlay(function() {}, false)
     overlayParent.classList.add('profOverlay')
     overlayParent.createElement("h2").textContent = `Choose ${newMasteries} Weapon Masteries`
+    overlayParent.createElement("h6").textContent = "* You are proficient in this weapon"
+    overlayParent.break()
     let masteryScroll = overlayParent.createElement("div")
     masteryScroll.style.height = "calc(80vh - 70px)"
     Object.entries(weapons).forEach(([key, value]) => {
@@ -443,7 +445,12 @@ function masteryChoose(newMasteries, existingMasteries) {
             masteryItem.id = "mastery" + key
             masteryItem.value = key
             let masteryLabel = masteryScroll.createElement("label")
-            masteryLabel.textContent = `${key} (${value["Mastery"]})`
+            masteryLabel.textContent = `${key} (${value["Mastery"]})${(value["Tier"] === "Simple" && existingProficiencies[0]) || (value["Tier"] === "Martial" && existingProficiencies[1]) || (existingProficiencies[2].includes(key)) ? " *" : ""}`
+            value["Properties"].forEach((property) => {
+                if (existingProficiencies[2].includes(property)) {
+                    masteryLabel.textContent += " *"
+                }
+            })
             masteryLabel.htmlFor = "mastery" + key
             if (existingMasteries.includes(key)) {
                 masteryLabel.style.opacity = "50%"
@@ -932,7 +939,7 @@ async function developData() {
         player["Choices"]["Mastery"] = []
     }
     if (player["Choices"]["Mastery"].length < player["Mastery"]) {
-        player["Choices"]["Mastery"].pushAll(await masteryChoose(player["Mastery"] - player["Choices"]["Mastery"].length, player["Choices"]["Mastery"]))
+        player["Choices"]["Mastery"].pushAll(await masteryChoose(player["Mastery"] - player["Choices"]["Mastery"].length, player["Choices"]["Mastery"], player["WeaponsPermitted"]))
         saveMastery = true
     }
     if (saveMastery) {
