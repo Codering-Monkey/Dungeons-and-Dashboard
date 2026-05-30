@@ -1469,6 +1469,16 @@ async function render(playerData, initial=false) {
                 header.textContent = columns[i]
                 weaponsTitle.appendChild(header)
             }
+            window.addEventListener("keydown", function(event) {
+                if (event.key === "Shift") {
+                    weaponsTitle.children[3].textContent = "Damage (Crit)"
+                }
+            })
+            window.addEventListener("keyup", function(event) {
+                if (event.key === "Shift") {
+                    weaponsTitle.children[3].textContent = "Damage"
+                }
+            })
             actionsTable.appendChild(weaponsTitle)
             let weaponOptions = playerData["Weapons"]
             weaponOptions["Shove"] = 1
@@ -1515,15 +1525,15 @@ async function render(playerData, initial=false) {
                 } else {
                     damage.textContent = `${forceLevel(weaponData["Dice"][0], playerData["Level"]) + "d" + forceLevel(weaponData["Dice"][1], playerData["Level"]) + (damageBonus !== "" ? damageBonus.bonus() : "")}${weaponData["Damage"] ? ` (${weaponData["Damage"]})`: ""}`
                     damage.classList.add("clickable")
-                    damage.addEventListener("click", function() {
+                    damage.addEventListener("click", function(event) {
                         let dice = []
                         let diceString = ""
-                        for (let i = 0; i < forceLevel(weaponData["Dice"][0], playerData["Level"]); i++) {
+                        for (let i = 0; i < forceLevel(weaponData["Dice"][0], playerData["Level"]) * (event.shiftKey ? 2 : 1); i++) {
                             dice.push(roll(forceLevel(weaponData["Dice"][1], playerData["Level"])))
                             diceString += dice[i] + " + "
                         }
                         diceString = diceString.slice(0, - 3)
-                        popup(`You rolled a ${dice.sum() + damageBonus} on your ${key} roll (${diceString}${damageBonus ? " + " + damageBonus : ""})`)
+                        popup(`You ${event.shiftKey ? "critically " : ""}rolled a ${dice.sum() + damageBonus} on your ${key} roll (${diceString}${damageBonus ? " + " + damageBonus : ""})`)
                     })
                 }
                 weaponLine.appendChild(damage)
