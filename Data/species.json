@@ -967,6 +967,8 @@
 	"Orc": {
 		"Speed": 30,
 		"NameSet": "o",
+		"Size": ["Medium"],
+		"Type": "Humanoid",
 		"Features": {
 			"Adrenaline Rush": {
 				"Description": "You can take the Dash action as a Bonus Action. When you do so, you gain a number of Temporary Hit Points equal to your Proficiency Bonus. You can use this trait a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Short or Long Rest.",
