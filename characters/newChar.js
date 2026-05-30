@@ -23,13 +23,13 @@ HTMLInputElement.prototype.bonusEvent = function () {
         if (other.checked) {
             other.checked = false
             bonus[Math.abs(this.value - 3)].pull(this.id.slice(1))
-            bonusItem.textContent = String(parseInt(bonusItem.textContent) - Math.abs(this.value - 3))
+            bonusItem.textContent = String(parseInt(bonusItem.textContent) - Math.abs(this.value - 3)) + " / 3"
         }
         if (this.checked) {
-            bonusItem.textContent = String(parseInt(bonusItem.textContent) + increase)
+            bonusItem.textContent = String(parseInt(bonusItem.textContent) + increase) + " / 3"
             bonus[this.value].push(this.id.slice(1))
         } else {
-            bonusItem.textContent = String(parseInt(bonusItem.textContent) - increase)
+            bonusItem.textContent = String(parseInt(bonusItem.textContent) - increase) + " / 3"
             bonus[this.value].pull(this.id.slice(1))
         }
         let flippedStats = allStats.invert()
@@ -113,7 +113,7 @@ next.addEventListener("click", function () {
             popup("Please Select a Background")
         }
     } else if (stage === "Stats") {
-        if (id("totalPoints").textContent === "27" && id("totalBonus").textContent === "3") {
+        if (id("totalPoints").textContent === "27 / 27" && id("totalBonus").textContent === "3 / 3") {
             newCharacter["BaseStats"] = sessionStorage.get("baseStats")
             newCharacter["Bonus"] = sessionStorage.get("Bonus")
             selectEquip()
@@ -278,7 +278,7 @@ function selectStats() {
                 totalCost += statsToPoints[this.value]
             }
             cost.textContent = String(statsToPoints[raw.value])
-            id("totalPoints").textContent = String(totalCost)
+            id("totalPoints").textContent = String(totalCost) + " / 27"
             sessionStorage.indexSet("baseStats", this.id.slice(3), parseInt(this.value))
             updateTotal(key)
         })
@@ -334,11 +334,11 @@ function selectStats() {
         id("cost" + statKey).textContent = String(pointValue)
         totalCost += parseInt(pointValue)
     })
-    totalPoints.textContent = String(totalCost)
+    totalPoints.textContent = String(totalCost) + " / 27"
     let totalBonus = document.createElement("div")
     totalBonus.classList.add("header")
     totalBonus.id = "totalBonus"
-    totalBonus.textContent = String(sessionStorage.get("Bonus")[1].length + (sessionStorage.get("Bonus")[2].length * 2));
+    totalBonus.textContent = String(sessionStorage.get("Bonus")[1].length + (sessionStorage.get("Bonus")[2].length * 2)) + " / 3"
     totalBonus.style.gridColumn = "span 2"
     parent.appendChild(totalBonus)
     parent.blank(2)
