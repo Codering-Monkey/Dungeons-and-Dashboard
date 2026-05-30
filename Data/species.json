@@ -379,7 +379,7 @@
 							"Darkvision": 120
 						},
 						"Choice": {
-							"Drow Spellcasting [Intelligence]": {
+							"Drow Spellcasting [Intelligence] (${int.symbol()})": {
 								"Nested": true,
 								"Description": "Intelligence-based Spellcasting",
 								"Drow Cantrip": {
@@ -417,7 +417,7 @@
 									}]
 								}
 							},
-							"Drow Spellcasting [Wisdom]": {
+							"Drow Spellcasting [Wisdom] (${wis.symbol()})": {
 								"Nested": true,
 								"Description": "Wisdom-based Spellcasting",
 								"Drow Cantrip": {
@@ -455,7 +455,7 @@
 									}]
 								}
 							},
-							"Drow Spellcasting [Charisma]": {
+							"Drow Spellcasting [Charisma] (${cha.symbol()})": {
 								"Nested": true,
 								"Description": "Charisma-based Spellcasting",
 								"Drow Cantrip": {
@@ -498,7 +498,7 @@
 					"High Elf": {
 						"Description": "Any wizard cantrip at level 1, Detect magic at level 3, Misty step at level 5",
 						"Choice": {
-							"High Elf Spellcasting [Intelligence]": {
+							"High Elf Spellcasting [Intelligence] (${int.symbol()})": {
 								"Nested": true,
 								"Description": "Intelligence-based Spellcasting",
 								"High Elf Cantrip": {
@@ -538,7 +538,7 @@
 									}]
 								}
 							},
-							"High Elf Spellcasting [Wisdom]": {
+							"High Elf Spellcasting [Wisdom] (${wis.symbol()})": {
 								"Nested": true,
 								"Description": "Wisdom-based Spellcasting",
 								"High Elf Cantrip": {
@@ -578,7 +578,7 @@
 									}]
 								}
 							},
-							"High Elf Spellcasting [Charisma]": {
+							"High Elf Spellcasting [Charisma] (${cha.symbol()})": {
 								"Nested": true,
 								"Description": "Charisma-based Spellcasting",
 								"High Elf Cantrip": {
@@ -627,7 +627,7 @@
 							"Stat": "Speed"
 						}],
 						"Choice": {
-							"Wood Elf Spellcasting [Intelligence]": {
+							"Wood Elf Spellcasting [Intelligence] (${int.symbol()})": {
 								"Nested": true,
 								"Description": "Intelligence-based Spellcasting",
 								"Wood Elf Cantrip": {
@@ -665,7 +665,7 @@
 									}]
 								}
 							},
-							"Wood Elf Spellcasting [Wisdom]": {
+							"Wood Elf Spellcasting [Wisdom] (${wis.symbol()})": {
 								"Nested": true,
 								"Description": "Wisdom-based Spellcasting",
 								"Wood Elf Cantrip": {
@@ -703,7 +703,7 @@
 									}]
 								}
 							},
-							"Wood Elf Spellcasting [Charisma]": {
+							"Wood Elf Spellcasting [Charisma] (${cha.symbol()})": {
 								"Nested": true,
 								"Description": "Charisma-based Spellcasting",
 								"Wood Elf Cantrip": {
@@ -768,7 +768,7 @@
 					"Forest Gnome": {
 						"Description": "You know the Minor Illusion cantrip. You also always have the Speak with Animals spell prepared. You can cast it without a spell slot a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest. You can also use any spell slots you have to cast the spell.",
 						"Choice": {
-							"Forest Gnome [Intelligence]": {
+							"Forest Gnome [Intelligence] (${int.symbol()})": {
 								"Description": "Intelligence based spellcasting",
 								"Spells": [{
 									"Amount": 1,
@@ -786,7 +786,7 @@
 									"Identifier": "Forest Gnome spellcasting (Speak with Animals)"
 								}]
 							},
-							"Forest Gnome [Wisdom]": {
+							"Forest Gnome [Wisdom] (${wis.symbol()})": {
 								"Description": "Wisdom based spellcasting",
 								"Spells": [{
 									"Amount": 1,
@@ -804,7 +804,7 @@
 									"Identifier": "Forest Gnome spellcasting (Speak with Animals)"
 								}]
 							},
-							"Forest Gnome [Charisma]": {
+							"Forest Gnome [Charisma] (${cha.symbol()})": {
 								"Description": "Charisma based spellcasting",
 								"Spells": [{
 									"Amount": 1,
@@ -827,7 +827,7 @@
 					"Rock Gnome": {
 						"Description": "You know the Mending and Prestidigitation cantrips. In addition, you can spend 10 minutes casting Prestidigitation to create a Tiny clockwork device (AC 5, 1 HP), such as a toy, fire starter, or music box. When you create the device, you determine its function by choosing one effect from Prestidigitation; the device produces that effect whenever you or another creature takes a Bonus Action to activate it with a touch. If the chosen effect has options within it, you choose one of those options for the device when you create it. For example, if you choose the spell’s ignite-extinguish effect, you determine whether the device ignites or extinguishes fire; the device doesn’t do both. You can have three such devices in existence at a time, and each falls apart 8 hours after its creation or when you dismantle it with a touch as a Utilize action.",
 						"Choices": {
-							"Rock Gnome [Intelligence]": {
+							"Rock Gnome [Intelligence] (${int.symbol()})": {
 								"Description": "Intelligence based spellcasting",
 								"Spells": [{
 									"Amount": 2,
@@ -836,7 +836,7 @@
 									"Identifier": "Rock Gnome spellcasting"
 								}]
 							},
-							"Rock Gnome [Wisdom]": {
+							"Rock Gnome [Wisdom] (${wis.symbol()})": {
 								"Description": "Wisdom based spellcasting",
 								"Spells": [{
 									"Amount": 2,
@@ -845,7 +845,7 @@
 									"Identifier": "Rock Gnome spellcasting"
 								}]
 							},
-							"Rock Gnome [Charisma]": {
+							"Rock Gnome [Charisma] (${cha.symbol()})": {
 								"Description": "Charisma based spellcasting",
 								"Spells": [{
 									"Amount": 2,
@@ -1016,7 +1016,7 @@
 							"Resist": ["Poison"]
 						},
 						"Choice": {
-							"Abyssal Spellcasting [Intelligence]": {
+							"Abyssal Spellcasting [Intelligence] (${int.symbol()})": {
 								"Nested": true,
 								"Description": "Intelligence-based Spellcasting",
 								"Abyssal Cantrip": {
@@ -1054,7 +1054,7 @@
 									}]
 								}
 							},
-							"Abyssal Spellcasting [Wisdom]": {
+							"Abyssal Spellcasting [Wisdom] (${wis.symbol()})": {
 								"Nested": true,
 								"Description": "Wisdom-based Spellcasting",
 								"Abyssal Cantrip": {
@@ -1092,7 +1092,7 @@
 									}]
 								}
 							},
-							"Abyssal Spellcasting [Charisma]": {
+							"Abyssal Spellcasting [Charisma] (${cha.symbol()})": {
 								"Nested": true,
 								"Description": "Charisma-based Spellcasting",
 								"Abyssal Cantrip": {
@@ -1138,7 +1138,7 @@
 							"Resist": ["Necrotic"]
 						},
 						"Choice": {
-							"Chthonic Spellcasting [Intelligence]": {
+							"Chthonic Spellcasting [Intelligence] (${int.symbol()})": {
 								"Nested": true,
 								"Description": "Intelligence-based Spellcasting",
 								"Chthonic Cantrip": {
@@ -1176,7 +1176,7 @@
 									}]
 								}
 							},
-							"Chthonic Spellcasting [Wisdom]": {
+							"Chthonic Spellcasting [Wisdom] (${wis.symbol()})": {
 								"Nested": true,
 								"Description": "Wisdom-based Spellcasting",
 								"Chthonic Cantrip": {
@@ -1214,7 +1214,7 @@
 									}]
 								}
 							},
-							"Chthonic Spellcasting [Charisma]": {
+							"Chthonic Spellcasting [Charisma] (${cha.symbol()})": {
 								"Nested": true,
 								"Description": "Charisma-based Spellcasting",
 								"Chthonic Cantrip": {
@@ -1260,7 +1260,7 @@
 							"Resist": ["Fire"]
 						},
 						"Choice": {
-							"Infernal Spellcasting [Intelligence]": {
+							"Infernal Spellcasting [Intelligence] (${int.symbol()})": {
 								"Nested": true,
 								"Description": "Intelligence-based Spellcasting",
 								"Infernal Cantrip": {
@@ -1298,7 +1298,7 @@
 									}]
 								}
 							},
-							"Infernal Spellcasting [Wisdom]": {
+							"Infernal Spellcasting [Wisdom] (${wis.symbol()})": {
 								"Nested": true,
 								"Description": "Wisdom-based Spellcasting",
 								"Infernal Cantrip": {
@@ -1336,7 +1336,7 @@
 									}]
 								}
 							},
-							"Infernal Spellcasting [Charisma]": {
+							"Infernal Spellcasting [Charisma] (${cha.symbol()})": {
 								"Nested": true,
 								"Description": "Charisma-based Spellcasting",
 								"Infernal Cantrip": {
