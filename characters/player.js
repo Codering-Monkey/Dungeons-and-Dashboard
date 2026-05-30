@@ -193,42 +193,50 @@ let profCatagories = {
 }
 
 function proficiencyChoose(profItem, existingProf) {
-    let overlayParent = overlay(function() {}, false)
-    overlayParent.classList.add('profOverlay')
-    let possibleChoices
-    if ("Catagory" in profItem) {
-        possibleChoices = profCatagories[profItem["Catagory"]]
-    } else if ("Choices" in profItem) {
-        possibleChoices = profItem["Choices"]
-    } else {
-        throw TypeError("Incorrectly formatted profItem")
-    }
-    let profTitle = document.createElement("h2")
-    profTitle.textContent = `Choose ${profItem["Amount"]} ${profItem["Type"] === "Exp" ? "Expertises" : (profItem["Catagory"] ? (profItem["Catagory"].slice(-1) === "s" ? profItem["Catagory"] : profItem["Catagory"] + "s") : "")}`
-    overlayParent.appendChild(profTitle)
-    let profContainer = document.createElement("div")
-    overlayParent.appendChild(profContainer)
-    for (let i = 0; i < possibleChoices.length; i++) {
-        let profInput = document.createElement("input")
-        profInput.type = "Checkbox"
-        profInput.id = "choice" + i
-        profInput.value = possibleChoices[i]
-        profInput.classList.add("usable")
-        profContainer.appendChild(profInput)
-        let profLabel = document.createElement("label")
-        profLabel.textContent = possibleChoices[i]
-        profLabel.htmlFor = "choice" + i
-        if ((profItem["Type"] !== "Exp" && existingProf.includes(possibleChoices[i]) && !(profItem["DoAll"])) || (profItem["Type"] === "Exp" && !(existingProf.includes(possibleChoices[i])))) {
-            profLabel.style.opacity = "50%"
-            profInput.disabled = true
-        }
-        profContainer.appendChild(profLabel)
-        profContainer.break()
-    }
-    let profButton = document.createElement("button")
-    profButton.textContent = "Confirm"
-    overlayParent.appendChild(profButton)
     return new Promise((resolve) => {
+        let overlayParent = overlay(function() {}, false)
+        overlayParent.classList.add('profOverlay')
+        let possibleChoices
+        if ("Catagory" in profItem) {
+            possibleChoices = profCatagories[profItem["Catagory"]]
+        } else if ("Choices" in profItem) {
+            possibleChoices = profItem["Choices"]
+        } else {
+            throw TypeError("Incorrectly formatted profItem")
+        }
+        let profTitle = document.createElement("h2")
+        profTitle.textContent = `Choose ${profItem["Amount"]} ${profItem["Type"] === "Exp" ? "Expertises" : (profItem["Catagory"] ? (profItem["Catagory"].slice(-1) === "s" ? profItem["Catagory"] : profItem["Catagory"] + "s") : "")}`
+        overlayParent.appendChild(profTitle)
+        let profContainer = document.createElement("div")
+        overlayParent.appendChild(profContainer)
+        let validOptions = []
+        for (let i = 0; i < possibleChoices.length; i++) {
+            let profInput = document.createElement("input")
+            profInput.type = "Checkbox"
+            profInput.id = "choice" + i
+            profInput.value = possibleChoices[i]
+            profInput.classList.add("usable")
+            profContainer.appendChild(profInput)
+            let profLabel = document.createElement("label")
+            profLabel.textContent = possibleChoices[i]
+            profLabel.htmlFor = "choice" + i
+            if ((profItem["Type"] !== "Exp" && existingProf.includes(possibleChoices[i]) && !(profItem["DoAll"])) || (profItem["Type"] === "Exp" && !(existingProf.includes(possibleChoices[i])))) {
+                profLabel.style.opacity = "50%"
+                profInput.disabled = true
+            } else {
+                validOptions.push(possibleChoices[i])
+            }
+            profContainer.appendChild(profLabel)
+            profContainer.break()
+        }
+        console.log(validOptions.length === profItem["Amount"])
+        if (validOptions.length === profItem["Amount"]) {
+            overlayParent.parentElement.remove()
+            resolve(validOptions)
+        }
+        let profButton = document.createElement("button")
+        profButton.textContent = "Confirm"
+        overlayParent.appendChild(profButton)
         profButton.addEventListener("click", function() {
             let selected = []
             let checkboxes = profContainer.getElementsByTagName("INPUT")
