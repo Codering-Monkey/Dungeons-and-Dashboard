@@ -230,6 +230,9 @@ function proficiencyChoose(profItem, existingProf) {
             profContainer.break()
         }
         console.log(validOptions.length === profItem["Amount"])
+        if (validOptions.length > profItem["Amount"]) {
+            profItem["Amount"] = validOptions.length
+        }
         if (validOptions.length === profItem["Amount"]) {
             overlayParent.parentElement.remove()
             resolve(validOptions)
