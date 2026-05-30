@@ -394,7 +394,9 @@ function subclassChoose(playerClass) {
 function statChoose(possibleStats) {
     let overlayParent = overlay(function() {}, false)
     overlayParent.classList.add('featOverlay')
+    overlayParent.createElement("h2").textContent = `Select stat to gain a +1 Bonus`
     let statScroll = overlayParent.createElement("div", "featScroll")
+    statScroll.style.height = "calc(80vh - 4.6em)"
     for (let i = 0; i < possibleStats.length; i++) {
         let statItem = statScroll.createElement("div")
         let statTitle = statItem.createElement("h3")
@@ -417,6 +419,7 @@ function statChoose(possibleStats) {
         finishButton.addEventListener("click", function() {
             if (document.getElementsByClassName("selectedFeat") && document.getElementsByClassName("selectedFeat")[0]) {
                 resolve(document.getElementsByClassName("selectedFeat")[0].children[0].textContent)
+                popup("You have gained +1 to "+ document.getElementsByClassName("selectedFeat")[0].children[0].textContent)
                 overlayParent.parentElement.remove()
             } else {
                 popup(`Please select a Stat to Increase`)
