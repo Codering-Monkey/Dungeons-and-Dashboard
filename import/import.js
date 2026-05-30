@@ -101,7 +101,7 @@ id("guide").addEventListener("click", function () {
     overlayItem.break()
     overlayItem.break()
     let importParent = overlayItem.createElement("div", "importParent")
-    let importables = ["Armour", "Backgrounds", "Classes", "Colours", "Feats", "Gaming", "Gear", "Instruments", "OtherTools", "Packs", "Premade", "Species", "Spells", "Subclasses", "Tools", "Weapons"]
+    let importables = ["Armour", "Backgrounds", "Classes", "Colours", "Feats", "Gaming", "Gear", "Instruments", "OtherTools", "Packs", "Premade", "Species", "Spells", "Subclasses", "Tools", "Weapons", "Options"]
     importables.forEach(importable => {
         let linkItem = importParent.createElement("a")
         let link = `/Data/${importable.toLowerCase()}.json`
