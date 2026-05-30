@@ -708,7 +708,18 @@ async function developData() {
                     continue;
                 }
             }
-            player["Features"][sourceName][key] = value["Description"] ? value["Description"].parse(player) : ""
+            if ("Text" in value) {
+                if (!player["Choices"][sourceName][key]["Text"]) {
+                    let userText = null
+                    while (userText === null) {
+                        userText = prompt(value["Text"])
+                    }
+                    player["Choices"][sourceName][key]["Text"] = userText
+                }
+                player["Features"][sourceName][`${key} (${player["Choices"][sourceName][key]["Text"]})`] = value["Description"] ? value["Description"].parse(player) : ""
+            } else {
+                player["Features"][sourceName][key] = value["Description"] ? value["Description"].parse(player) : ""
+            }
             if ("Armour" in value) {
                 player["Armour"][value["Armour"]["Name"]] = {"Type": value["Armour"]["Type"], "Amount": value["Armour"]["Amount"], "Cap": value["Armour"]["Cap"]}
             }
