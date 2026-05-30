@@ -189,10 +189,6 @@ function selectList(data, storageKey) {
             sessionStorage.set(storageKey, key)
             next.click()
         })
-        if (sessionStorage.get(storageKey) === key) {
-            listItem.classList.add("active")
-            listItem.style.height = `${2.38 + (2.4 * shownDataElements)}em`
-        }
         let listName = listItem.createElement("h2")
         listName.textContent = key
         let listData = listItem.createElement("div")
@@ -213,6 +209,10 @@ function selectList(data, storageKey) {
             listData.createElement("p").textContent = `Feat: ${backgrounds[key]["Feat"]}`
             listData.createElement("p").textContent = `Tool Proficiency: ${((backgrounds[key]["Prof"][0]["Choices"] || [null])[0] || backgrounds[key]["Prof"][0]["Catagory"])}`
             listData.createElement("p").textContent = `Skill Proficiencies: ${backgrounds[key]["Prof"][1]["Choices"].join(", ")}`
+        }
+        if (sessionStorage.get(storageKey) === key) {
+            listItem.classList.add("active")
+            listItem.style.height = `${2.38 + (2.4 * shownDataElements)}em`
         }
     })
 }
