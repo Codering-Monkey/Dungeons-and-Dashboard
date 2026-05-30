@@ -539,20 +539,35 @@ function optionChoose(optionItem, currentOptions, player) {
         let choiceScroll = overlayItem.createElement("div", "featScroll")
         let selectedOptions = []
         Object.entries(options[optionItem["Name"]]).forEach(([key, value]) => {
-            let choiceItem = choiceScroll.createElement("div")
-            let choiceTitle = choiceItem.createElement("h3")
-            choiceTitle.textContent = key.parse(player)
-            choiceTitle.value = key
-            choiceItem.createElement("p").textContent = (value["Description"].parse(player) || "")
-            choiceItem.addEventListener("click", function() {
-                if (this.classList.contains("selectedFeat")) {
-                    this.classList.remove("selectedFeat")
-                    selectedOptions.pull(this.children[0].key)
-                } else {
-                    this.classList.add("selectedFeat")
-                    selectedOptions.push(this.children[0].key)
+            let availableOption = true
+            if ("PreReq" in value) {
+                if ("Level" in value["PreReq"]) {
+                    if (player["Level"] < value["PreReq"]["Level"]) {
+                        availableOption = false
+                    }
                 }
-            })
+                if ("Option" in value["PreReq"]) {
+                    if (!currentOptions.includes(value["PreReq"]["Option"])) {
+                        availableOption = false
+                    }
+                }
+            }
+            if (availableOption) {
+                let choiceItem = choiceScroll.createElement("div")
+                let choiceTitle = choiceItem.createElement("h3")
+                choiceTitle.textContent = key.parse(player)
+                choiceTitle.value = key
+                choiceItem.createElement("p").textContent = (value["Description"].parse(player) || "")
+                choiceItem.addEventListener("click", function () {
+                    if (this.classList.contains("selectedFeat")) {
+                        this.classList.remove("selectedFeat")
+                        selectedOptions.pull(this.children[0].key)
+                    } else {
+                        this.classList.add("selectedFeat")
+                        selectedOptions.push(this.children[0].key)
+                    }
+                })
+            }
         })
         let finishButton = choiceScroll.createElement("button")
         finishButton.textContent = "Confirm"
