@@ -1709,7 +1709,12 @@ async function render(playerData, initial=false) {
                         calculateKnownSpells()
                     })
                     spellRow.createElement("td").textContent = spells[spellName]["Level"]
-                    spellRow.createElement("td").textContent = spellName
+                    let spellNameItem = spellRow.createElement("td")
+                    spellNameItem.textContent = spellName
+                    spellNameItem.classList.add("clickable")
+                    spellNameItem.addEventListener("click", function() {
+                        window.open("../spells/spells.html?spell=" + this.textContent.replaceAll(" ", "+"), "_blank")
+                    })
                     if (spells[spellName]["Level"] === 0) {
                         knownCantrips += 1
                     } else if (preparedItem.checked){
@@ -1844,7 +1849,12 @@ async function render(playerData, initial=false) {
                                 calculateKnownSpells()
                             })
                             spellRow.createElement("td").textContent = spells[spellName]["Level"]
-                            spellRow.createElement("td").textContent = spellName
+                            let spellNameItem = spellRow.createElement("td")
+                            spellNameItem.textContent = spellName
+                            spellNameItem.classList.add("clickable")
+                            spellNameItem.addEventListener("click", function() {
+                                window.open("../spells/spells.html?spell=" + this.textContent.replaceAll(" ", "+"), "_blank")
+                            })
                             if (preparedItem.checked) {
                                 preparedSpells += 1
                             }
