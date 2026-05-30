@@ -287,6 +287,7 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    pointer-events: none;
 }
 
 .popup {
@@ -298,6 +299,7 @@ body {
     text-align: center;
     cursor: pointer;
     transition: margin-right 1s;
+    pointer-events: initial;
 }
 
 .popup span {
