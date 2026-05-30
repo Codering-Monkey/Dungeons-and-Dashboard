@@ -132,6 +132,7 @@ next.addEventListener("click", function () {
             newCharacter["Name"] = sessionStorage.get("Name")
             newCharacter["Gender"] = sessionStorage.get("Gender")
             newCharacter["Equipment"] = classes[sessionStorage.get("Class")]["Equipment"][sessionStorage.get("ClassEquip")]
+            newCharacter["Size"] = id("Size").value
             Object.entries(backgrounds[sessionStorage.get("Background")]["Equipment"][sessionStorage.get("BackEquip")]).forEach(([key, value]) => {
                 newCharacter["Equipment"][key] = (newCharacter["Equipment"][key] || 0) + value
             })
@@ -460,6 +461,11 @@ function selectName() {
         charData.appendChild(dataItem)
     }
     parent.appendChild(charData)
+
+    let sizeLabel = parent.createElement("label")
+    sizeLabel.textContent = "Size"
+    parent.createSelect(species[sessionStorage.get("Species")]["Size"]).id = "Size"
+    sizeLabel.htmlFor = "Size"
 }
 
 selectList(classes, "Class")
