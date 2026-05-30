@@ -491,7 +491,7 @@ function featureChoose(choiceTitle, possibleChoices, player) {
         let choiceScroll = overlayItem.createElement("div", "featScroll")
         Object.entries(possibleChoices).forEach(([key, value]) => {
             let choiceItem = choiceScroll.createElement("div")
-            choiceItem.createElement("h3").textContent = key
+            choiceItem.createElement("h3").textContent = key.parse(player)
             choiceItem.createElement("p").textContent = (value["Description"].parse(player) || "")
             choiceItem.addEventListener("click", function() {
                 if (this.classList.contains("selectedFeat")) {
