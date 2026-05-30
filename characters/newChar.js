@@ -423,10 +423,12 @@ function selectName() {
     randomise.addEventListener("click", async function() {
         let gender = sessionStorage.get("Gender") ? sessionStorage.get("Gender").toLowerCase() : "m"
         let nameSet = species[sessionStorage.get("Species")]["NameSet"] ? species[sessionStorage.get("Species")]["NameSet"] : "h"
+        this.textContent = "Loading..."
         name.value = await fetch(`https://fantasyname.lukewh.com/?family=t&ancestry=${nameSet}&gender=${gender}`, {
             method: "GET",
             }
         ).then((response) => response.text())
+        this.textContent = "Randomise Name"
         sessionStorage.set("Name", name.value)
     })
 
