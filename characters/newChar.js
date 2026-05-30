@@ -173,30 +173,28 @@ function selectList(data, storageKey) {
     parent.className = "listParent"
     sessionStorage.set("createStage", storageKey)
     Object.keys(data).forEach((key) => {
-        let listItem = document.createElement("div")
+        let listItem = parent.createElement("div")
         listItem.id = key
         listItem.addEventListener("click", function () {
             if (sessionStorage.get(storageKey)) {
                 id(sessionStorage.get(storageKey)).classList.remove("active")
+                id(sessionStorage.get(storageKey)).children[1].style.display = "none"
             }
             this.classList.add("active")
+            this.children[1].style.display = "block"
             sessionStorage.set(storageKey, key)
         })
         listItem.addEventListener("dblclick", function () {
-            if (sessionStorage.get(storageKey)) {
-                id(sessionStorage.get(storageKey)).classList.remove("active")
-            }
-            this.classList.add("active")
             sessionStorage.set(storageKey, key)
             next.click()
         })
-        parent.appendChild(listItem)
         if (sessionStorage.get(storageKey) === key) {
             listItem.classList.add("active")
         }
-        let listName = document.createElement("h2")
+        let listName = listItem.createElement("h2")
         listName.textContent = key
-        listItem.appendChild(listName)
+        let listData = listItem.createElement("p")
+        listData.style.display = "none"
     })
 }
 
