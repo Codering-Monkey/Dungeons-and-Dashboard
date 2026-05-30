@@ -491,7 +491,9 @@ function featureChoose(choiceTitle, possibleChoices, player) {
         let choiceScroll = overlayItem.createElement("div", "featScroll")
         Object.entries(possibleChoices).forEach(([key, value]) => {
             let choiceItem = choiceScroll.createElement("div")
-            choiceItem.createElement("h3").textContent = key.parse(player)
+            let choiceTitle = choiceItem.createElement("h3")
+            choiceTitle.textContent = key.parse(player)
+            choiceTitle.value = key
             choiceItem.createElement("p").textContent = (value["Description"].parse(player) || "")
             choiceItem.addEventListener("click", function() {
                 if (this.classList.contains("selectedFeat")) {
@@ -512,7 +514,7 @@ function featureChoose(choiceTitle, possibleChoices, player) {
         finishButton.textContent = "Confirm"
         finishButton.addEventListener("click", function() {
             if (document.getElementsByClassName("selectedFeat") && document.getElementsByClassName("selectedFeat")[0]) {
-                resolve(document.getElementsByClassName("selectedFeat")[0].children[0].textContent)
+                resolve(document.getElementsByClassName("selectedFeat")[0].children[0].value)
                 overlayItem.parentElement.remove()
             } else {
                 popup(`Please select a Choice for ${choiceTitle}`)
