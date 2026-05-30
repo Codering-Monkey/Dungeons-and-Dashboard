@@ -946,7 +946,7 @@ async function developData() {
                     player["Exp"].pushAll(expChoices)
                     player["Prof"].pushAll(profChoices)
                     for (let j = 0; j < 4; j++) {
-                        player["ArmourPermitted"] = any(player["ArmourPermitted"][j], armourChoices[j])
+                        player["ArmourPermitted"][j] = any(player["ArmourPermitted"][j], armourChoices[j])
                     }
                     player["WeaponsPermitted"][0] = any(player["WeaponsPermitted"][0], weaponChoices[0])
                     player["WeaponsPermitted"][1] = any(player["WeaponsPermitted"][1], weaponChoices[1])
