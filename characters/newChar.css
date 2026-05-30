@@ -22,13 +22,20 @@
 
 .listParent {
     height: calc(100% - 5svh);
+    overflow-y: scroll;
 }
 
 .listParent > div {
     background-color: var(--foreground);
-    width: 100%;
-    height: calc(((100% - 5svh) / 12) - .5em);
+    width: calc(100% - 3em);
+    margin: 0.5em;
+    padding: 1em;
     cursor: pointer;
+    overflow-x:hidden;
+}
+
+.listParent > div > h2 {
+    margin: 0
 }
 
 .listParent > div:hover > * {
