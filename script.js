@@ -220,9 +220,9 @@ export function id(Object_ID) {
 }
 
 export function any(...booleans) {
-    booleans.forEach(bool => {
-        if (bool) {return true}
-    })
+    for (let i = 0; i < booleans.length; i++) {
+        if (booleans[i]) {return true}
+    }
     return false
 }
 
