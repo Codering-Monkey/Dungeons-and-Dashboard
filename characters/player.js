@@ -1511,7 +1511,7 @@ async function render(playerData, initial=false) {
                         if (parseInt(hit.textContent) >= 0) {
                             popup(`You rolled a ${hitRoll + parseInt(hit.textContent)} to hit (${hitRoll} + ${parseInt(hit.textContent)})`)
                         } else if (parseInt(hit.textContent) <= 0) {
-                            popup(`You rolled a ${hitRoll + parseInt(hit.textContent)} to hit (${hitRoll} - ${parseInt(hit.textContent)})`)
+                            popup(`You rolled a ${hitRoll + parseInt(hit.textContent)} to hit (${hitRoll} - ${parseInt(hit.textContent) * -1})`)
                         } else {
                             popup(`You rolled a ${hitRoll} to hit`)
                         }
