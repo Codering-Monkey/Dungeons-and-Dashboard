@@ -191,6 +191,7 @@ function selectList(data, storageKey) {
         })
         if (sessionStorage.get(storageKey) === key) {
             listItem.classList.add("active")
+            listItem.style.height = `${2.38 + (2.4 * shownDataElements)}em`
         }
         let listName = listItem.createElement("h2")
         listName.textContent = key
