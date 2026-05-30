@@ -43,7 +43,7 @@
 				"Description": "While you aren’t wearing any armor, your base Armor Class equals 10 plus your Dexterity and Constitution modifiers. You can use a Shield and still gain this benefit.",
 				"Armour": {
 					"Name": "Unarmoured Defense (Con)",
-					"Amount": "10+con",
+					"Amount": "10+Con",
 					"Cap": -1,
 					"Type": "Other"
 				}
@@ -630,7 +630,7 @@
 				"Description": "While you aren’t wearing armor or wielding a Shield, your base Armor Class equals 10 plus your Dexterity and Wisdom modifiers.",
 				"Armour": {
 					"Name": "Unarmoured Defense (Wis)",
-					"Amount": "10+wis",
+					"Amount": "10+Wis",
 					"Cap": -1,
 					"Type": "Other"
 				}

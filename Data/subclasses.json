@@ -459,7 +459,7 @@
 					}],
 					"Armour": {
 						"Name": "Draconic Resilience",
-						"Amount": "10+cha",
+						"Amount": "10+Cha",
 						"Cap": -1,
 						"Type": "Other"
 					}
