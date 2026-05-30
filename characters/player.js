@@ -231,8 +231,7 @@ function proficiencyChoose(profItem, existingProf) {
             profContainer.appendChild(profLabel)
             profContainer.break()
         }
-        console.log(validOptions.length === profItem["Amount"])
-        if (validOptions.length > profItem["Amount"]) {
+        if (profItem["Amount"] > validOptions.length) {
             profItem["Amount"] = validOptions.length
         }
         if (validOptions.length === profItem["Amount"]) {
