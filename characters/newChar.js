@@ -483,7 +483,9 @@ function selectName() {
 
     let sizeLabel = charData.createElement("label")
     sizeLabel.textContent = "Size: "
-    charData.createSelect(species[sessionStorage.get("Species")]["Size"]).style.fontSize = "1em"
+    let sizeSelect = charData.createSelect(species[sessionStorage.get("Species")]["Size"])
+    sizeSelect.style.fontSize = "1em"
+    sizeSelect.id = "Size"
 }
 
 selectList(classes, "Class")
