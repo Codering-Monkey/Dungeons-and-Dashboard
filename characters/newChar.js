@@ -479,9 +479,9 @@ function selectName() {
     }
     parent.appendChild(charData)
 
-    let sizeLabel = parent.createElement("label")
+    let sizeLabel = charData.createElement("label")
     sizeLabel.textContent = "Size: "
-    parent.createSelect(species[sessionStorage.get("Species")]["Size"]).style.fontSize = "1em"
+    charData.createSelect(species[sessionStorage.get("Species")]["Size"]).style.fontSize = "1em"
 }
 
 selectList(classes, "Class")
