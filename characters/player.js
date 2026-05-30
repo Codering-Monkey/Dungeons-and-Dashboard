@@ -25,6 +25,7 @@ import gear from "../Data/gear.json" with {type:"json"}
 import instruments from "../Data/instruments.json" with {type:"json"}
 import otherTools from "../Data/otherTools.json" with {type:"json"}
 import gaming from "../Data/gaming.json" with {type:"json"}
+import options from "../Data/options.json" with {type:"json"}
 
 spells.homebrew("Spells")
 weapons.homebrew("Weapons")
@@ -39,6 +40,7 @@ gear.homebrew("Gear")
 instruments.homebrew("Instruments")
 otherTools.homebrew("OtherTools")
 gaming.homebrew("Gaming")
+options.homebrew("Options")
 
 
 let allStats = {
@@ -523,6 +525,46 @@ function featureChoose(choiceTitle, possibleChoices, player) {
     })
 }
 
+// Option Choices
+
+function optionChoose(optionItem, currentOptions, player) {
+    return new Promise((resolve) => {
+        let overlayItem = overlay(function () {
+        }, false)
+        overlayItem.classList.add('featOverlay')
+        let amount = forceLevel(optionItem["Amount"], player["Level"])
+        overlayItem.createElement("h2").textContent = `Choose ${amount} ${optionItem["Name"] + (amount > 1 ? "s" : "")}`
+        let choiceScroll = overlayItem.createElement("div", "featScroll")
+        let selectedOptions = []
+        Object.entries(options[optionItem["Name"]]).forEach(([key, value]) => {
+            let choiceItem = choiceScroll.createElement("div")
+            let choiceTitle = choiceItem.createElement("h3")
+            choiceTitle.textContent = key.parse(player)
+            choiceTitle.value = key
+            choiceItem.createElement("p").textContent = (value["Description"].parse(player) || "")
+            choiceItem.addEventListener("click", function() {
+                if (this.classList.contains("selectedFeat")) {
+                    this.classList.remove("selectedFeat")
+                    selectedOptions.pull(this.children[0].key)
+                } else {
+                    this.classList.add("selectedFeat")
+                    selectedOptions.push(this.children[0].key)
+                }
+            })
+        })
+        let finishButton = choiceScroll.createElement("button")
+        finishButton.textContent = "Confirm"
+        finishButton.addEventListener("click", function() {
+            if (selectedOptions.length === amount) {
+                resolve(selectedOptions)
+                overlayItem.parentElement.remove()
+            } else {
+                popup(`Please select ${amount} ${optionItem["Name"] + (amount > 1 ? "s" : "")}`)
+            }
+        })
+    })
+}
+
 // Load the Page
 
 async function developData() {
@@ -828,6 +870,16 @@ async function developData() {
                     }
                     await addFeatures(featureFeatures, key)
                 }
+                if ("Options" in player["Choices"][key]) {
+                    if (forceLevel(value["Options"]["Amount"], player["Level"]) !== player["Choices"][key]["Options"].length) {
+                        player["Choices"][key]["Options"] = await optionChoose(value["Options"], player["Choices"][key]["Options"], player)
+                    }
+                    let optionFeatures = {}
+                    player["Choices"][key]["Options"].forEach((option) => {
+                        optionFeatures[option] = options[value["Options"]["Name"]][option]
+                    })
+                    await addFeatures(optionFeatures, options[value["Options"]["Name"]])
+                }
             } else {
                 player["Choices"][key] = {}
                 if ("Prof" in value) {
@@ -904,6 +956,14 @@ async function developData() {
                         featureFeatures[player["Choices"][key]["Choice"]] = value["Choice"][player["Choices"][key]["Choice"]]
                     }
                     await addFeatures(featureFeatures, key)
+                }
+                if ("Options" in value) {
+                    player["Choices"][key]["Options"] = await optionChoose(value["Options"], player["Choices"][key]["Options"], player)
+                    let optionFeatures = {}
+                    player["Choices"][key]["Options"].forEach((option) => {
+                        optionFeatures[option] = options[value["Options"]["Name"]][option]
+                    })
+                    await addFeatures(optionFeatures, options[value["Options"]["Name"]])
                 }
             }
         }
