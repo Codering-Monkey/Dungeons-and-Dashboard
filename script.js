@@ -421,7 +421,8 @@ File.prototype.read = function() {
  * @returns {String}
  */
 String.prototype.parse = function(player) {
-    return eval(`let level = ${player["Level"]}; let str = ${player["Stats"]["Str"].modifier()}; let dex = ${player["Stats"]["Dex"].modifier()}; let con = ${player["Stats"]["Con"].modifier()}; let int = ${player["Stats"]["Int"].modifier()}; let wis = ${player["Stats"]["Wis"].modifier()}; let cha = ${player["Stats"]["Cha"].modifier()}; let prof = ${player["Prof Bonus"]}; \`${this}\``)
+    player = (player || {"Stats": {}})
+    return eval(`let level = ${(player["Level"] || 0)}; let str = ${(player["Stats"]["Str"] || 0).modifier()}; let dex = ${(player["Stats"]["Dex"] || 0).modifier()}; let con = ${(player["Stats"]["Con"] || 0).modifier()}; let int = ${(player["Stats"]["Int"] || 0).modifier()}; let wis = ${(player["Stats"]["Wis"] || 0).modifier()}; let cha = ${(player["Stats"]["Cha"] || 0).modifier()}; let prof = ${(player["Prof Bonus"] || 0)}; \`${this}\``)
 }
 
 /**
