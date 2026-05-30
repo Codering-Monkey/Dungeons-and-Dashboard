@@ -716,6 +716,7 @@ async function developData() {
     player["Saves"] = structuredClone(classes[player["Class"]]["Saves"])
 
     player["Features"] = {}
+    let statIncreases = []
     async function addFeatures(dataSource, sourceName) {
         player["Features"][sourceName] = {}
         for (const [key, value] of Object.entries(dataSource)) {
@@ -793,10 +794,7 @@ async function developData() {
                     }
 
                     if (Object.values(allStats).includes(increasedStat)) {
-                        player["Stats"][increasedStat] += amount
-                        if (player["Stats"][increasedStat] > value["Bonus"][i]["Cap"]) {
-                            player["Stats"][increasedStat] = value["Bonus"][i]["Cap"]
-                        }
+                        statIncreases.push({"Amount": amount, "Cap": value["Bonus"][i]["Cap"], "Stat": increasedStat})
                     } else if (Object.keys(proficiencies).includes(increasedStat)) {
                         player["ProfIncrease"][increasedStat] = (player["ProfIncrease"][increasedStat] || 0) + amount
                     } else if (["RangedAttack", "RangedDamage", "MeleeAttack", "MeleeDamage", "Speed"].includes(increasedStat)) {
@@ -1019,6 +1017,14 @@ async function developData() {
         featData[player["Feats"][i]] = feats[player["Feats"][i]]
     }
     await addFeatures(featData, "Feats")
+
+    statIncreases.sort((a, b) => a["Cap"] - b["Cap"])
+    statIncreases.forEach(({"Amount": amount, "Cap": cap, "Stat": stat}) => {
+        player["Stats"][stat] += amount
+        if (player["Stats"][stat] > cap) {
+            player["Stats"][stat] = cap
+        }
+    })
 
     player["Init"] = player["Stats"]["Dex"].modifier() + initBonus
 
