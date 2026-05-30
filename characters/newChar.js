@@ -201,6 +201,11 @@ function selectList(data, storageKey) {
             listData.createElement("p").textContent = `Hit Dice: d${classes[key]["Dice"]}`
             listData.createElement("p").textContent = `Saves: ${classes[key]["Saves"].commaFuse()}`
             listData.createElement("p").textContent = `Proficiencies: ${classes[key]["Prof"][0]["Amount"]}${classes[key]["Prof"][0]["Choices"] ? " from " + classes[key]["Prof"][0]["Choices"].commaFuse() : " skill proficiencies"}`
+        } else if (storageKey === "Species") {
+            shownDataElements = 3
+            listData.createElement("p").textContent = `Speed: ${species[key]["Speed"]}ft`
+            listData.createElement("p").textContent = `Size: ${species[key]["Size"].length > 1 ? species[key]["Size"].join(" or ") : species[key]["Size"][0] }`
+            listData.createElement("p").textContent = `Type: ${species[key]["Type"]}`
         }
     })
 }
