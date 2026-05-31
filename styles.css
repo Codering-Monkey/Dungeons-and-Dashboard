@@ -382,3 +382,56 @@ body {
 .tooltip:hover > .tooltip-text {
 	display: inline
 }
+
+/* Homepage */
+.homepage > h1 {
+    text-align: center;
+    margin-top: 30vh;
+    font-size: 2.25em;
+    margin-bottom: 1rem;
+}
+
+.homepage > div {
+    text-align: center;
+    margin: 0 calc((60vw - 112px - 3svh - 1em) / 2)
+}
+
+.homepage > div > div {
+    width: 20vw;
+    text-align: center;
+    float:left;
+    background-color: var(--navbar);
+    border-radius: 8px;
+    height: 10vh;
+    cursor: pointer;
+}
+
+.homepage > div > div > span {
+    font-size: 5vh;
+    float: left;
+    margin: 2.5vh;
+}
+
+.homepage > div > div h5 {
+    margin: 2.6vh 0 0 0
+}
+
+.homepage > div > div p {
+    margin: .25em 0 0 0
+}
+
+.homepage > div > div:last-child {
+    margin-left: 1em
+}
+
+.homepage > div > div:hover span, .homepage > div > div:hover h5 {
+    color: var(--secondary);
+}
+
+.homepage > div > div:active span, .homepage > div > div:active h5 {
+    color: var(--primary);
+}
+
+.homepage > div > div:hover {
+    scale: 1.05
+}
