@@ -1,0 +1,39 @@
+.classList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 3.5em;
+    overflow-y: scroll;
+    gap: 0.25em;
+    width: calc(50% - 0.75em);
+    padding-right: 0.25em;
+}
+
+.classList > h2 {
+    border-bottom: .125em solid var(--primary);
+    grid-column: span 3;
+}
+
+.classList > h4 {
+    background-color: var(--foreground);
+    margin: 0;
+    align-content: center;
+    text-align: center;
+    cursor: pointer;
+    height: 2em;
+    border: 0.125em solid var(--background)
+}
+
+.classList > h4:hover {
+    border-color: var(--secondary);
+    color: var(--secondary)
+}
+
+.classList > h4:active {
+    border-color: var(--primary);
+    color: var(--primary)
+}
+
+.classList > .active {
+    border-color: var(--major-text);
+    font-weight: bolder;
+}
