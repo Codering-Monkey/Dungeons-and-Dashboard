@@ -2269,7 +2269,8 @@ async function render(playerData, initial=false) {
                 })
             })
         } else if (selectedAction === "set") {
-            let levelInput = actionParent.createElement("input")
+            let levelParent = actionParent.createElement("div", "levelParent")
+            let levelInput = levelParent.createElement("input")
             levelInput.type = "number"
             levelInput.max = 20
             levelInput.min = 1
@@ -2281,6 +2282,7 @@ async function render(playerData, initial=false) {
                 localStorage.set("Characters", oldData)
                 location.reload()
             })
+            levelInput.label("Level: ")
         }
     }
 

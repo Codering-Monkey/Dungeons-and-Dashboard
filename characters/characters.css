@@ -482,6 +482,15 @@ table > tr > td > p, table > tbody > tr > td > p {
     margin-top: .5em
 }
 
+.levelParent > label {
+    margin: .4em;
+    float: left
+}
+
+.levelParent > div {
+    float: left;
+}
+
 /* Overlays */
 .featOverlay {
     overflow-y: scroll;
