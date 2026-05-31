@@ -2316,6 +2316,17 @@ async function render(playerData, initial=false) {
                 localStorage.set("Characters", oldData)
                 location.reload()
             })
+
+            let deleteButton = actionParent.createElement("button")
+            deleteButton.textContent = "Delete Character"
+            deleteButton.addEventListener("click", async function() {
+                if (prompt(`Type "${playerData["Name"]}" to confirm deletetion`) === playerData["Name"]) {
+                    let oldData = localStorage.get("Characters")
+                    oldData.splice(getQuery("Char"), 1)
+                    localStorage.set("Characters", oldData)
+                    document.location.pathname = "/" + document.location.pathname.split("/")[1] + "/" + "characters/all_characters.html"
+                }
+            })
         }
     }
 
