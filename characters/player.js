@@ -560,10 +560,10 @@ function optionChoose(optionItem, currentOptions, player) {
                 choiceItem.addEventListener("click", function () {
                     if (this.classList.contains("selectedFeat")) {
                         this.classList.remove("selectedFeat")
-                        selectedOptions.pull(this.children[0].key)
+                        selectedOptions.pull(this.children[0].value)
                     } else {
                         this.classList.add("selectedFeat")
-                        selectedOptions.push(this.children[0].key)
+                        selectedOptions.push(this.children[0].value)
                     }
                 })
             }
@@ -897,7 +897,7 @@ async function developData() {
                 }
                 if ("Options" in player["Choices"][key]) {
                     if (forceLevel(value["Options"]["Amount"], player["Level"]) !== player["Choices"][key]["Options"].length) {
-                        player["Choices"][key]["Options"] = await optionChoose(value["Options"], player["Choices"][key]["Options"], player)
+                        player["Choices"][key]["Options"] = await optionChoose(value["Options"], (player["Choices"][key]["Options"] || []), player)
                     }
                     let optionFeatures = {}
                     player["Choices"][key]["Options"].forEach((option) => {
