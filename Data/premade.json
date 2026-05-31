@@ -1,8 +1,8 @@
 {
 	"Barbarian": [
 		{
-			"Current Health": 205,
-			"Max Health": 205,
+			"Current Health": 1000,
+			"Max Health": 0,
 			"Temp Health": 0,
 			"Level": "20",
 			"Choices": {
@@ -99,48 +99,17 @@
 				},
 				"Primal Champion": {}
 			},
-			"Prof": [
-				"Dice",
-				"Athletics",
-				"Intimidation",
-				"Perception",
-				"Survival",
-				"Animal Handling"
-			],
+			"Prof": [],
 			"Exp": [],
-			"Resist": [
-				"Bludgeoning, Piercing, Slashing (In Rage)"
-			],
-			"Immune": [
-				"Charmed & Frightened During Rage"
-			],
+			"Resist": [],
+			"Immune": [],
 			"Weak": [],
 			"Conditions": [],
-			"Feats": [
-				"Savage Attacker",
-				"Ability Score Improvement #1",
-				"Ability Score Improvement #2",
-				"Grappler",
-				"Ability Score Improvement #3",
-				"Boon of Combat Prowess"
-			],
-			"ArmourTraining": [
-				"Light",
-				"Medium",
-				"Shields"
-			],
-			"WeaponTraining": [
-				"Simple",
-				"Martial"
-			],
-			"ToolTraining": [
-				"Dice"
-			],
-			"Languages": [
-				"Common",
-				"Giant",
-				"Orc"
-			],
+			"Feats": [],
+			"ArmourTraining": [],
+			"WeaponTraining": [],
+			"ToolTraining": [],
+			"Languages": [],
 			"Class": "Barbarian",
 			"Species": "Goliath",
 			"Background": "Soldier",
@@ -210,173 +179,7 @@
 				}
 			},
 			"EquipArmour": "Unarmoured Defense (Con)",
-			"Subclass": "Path of the Beserker",
-			"Stats": {
-				"Str": 24,
-				"Dex": 13,
-				"Con": 24,
-				"Int": 12,
-				"Wis": 10,
-				"Cha": 8
-			},
-			"Prof Bonus": 6,
-			"Hit Dice": "20",
-			"ArmourPermitted": [
-				true,
-				true,
-				false,
-				true
-			],
-			"Armour": {
-				"Unarmoured": {
-					"Type": "Other",
-					"Amount": "10",
-					"Cap": -1
-				},
-				"Unarmoured Defense (Con)": {
-					"Type": "Other",
-					"Amount": "10+Con",
-					"Cap": -1
-				}
-			},
-			"Weapons": {
-				"Unarmed Strike": 1,
-				"Greataxe": 1,
-				"Handaxe": 4,
-				"Spear": 1,
-				"Shortbow": 1,
-				"Shove": 1,
-				"Grapple": 1
-			},
-			"WeaponsPermitted": [
-				true,
-				true,
-				[]
-			],
-			"Actions": [
-				{
-					"Type": "Bonus",
-					"Name": "Rage",
-					"Usages": [
-						2,
-						2,
-						3,
-						3,
-						3,
-						4,
-						4,
-						4,
-						4,
-						4,
-						4,
-						5,
-						5,
-						5,
-						5,
-						5,
-						6,
-						6,
-						6,
-						6
-					],
-					"LR": -1,
-					"SR": 1
-				},
-				{
-					"Type": "Reaction",
-					"Name": "Retaliation"
-				},
-				{
-					"Type": "Bonus",
-					"Name": "Intimidating Presence,",
-					"Usages": 1,
-					"LR": 1
-				},
-				{
-					"Type": "Other",
-					"Name": "Fire's Burn",
-					"Usages": "pb",
-					"LR": -1
-				},
-				{
-					"Type": "Bonus",
-					"Name": "Large Form",
-					"Usages": 1,
-					"LR": 1
-				}
-			],
-			"ACbonus": [],
-			"RangedAttack": 0,
-			"RangedDamage": 0,
-			"MeleeAttack": 0,
-			"MeleeDamage": 0,
-			"Mastery": 4,
-			"Spells": {},
-			"SpellSlots": [
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0,
-				0
-			],
-			"Speed": 35,
-			"Not Prof": 0,
-			"ProfIncrease": {},
-			"Saves": [
-				"Str",
-				"Con"
-			],
-			"Features": {
-				"Barbarian": {
-					"Rage": "You can imbue yourself with a primal power called Rage, a force that grants you extraordinary might and resilience. You can enter it as a Bonus Action if you aren’t wearing Heavy armor. You can enter your Rage the number of times shown for your Barbarian level in the Rages column of the Barbarian Features table. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.\nWhile active, your Rage follows the rules below. Damage Resistance. You have Resistance to Bludgeoning, Piercing, and Slashing damage. Rage Damage. When you make an attack using Strength—with either a weapon or an Unarmed Strike—and deal damage to the target, you gain a bonus to the damage that increases as you gain levels as a Barbarian, as shown in the Rage Damage column of the Barbarian Features table (+4). Strength Advantage. You have Advantage on Strength checks and Strength saving throws. No Concentration or Spells. You can’t maintain Concentration, and you can’t cast spells. Duration. The Rage lasts until the end of your next turn, and it ends early if you don Heavy armor or have the Incapacitated condition. If your Rage is still active on your next turn, you can extend the Rage for another round by doing one of the following:\n- Make an attack roll against an enemy.\n-Force an enemy to make a saving throw.\n-Take a Bonus Action to extend your Rage.\nEach time the Rage is extended, it lasts until the end of your next turn. You can maintain a Rage for up to 10 minutes.",
-					"Unarmoured Defense": "While you aren’t wearing any armor, your base Armor Class equals 10 plus your Dexterity and Constitution modifiers. You can use a Shield and still gain this benefit.",
-					"Weapon Mastery": "Your training with weapons allows you to use the mastery properties of two kinds of Simple or Martial Melee weapons of your choice, such as Greataxes and Handaxes. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Barbarian levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Barbarian Features table.",
-					"Danger Sense": "You gain an uncanny sense of when things aren’t as they should be, giving you an edge when you dodge perils. You have Advantage on Dexterity saving throws unless you have the Incapacitated condition.",
-					"Reckless Attack": "You can throw aside all concern for defense to attack with increased ferocity. When you make your first attack roll on your turn, you can decide to attack recklessly. Doing so gives you Advantage on attack rolls using Strength until the start of your next turn, but attack rolls against you have Advantage during that time.",
-					"Primal Knowledge": "You gain proficiency in another skill of your choice from the skill list available to Barbarians at level 1. In addition, while your Rage is active, you can channel primal power when you attempt certain tasks; whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability: Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your agility, bearing, and senses.",
-					"Fast Movement": "Your speed increases by 10 feet while you aren’t wearing Heavy armor.",
-					"Feral Instinct": "Your instincts are so honed that you have Advantage on Initiative rolls.",
-					"Instinctive Pounce": "As part of the Bonus Action you take to enter your Rage, you can move up to half your Speed.",
-					"Brutal Strikes": "If you use Reckless Attack, you can forgo any Advantage on one Strength-based attack roll of your choice on your turn. The chosen attack roll mustn’t have Disadvantage. If the chosen attack roll hits, the target takes an extra 1d10 damage of the same type dealt by the weapon or Unarmed Strike, and you can cause one Brutal Strike effect of your choice. You have the following effect options. Forceful Blow. The target is pushed 15 feet straight away from you. You can then move up to half your Speed straight toward the target without provoking Opportunity Attacks. Hamstring Blow. The target’s Speed is reduced by 15 feet until the start of your next turn. A target can be affected by only one Hamstring Blow at a time— the most recent one.",
-					"Relentless Rage": "Your Rage can keep you fighting despite grievous wounds. If you drop to 0 Hit Points while your Rage is active and don’t die outright, you can make a DC 10 Constitution saving throw. If you succeed, your Hit Points instead change to a number equal to twice your Barbarian level. Each time you use this feature after the first, the DC increases by 5. When you finish a Short or Long Rest, the DC resets to 10.",
-					"Improved Brutal Strike": "You have honed new ways to attack furiously. The following effects are now among your Brutal Strike options. Staggering Blow. The target has Disadvantage on the next saving throw it makes, and it can’t make Opportunity Attacks until the start of your next turn. Sundering Blow. Before the start of your next turn, the next attack roll made by another creature against the target gains a +5 bonus to the roll. An attack roll can gain only one Sundering Blow bonus.",
-					"Persistent Rage": "When you roll Initiative, you can regain all expended uses of Rage. After you regain uses of Rage in this way, you can’t do so again until you finish a Long Rest. In addition, your Rage is so fierce that it now lasts for 10 minutes without you needing to do anything to extend it from round to round. Your Rage ends early if you have the Unconscious condition (not just the Incapacitated condition) or don Heavy armor.",
-					"Greatly Improved Brutal Strike": "The extra damage of your Brutal Strike increases to 2d10. In addition, you can use two different Brutal Strike effects whenever you use your Brutal Strike feature.",
-					"Indomitable Might": "If your total for a Strength check or Strength saving throw is less than your Strength score, you can use that score in place of the total.",
-					"Primal Champion": "You embody primal power. Your Strength and Constitution scores increase by 4, to a maximum of 25."
-				},
-				"Path of the Beserker": {
-					"Frenzy": "If you use Reckless Attack while your Rage is active, you deal extra damage to the first target you hit on your turn with a Strength-based attack. To determine the extra damage, roll a number of d6s equal to your Rage Damage bonus (+4), and add them together. The damage has the same type as the weapon or Unarmed Strike used for the attack.",
-					"Mindless Rage": "You have Immunity to the Charmed and Frightened conditions while your Rage is active. If you’re Charmed or Frightened when you enter your Rage, the condition ends on you.",
-					"Retaliation": "When you take damage from a creature that is within 5 feet of you, you can take a Reaction to make one melee attack against that creature, using a weapon or an Unarmed Strike.",
-					"Intimidating Presence": "As a Bonus Action, you can strike terror into others with your menacing presence and primal power. When you do so, each creature of your choice in a 30-foot Emanation originating from you must make a Wisdom saving throw (DC {8+str+pb}). On a failed save, a creature has the Frightened condition for 1 minute. At the end of each of the Frightened creature’s turns, the creature repeats the save, ending the effect on itself on a success. Once you use this feature, you can’t use it again until you finish a Long Rest unless you expend a use of your Rage (no action required) to restore your use of it."
-				},
-				"Goliath": {
-					"Giant Ancestry": "You are descended from Giants. Choose one of the following benefits—a supernatural boon from your ancestry; you can use the chosen benefit a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest",
-					"Large Form": "Starting at character level 5, you can change your size to Large as a Bonus Action if you’re in a big enough space. This transformation lasts for 10 minutes or until you end it (no action required). For that duration, you have Advantage on Strength checks, and your Speed increases by 10 feet. Once you use this trait, you can’t use it again until you finish a Long Rest.",
-					"Powerful Build": "You have Advantage on any ability check you make to end the Grappled condition. You also count as one size larger when determining your carrying capacity."
-				},
-				"Giant Ancestry": {
-					"Fire's Burn (Fire Giant)": "When you hit a target with an attack roll and deal damage to it, you can also deal 1d10 Fire damage to that target."
-				},
-				"Feats": {
-					"Savage Attacker": "You’ve trained to deal particularly damaging strikes. Once per turn when you hit a target with a weapon, you can roll the weapon’s damage dice twice and use either roll against the target.",
-					"Ability Score Improvement #1": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
-					"Ability Score Improvement #2": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
-					"Grappler": "You gain the following benefits. Ability Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20. Punch and Grab. When you hit a creature with an Unarmed Strike as part of the Attack action on your turn, you can use both the Damage and the Grapple option. You can use this benefit only once per turn. Attack Advantage. You have Advantage on attack rolls against a creature Grappled by you. Fast Wrestler. You don’t have to spend extra movement to move a creature",
-					"Ability Score Improvement #3": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can’t increase an ability score above 20.",
-					"Boon of Combat Prowess": "When you miss with an attack roll, you can hit instead. Once you use this benefit, you can’t use it again until the start of your next turn."
-				}
-			},
-			"Prefix": "Beserker",
-			"Init": 1,
-			"Attacks": 2,
-			"Armour Class": 18,
-			"Lore": "Barbarian do staby and bonky"
+			"Subclass": "Path of the Beserker"
 		}
 	]
 }
