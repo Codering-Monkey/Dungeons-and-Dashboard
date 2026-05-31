@@ -903,7 +903,7 @@ async function developData() {
                     player["Choices"][key]["Options"].forEach((option) => {
                         optionFeatures[option] = options[value["Options"]["Name"]][option]
                     })
-                    await addFeatures(optionFeatures, options[value["Options"]["Name"]])
+                    await addFeatures(options[value["Options"]["Name"]], optionFeatures)
                 }
             } else {
                 player["Choices"][key] = {}
@@ -988,7 +988,7 @@ async function developData() {
                     player["Choices"][key]["Options"].forEach((option) => {
                         optionFeatures[option] = options[value["Options"]["Name"]][option]
                     })
-                    await addFeatures(optionFeatures, options[value["Options"]["Name"]])
+                    await addFeatures(options[value["Options"]["Name"]], optionFeatures)
                 }
             }
         }
