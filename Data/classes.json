@@ -801,11 +801,11 @@
 				"Level": 20,
 				"Description": "You have developed your body and mind to new heights. Your Dexterity and Wisdom scores increase by 4, to a maximum of 25.",
 				"Bonus": [{
-					"Stat": "Str",
+					"Stat": "Dex",
 					"Amount": 4,
 					"Cap": 25
 				}, {
-					"Stat": "Con",
+					"Stat": "Wis",
 					"Amount": 4,
 					"Cap": 25
 				}]
