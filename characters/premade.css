@@ -52,3 +52,23 @@
     height: 100%;
     float: left
 }
+
+.createFooter {
+    position: absolute;
+    bottom: 1.5em;
+    width: 48.5%
+}
+
+.createFooter > button {
+    float: right;;
+    height: 3.35em;
+}
+
+.inputNumberParent button {
+    width: auto
+}
+
+.inputNumberParent > input {
+    text-align: center;
+    width: 2vw
+}

@@ -1,4 +1,4 @@
-import {id} from "../script.js"
+import {getQuery, id} from "../script.js"
 import premade from "../Data/premade.json" with {type:"json"}
 premade.homebrew("Premade")
 
@@ -31,10 +31,28 @@ let dataParent = id("charData")
 function loadPremade() {
     dataParent.clear()
     let premadeData = premade[sessionStorage.get("selectedPremade").split("#")[0]][sessionStorage.get("selectedPremade").split("#")[1]]
+    premadeData["Level"] = "1"
     dataParent.createElement("h1").textContent = premadeData["Name"]
     dataParent.createElement("h3").innerHTML = `<strong>Class:</strong> ${premadeData["Class"]}`
     dataParent.createElement("h3").innerHTML = `<strong>Subclass:</strong> ${premadeData["Subclass"]}`
     dataParent.createElement("h3").innerHTML = `<strong>Species:</strong> ${premadeData["Species"]}`
     dataParent.createElement("h3").innerHTML = `<strong>Background:</strong> ${premadeData["Background"]}`
     dataParent.createElement("p").textContent = (premadeData["Lore"] || "")
+    let createFooter = dataParent.createElement("div", "createFooter")
+    let createButton = createFooter.createElement("button")
+    createButton.textContent = "Create"
+    let createInput = createFooter.createElement("input")
+    createInput.type = "number"
+    createInput.buttons()
+    createInput.value = premadeData["Level"]
+    createInput.addEventListener("change", function() {
+        premadeData["Level"] = this.value
+    })
+    createInput.label("Level: ")
+    createButton.addEventListener("click", function() {
+        let oldData = localStorage.get("Characters")
+        let charIndex = oldData.push(premadeData) - 1
+        localStorage.set("Characters", oldData)
+        document.location.href = "player.html?Char=" + charIndex
+    })
 }
