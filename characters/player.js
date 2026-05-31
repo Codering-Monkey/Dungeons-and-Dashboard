@@ -2283,6 +2283,30 @@ async function render(playerData, initial=false) {
                 location.reload()
             })
             levelInput.label("Level: ")
+            actionParent.break(2)
+
+            let nameParent = actionParent.createElement("div")
+            let nameInput = nameParent.createElement("input")
+            nameInput.type = "text"
+            nameInput.style.width = `calc(100% - ${(nameInput.label("Name: ")).getBoundingClientRect().width}px - 1.3em)`
+            nameInput.value = playerData["Name"]
+            nameInput.addEventListener("change", async function() {
+                let oldData = localStorage.get("Characters")
+                oldData[getQuery("Char")]["Name"] = this.value
+                localStorage.set("Characters", oldData)
+                location.reload()
+            })
+
+            let imageInput = actionParent.createElement("input")
+            imageInput.type = "text"
+            imageInput.style.width = `calc(100% - ${(imageInput.label("Profile Picture: ")).getBoundingClientRect().width}px - 1.3em)`
+            imageInput.value = (playerData["Pfp"] || "")
+            imageInput.addEventListener("change", async function() {
+                let oldData = localStorage.get("Characters")
+                oldData[getQuery("Char")]["Pfp"] = this.value
+                localStorage.set("Characters", oldData)
+                location.reload()
+            })
         }
     }
 
