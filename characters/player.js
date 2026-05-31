@@ -921,9 +921,9 @@ async function developData() {
                                 armourChoices[j] = any(armourChoices[j], value["Prof"][i]["Data"][j])
                             }
                         } else if (value["Prof"][i]["Type"] === "Weapon") {
-                            weaponChoices[1] = any(weaponChoices[0], value["Prof"]["Data"][i][0])
-                            weaponChoices[1] = any(weaponChoices[1], value["Prof"]["Data"][i][1])
-                            value["Prof"][i][2].forEach((weapon) => {
+                            weaponChoices[0] = any(weaponChoices[0], value["Prof"][i]["Data"][0])
+                            weaponChoices[1] = any(weaponChoices[1], value["Prof"][i]["Data"][1])
+                            value["Prof"][i]["Data"][2].forEach((weapon) => {
                                 if (!weaponChoices[2].includes(weapon)) {
                                     weaponChoices[2].push(weapon)
                                 }
