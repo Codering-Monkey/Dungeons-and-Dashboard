@@ -1083,7 +1083,7 @@ async function developData() {
     if (player["Hit Dice"] > player["Level"]) {
         player["Hit Dice"] = player["Level"]
     }
-    player["Attacks"] = forceArray(classes[player["Class"]]["Attacks"])[player["Level"] - 1]
+    player["Attacks"] = forceLevel(classes[player["Class"]]["Attacks"], player["Level"])
 
     player["Armour Class"] = 0
     let armourData = player["Armour"][player["EquipArmour"]]

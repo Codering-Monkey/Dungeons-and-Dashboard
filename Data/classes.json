@@ -380,6 +380,7 @@
 				"GP": 50
 			}
 		],
+		"Attacks": 1,
 		"Spellcasting": {
 			"CastTier": 1,
 			"Stat": "Wis",
