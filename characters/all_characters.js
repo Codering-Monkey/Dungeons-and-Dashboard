@@ -36,3 +36,6 @@ subTile.addEventListener("click", function() {
 })
 subTile = tile.createElement("div")
 subTile.textContent = "Create From Preset"
+subTile.addEventListener("click", function() {
+    window.location.href = "premade.html"
+})
