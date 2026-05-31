@@ -20,7 +20,7 @@ for (let i = 0; i < bar.children.length; i++) {
             fileInput.type = "file"
             fileInput.setAttribute("accept", ".json")
             input.appendChild(fileInput)
-            fileInput.label()
+            fileInput.fileLabel()
         }
     })
 }

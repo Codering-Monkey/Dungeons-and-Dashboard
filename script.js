@@ -6,7 +6,7 @@ class LogicError extends Error {
 }
 
 // HTML "Fixes"
-HTMLInputElement.prototype.label = function() {
+HTMLInputElement.prototype.fileLabel = function() {
     if (this.type === "file") {
         let label = document.createElement("label")
         label.textContent = "Choose File"
@@ -86,7 +86,7 @@ let inputs = document.getElementsByTagName("INPUT")
 for (let i = 0; i < inputs.length; i++) {
     if (!inputs[i].classList.contains("ignore")) {
         if (inputs[i].type === "file" ) {
-            inputs[i].label()
+            inputs[i].fileLabel()
         } else if (inputs[i].type === "number") {
             inputs[i].buttons()
         }
@@ -149,7 +149,7 @@ Storage.prototype.wipe = function(...items) {
     }
 }
 
-HTMLInputElement.prototype.label = function(labelText) {
+HTMLInputElement.prototype.fileLabel = function(labelText) {
     if (!this.id) {
         let namingCount = 0
         while (id(labelText + namingCount)) {
