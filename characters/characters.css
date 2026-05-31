@@ -375,7 +375,8 @@ table > tr > td > p, table > tbody > tr > td > p {
 }
 
 .featureParent > p {
-    margin: 1px 0.5em
+    margin: 1px 0.5em;
+    white-space: pre-wrap;
 }
 
 .equipTable {
