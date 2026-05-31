@@ -316,7 +316,7 @@
 					"Description": "The magic of your oath ensures you always have certain spells ready; when you reach a Paladin level specified in the Oath of Devotion Spells table, you thereafter always have the listed spells prepared.",
 					"Spells": [{
 						"Amount": 10,
-						"Choices": ["Protection from Evil and Good", "Shield of Faith", "Aid, Zone of Truth", "Beacon of Hope", "Dispel Magic", "Freedom of Movement", "Guardian of Faith", "Commune", "Flame Strike"],
+						"Choices": ["Protection from Evil and Good", "Shield of Faith", "Aid", "Zone of Truth", "Beacon of Hope", "Dispel Magic", "Freedom of Movement", "Guardian of Faith", "Commune", "Flame Strike"],
 						"Ability": "Cha",
 						"Identifier": "Oath of Devotion Spells"
 					}]
