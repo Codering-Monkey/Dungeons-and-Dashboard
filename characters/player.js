@@ -1119,7 +1119,16 @@ async function render(playerData, initial=false) {
     }
     console.log(playerData)
     // Generate Static Data
-    id("pfp").src = (playerData["Pfp"] || "../Images/players/blank.png")
+    if (await new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = playerData["Pfp"];
+    })) {
+        id("pfp").src = playerData["Pfp"]
+    } else {
+        id("pfp").src = "../Images/players/blank.png"
+    }
     id("name").textContent = playerData["Name"]
     if (playerData["Level"] < 3) {
         id("title").textContent = `${numSuffix(playerData["Level"])} level ${playerData["Species"]} ${playerData["Class"]}`
