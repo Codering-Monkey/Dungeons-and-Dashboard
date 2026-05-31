@@ -26,3 +26,14 @@ Object.entries(premade).forEach(([premadeClass, premadeCharacters]) => {
     })
 })
 
+let dataParent = id("charData")
+function loadPremade() {
+    dataParent.clear()
+    let premadeData = premade[sessionStorage.get("selectedPremade").split("#")[0]][sessionStorage.get("selectedPremade").split("#")[1]]
+    dataParent.createElement("h1").textContent = premadeData["Name"]
+    dataParent.createElement("h3").innerHTML = `<strong>Class:</strong> ${premadeData["Class"]}`
+    dataParent.createElement("h3").innerHTML = `<strong>Subclass:</strong> ${premadeData["Subclass"]}`
+    dataParent.createElement("h3").innerHTML = `<strong>Species:</strong> ${premadeData["Species"]}`
+    dataParent.createElement("h3").innerHTML = `<strong>Background:</strong> ${premadeData["Background"]}`
+    dataParent.createElement("p").textContent = (premadeData["Lore"] || "")
+}

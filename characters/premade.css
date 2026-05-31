@@ -37,3 +37,19 @@
     border-color: var(--major-text);
     font-weight: bolder;
 }
+
+.charData {
+    background-color: var(--foreground);
+    margin-left: 0.5em;
+    width: calc(50% - 1.25em);
+    padding-left: 1em;
+}
+
+.charData strong {
+    font-weight: bold;
+}
+
+.not-nav > div {
+    height: 100%;
+    float: left
+}
