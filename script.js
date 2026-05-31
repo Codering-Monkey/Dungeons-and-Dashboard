@@ -149,6 +149,19 @@ Storage.prototype.wipe = function(...items) {
     }
 }
 
+HTMLInputElement.prototype.label = function(labelText) {
+    if (!this.id) {
+        let namingCount = 0
+        while (id(labelText + namingCount)) {
+            namingCount += 1
+        }
+        this.id = labelText + namingCount
+    }
+    let labelElement = this.parentElement.createElement("label")
+    labelElement.textContent = labelText
+    labelElement.htmlFor = this.id
+}
+
 /**
  * Creates a td object to append a child in
  * @param {object} object
