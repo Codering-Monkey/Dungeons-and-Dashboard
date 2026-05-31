@@ -157,9 +157,14 @@ HTMLInputElement.prototype.label = function(labelText) {
         }
         this.id = labelText + namingCount
     }
-    let labelElement = this.parentElement.createElement("label")
+    let labelElement = document.createElement("label")
     labelElement.textContent = labelText
     labelElement.htmlFor = this.id
+    if (this.type === "number") {
+        this.parentElement.parentElement.insertBefore(labelElement, this.parentElement)
+    } else {
+        this.parentElement.insertBefore(labelElement, this)
+    }
 }
 
 /**
