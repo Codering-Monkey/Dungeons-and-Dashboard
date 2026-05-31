@@ -375,7 +375,8 @@
 			"Prefix": "Beserker",
 			"Init": 1,
 			"Attacks": 2,
-			"Armour Class": 18
+			"Armour Class": 18,
+			"Lore": "Barbarian do staby and bonky"
 		}
 	]
 }
