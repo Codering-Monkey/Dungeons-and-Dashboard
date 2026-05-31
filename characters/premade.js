@@ -7,6 +7,7 @@ sessionStorage.set("selectedPremade", " # ")
 let classParent = id("classList")
 Object.entries(premade).forEach(([premadeClass, premadeCharacters]) => {
     classParent.createElement("h2").textContent = premadeClass
+    classParent.style.gridTemplateRows += `3.5em repeat(${Object.keys(premadeCharacters).length}, 1fr)`
     let count = 0
     premadeCharacters.forEach((character) => {
         let classItem = classParent.createElement("h4")
