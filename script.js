@@ -149,7 +149,7 @@ Storage.prototype.wipe = function(...items) {
     }
 }
 
-HTMLInputElement.prototype.fileLabel = function(labelText) {
+HTMLInputElement.prototype.label = function(labelText) {
     if (!this.id) {
         let namingCount = 0
         while (id(labelText + namingCount)) {
@@ -165,6 +165,7 @@ HTMLInputElement.prototype.fileLabel = function(labelText) {
     } else {
         this.parentElement.insertBefore(labelElement, this)
     }
+    return labelElement
 }
 
 /**
