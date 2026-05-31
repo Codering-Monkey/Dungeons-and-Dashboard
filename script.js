@@ -246,7 +246,7 @@ export function any(...booleans) {
 
 HTMLElement.prototype.createElement = function(tag, classList="") {
     let element = document.createElement(tag);
-    element.className = classList;
+    if (classList) {element.className = classList}
     this.appendChild(element)
     return element
 }
