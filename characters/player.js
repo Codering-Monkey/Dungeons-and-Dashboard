@@ -2317,6 +2317,19 @@ async function render(playerData, initial=false) {
                 location.reload()
             })
 
+            actionParent.createElement("label").textContent = "Character Lore: "
+            let loreInput = actionParent.createElement("textarea")
+            loreInput.style.width = "calc(100% - 1.3em)"
+            loreInput.style.height = "20svh"
+            loreInput.style.marginTop = ".125em"
+            loreInput.value = (playerData["Lore"] || "")
+            loreInput.addEventListener("change", async function() {
+                let oldData = localStorage.get("Characters")
+                oldData[getQuery("Char")]["Lore"] = this.value
+                playerData["Lore"] = this.value
+                localStorage.set("Characters", oldData)
+            })
+
             let deleteButton = actionParent.createElement("button")
             deleteButton.textContent = "Delete Character"
             deleteButton.addEventListener("click", async function() {
