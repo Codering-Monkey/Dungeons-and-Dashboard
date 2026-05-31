@@ -2278,10 +2278,8 @@ async function render(playerData, initial=false) {
             levelInput.addEventListener("change", async function() {
                 let oldData = localStorage.get("Characters")
                 oldData[getQuery("Char")]["Level"] = this.value
-                playerData["Level"] = this.value
                 localStorage.set("Characters", oldData)
-                playerData = await developData()
-                await render(playerData)
+                location.reload()
             })
         }
     }
