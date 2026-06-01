@@ -73,6 +73,7 @@ function renderSpells() {
 function showSpell() {
     let spellPacket = spellData[getQuery("spell")]
     let parent = id("spellData")
+    localStorage.set("lastSpell", getQuery("spell"))
     parent.clear()
 
     if (!spellPacket) {return}
