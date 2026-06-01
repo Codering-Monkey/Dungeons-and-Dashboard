@@ -5,6 +5,10 @@ let lastSpell = id("lastSpell")
 
 if (localStorage.get("lastChar")) {
     lastChar.createElement("p").textContent = localStorage.get("Characters")[localStorage.get("lastChar")]["Name"]
+    lastChar.addEventListener("click", function() {
+        window.location.search = "Char=" + localStorage.get("lastChar")
+        window.location.pathname = "/Dungeons-and-Dashboard/characters/player.html"
+    })
 } else {
     lastChar.style.opacity = "30%"
 }
