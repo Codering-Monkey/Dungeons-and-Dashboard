@@ -586,6 +586,7 @@ function optionChoose(optionItem, currentOptions, player) {
 async function developData() {
     let player = localStorage.indexGet("Characters", getQuery("Char"))
     player["Stats"] = {}
+    localStorage.set("lastChar", getQuery("Char"))
     Object.entries(player["BaseStats"]).forEach(([key, value]) => {
         player["Stats"][allStats[key]] = value
     })
