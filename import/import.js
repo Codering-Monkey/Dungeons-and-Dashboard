@@ -41,6 +41,10 @@ id("button").addEventListener("click", async function () {
         ).then((response) => response.json())
     } else if (child.type === "file") {
         newData = JSON.parse(await child.files[0].read())
+    } else if (child.htmlFor && id(child.htmlFor).type === "file") {
+        newData = JSON.parse(await id(child.htmlFor).files[0].read())
+    } else {
+        return
     }
     try {
         Object.entries(newData).forEach(([key, value]) => {
