@@ -239,7 +239,7 @@ table > tr > td > p, table > tbody > tr > td > p {
 
 .overlay > div {
     overflow-x: hidden;
-    width: 956px;
+    width: calc((465px + 1.4em) * 2);
     overflow-y:scroll;
     padding: 0;
     border:.5em solid var(--background)
